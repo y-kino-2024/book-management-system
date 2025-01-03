@@ -10,8 +10,12 @@ import com.bookmanagementsystem.service.AuthorService
 import com.bookmanagementsystem.validator.AuthorValidator
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -37,26 +41,33 @@ class AuthorController(
     @GetMapping("/getAuthor")
     fun getAuthorController(request: GetAuthorRequest): String {
         try {
-            //Connection conn = DriverManager.getConnection(url, userName, password)
             // バリデーション処理
             validate.validGetAuthor(request)
             // 著者取得処理
             val author = service.getAuthor(authorId = request.authorId.toString())
             // レスポンスに詰め替える
-            val response = convertGetAuthorResponse(author)
-            // JSONで返す
-            val mapper = ObjectMapper()
-            // JSONをLocalDateTimeに対応させる
-            val timeModule = JavaTimeModule()
-            timeModule.addDeserializer<LocalDateTime>(
-                LocalDateTime::class.java,
-                LocalDateTimeDeserializer(DateTimeFormatter.ISO_DATE_TIME)
-            )
-            mapper.registerModule(timeModule)
-            // 日付の表示形式を整形
-            mapper.dateFormat = java.text.SimpleDateFormat("yyyy-MM-dd")
-            val responseJson = mapper.writeValueAsString(response)
-            return responseJson
+            if(author != null) {
+                // 検索結果が取得できた場合
+                val response = convertGetAuthorResponse(author)
+                println("controller$response")
+                // JSONで返す
+                val mapper = ObjectMapper()
+                // JSONをLocalDateに対応させる
+                val timeModule = JavaTimeModule()
+                timeModule.addDeserializer(
+                    LocalDate::class.java,
+                    LocalDateDeserializer(DateTimeFormatter.ISO_DATE_TIME)
+                )
+                mapper.registerModule(timeModule)
+                // 日付の表示形式を整形
+                mapper.dateFormat = java.text.SimpleDateFormat("yyyy-MM-dd")
+                val responseJson = mapper.writeValueAsString(response)
+                return responseJson
+            } else {
+                // 検索結果が取得できなかった場合
+                val mapper = ObjectMapper()
+                return mapper.writeValueAsString("search result Empty")
+            }
         } catch (e: Exception) {
             return e.message!!
         }
@@ -139,7 +150,7 @@ class AuthorController(
      * @args request 著者登録処理のリクエスト
      * @return 著者Entity
      */
-    private fun convertAuthor(request:CreateAuthorRequest):Author{
+    private fun convertAuthor(request: CreateAuthorRequest): Author {
         return Author(
             id = request.id,
             authorName = request.authorName?.let {

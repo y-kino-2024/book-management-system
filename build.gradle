@@ -51,7 +51,7 @@ springBoot {
 }
 
 jooq {
-   // version = '3.19.16'
+    // version = '3.19.16'
     configuration {
         jdbc {
             driver = "org.postgresql.Driver"

@@ -2,8 +2,6 @@ package com.bookmanagementsystem.repositoryImpl
 
 import com.bookmanagementsystem.dto.BooksInfoDto
 import com.bookmanagementsystem.repository.AuthorIndexRepository
-import java.sql.Date
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 /**
@@ -17,7 +15,7 @@ class AuthorIndexRepositoryImpl : AuthorIndexRepository {
      * @return 書籍情報
      */
     @Override
-    override fun getBookFromAuthor(authorId: String): BooksInfoDto {
+    override fun getBookFromAuthor(authorId: String): BooksInfoDto? {
         // TODO 処理内容
         // クエリを生成する
         // 取得した内容をDtoに詰め替える
@@ -30,9 +28,9 @@ class AuthorIndexRepositoryImpl : AuthorIndexRepository {
             price = "test",
             publicationStatus = "0",
             createdBy = "test",
-            createdAt= LocalDateTime.now(),
+            createdAt = LocalDateTime.now(),
             updatedBy = "test",
-            updatedAt= LocalDateTime.now(),
+            updatedAt = LocalDateTime.now(),
             deleteFlg = "0",
         )
     }

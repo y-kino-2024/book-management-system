@@ -3,8 +3,6 @@ package com.bookmanagementsystem.repositoryImpl
 import com.bookmanagementsystem.dto.BooksInfoDto
 import com.bookmanagementsystem.repository.BooksInfoRepository
 import org.springframework.stereotype.Repository
-import java.sql.Date
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 /**
@@ -19,7 +17,7 @@ class BooksInfoRepositoryImpl : BooksInfoRepository {
      * @return 書籍情報
      */
     @Override
-    override fun getBook(bookId: String): BooksInfoDto {
+    override fun getBook(bookId: String): BooksInfoDto? {
         // TODO 処理内容
         // クエリを生成する
         // 取得した内容をDtoに詰め替える
@@ -32,9 +30,9 @@ class BooksInfoRepositoryImpl : BooksInfoRepository {
             price = "test",
             publicationStatus = "0",
             createdBy = "test",
-            createdAt= LocalDateTime.now(),
+            createdAt = LocalDateTime.now(),
             updatedBy = "test",
-            updatedAt= LocalDateTime.now(),
+            updatedAt = LocalDateTime.now(),
             deleteFlg = "0",
         )
     }

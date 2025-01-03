@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController
  * 書籍のController
  */
 @RestController
-class BookController (
+class BookController(
     val validate: BookValidator,
     val service: BookService
-){
+) {
 
     /**
      * 書籍情報を取得する
@@ -90,15 +90,15 @@ class BookController (
      * @args book 書籍情報
      * @return 書籍情報のレスポンスオブジェクト
      */
-    private fun convertGetBookResponse(book: Book,): GetBookResponse {
+    private fun convertGetBookResponse(book: Book): GetBookResponse {
         return GetBookResponse(
-            bookId= book.id?.let {
+            bookId = book.id?.let {
                 book.id.toString()
             } ?: throw IllegalStateException("書籍IDが不正です。"),
             authorId = book.authorId,
-            title=book.title,
-            price=book.price.toInt(),
-            publicationStatus=book.publicationStatus.ordinal.toString(),
+            title = book.title,
+            price = book.price.toInt(),
+            publicationStatus = book.publicationStatus.ordinal.toString(),
         )
     }
 }

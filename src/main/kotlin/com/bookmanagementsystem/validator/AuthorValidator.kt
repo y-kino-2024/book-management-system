@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import java.time.LocalDate
 
 @SpringBootApplication
-class AuthorValidator (
-    val commonValidator:CommonValidator
-){
+class AuthorValidator(
+    val commonValidator: CommonValidator
+) {
 
     companion object {
         // 著者IDの最大桁数

@@ -17,7 +17,7 @@ class CommonValidator {
      * 作成処理の共通チェック
      * @args operator 操作者
      */
-    fun validCreate(operator:String?){
+    fun validCreate(operator: String?) {
         checkOperator(operator)
     }
 
@@ -25,7 +25,7 @@ class CommonValidator {
      * 更新処理の共通チェック
      * @args operator 操作者
      */
-    fun validUpdate(operator:String?){
+    fun validUpdate(operator: String?) {
         checkOperator(operator)
     }
 
@@ -34,7 +34,7 @@ class CommonValidator {
      * 操作者のチェック
      * @args operator 操作者
      */
-    private fun checkOperator(operator: String?){
+    private fun checkOperator(operator: String?) {
         // 必須チェック
         if (operator.isNullOrBlank()) {
             throw NullPointerException("操作者が未入力です。")

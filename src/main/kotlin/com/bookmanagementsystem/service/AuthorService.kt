@@ -5,7 +5,6 @@ import com.bookmanagementsystem.entity.Author
 import com.bookmanagementsystem.repositoryImpl.AuthorsInfoRepositoryImpl
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.transaction.annotation.Transactional
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -13,10 +12,10 @@ import java.time.format.DateTimeFormatter
  * 著者のService
  */
 @SpringBootApplication
-class AuthorService (
+class AuthorService(
     private val authorsInfoRepositoryImpl: AuthorsInfoRepositoryImpl
-){
-    companion object{
+) {
+    companion object {
         const val DELETE_FLG_ZERO = "0"
     }
 
@@ -26,16 +25,16 @@ class AuthorService (
      * @return 著者
      */
     @Transactional
-    fun getAuthor(authorId: String): Author {
-        // TODO 処理未実装。エラーださないための仮置き
-        // FIXME SQL作成
-        //val sql: String = create.select().from(ACTOR).getSQL()
-        return Author(
-            id = 99999999,
-            authorName = "test",
-            birthday = LocalDate.now(),
-            operator = "testOp"
-        )
+    fun getAuthor(authorId: String): Author? {
+        // 取得処理
+        val result = authorsInfoRepositoryImpl.getAuthor(authorId)
+        // 取得結果が0件の場合の考慮
+        println("service$result")
+        return if(result != null){
+            convertAuthor(result)
+        } else {
+            null
+        }
     }
 
     /**
@@ -49,17 +48,16 @@ class AuthorService (
 
         // 著者IDを発番する
         val authorId = authorsInfoRepositoryImpl.nextAuthorIdSequence()
-        // 処理日時のフォーマット作成
-        val processingDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss.SSS")
         // 処理日時を取得
         val now = LocalDateTime.now()
         // ミリ秒まで表示させるように整形
+        val processingDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss.SSS")
         val processingDatetime = LocalDateTime.parse(now.format(processingDateFormat))
         // Dtoに詰め替える
         val authorDto = convertAuthorsInfoDto(
-            author=author,
-            authorId=authorId,
-            processingDatetime=processingDatetime
+            author = author,
+            authorId = authorId,
+            processingDatetime = processingDatetime
         )
         // 登録処理
         val result = authorsInfoRepositoryImpl.createAuthor(authorDto)
@@ -104,15 +102,33 @@ class AuthorService (
      * @args processingDatetime 処理日時
      * @return 著者Dto
      */
+    private fun convertAuthor(
+        authorsInfoDto: AuthorsInfoDto,
+    ): Author {
+        return Author(
+            id = authorsInfoDto.id,
+            authorName = authorsInfoDto.authorName,
+            birthday = authorsInfoDto.birthday,
+            operator = authorsInfoDto.updatedBy
+        )
+    }
+
+    /**
+     * 著者のEntityを著者のDtoに変換する
+     * @args author 著者Entity
+     * @args authorId 著者ID
+     * @args processingDatetime 処理日時
+     * @return 著者Dto
+     */
     private fun convertAuthorsInfoDto(
         author: Author,
         authorId: Int?,
-        processingDatetime:LocalDateTime
-        ):AuthorsInfoDto{
+        processingDatetime: LocalDateTime
+    ): AuthorsInfoDto {
         return AuthorsInfoDto(
             id = authorId?.let {
                 authorId
-            }?:throw IllegalStateException("著者IDが不正です。"),
+            } ?: throw IllegalStateException("著者IDが不正です。"),
             authorName = author.authorName,
             birthday = author.birthday,
             createdBy = author.operator,

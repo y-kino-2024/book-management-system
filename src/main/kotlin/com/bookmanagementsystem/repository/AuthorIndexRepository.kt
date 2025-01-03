@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface AuthorIndexRepository {
 
-    fun getBookFromAuthor(authorId: String): BooksInfoDto
+    fun getBookFromAuthor(authorId: String): BooksInfoDto?
 }

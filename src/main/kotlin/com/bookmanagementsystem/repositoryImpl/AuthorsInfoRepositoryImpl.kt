@@ -24,25 +24,33 @@ class AuthorsInfoRepositoryImpl(
      */
     @Override
     @Transactional
-    override fun getAuthor(authorId: String): AuthorsInfoDto {
+    override fun getAuthor(authorId: String): AuthorsInfoDto? {
+        println("impl:$authorId")
         // クエリを生成・実行する
         val result = this.dslContext.select()
             .from(AUTHORS_INFO)
             .where(AUTHORS_INFO.ID.eq(authorId.toInt()))
             .fetchOne()
+        println("impl:$result")
         // 取得した内容をDtoに詰め替える
-        val dto = AuthorsInfoDto(
-            id = result?.getValue(AUTHORS_INFO.ID)!!,
-            authorName = result.getValue(AUTHORS_INFO.AUTHOR_NAME)!!,
-            birthday = result.getValue(AUTHORS_INFO.BIRTHDAY)!!,
-            createdBy = result.getValue(AUTHORS_INFO.CREATED_BY)!!,
-            createdAt = result.getValue(AUTHORS_INFO.CREATED_AT)!!,
-            updatedBy = result.getValue(AUTHORS_INFO.UPDATED_BY)!!,
-            updatedAt = result.getValue(AUTHORS_INFO.UPDATED_AT)!!,
-            deleteFlg = result.getValue(AUTHORS_INFO.DELETE_FLG)!!,
-        )
+        val dto = if (result != null) {
+            AuthorsInfoDto(
+                id = result.getValue(AUTHORS_INFO.ID)!!,
+                authorName = result.getValue(AUTHORS_INFO.AUTHOR_NAME)!!,
+                birthday = result.getValue(AUTHORS_INFO.BIRTHDAY)!!,
+                createdBy = result.getValue(AUTHORS_INFO.CREATED_BY)!!,
+                createdAt = result.getValue(AUTHORS_INFO.CREATED_AT)!!,
+                updatedBy = result.getValue(AUTHORS_INFO.UPDATED_BY)!!,
+                updatedAt = result.getValue(AUTHORS_INFO.UPDATED_AT)!!,
+                deleteFlg = result.getValue(AUTHORS_INFO.DELETE_FLG)!!,
+            )
+        } else {
+            null
+        }
         // Dtoを返す
+        println("impl:$dto")
         return dto
+
         // TODO 動確用返り値
         /*
         return AuthorsInfoDto(
@@ -75,25 +83,25 @@ class AuthorsInfoRepositoryImpl(
             // シーケンスを取得する
 
             // クエリを生成・実行する
-                /*
-                DSL.using(c)
-                    .insertInto(
-                        AUTHORS_INFO,
-                        AUTHORS_INFO.ID,
-                        AUTHORS_INFO.AUTHOR_NAME,
-                        AUTHORS_INFO.BIRTHDAY,
-                        AUTHORS_INFO.CREATED_BY,
-                        AUTHORS_INFO.CREATED_AT,
-                        AUTHORS_INFO.UPDATED_BY,
-                        AUTHORS_INFO.UPDATED_AT,
-                        AUTHORS_INFO.DELETE_FLG,
-                    )
-                    .values(
-                        authorIdSeq, author.authorName, author.birthday, author.createdBy, author.createdAt,
-                        author.updatedBy, author.updatedAt, author.deleteFlg
-                    )
-                    .execute()
-                */
+            /*
+            DSL.using(c)
+                .insertInto(
+                    AUTHORS_INFO,
+                    AUTHORS_INFO.ID,
+                    AUTHORS_INFO.AUTHOR_NAME,
+                    AUTHORS_INFO.BIRTHDAY,
+                    AUTHORS_INFO.CREATED_BY,
+                    AUTHORS_INFO.CREATED_AT,
+                    AUTHORS_INFO.UPDATED_BY,
+                    AUTHORS_INFO.UPDATED_AT,
+                    AUTHORS_INFO.DELETE_FLG,
+                )
+                .values(
+                    authorIdSeq, author.authorName, author.birthday, author.createdBy, author.createdAt,
+                    author.updatedBy, author.updatedAt, author.deleteFlg
+                )
+                .execute()
+            */
 
             val result = dslContext
                 .insertInto(
@@ -126,8 +134,8 @@ class AuthorsInfoRepositoryImpl(
 //                    it.store()
 //                }
 //                return authorId
-                //result.getValue(AUTHORS_INFO.ID).toString()
-           // }
+            //result.getValue(AUTHORS_INFO.ID).toString()
+            // }
             // 著者IDを返す
             return result
             // TODO 動確用返り値
