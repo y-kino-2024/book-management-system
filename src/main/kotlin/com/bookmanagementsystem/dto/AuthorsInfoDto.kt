@@ -1,7 +1,7 @@
 package com.bookmanagementsystem.dto
 
-import java.sql.Date
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 /**
  * author_infoテーブルのDto
@@ -20,8 +20,8 @@ data class AuthorsInfoDto(
     val authorName: String,
     val birthday: LocalDate,
     val createdBy: String,
-    val createdAt: LocalDate,
+    val createdAt: LocalDateTime,
     val updatedBy: String,
-    val updatedAt: LocalDate,
+    val updatedAt: LocalDateTime,
     val deleteFlg: String,
 )

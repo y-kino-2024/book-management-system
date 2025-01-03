@@ -10,6 +10,7 @@ import com.bookmanagementsystem.enum.PublicationStatus
  * @param title タイトル
  * @param price 価格
  * @param publicationStatus 出版状況
+ * @param operator 操作者
  */
 data class Book(
     val id: String?,
@@ -17,4 +18,5 @@ data class Book(
     val title: String,
     val price: String,
     val publicationStatus: PublicationStatus,
+    val operator: String
 )

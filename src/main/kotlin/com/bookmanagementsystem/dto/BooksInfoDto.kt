@@ -1,6 +1,6 @@
 package com.bookmanagementsystem.dto
 
-import java.sql.Date
+import java.time.LocalDateTime
 
 /**
  * book_infoテーブルのDto
@@ -21,8 +21,8 @@ data class BooksInfoDto(
     val price: String,
     val publicationStatus: String,
     val createdBy: String,
-    val createdAt: Date,
+    val createdAt: LocalDateTime,
     val updatedBy: String,
-    val updatedAt: Date,
+    val updatedAt: LocalDateTime,
     val deleteFlg: String,
 )

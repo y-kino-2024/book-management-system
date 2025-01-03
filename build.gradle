@@ -7,7 +7,7 @@ plugins {
     id 'org.jooq.jooq-codegen-gradle' version '3.19.16'
 }
 
-group = 'com.example'
+group = 'com.bookmanagementsystem'
 version = '0.0.1-SNAPSHOT'
 
 java {
@@ -51,6 +51,7 @@ springBoot {
 }
 
 jooq {
+   // version = '3.19.16'
     configuration {
         jdbc {
             driver = "org.postgresql.Driver"
@@ -59,8 +60,10 @@ jooq {
             password = "local_pos_adm1n"
         }
         generator {
+            //name = 'org.jooq.util.postgres.PostgresDatabase'
             target {
-                packageName = "quoassignment.jooq"
+                packageName = "bookmanagementsystem.jooq"
+                directory = 'src/main/java'
             }
         }
     }

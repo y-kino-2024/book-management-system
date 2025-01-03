@@ -4,6 +4,7 @@ import com.bookmanagementsystem.dto.BooksInfoDto
 import com.bookmanagementsystem.repository.AuthorIndexRepository
 import java.sql.Date
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 /**
  * author_indexのリポジトリクラス
@@ -29,9 +30,9 @@ class AuthorIndexRepositoryImpl : AuthorIndexRepository {
             price = "test",
             publicationStatus = "0",
             createdBy = "test",
-            createdAt=Date.valueOf(LocalDate.now()),
+            createdAt= LocalDateTime.now(),
             updatedBy = "test",
-            updatedAt=Date.valueOf(LocalDate.now()),
+            updatedAt= LocalDateTime.now(),
             deleteFlg = "0",
         )
     }

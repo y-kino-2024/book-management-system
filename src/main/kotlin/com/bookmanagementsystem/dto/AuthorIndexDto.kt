@@ -1,6 +1,6 @@
 package com.bookmanagementsystem.dto
 
-import java.sql.Date
+import java.sql.Timestamp
 
 /**
  * author_infoテーブルのDto
@@ -17,8 +17,8 @@ data class AuthorIndexDto(
     val bookId: String,
     val authorId: String,
     val createdBy: String,
-    val createdAt: Date,
+    val createdAt: Timestamp,
     val updatedBy: String,
-    val updatedAt: Date,
+    val updatedAt: Timestamp,
     val deleteFlg: String,
 )

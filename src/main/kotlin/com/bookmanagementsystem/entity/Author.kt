@@ -1,6 +1,6 @@
 package com.bookmanagementsystem.entity
 
-import java.sql.Date
+import java.time.LocalDate
 
 /**
  * 著者Entity
@@ -8,9 +8,11 @@ import java.sql.Date
  * @param id 筆者ID
  * @param authorName 筆者名
  * @param birthday 誕生日
+ * @param operator 操作者
  */
 data class Author(
-    val id: String,
+    val id: Int?,
     val authorName: String,
-    val birthday: Date,
+    val birthday: LocalDate,
+    val operator: String
 )

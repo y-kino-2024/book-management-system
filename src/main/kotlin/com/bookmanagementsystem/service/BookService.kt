@@ -23,7 +23,8 @@ class BookService {
             authorId = listOf("test"),
             title = "test",
             price = "test",
-            publicationStatus = PublicationStatus.NONE
+            publicationStatus = PublicationStatus.NONE,
+            operator = "test"
         )
     }
 
@@ -69,7 +70,8 @@ class BookService {
             authorId = listOf("test"),
             title = "test",
             price = "test",
-            publicationStatus = PublicationStatus.valueOf("9")
+            publicationStatus = PublicationStatus.valueOf("9"),
+            operator = "test"
         )
     }
 }

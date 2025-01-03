@@ -24,6 +24,8 @@ class AuthorValidator (
      * @args request 著者取得処理のリクエスト
      */
     fun validGetAuthor(request: GetAuthorRequest) {
+        // TODO 動確用後で消す
+        println(request)
         checkId(request.authorId)
     }
 
@@ -32,6 +34,8 @@ class AuthorValidator (
      * @args request 著者登録処理のリクエスト
      */
     fun validCreateAuthor(request: CreateAuthorRequest) {
+        // TODO 動確用後で消す
+        println(request)
         checkName(request.authorName)
         checkBirthday(request.birthday)
         commonValidator.validCreate(request.operator)
@@ -70,7 +74,7 @@ class AuthorValidator (
     private fun checkName(authorName: String?) {
         // 必須チェック
         if (authorName.isNullOrBlank()) {
-            throw NullPointerException("著者名が未入力です。")
+            throw NullPointerException("著者名が未入力です。$authorName")
         }
         // 桁数チェック(DB定義：256桁)
         if (authorName.length > AUTHOR_NAME_MAX) {

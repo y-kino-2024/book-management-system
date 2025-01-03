@@ -5,6 +5,7 @@ import com.bookmanagementsystem.repository.BooksInfoRepository
 import org.springframework.stereotype.Repository
 import java.sql.Date
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 /**
  * Books_infoのリポジトリクラス
@@ -31,9 +32,9 @@ class BooksInfoRepositoryImpl : BooksInfoRepository {
             price = "test",
             publicationStatus = "0",
             createdBy = "test",
-            createdAt= Date.valueOf(LocalDate.now()),
+            createdAt= LocalDateTime.now(),
             updatedBy = "test",
-            updatedAt= Date.valueOf(LocalDate.now()),
+            updatedAt= LocalDateTime.now(),
             deleteFlg = "0",
         )
     }
