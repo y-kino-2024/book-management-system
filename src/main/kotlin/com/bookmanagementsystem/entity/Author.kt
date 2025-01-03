@@ -9,6 +9,7 @@ import java.time.LocalDate
  * @param authorName 筆者名
  * @param birthday 誕生日
  * @param operator 操作者
+ * @param deleteFlg 削除フラグ
  */
 data class Author(
     val id: Int?,

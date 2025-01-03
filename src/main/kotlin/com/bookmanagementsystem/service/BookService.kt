@@ -12,6 +12,7 @@ class BookService {
 
     /**
      * 書籍IDから書籍を取得する
+     *
      * @param bookId 書籍ID
      * @return 書籍
      */
@@ -24,12 +25,14 @@ class BookService {
             title = "test",
             price = "test",
             publicationStatus = PublicationStatus.NONE,
-            operator = "test"
+            operator = "test",
+            deleteFlg = "0"
         )
     }
 
     /**
      * 書籍の情報を登録する
+     *
      * @param book 書籍
      * @return 書籍ID
      */
@@ -50,6 +53,7 @@ class BookService {
 
     /**
      * 書籍の情報を更新する
+     *
      * @param book 書籍
      * @return
      */
@@ -60,6 +64,7 @@ class BookService {
 
     /**
      * 筆者から書籍を取得する
+     *
      * @param authorId 筆者ID
      * @return 書籍
      */
@@ -71,7 +76,8 @@ class BookService {
             title = "test",
             price = "test",
             publicationStatus = PublicationStatus.valueOf("9"),
-            operator = "test"
+            operator = "test",
+            deleteFlg = "0"
         )
     }
 }

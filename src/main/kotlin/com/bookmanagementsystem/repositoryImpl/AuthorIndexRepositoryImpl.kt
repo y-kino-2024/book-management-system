@@ -13,6 +13,7 @@ class AuthorIndexRepositoryImpl : AuthorIndexRepository {
 
     /**
      * 著者に紐づく書籍情報をDBから取得する
+     *
      * @args authorId 著者ID
      * @return 書籍情報
      */
@@ -36,6 +37,4 @@ class AuthorIndexRepositoryImpl : AuthorIndexRepository {
             deleteFlg = "0",
         )
     }
-
-
 }

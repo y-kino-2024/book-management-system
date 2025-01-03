@@ -18,6 +18,7 @@ class AuthorsInfoRepositoryImpl(
 
     /**
      * 著者情報をDBから取得する
+     *
      * @args authorId 著者ID
      * @return 著者情報
      */
@@ -58,6 +59,7 @@ class AuthorsInfoRepositoryImpl(
 
     /**
      * 著者情報をテーブルに登録する
+     *
      * @args author 著者情報
      * @return 著者ID
      */
@@ -94,6 +96,7 @@ class AuthorsInfoRepositoryImpl(
 
     /**
      * 著者情報を更新する
+     *
      * @args author 著者情報
      * @return 著者ID
      */
@@ -123,6 +126,7 @@ class AuthorsInfoRepositoryImpl(
 
     /**
      * 現在の著者IDを発番する
+     *
      * @return 現在の著者ID
      */
     @Override

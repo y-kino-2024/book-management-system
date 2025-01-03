@@ -6,6 +6,7 @@ import java.time.LocalDate
 
 /**
  * 著者更新処理のリクエストオブジェクト
+ *
  * @param authorId 著者ID
  * @param authorName 著者名
  * @param birthday 誕生日

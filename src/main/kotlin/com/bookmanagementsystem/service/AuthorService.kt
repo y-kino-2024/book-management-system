@@ -19,6 +19,7 @@ class AuthorService(
 
     /**
      * 著者IDから著者を取得する
+     *
      * @args authorId 著者ID
      * @return 著者
      */
@@ -38,6 +39,7 @@ class AuthorService(
 
     /**
      * 著者の情報を登録する
+     *
      * @args author 著者
      * @return 登録した著者ID
      */
@@ -67,6 +69,7 @@ class AuthorService(
 
     /**
      * 著者の情報を更新する
+     *
      * @args author 著者
      * @return 更新対象の著者ID
      */
@@ -98,6 +101,7 @@ class AuthorService(
 
     /**
      * 処理日時を取得する
+     *
      * @return 処理日時
      */
     private fun getProcessingDateTime(): LocalDateTime {
@@ -110,6 +114,7 @@ class AuthorService(
 
     /**
      * 著者のEntityを著者のDtoに変換する
+     *
      * @args author 著者Entity
      * @args authorId 著者ID
      * @args processingDatetime 処理日時
@@ -129,6 +134,7 @@ class AuthorService(
 
     /**
      * 著者のEntityを著者のDtoに変換する
+     *
      * @args author 著者Entity
      * @args processingDatetime 処理日時
      * @return 著者Dto
@@ -157,6 +163,7 @@ class AuthorService(
 
     /**
      * 著者のEntityを著者のDtoに変換する
+     *
      * @args author 著者Entity
      * @args processingDatetime 処理日時
      * @return 著者Dto

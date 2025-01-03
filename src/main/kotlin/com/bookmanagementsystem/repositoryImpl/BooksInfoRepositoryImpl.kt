@@ -13,6 +13,7 @@ class BooksInfoRepositoryImpl : BooksInfoRepository {
 
     /**
      * 書籍情報をDBから取得する
+     *
      * @args BookId 書籍ID
      * @return 書籍情報
      */
@@ -39,6 +40,7 @@ class BooksInfoRepositoryImpl : BooksInfoRepository {
 
     /**
      * 書籍情報をテーブルに登録する
+     *
      * @args Book 書籍情報
      * @return 書籍ID
      */
@@ -55,6 +57,7 @@ class BooksInfoRepositoryImpl : BooksInfoRepository {
 
     /**
      * 書籍情報を更新する
+     *
      * @args Book 書籍情報
      * @return 書籍ID
      */

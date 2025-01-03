@@ -22,6 +22,7 @@ class BookController(
 
     /**
      * 書籍情報を取得する
+     *
      * @args request getBookのリクエスト
      * @return 書籍情報のJSON
      */
@@ -46,7 +47,34 @@ class BookController(
     }
 
     /**
+     * 著者IDから書籍情報を取得する
+     *
+     * @args request getBookFromAuthorのリクエスト
+     * @return 書籍情報のJSON
+     */
+    @GetMapping("/getBookFromAuthor")
+    fun getBookFromAuthorController(request: GetBookRequest): String {
+        try {
+            // バリデーション処理
+            validate.validGetBook(request)
+            // リクエストを詰め替える
+            // リクエスト詰め替え不要
+            // 書籍取得処理
+            //val author = model.getBook(authorId = request.authorId)
+            // レスポンスに詰め替える
+            //val response = convertGetBookResponse(author)
+            // TODO JSONで返す
+            //return Json.encodeToString(response)
+            return "Test"
+            // 完了
+        } catch (e: Exception) {
+            return e.message!!
+        }
+    }
+
+    /**
      * 書籍情報を登録する
+     *
      * @args request createBookのリクエスト
      * @return 書籍IDのJSON
      */
@@ -67,6 +95,7 @@ class BookController(
 
     /**
      * 書籍情報を更新する
+     *
      * @args request updateBookのリクエスト
      * @return 書籍IDのJSON
      */
@@ -87,6 +116,7 @@ class BookController(
 
     /**
      * 書籍取得処理の結果をレスポンスオブジェクトに詰め替える
+     *
      * @args book 書籍情報
      * @return 書籍情報のレスポンスオブジェクト
      */
@@ -94,11 +124,19 @@ class BookController(
         return GetBookResponse(
             bookId = book.id?.let {
                 book.id.toString()
-            } ?: throw IllegalStateException("書籍IDが不正です。"),
-            authorId = book.authorId,
-            title = book.title,
-            price = book.price.toInt(),
-            publicationStatus = book.publicationStatus.ordinal.toString(),
+            } ?: throw IllegalStateException("書籍IDの値が不正です。"),
+            authorId = book.authorId?.let {
+                book.authorId
+            } ?: throw IllegalStateException("著者IDの値が不正です。"),
+            title = book.title?.let {
+                book.title
+            } ?: throw IllegalStateException("タイトルの値が不正です。"),
+            price = book.price?.let {
+                book.price.toInt()
+            } ?: throw IllegalStateException("価格の値が不正です。"),
+            publicationStatus = book.publicationStatus?.let {
+                book.publicationStatus.ordinal.toString()
+            } ?: throw IllegalStateException("出版状況の値が不正です。"),
         )
     }
 }

@@ -2,6 +2,7 @@ package com.bookmanagementsystem.response.book
 
 /**
  * 書籍取得処理のレスポンスオブジェクト
+ *
  * @param bookId 書籍ID
  * @param authorId 筆者ID
  * @param title タイトル

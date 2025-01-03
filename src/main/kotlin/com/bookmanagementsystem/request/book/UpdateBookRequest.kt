@@ -2,6 +2,7 @@ package com.bookmanagementsystem.request.book
 
 /**
  * 書籍更新処理のリクエストオブジェクト
+ *
  * @param bookId 書籍ID
  * @param title タイトル
  * @param price 価格

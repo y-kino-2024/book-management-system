@@ -23,6 +23,7 @@ class BookValidator {
 
     /**
      * 書籍取得処理のバリデーション
+     *
      * @param request 書籍取得処理のリクエスト
      */
     fun validGetBook(request: GetBookRequest) {
@@ -31,6 +32,7 @@ class BookValidator {
 
     /**
      * 書籍登録処理のバリデーション
+     *
      * @param request 書籍登録処理のリクエスト
      */
     fun validCreateBook(request: CreateBookRequest) {
@@ -41,6 +43,7 @@ class BookValidator {
 
     /**
      * 書籍更新処理のバリデーション
+     *
      * @param request 書籍更新処理のリクエスト
      */
     fun validUpdateBook(request: UpdateBookRequest) {
@@ -52,6 +55,7 @@ class BookValidator {
 
     /**
      * 書籍IDのチェック
+     *
      * @param bookId 書籍ID
      */
     private fun checkId(bookId: String?) {
@@ -67,6 +71,7 @@ class BookValidator {
 
     /**
      * タイトルのチェック
+     *
      * @param title タイトル
      */
     private fun checkName(title: String?) {
@@ -82,6 +87,7 @@ class BookValidator {
 
     /**
      * 価格のチェック
+     *
      * @param price 価格
      */
     private fun checkPrice(price: Int?) {
@@ -97,6 +103,7 @@ class BookValidator {
 
     /**
      * 出版状況のチェック
+     *
      * @param publicationStatus 出版状況
      */
     private fun checkPublicationStatus(publicationStatus: String?) {

@@ -4,6 +4,7 @@ import java.time.LocalDate
 
 /**
  * 著者から書籍を取得する処理のレスポンスオブジェクト
+ *
  * @param bookId 書籍ID
  * @param title タイトル
  * @param price 価格

@@ -37,6 +37,7 @@ class AuthorController(
 
     /**
      * 著者情報を取得する
+     *
      * @args request getAuthorのリクエスト
      * @return 著者情報のJSON
      */
@@ -91,6 +92,7 @@ class AuthorController(
 
     /**
      * 著者情報を登録する
+     *
      * @args request createAuthorのリクエスト
      * @return 著者IDのJSON
      */
@@ -133,6 +135,7 @@ class AuthorController(
 
     /**
      * 著者情報を更新する
+     *
      * @args request updateAuthorのリクエスト
      * @return 著者IDのJSON
      */
@@ -174,6 +177,7 @@ class AuthorController(
 
     /**
      * 著者取得処理の結果をレスポンスオブジェクトに詰め替える
+     *
      * @args author 著者情報
      * @return 著者情報のレスポンスオブジェクト
      */
@@ -191,6 +195,7 @@ class AuthorController(
 
     /**
      * 著者登録処理の結果をレスポンスオブジェクトに詰め替える
+     *
      * @args authorId 著者ID
      * @return 著者登録結果のレスポンスオブジェクト
      */
@@ -203,6 +208,7 @@ class AuthorController(
     // TODO convertAuthorを登録と更新で一つにしたい
     /**
      * 著者登録処理のリクエストを著者Entityに詰め替える
+     *
      * @args request 著者登録処理のリクエスト
      * @return 著者Entity
      */
@@ -225,6 +231,7 @@ class AuthorController(
 
     /**
      * 著者更新処理のリクエストを著者Entityに詰め替える
+     *
      * @args request 著者更新処理のリクエスト
      * @return 著者Entity
      */

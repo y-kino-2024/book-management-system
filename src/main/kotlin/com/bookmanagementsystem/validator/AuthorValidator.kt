@@ -13,6 +13,7 @@ class AuthorValidator(
 
     /**
      * 著者取得処理のリクエストに対するバリデーション
+     *
      * @args request 著者取得処理のリクエスト
      */
     fun validGetAuthor(request: GetAuthorRequest) {
@@ -22,6 +23,7 @@ class AuthorValidator(
 
     /**
      * 著者登録処理のリクエストに対するバリデーション
+     *
      * @args request 著者登録処理のリクエスト
      */
     fun validCreateAuthor(request: CreateAuthorRequest) {
@@ -36,6 +38,7 @@ class AuthorValidator(
 
     /**
      * 著者更新処理のリクエストに対するバリデーション
+     *
      * @args request 著者更新処理のリクエスト
      */
     fun validUpdateAuthor(request: UpdateAuthorRequest) {
@@ -49,6 +52,7 @@ class AuthorValidator(
 
     /**
      * 著者IDの必須チェック
+     *
      * @args authorId 著者ID
      */
     private fun checkRequiredId(authorId: String?) {
@@ -60,6 +64,7 @@ class AuthorValidator(
 
     /**
      * 著者名の必須チェック
+     *
      * @args authorName 著者名
      */
     private fun checkRequiredName(authorName: String?) {
@@ -71,6 +76,7 @@ class AuthorValidator(
 
     /**
      * 誕生日の必須チェック
+     *
      * @args birthday 誕生日
      */
     private fun checkRequiredBirthday(birthday: LocalDate?) {
@@ -82,6 +88,7 @@ class AuthorValidator(
 
     /**
      * 誕生日の過去日チェック
+     *
      * @args birthday 誕生日
      */
     private fun checkPastDateBirthday(birthday: LocalDate?) {

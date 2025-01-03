@@ -1,7 +1,7 @@
 package com.bookmanagementsystem.enum
 
 /**
- *
+ * 出版状況のenum
  */
 enum class PublicationStatus(val code: String) {
     NONE(code = "9"),
