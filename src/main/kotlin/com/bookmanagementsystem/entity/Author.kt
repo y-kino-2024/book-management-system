@@ -12,7 +12,8 @@ import java.time.LocalDate
  */
 data class Author(
     val id: Int?,
-    val authorName: String,
-    val birthday: LocalDate,
-    val operator: String
+    val authorName: String?,
+    val birthday: LocalDate?,
+    val operator: String?,
+    val deleteFlg: String?,
 )

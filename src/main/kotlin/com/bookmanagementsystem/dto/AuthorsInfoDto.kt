@@ -16,7 +16,7 @@ import java.time.LocalDateTime
  * @param deleteFlg 削除フラグ
  */
 data class AuthorsInfoDto(
-    val id: Int,
+    val id: Int?,
     val authorName: String,
     val birthday: LocalDate,
     val createdBy: String,

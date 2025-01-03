@@ -11,13 +11,13 @@ import com.bookmanagementsystem.validator.AuthorValidator
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer
+import org.springframework.validation.BindingResult
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 
@@ -29,9 +29,11 @@ class AuthorController(
     val validate: AuthorValidator,
     val service: AuthorService
 ) {
-    private val userName: String = "postgres"
-    private val password: String = "local_pos_adm1n"
-    private val url: String = "jdbc:postgresql://localhost:5432/quo_assignment_db"
+    companion object {
+        const val DELETE_FLG_ZERO = "0"
+
+        const val UNKNOWN_ERROR_MESSAGE = "未定義のエラー"
+    }
 
     /**
      * 著者情報を取得する
@@ -39,14 +41,28 @@ class AuthorController(
      * @return 著者情報のJSON
      */
     @GetMapping("/getAuthor")
-    fun getAuthorController(request: GetAuthorRequest): String {
+    fun getAuthorController(
+        @Validated request: GetAuthorRequest,
+        bindingResult: BindingResult
+    ): String {
+        if (bindingResult.hasErrors()) {
+            val errorMessageList = mutableListOf<String>()
+            for (bindingError in bindingResult.fieldErrors) {
+                errorMessageList.add(bindingError.defaultMessage?.let {
+                    bindingError.defaultMessage
+                } ?: UNKNOWN_ERROR_MESSAGE)
+            }
+            val mapper = ObjectMapper()
+            val responseJson = mapper.writeValueAsString(errorMessageList)
+            return responseJson
+        }
         try {
             // バリデーション処理
             validate.validGetAuthor(request)
             // 著者取得処理
-            val author = service.getAuthor(authorId = request.authorId.toString())
+            val author = service.getAuthor(request.authorId.toString())
             // レスポンスに詰め替える
-            if(author != null) {
+            if (author != null) {
                 // 検索結果が取得できた場合
                 val response = convertGetAuthorResponse(author)
                 println("controller$response")
@@ -66,10 +82,10 @@ class AuthorController(
             } else {
                 // 検索結果が取得できなかった場合
                 val mapper = ObjectMapper()
-                return mapper.writeValueAsString("search result Empty")
+                return mapper.writeValueAsString("取得対象が存在しません。")
             }
         } catch (e: Exception) {
-            return e.message!!
+            return e.message ?: throw Exception("エラーメッセージ未設定")
         }
     }
 
@@ -79,24 +95,40 @@ class AuthorController(
      * @return 著者IDのJSON
      */
     @PostMapping("/createAuthor")
-    fun createAuthorController(@RequestBody request: CreateAuthorRequest): String {
-        // バリデーション処理
-        validate.validCreateAuthor(request)
-        // リクエストを詰め替える
-        val author = convertAuthor(request)
+    fun createAuthorController(
+        @Validated @RequestBody request: CreateAuthorRequest,
+        bindingResult: BindingResult
+    ): String {
+        if (bindingResult.hasErrors()) {
+            val errorMessageList = mutableListOf<String>()
+            for (bindingError in bindingResult.fieldErrors) {
+                errorMessageList.add(bindingError.defaultMessage?.let {
+                    bindingError.defaultMessage
+                } ?: UNKNOWN_ERROR_MESSAGE)
+            }
+            val mapper = ObjectMapper()
+            val responseJson = mapper.writeValueAsString(errorMessageList)
+            return responseJson
+        }
+        try {
+            // バリデーション処理
+            validate.validCreateAuthor(request)
+            // リクエストを詰め替える
+            val author = convertAuthor(request)
 
-        // 著者登録処理
-        val authorId = service.createAuthor(author)
+            // 著者登録処理
+            val authorId = service.createAuthor(author)
 
-        // レスポンスに詰め替える
-        val response = convertCreateAuthorResponse(authorId)
+            // レスポンスに詰め替える
+            val response = convertCreateAuthorResponse(authorId)
 
-        // JSONで返す
-        val mapper = ObjectMapper()
-        val responseJson = mapper.writeValueAsString(response)
-        return responseJson
-        // TODO 動確用返り値
-        //return "test"
+            // JSONで返す
+            val mapper = ObjectMapper()
+            val responseJson = mapper.writeValueAsString(response)
+            return responseJson
+        } catch (e: Exception) {
+            return e.message ?: throw Exception("エラーメッセージ未設定")
+        }
     }
 
     /**
@@ -105,18 +137,39 @@ class AuthorController(
      * @return 著者IDのJSON
      */
     @PostMapping("/updateAuthor")
-    fun updateAuthorController(@RequestBody request: UpdateAuthorRequest): String {
-        // バリデーション処理
-
-        // リクエストを詰め替える
-
-        // 著者更新処理
-
-        // レスポンスに詰め替える
-
-        // TODO JSONで返す
-        return "test"
-        // 完了
+    fun updateAuthorController(
+        @Validated @RequestBody request: UpdateAuthorRequest,
+        bindingResult: BindingResult
+    ): String {
+        if (bindingResult.hasErrors()) {
+            val errorMessageList = mutableListOf<String>()
+            for (bindingError in bindingResult.fieldErrors) {
+                errorMessageList.add(bindingError.defaultMessage?.let {
+                    bindingError.defaultMessage
+                } ?: UNKNOWN_ERROR_MESSAGE)
+            }
+            val mapper = ObjectMapper()
+            val responseJson = mapper.writeValueAsString(errorMessageList)
+            return responseJson
+        }
+        try {
+            // バリデーション処理
+            validate.validUpdateAuthor(request)
+            // リクエストを詰め替える
+            val author = convertAuthor(request)
+            // 著者更新処理
+            val authorId = service.updateAuthor(author)
+            // レスポンスに詰め替える
+            val response = convertCreateAuthorResponse(authorId)
+            // JSONで返す
+            val mapper = ObjectMapper()
+            val responseJson = mapper.writeValueAsString(response)
+            return responseJson
+            //return "test"
+            // 完了
+        } catch (e: Exception) {
+            return e.message ?: throw Exception("エラーメッセージ未設定")
+        }
     }
 
     /**
@@ -129,7 +182,9 @@ class AuthorController(
             authorId = author.id?.let {
                 author.id.toString()
             } ?: throw IllegalStateException("著者IDが不正です。"),
-            authorName = author.authorName,
+            authorName = author.authorName?.let {
+                author.authorName.toString()
+            } ?: throw IllegalStateException("著者名が不正です。"),
             birthday = LocalDate.parse(author.birthday.toString())
         )
     }
@@ -145,6 +200,7 @@ class AuthorController(
         )
     }
 
+    // TODO convertAuthorを登録と更新で一つにしたい
     /**
      * 著者登録処理のリクエストを著者Entityに詰め替える
      * @args request 著者登録処理のリクエスト
@@ -152,7 +208,7 @@ class AuthorController(
      */
     private fun convertAuthor(request: CreateAuthorRequest): Author {
         return Author(
-            id = request.id,
+            id = null,
             authorName = request.authorName?.let {
                 request.authorName.toString()
             } ?: throw IllegalStateException("著者名が不正です。"),
@@ -162,6 +218,25 @@ class AuthorController(
             operator = request.operator?.let {
                 request.operator.toString()
             } ?: throw IllegalStateException("操作者が不正です。"),
+            // 削除フラグは作成時には「0：未削除」をいれる
+            deleteFlg = DELETE_FLG_ZERO
+        )
+    }
+
+    /**
+     * 著者更新処理のリクエストを著者Entityに詰め替える
+     * @args request 著者更新処理のリクエスト
+     * @return 著者Entity
+     */
+    private fun convertAuthor(request: UpdateAuthorRequest): Author {
+        return Author(
+            id = request.authorId?.let {
+                request.authorId.toInt()
+            } ?: throw IllegalStateException("著者IDが不正です。"),
+            authorName = request.authorName,
+            birthday = request.birthday,
+            operator = request.operator,
+            deleteFlg = request.deleteFlg
         )
     }
 }

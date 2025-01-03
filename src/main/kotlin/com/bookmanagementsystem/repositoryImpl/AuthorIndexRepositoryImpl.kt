@@ -2,11 +2,13 @@ package com.bookmanagementsystem.repositoryImpl
 
 import com.bookmanagementsystem.dto.BooksInfoDto
 import com.bookmanagementsystem.repository.AuthorIndexRepository
+import org.springframework.stereotype.Repository
 import java.time.LocalDateTime
 
 /**
  * author_indexのリポジトリクラス
  */
+@Repository
 class AuthorIndexRepositoryImpl : AuthorIndexRepository {
 
     /**

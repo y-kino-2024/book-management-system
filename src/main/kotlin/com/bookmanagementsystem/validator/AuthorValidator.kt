@@ -3,97 +3,93 @@ package com.bookmanagementsystem.validator
 import com.bookmanagementsystem.request.author.CreateAuthorRequest
 import com.bookmanagementsystem.request.author.GetAuthorRequest
 import com.bookmanagementsystem.request.author.UpdateAuthorRequest
-import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.stereotype.Component
 import java.time.LocalDate
 
-@SpringBootApplication
+@Component
 class AuthorValidator(
     val commonValidator: CommonValidator
 ) {
 
-    companion object {
-        // 著者IDの最大桁数
-        const val AUTHOR_ID_MAX = 8
-
-        // 著者名の最大文字数
-        const val AUTHOR_NAME_MAX = 256
-    }
-
     /**
-     * 著者取得処理のバリデーション
+     * 著者取得処理のリクエストに対するバリデーション
      * @args request 著者取得処理のリクエスト
      */
     fun validGetAuthor(request: GetAuthorRequest) {
-        // TODO 動確用後で消す
-        println(request)
-        checkId(request.authorId)
+        // リクエスト値にauthorIdを定義しなかった場合にアノテーションでチェックできないためここで必須チェックを実施
+        checkRequiredId(request.authorId)
     }
 
     /**
-     * 著者登録処理のバリデーション
+     * 著者登録処理のリクエストに対するバリデーション
      * @args request 著者登録処理のリクエスト
      */
     fun validCreateAuthor(request: CreateAuthorRequest) {
-        // TODO 動確用後で消す
-        println(request)
-        checkName(request.authorName)
-        checkBirthday(request.birthday)
-        commonValidator.validCreate(request.operator)
+        // リクエスト値に各項目を定義しなかった場合にアノテーションでチェックできないためここで必須チェックを実施
+        checkRequiredName(request.authorName)
+        checkRequiredBirthday(request.birthday)
+        // 過去日チェック
+        checkPastDateBirthday(request.birthday)
+        // 操作者チェック
+        commonValidator.checkOperator(request.operator)
     }
 
     /**
-     * 著者更新処理のバリデーション
+     * 著者更新処理のリクエストに対するバリデーション
      * @args request 著者更新処理のリクエスト
      */
     fun validUpdateAuthor(request: UpdateAuthorRequest) {
-        checkId(request.authorId)
-        checkName(request.authorName)
-        checkBirthday(request.birthday)
-        commonValidator.validUpdate(request.operator)
+        // リクエスト値にauthorIdを定義しなかった場合にアノテーションでチェックできないためここで必須チェックを実施
+        checkRequiredId(request.authorId)
+        // 過去日チェック
+        checkPastDateBirthday(request.birthday)
+        // 操作者チェック
+        commonValidator.checkOperator(request.operator)
     }
 
     /**
-     * 著者IDのチェック
+     * 著者IDの必須チェック
      * @args authorId 著者ID
      */
-    private fun checkId(authorId: String?) {
+    private fun checkRequiredId(authorId: String?) {
         // 必須チェック
         if (authorId.isNullOrBlank()) {
-            throw NullPointerException("著者IDが未入力です。")
-        }
-        // 桁数チェック(DB定義：8桁)
-        if (authorId.length > AUTHOR_ID_MAX) {
-            throw IllegalStateException("著者IDは8桁以内で入力してください。")
+            throw NullPointerException("authorIdを入力してください。")
         }
     }
 
     /**
-     * 著者名のチェック
+     * 著者名の必須チェック
      * @args authorName 著者名
      */
-    private fun checkName(authorName: String?) {
-        // 必須チェック
-        if (authorName.isNullOrBlank()) {
-            throw NullPointerException("著者名が未入力です。$authorName")
-        }
+    private fun checkRequiredName(authorName: String?) {
         // 桁数チェック(DB定義：256桁)
-        if (authorName.length > AUTHOR_NAME_MAX) {
-            throw IllegalStateException("著者名は256文字以内で入力してください。")
+        if (authorName.isNullOrBlank()) {
+            throw IllegalStateException("authorNameを入力してください。")
         }
     }
 
     /**
-     * 誕生日のチェック
+     * 誕生日の必須チェック
      * @args birthday 誕生日
      */
-    private fun checkBirthday(birthday: LocalDate?) {
-        // 必須チェック
-        if (birthday == null) {
-            throw NullPointerException("誕生日が未入力です。")
-        }
+    private fun checkRequiredBirthday(birthday: LocalDate?) {
         // 未来日チェック
-        if (birthday.isAfter(LocalDate.now())) {
-            throw IllegalStateException("誕生日は過去日を設定してください。")
+        if (birthday == null) {
+            throw IllegalStateException("birthdayを入力してください")
+        }
+    }
+
+    /**
+     * 誕生日の過去日チェック
+     * @args birthday 誕生日
+     */
+    private fun checkPastDateBirthday(birthday: LocalDate?) {
+        // 未来日チェック
+        if (birthday != null) {
+            if (birthday.isAfter(LocalDate.now())) {
+                throw IllegalStateException("birthdayは過去日を設定してください。")
+            }
         }
     }
 }

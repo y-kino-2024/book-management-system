@@ -10,7 +10,7 @@ import bookmanagementsystem.jooq.public_.tables.FlywaySchemaHistory;
 /**
  * Convenience access to all tables in public.
  */
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class Tables {
 
     /**

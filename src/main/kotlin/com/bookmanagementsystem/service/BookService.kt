@@ -2,12 +2,12 @@ package com.bookmanagementsystem.service
 
 import com.bookmanagementsystem.entity.Book
 import com.bookmanagementsystem.enum.PublicationStatus
-import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.stereotype.Service
 
 /**
  * 書籍のService
  */
-@SpringBootApplication
+@Service
 class BookService {
 
     /**

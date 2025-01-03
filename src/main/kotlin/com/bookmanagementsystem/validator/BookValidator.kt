@@ -5,9 +5,9 @@ import com.bookmanagementsystem.enum.PublicationStatus
 import com.bookmanagementsystem.request.book.CreateBookRequest
 import com.bookmanagementsystem.request.book.GetBookRequest
 import com.bookmanagementsystem.request.book.UpdateBookRequest
-import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.stereotype.Component
 
-@SpringBootApplication
+@Component
 class BookValidator {
 
     companion object {

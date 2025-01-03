@@ -1,9 +1,10 @@
 package com.bookmanagementsystem.service
 
+import com.bookmanagementsystem.controller.AuthorController.Companion.DELETE_FLG_ZERO
 import com.bookmanagementsystem.dto.AuthorsInfoDto
 import com.bookmanagementsystem.entity.Author
 import com.bookmanagementsystem.repositoryImpl.AuthorsInfoRepositoryImpl
-import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -11,13 +12,10 @@ import java.time.format.DateTimeFormatter
 /**
  * 著者のService
  */
-@SpringBootApplication
+@Service
 class AuthorService(
     private val authorsInfoRepositoryImpl: AuthorsInfoRepositoryImpl
 ) {
-    companion object {
-        const val DELETE_FLG_ZERO = "0"
-    }
 
     /**
      * 著者IDから著者を取得する
@@ -28,11 +26,12 @@ class AuthorService(
     fun getAuthor(authorId: String): Author? {
         // 取得処理
         val result = authorsInfoRepositoryImpl.getAuthor(authorId)
-        // 取得結果が0件の場合の考慮
-        println("service$result")
-        return if(result != null){
+        // 取得結果による分岐
+        return if (result != null) {
+            // 取得できた場合
             convertAuthor(result)
         } else {
+            // 取得結果が0件の場合
             null
         }
     }
@@ -40,60 +39,74 @@ class AuthorService(
     /**
      * 著者の情報を登録する
      * @args author 著者
-     * @return 著者ID
+     * @return 登録した著者ID
      */
     @Transactional
     fun createAuthor(author: Author): String {
         // チェック処理
 
-        // 著者IDを発番する
-        val authorId = authorsInfoRepositoryImpl.nextAuthorIdSequence()
         // 処理日時を取得
-        val now = LocalDateTime.now()
-        // ミリ秒まで表示させるように整形
-        val processingDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss.SSS")
-        val processingDatetime = LocalDateTime.parse(now.format(processingDateFormat))
+        val processingDatetime = getProcessingDateTime()
         // Dtoに詰め替える
         val authorDto = convertAuthorsInfoDto(
             author = author,
-            authorId = authorId,
             processingDatetime = processingDatetime
         )
         // 登録処理
         val result = authorsInfoRepositoryImpl.createAuthor(authorDto)
-
+        // 登録した著者IDを取得
+        val authorId = authorsInfoRepositoryImpl.currentAuthorIdSequence()
         if (result > 0) {
+            // 処理された場合
             return authorId.toString()
         } else {
-            throw Exception("著者の情報登録に失敗しました。")
+            // 処理されなかった場合はエラー
+            throw Exception("著者情報の登録に失敗しました。")
         }
     }
 
     /**
      * 著者の情報を更新する
      * @args author 著者
-     * @return
+     * @return 更新対象の著者ID
      */
     @Transactional
-    fun updateAuthor(author: Author) {
-        // TODO 処理未実装。
-        // TODO 引数の著者Entity内のIDで取得→取得の結果で分岐→処理結果をどう返す？
+    fun updateAuthor(author: Author): String {
+        // チェック処理
+
+        // 取得処理
+        val targetAuthor = authorsInfoRepositoryImpl.getAuthor(author.id.toString())
+            ?: throw IllegalStateException("更新対象が存在しません。")
+        // 処理日時を取得
+        val processingDatetime = getProcessingDateTime()
+        // Dtoに詰め替える
+        val authorDto = convertAuthorsInfoDto(
+            author = author,
+            currentAuthor = targetAuthor,
+            processingDatetime = processingDatetime
+        )
+        // 更新処理
+        val result = authorsInfoRepositoryImpl.updateAuthor(authorDto)
+        if (result > 0) {
+            // 処理された場合
+            return author.id.toString()
+        } else {
+            // 処理されなかった場合はエラー
+            throw Exception("著者情報の更新に失敗しました。")
+        }
     }
 
-    // TODO 削除機能はいらない？？
-    /*
-        必要な機能：書籍と著者の情報をRDBに登録・更新できる機能
-    */
     /**
-     * 著者を削除する
-     * @args authorId 著者ID
-     * @return
+     * 処理日時を取得する
+     * @return 処理日時
      */
-    /*
-    fun deleteAuthor(authorId: String) {
-        runApplication<AuthorModel>(*args)
+    private fun getProcessingDateTime(): LocalDateTime {
+        val now = LocalDateTime.now()
+        // ミリ秒まで表示させるように整形
+        val processingDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss.SSS")
+        val processingDateTime = LocalDateTime.parse(now.format(processingDateFormat), processingDateFormat)
+        return processingDateTime
     }
-*/
 
     /**
      * 著者のEntityを著者のDtoに変換する
@@ -109,33 +122,61 @@ class AuthorService(
             id = authorsInfoDto.id,
             authorName = authorsInfoDto.authorName,
             birthday = authorsInfoDto.birthday,
-            operator = authorsInfoDto.updatedBy
+            operator = authorsInfoDto.updatedBy,
+            deleteFlg = authorsInfoDto.deleteFlg
         )
     }
 
     /**
      * 著者のEntityを著者のDtoに変換する
      * @args author 著者Entity
-     * @args authorId 著者ID
      * @args processingDatetime 処理日時
      * @return 著者Dto
      */
     private fun convertAuthorsInfoDto(
         author: Author,
-        authorId: Int?,
         processingDatetime: LocalDateTime
     ): AuthorsInfoDto {
         return AuthorsInfoDto(
-            id = authorId?.let {
-                authorId
-            } ?: throw IllegalStateException("著者IDが不正です。"),
-            authorName = author.authorName,
-            birthday = author.birthday,
-            createdBy = author.operator,
+            id = null,
+            authorName = author.authorName?.let {
+                author.authorName
+            } ?: throw IllegalStateException("著者名の値が不正です"),
+            birthday = author.birthday?.let {
+                author.birthday
+            } ?: throw IllegalStateException("誕生日の値が不正です"),
+            createdBy = author.operator?.let {
+                author.operator
+            } ?: throw IllegalStateException("操作者の値が不正です"),
             createdAt = processingDatetime,
             updatedBy = author.operator,
             updatedAt = processingDatetime,
             deleteFlg = DELETE_FLG_ZERO,
+        )
+    }
+
+    /**
+     * 著者のEntityを著者のDtoに変換する
+     * @args author 著者Entity
+     * @args processingDatetime 処理日時
+     * @return 著者Dto
+     */
+    private fun convertAuthorsInfoDto(
+        author: Author,
+        currentAuthor: AuthorsInfoDto,
+        processingDatetime: LocalDateTime
+    ): AuthorsInfoDto {
+        return AuthorsInfoDto(
+            id = author.id,
+            authorName = author.authorName ?: currentAuthor.authorName,
+            birthday = author.birthday ?: currentAuthor.birthday,
+            createdBy = currentAuthor.createdBy,
+            createdAt = currentAuthor.createdAt,
+            updatedBy = author.operator?.let {
+                author.operator
+            } ?: throw IllegalStateException("操作者の値が不正です"),
+            updatedAt = processingDatetime,
+            deleteFlg = author.deleteFlg ?: currentAuthor.deleteFlg,
         )
     }
 }
