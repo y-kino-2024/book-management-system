@@ -35,6 +35,7 @@ class BookValidator {
      * @param request 書籍登録処理のリクエスト
      */
     fun validCreateBook(request: CreateBookRequest) {
+        checkRequiredAuthorIdList(request.authorIdList)
         checkRequiredName(request.title)
         checkRequiredPrice(request.price)
         checkRequiredPublicationStatus(request.publicationStatus)
@@ -64,14 +65,26 @@ class BookValidator {
     }
 
     /**
-     * 書籍IDの必須チェック
+     * 著者IDの必須チェック
      *
-     * @param authorId 書籍ID
+     * @param authorId 著者ID
      */
     private fun checkRequiredAuthorId(authorId: Int?) {
         // 必須チェック
         if (authorId == null) {
             throw NullPointerException("authorIdを入力してください。")
+        }
+    }
+
+    /**
+     * 著者IDリストの必須チェック
+     *
+     * @param authorIdList 著者IDリスト
+     */
+    private fun checkRequiredAuthorIdList(authorIdList: List<Int>?) {
+        // 必須チェック
+        if (authorIdList.isNullOrEmpty()) {
+            throw NullPointerException("authorIdListを入力してください。")
         }
     }
 

@@ -8,6 +8,7 @@ import com.bookmanagementsystem.request.book.GetBookRequest
 import com.bookmanagementsystem.request.book.UpdateBookRequest
 import com.bookmanagementsystem.response.book.CreateBookResponse
 import com.bookmanagementsystem.response.book.GetBookResponse
+import com.bookmanagementsystem.response.book.UpdateBookResponse
 import com.bookmanagementsystem.service.BookService
 import com.bookmanagementsystem.validator.BookValidator
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -178,18 +179,37 @@ class BookController(
      * @return 書籍IDのJSON
      */
     @PostMapping("/updateBook")
-    fun updateBookController(request: UpdateBookRequest): String {
-        // バリデーション処理
-
-        // リクエストを詰め替える
-
-        // 書籍更新処理
-
-        // レスポンスに詰め替える
-
-        // TODO JSONで返す
-        return "test"
-        // 完了
+    fun updateBookController(
+        @Validated @RequestBody request: UpdateBookRequest,
+        bindingResult: BindingResult
+    ): String {
+        if (bindingResult.hasErrors()) {
+            val errorMessageList = mutableListOf<String>()
+            for (bindingError in bindingResult.fieldErrors) {
+                errorMessageList.add(bindingError.defaultMessage?.let {
+                    bindingError.defaultMessage
+                } ?: UNKNOWN_ERROR_MESSAGE)
+            }
+            val mapper = ObjectMapper()
+            val responseJson = mapper.writeValueAsString(errorMessageList)
+            return responseJson
+        }
+        try {
+            // バリデーション処理
+            validate.validUpdateBook(request)
+            // リクエストを詰め替える
+            val book = convertBook(request)
+            // 著者更新処理
+            val bookId = service.updateBook(book)
+            // レスポンスに詰め替える
+            val response = convertUpdateBookResponse(bookId)
+            // JSONで返す
+            val mapper = ObjectMapper()
+            val responseJson = mapper.writeValueAsString(response)
+            return responseJson
+        } catch (e: Exception) {
+            return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
+        }
     }
 
     /**
@@ -242,6 +262,26 @@ class BookController(
     }
 
     /**
+     * 書籍登録処理のリクエストを書籍Entityに詰め替える
+     *
+     * @args request 書籍登録処理のリクエスト
+     * @return 書籍Entity
+     */
+    private fun convertBook(request: UpdateBookRequest): Book {
+        return Book(
+            id = request.bookId,
+            authorIdList = request.authorIdList,
+            title = request.title,
+            price = request.price,
+            publicationStatus = request.publicationStatus?.let {
+                PublicationStatus.getPublicationStatus(request.publicationStatus)
+            },
+            operator = request.operator,
+            deleteFlg = request.deleteFlg
+        )
+    }
+
+    /**
      * 書籍登録処理の結果をレスポンスオブジェクトに詰め替える
      *
      * @args bookId 書籍ID
@@ -249,6 +289,18 @@ class BookController(
      */
     private fun convertCreateBookResponse(bookId: String): CreateBookResponse {
         return CreateBookResponse(
+            bookId = bookId
+        )
+    }
+
+    /**
+     * 書籍更新処理の結果をレスポンスオブジェクトに詰め替える
+     *
+     * @args bookId 書籍ID
+     * @return 書籍更新結果のレスポンスオブジェクト
+     */
+    private fun convertUpdateBookResponse(bookId: String): UpdateBookResponse {
+        return UpdateBookResponse(
             bookId = bookId
         )
     }

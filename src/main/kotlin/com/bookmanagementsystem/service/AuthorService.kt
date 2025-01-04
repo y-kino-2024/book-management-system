@@ -82,8 +82,8 @@ class AuthorService(
             // 取得処理
             val targetAuthor = authorsInfoRepositoryImpl.fetchAuthor(author.id?.let {
                 author.id
-            } ?: throw IllegalStateException("著者IDの値が不正です。"))
-                ?: throw IllegalStateException("更新対象が存在しません。")
+            } ?: throw IllegalStateException("著者IDの値が不正です。")
+            ) ?: throw IllegalStateException("更新対象が存在しません。")
             // 処理日時を取得
             val processingDatetime = common.getProcessingDateTime()
             // Dtoに詰め替える
@@ -95,7 +95,7 @@ class AuthorService(
             // 更新処理
             val result = authorsInfoRepositoryImpl.updateAuthor(authorDto)
             if (result > 0) {
-                // 処理された場合
+                // 処理された場合更新対象の著者IDを返す
                 return author.id.toString()
             } else {
                 // 処理されなかった場合はエラー
@@ -163,6 +163,7 @@ class AuthorService(
      * 著者のEntityを著者のDtoに変換する
      *
      * @args author 著者Entity
+     * @args currentAuthor 更新前の著者情報
      * @args processingDatetime 処理日時
      * @return 著者Dto
      */

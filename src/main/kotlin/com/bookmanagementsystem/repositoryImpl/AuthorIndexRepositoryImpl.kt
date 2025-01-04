@@ -100,8 +100,9 @@ class AuthorIndexRepositoryImpl(
      * @return 処理件数
      */
     @Override
-    override fun createBookFromAuthor(authorIndexDtoList: List<AuthorIndexDto>): Int {
+    override fun createAuthorIndex(authorIndexDtoList: List<AuthorIndexDto>): Int {
         try {
+            // FIXME var processedNumberは廃止したい。一発でクエリが作れれば解決
             // 処理件数
             var processedNumber = 0
             // FIXME bulkInsertにしたい。
@@ -147,19 +148,48 @@ class AuthorIndexRepositoryImpl(
      * @return 処理件数
      */
     @Override
-    override fun updateBookFromAuthor(authorIndexDto: AuthorIndexDto): Int {
+    override fun updateAuthorIndex(authorIndexDtoList: List<AuthorIndexDto>, bookId: Int): Int {
         try {
-            // クエリを生成する
-            val processedNumber = dslContext
-                .update(AUTHOR_INDEX)
-                .set(AUTHOR_INDEX.UPDATED_BY, authorIndexDto.updatedBy)
-                .set(AUTHOR_INDEX.UPDATED_AT, authorIndexDto.updatedAt)
-                .set(AUTHOR_INDEX.DELETE_FLG, authorIndexDto.deleteFlg)
-                .where(AUTHOR_INDEX.BOOK_ID.eq(authorIndexDto.bookId))
-                .and(AUTHOR_INDEX.AUTHOR_ID.eq(authorIndexDto.authorId))
+            // DELETE-INSERTを行う
+            // 更新前の書籍と著者の紐づけを削除する
+            val deleteProcessedNumber = dslContext
+                .delete(AUTHOR_INDEX)
+                .where(AUTHOR_INDEX.BOOK_ID.eq(bookId))
                 .execute()
+            // 処理結果が0件の場合は処理が出来ていないためエラー扱いとする
+            if (deleteProcessedNumber == 0) {
+                throw SQLException()
+            }
+            // 書籍と著者の紐づけを作成する
+            // 処理件数
+            var createProcessedNumber = 0
+            // FIXME bulkInsertにしたい。
+            // クエリを生成・実行する
+            for (authorIndexDto in authorIndexDtoList) {
+                createProcessedNumber += dslContext
+                    .insertInto(
+                        AUTHOR_INDEX,
+                        AUTHOR_INDEX.BOOK_ID,
+                        AUTHOR_INDEX.AUTHOR_ID,
+                        AUTHOR_INDEX.CREATED_BY,
+                        AUTHOR_INDEX.CREATED_AT,
+                        AUTHOR_INDEX.UPDATED_BY,
+                        AUTHOR_INDEX.UPDATED_AT,
+                        AUTHOR_INDEX.DELETE_FLG,
+                    )
+                    .values(
+                        authorIndexDto.bookId,
+                        authorIndexDto.authorId,
+                        authorIndexDto.createdBy,
+                        authorIndexDto.createdAt,
+                        authorIndexDto.updatedBy,
+                        authorIndexDto.updatedAt,
+                        authorIndexDto.deleteFlg
+                    )
+                    .execute()
+            }
             // 実行結果として返ってくる処理件数を返す
-            return processedNumber
+            return createProcessedNumber
         } catch (e: SQLException) {
             // エラー処理(SQLException)
             throw SQLException("DB処理実施時にエラーが発生しました。")
