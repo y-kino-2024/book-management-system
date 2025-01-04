@@ -1,6 +1,5 @@
 package com.bookmanagementsystem.repositoryImpl
 
-import bookmanagementsystem.jooq.quo_assignment.Sequences
 import bookmanagementsystem.jooq.quo_assignment.tables.BooksInfo.BOOKS_INFO
 import com.bookmanagementsystem.dto.BooksInfoDto
 import com.bookmanagementsystem.repository.BooksInfoRepository
@@ -65,10 +64,10 @@ class BooksInfoRepositoryImpl(
      * @return 書籍ID
      */
     @Override
-    override fun createBook(bookDto: BooksInfoDto): Int {
+    override fun createBook(bookDto: BooksInfoDto): Int? {
         try {
             // クエリを生成・実行する
-            val processedNumber = dslContext
+            val result = dslContext
                 .insertInto(
                     BOOKS_INFO,
                     BOOKS_INFO.TITLE,
@@ -84,9 +83,10 @@ class BooksInfoRepositoryImpl(
                     bookDto.title, bookDto.price, bookDto.publicationStatus, bookDto.createdBy, bookDto.createdAt,
                     bookDto.updatedBy, bookDto.updatedAt, bookDto.deleteFlg
                 )
-                .execute()
+                .returning(BOOKS_INFO.ID)
+                .fetchOne()
             // 実行結果として返ってくる処理件数を返す
-            return processedNumber
+            return result?.id
         } catch (e: SQLException) {
             // エラー処理(SQLException)
             throw SQLException("DB処理実施時にエラーが発生しました。")
@@ -125,15 +125,5 @@ class BooksInfoRepositoryImpl(
             // エラー処理(Exception)　詰め替え時のエラー考慮
             throw Exception(e.message)
         }
-    }
-
-    /**
-     * 現在の著者IDを発番する
-     *
-     * @return 現在の著者ID
-     */
-    @Override
-    override fun currentAuthorIdSequence(): Int {
-        return dslContext.currval(Sequences.BOOK_ID_SEQ).toInt()
     }
 }

@@ -1,6 +1,7 @@
 package com.bookmanagementsystem.request.author
 
 import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Size
 import java.time.LocalDate
 
@@ -16,7 +17,7 @@ data class CreateAuthorRequest(
     @field:NotBlank(message = "authorNameが未入力です。")
     @field:Size(min = 0, max = 256, message = "authorNameは256文字以内で入力してください。")
     val authorName: String?,
-    @field:NotBlank(message = "birthdayが未入力です。")
+    @field:NotNull(message = "birthdayが未入力です。")
     val birthday: LocalDate?,
     @field:NotBlank(message = "operatorが未入力です。")
     @field:Size(min = 0, max = 256, message = "operatorは256文字以内で入力してください。")

@@ -43,7 +43,7 @@ class AuthorController(
      */
     @GetMapping("/getAuthor")
     fun getAuthorController(
-        @Validated request: GetAuthorRequest,
+        @Validated @RequestBody request: GetAuthorRequest,
         bindingResult: BindingResult
     ): String {
         if (bindingResult.hasErrors()) {
@@ -86,7 +86,7 @@ class AuthorController(
                 return mapper.writeValueAsString("取得対象が存在しません。")
             }
         } catch (e: Exception) {
-            return e.message ?: throw Exception("エラーメッセージ未設定")
+            return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
         }
     }
 
@@ -129,7 +129,7 @@ class AuthorController(
             val responseJson = mapper.writeValueAsString(response)
             return responseJson
         } catch (e: Exception) {
-            return e.message ?: throw Exception("エラーメッセージ未設定")
+            return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
         }
     }
 
@@ -168,10 +168,8 @@ class AuthorController(
             val mapper = ObjectMapper()
             val responseJson = mapper.writeValueAsString(response)
             return responseJson
-            //return "test"
-            // 完了
         } catch (e: Exception) {
-            return e.message ?: throw Exception("エラーメッセージ未設定")
+            return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
         }
     }
 

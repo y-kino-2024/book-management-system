@@ -4,335 +4,902 @@
 package bookmanagementsystem.jooq.pg_catalog;
 
 
-import bookmanagementsystem.jooq.pg_catalog.tables.Aclexplode;
-import bookmanagementsystem.jooq.pg_catalog.tables.GenerateSeries;
-import bookmanagementsystem.jooq.pg_catalog.tables.GenerateSubscripts;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonArrayElements;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonArrayElementsText;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonEach;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonEachText;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonObjectKeys;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonPopulateRecordset;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonToRecordset;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonbArrayElements;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonbArrayElementsText;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonbEach;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonbEachText;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonbObjectKeys;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonbPathQuery;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonbPathQueryTz;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonbPopulateRecordset;
-import bookmanagementsystem.jooq.pg_catalog.tables.JsonbToRecordset;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgAggregate;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgAm;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgAmop;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgAmproc;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgAttrdef;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgAttribute;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgAuthMembers;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgAuthid;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgAvailableExtensionVersions;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgAvailableExtensions;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgAvailableWalSummaries;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgBackendMemoryContexts;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgCast;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgClass;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgCollation;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgConfig;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgConstraint;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgConversion;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgCursor;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgCursors;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgDatabase;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgDbRoleSetting;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgDefaultAcl;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgDepend;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgDescription;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgEnum;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgEventTrigger;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgEventTriggerDdlCommands;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgEventTriggerDroppedObjects;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgExtension;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgExtensionUpdatePaths;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgFileSettings;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgForeignDataWrapper;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgForeignServer;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgForeignTable;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgGetBackendMemoryContexts;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgGetCatalogForeignKeys;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgGetKeywords;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgGetMultixactMembers;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgGetPublicationTables;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgGetReplicationSlots;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgGetShmemAllocations;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgGetWaitEvents;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgGetWalResourceManagers;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgGroup;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgHbaFileRules;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgIdentFileMappings;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgIndex;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgIndexes;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgInherits;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgInitPrivs;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLanguage;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLargeobject;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLargeobjectMetadata;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgListeningChannels;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLockStatus;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLocks;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotGetBinaryChanges;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotGetChanges;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotPeekBinaryChanges;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotPeekChanges;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLsArchiveStatusdir;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLsDir;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLsLogdir;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLsLogicalmapdir;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLsLogicalsnapdir;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLsReplslotdir;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLsTmpdir;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgLsWaldir;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgMatviews;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgMcvListItems;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgNamespace;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgOpclass;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgOperator;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgOpfamily;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgOptionsToTable;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgParameterAcl;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPartitionAncestors;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPartitionTree;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPartitionedTable;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPolicies;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPolicy;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPreparedStatement;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPreparedStatements;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPreparedXact;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPreparedXacts;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgProc;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPublication;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPublicationNamespace;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPublicationRel;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgPublicationTables;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgRange;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgReplicationOrigin;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgReplicationOriginStatus;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgReplicationSlots;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgRewrite;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgRoles;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgRules;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgSeclabel;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgSeclabels;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgSequence;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgSequences;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgSettings;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgShadow;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgShdepend;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgShdescription;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgShmemAllocations;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgShowAllFileSettings;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgShowAllSettings;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgShowReplicationOriginStatus;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgShseclabel;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgSnapshotXip;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatActivity;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatAllIndexes;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatAllTables;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatArchiver;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatBgwriter;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatCheckpointer;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatDatabase;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatDatabaseConflicts;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetActivity;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetBackendIdset;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetIo;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetProgressInfo;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetRecoveryPrefetch;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetSlru;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetSubscription;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetWalSenders;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatGssapi;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatIo;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatProgressAnalyze;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatProgressBasebackup;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatProgressCluster;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatProgressCopy;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatProgressCreateIndex;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatProgressVacuum;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatRecoveryPrefetch;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatReplication;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatReplicationSlots;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatSlru;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatSsl;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatSubscription;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatSubscriptionStats;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatSysIndexes;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatSysTables;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatUserFunctions;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatUserIndexes;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatUserTables;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatWal;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatWalReceiver;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatXactAllTables;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatXactSysTables;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatXactUserFunctions;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatXactUserTables;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatioAllIndexes;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatioAllSequences;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatioAllTables;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatioSysIndexes;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatioSysSequences;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatioSysTables;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatioUserIndexes;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatioUserSequences;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatioUserTables;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatistic;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatisticExt;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatisticExtData;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStats;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatsExt;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgStatsExtExprs;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgSubscription;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgSubscriptionRel;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgTables;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgTablespace;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgTablespaceDatabases;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgTimezoneAbbrevs;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgTimezoneNames;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgTransform;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgTrigger;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgTsConfig;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgTsConfigMap;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgTsDict;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgTsParser;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgTsTemplate;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgType;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgUser;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgUserMapping;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgUserMappings;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgViews;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgWaitEvents;
-import bookmanagementsystem.jooq.pg_catalog.tables.PgWalSummaryContents;
-import bookmanagementsystem.jooq.pg_catalog.tables.RegexpMatches;
-import bookmanagementsystem.jooq.pg_catalog.tables.RegexpSplitToTable;
-import bookmanagementsystem.jooq.pg_catalog.tables.StringToTable;
-import bookmanagementsystem.jooq.pg_catalog.tables.TsDebug;
-import bookmanagementsystem.jooq.pg_catalog.tables.TsParse;
-import bookmanagementsystem.jooq.pg_catalog.tables.TsStat;
-import bookmanagementsystem.jooq.pg_catalog.tables.TsTokenType;
-import bookmanagementsystem.jooq.pg_catalog.tables.TxidSnapshotXip;
-import bookmanagementsystem.jooq.pg_catalog.tables.Unnest;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.AclexplodeRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.GenerateSeriesRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.GenerateSubscriptsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonArrayElementsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonArrayElementsTextRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonEachRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonEachTextRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonObjectKeysRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonPopulateRecordsetRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonToRecordsetRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonbArrayElementsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonbArrayElementsTextRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonbEachRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonbEachTextRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonbObjectKeysRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonbPathQueryRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonbPathQueryTzRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonbPopulateRecordsetRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.JsonbToRecordsetRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgAvailableWalSummariesRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgConfigRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgCursorRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgEventTriggerDdlCommandsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgEventTriggerDroppedObjectsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgExtensionUpdatePathsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgGetBackendMemoryContextsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgGetCatalogForeignKeysRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgGetKeywordsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgGetMultixactMembersRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgGetPublicationTablesRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgGetReplicationSlotsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgGetShmemAllocationsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgGetWaitEventsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgGetWalResourceManagersRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgHbaFileRulesRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgListeningChannelsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLockStatusRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLogicalSlotGetBinaryChangesRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLogicalSlotGetChangesRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLogicalSlotPeekBinaryChangesRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLogicalSlotPeekChangesRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLsArchiveStatusdirRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLsDirRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLsLogdirRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLsLogicalmapdirRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLsLogicalsnapdirRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLsReplslotdirRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLsTmpdirRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgLsWaldirRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgMcvListItemsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgOptionsToTableRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgPartitionAncestorsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgPartitionTreeRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgPreparedStatementRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgPreparedXactRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgShowAllFileSettingsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgShowAllSettingsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgShowReplicationOriginStatusRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgSnapshotXipRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgStatGetActivityRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgStatGetBackendIdsetRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgStatGetIoRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgStatGetProgressInfoRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgStatGetRecoveryPrefetchRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgStatGetSlruRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgStatGetSubscriptionRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgStatGetWalSendersRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgTablespaceDatabasesRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgTimezoneAbbrevsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgTimezoneNamesRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.PgWalSummaryContentsRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.RegexpMatchesRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.RegexpSplitToTableRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.StringToTableRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.TsDebugRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.TsParseRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.TsStatRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.TsTokenTypeRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.TxidSnapshotXipRecord;
-import bookmanagementsystem.jooq.pg_catalog.tables.records.UnnestRecord;
+import bookmanagementsystem.jooq.pg_catalog.tables.*;
+import bookmanagementsystem.jooq.pg_catalog.tables.records.*;
+import org.jooq.*;
+import org.jooq.types.YearToSecond;
 
 import java.time.OffsetDateTime;
-
-import org.jooq.Configuration;
-import org.jooq.Field;
-import org.jooq.JSON;
-import org.jooq.JSONB;
-import org.jooq.Result;
-import org.jooq.types.YearToSecond;
 
 
 /**
  * Convenience access to all tables in pg_catalog.
  */
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class Tables {
 
     /**
      * The table <code>pg_catalog.aclexplode</code>.
      */
     public static final Aclexplode ACLEXPLODE = Aclexplode.ACLEXPLODE;
+    /**
+     * The table <code>pg_catalog.generate_series</code>.
+     */
+    public static final GenerateSeries GENERATE_SERIES = GenerateSeries.GENERATE_SERIES;
+    /**
+     * The table <code>pg_catalog.generate_subscripts</code>.
+     */
+    public static final GenerateSubscripts GENERATE_SUBSCRIPTS = GenerateSubscripts.GENERATE_SUBSCRIPTS;
+    /**
+     * The table <code>pg_catalog.json_array_elements</code>.
+     */
+    public static final JsonArrayElements JSON_ARRAY_ELEMENTS = JsonArrayElements.JSON_ARRAY_ELEMENTS;
+    /**
+     * The table <code>pg_catalog.json_array_elements_text</code>.
+     */
+    public static final JsonArrayElementsText JSON_ARRAY_ELEMENTS_TEXT = JsonArrayElementsText.JSON_ARRAY_ELEMENTS_TEXT;
+    /**
+     * The table <code>pg_catalog.json_each</code>.
+     */
+    public static final JsonEach JSON_EACH = JsonEach.JSON_EACH;
+    /**
+     * The table <code>pg_catalog.json_each_text</code>.
+     */
+    public static final JsonEachText JSON_EACH_TEXT = JsonEachText.JSON_EACH_TEXT;
+    /**
+     * The table <code>pg_catalog.json_object_keys</code>.
+     */
+    public static final JsonObjectKeys JSON_OBJECT_KEYS = JsonObjectKeys.JSON_OBJECT_KEYS;
+    /**
+     * The table <code>pg_catalog.json_populate_recordset</code>.
+     */
+    public static final JsonPopulateRecordset JSON_POPULATE_RECORDSET = JsonPopulateRecordset.JSON_POPULATE_RECORDSET;
+    /**
+     * The table <code>pg_catalog.json_to_recordset</code>.
+     */
+    public static final JsonToRecordset JSON_TO_RECORDSET = JsonToRecordset.JSON_TO_RECORDSET;
+    /**
+     * The table <code>pg_catalog.jsonb_array_elements</code>.
+     */
+    public static final JsonbArrayElements JSONB_ARRAY_ELEMENTS = JsonbArrayElements.JSONB_ARRAY_ELEMENTS;
+    /**
+     * The table <code>pg_catalog.jsonb_array_elements_text</code>.
+     */
+    public static final JsonbArrayElementsText JSONB_ARRAY_ELEMENTS_TEXT = JsonbArrayElementsText.JSONB_ARRAY_ELEMENTS_TEXT;
+    /**
+     * The table <code>pg_catalog.jsonb_each</code>.
+     */
+    public static final JsonbEach JSONB_EACH = JsonbEach.JSONB_EACH;
+    /**
+     * The table <code>pg_catalog.jsonb_each_text</code>.
+     */
+    public static final JsonbEachText JSONB_EACH_TEXT = JsonbEachText.JSONB_EACH_TEXT;
+    /**
+     * The table <code>pg_catalog.jsonb_object_keys</code>.
+     */
+    public static final JsonbObjectKeys JSONB_OBJECT_KEYS = JsonbObjectKeys.JSONB_OBJECT_KEYS;
+    /**
+     * The table <code>pg_catalog.jsonb_path_query</code>.
+     */
+    public static final JsonbPathQuery JSONB_PATH_QUERY = JsonbPathQuery.JSONB_PATH_QUERY;
+    /**
+     * The table <code>pg_catalog.jsonb_path_query_tz</code>.
+     */
+    public static final JsonbPathQueryTz JSONB_PATH_QUERY_TZ = JsonbPathQueryTz.JSONB_PATH_QUERY_TZ;
+    /**
+     * The table <code>pg_catalog.jsonb_populate_recordset</code>.
+     */
+    public static final JsonbPopulateRecordset JSONB_POPULATE_RECORDSET = JsonbPopulateRecordset.JSONB_POPULATE_RECORDSET;
+    /**
+     * The table <code>pg_catalog.jsonb_to_recordset</code>.
+     */
+    public static final JsonbToRecordset JSONB_TO_RECORDSET = JsonbToRecordset.JSONB_TO_RECORDSET;
+    /**
+     * The table <code>pg_catalog.pg_aggregate</code>.
+     */
+    public static final PgAggregate PG_AGGREGATE = PgAggregate.PG_AGGREGATE;
+    /**
+     * The table <code>pg_catalog.pg_am</code>.
+     */
+    public static final PgAm PG_AM = PgAm.PG_AM;
+    /**
+     * The table <code>pg_catalog.pg_amop</code>.
+     */
+    public static final PgAmop PG_AMOP = PgAmop.PG_AMOP;
+    /**
+     * The table <code>pg_catalog.pg_amproc</code>.
+     */
+    public static final PgAmproc PG_AMPROC = PgAmproc.PG_AMPROC;
+    /**
+     * The table <code>pg_catalog.pg_attrdef</code>.
+     */
+    public static final PgAttrdef PG_ATTRDEF = PgAttrdef.PG_ATTRDEF;
+    /**
+     * The table <code>pg_catalog.pg_attribute</code>.
+     */
+    public static final PgAttribute PG_ATTRIBUTE = PgAttribute.PG_ATTRIBUTE;
+    /**
+     * The table <code>pg_catalog.pg_auth_members</code>.
+     */
+    public static final PgAuthMembers PG_AUTH_MEMBERS = PgAuthMembers.PG_AUTH_MEMBERS;
+    /**
+     * The table <code>pg_catalog.pg_authid</code>.
+     */
+    public static final PgAuthid PG_AUTHID = PgAuthid.PG_AUTHID;
+    /**
+     * The table <code>pg_catalog.pg_available_extension_versions</code>.
+     */
+    public static final PgAvailableExtensionVersions PG_AVAILABLE_EXTENSION_VERSIONS = PgAvailableExtensionVersions.PG_AVAILABLE_EXTENSION_VERSIONS;
+    /**
+     * The table <code>pg_catalog.pg_available_extensions</code>.
+     */
+    public static final PgAvailableExtensions PG_AVAILABLE_EXTENSIONS = PgAvailableExtensions.PG_AVAILABLE_EXTENSIONS;
+    /**
+     * The table <code>pg_catalog.pg_available_wal_summaries</code>.
+     */
+    public static final PgAvailableWalSummaries PG_AVAILABLE_WAL_SUMMARIES = PgAvailableWalSummaries.PG_AVAILABLE_WAL_SUMMARIES;
+    /**
+     * The table <code>pg_catalog.pg_backend_memory_contexts</code>.
+     */
+    public static final PgBackendMemoryContexts PG_BACKEND_MEMORY_CONTEXTS = PgBackendMemoryContexts.PG_BACKEND_MEMORY_CONTEXTS;
+    /**
+     * The table <code>pg_catalog.pg_cast</code>.
+     */
+    public static final PgCast PG_CAST = PgCast.PG_CAST;
+    /**
+     * The table <code>pg_catalog.pg_class</code>.
+     */
+    public static final PgClass PG_CLASS = PgClass.PG_CLASS;
+    /**
+     * The table <code>pg_catalog.pg_collation</code>.
+     */
+    public static final PgCollation PG_COLLATION = PgCollation.PG_COLLATION;
+    /**
+     * The table <code>pg_catalog.pg_config</code>.
+     */
+    public static final PgConfig PG_CONFIG = PgConfig.PG_CONFIG;
+    /**
+     * The table <code>pg_catalog.pg_constraint</code>.
+     */
+    public static final PgConstraint PG_CONSTRAINT = PgConstraint.PG_CONSTRAINT;
+    /**
+     * The table <code>pg_catalog.pg_conversion</code>.
+     */
+    public static final PgConversion PG_CONVERSION = PgConversion.PG_CONVERSION;
+    /**
+     * The table <code>pg_catalog.pg_cursor</code>.
+     */
+    public static final PgCursor PG_CURSOR = PgCursor.PG_CURSOR;
+    /**
+     * The table <code>pg_catalog.pg_cursors</code>.
+     */
+    public static final PgCursors PG_CURSORS = PgCursors.PG_CURSORS;
+    /**
+     * The table <code>pg_catalog.pg_database</code>.
+     */
+    public static final PgDatabase PG_DATABASE = PgDatabase.PG_DATABASE;
+    /**
+     * The table <code>pg_catalog.pg_db_role_setting</code>.
+     */
+    public static final PgDbRoleSetting PG_DB_ROLE_SETTING = PgDbRoleSetting.PG_DB_ROLE_SETTING;
+    /**
+     * The table <code>pg_catalog.pg_default_acl</code>.
+     */
+    public static final PgDefaultAcl PG_DEFAULT_ACL = PgDefaultAcl.PG_DEFAULT_ACL;
+    /**
+     * The table <code>pg_catalog.pg_depend</code>.
+     */
+    public static final PgDepend PG_DEPEND = PgDepend.PG_DEPEND;
+    /**
+     * The table <code>pg_catalog.pg_description</code>.
+     */
+    public static final PgDescription PG_DESCRIPTION = PgDescription.PG_DESCRIPTION;
+    /**
+     * The table <code>pg_catalog.pg_enum</code>.
+     */
+    public static final PgEnum PG_ENUM = PgEnum.PG_ENUM;
+    /**
+     * The table <code>pg_catalog.pg_event_trigger</code>.
+     */
+    public static final PgEventTrigger PG_EVENT_TRIGGER = PgEventTrigger.PG_EVENT_TRIGGER;
+    /**
+     * The table <code>pg_catalog.pg_event_trigger_ddl_commands</code>.
+     */
+    public static final PgEventTriggerDdlCommands PG_EVENT_TRIGGER_DDL_COMMANDS = PgEventTriggerDdlCommands.PG_EVENT_TRIGGER_DDL_COMMANDS;
+    /**
+     * The table <code>pg_catalog.pg_event_trigger_dropped_objects</code>.
+     */
+    public static final PgEventTriggerDroppedObjects PG_EVENT_TRIGGER_DROPPED_OBJECTS = PgEventTriggerDroppedObjects.PG_EVENT_TRIGGER_DROPPED_OBJECTS;
+    /**
+     * The table <code>pg_catalog.pg_extension</code>.
+     */
+    public static final PgExtension PG_EXTENSION = PgExtension.PG_EXTENSION;
+    /**
+     * The table <code>pg_catalog.pg_extension_update_paths</code>.
+     */
+    public static final PgExtensionUpdatePaths PG_EXTENSION_UPDATE_PATHS = PgExtensionUpdatePaths.PG_EXTENSION_UPDATE_PATHS;
+    /**
+     * The table <code>pg_catalog.pg_file_settings</code>.
+     */
+    public static final PgFileSettings PG_FILE_SETTINGS = PgFileSettings.PG_FILE_SETTINGS;
+    /**
+     * The table <code>pg_catalog.pg_foreign_data_wrapper</code>.
+     */
+    public static final PgForeignDataWrapper PG_FOREIGN_DATA_WRAPPER = PgForeignDataWrapper.PG_FOREIGN_DATA_WRAPPER;
+    /**
+     * The table <code>pg_catalog.pg_foreign_server</code>.
+     */
+    public static final PgForeignServer PG_FOREIGN_SERVER = PgForeignServer.PG_FOREIGN_SERVER;
+    /**
+     * The table <code>pg_catalog.pg_foreign_table</code>.
+     */
+    public static final PgForeignTable PG_FOREIGN_TABLE = PgForeignTable.PG_FOREIGN_TABLE;
+    /**
+     * The table <code>pg_catalog.pg_get_backend_memory_contexts</code>.
+     */
+    public static final PgGetBackendMemoryContexts PG_GET_BACKEND_MEMORY_CONTEXTS = PgGetBackendMemoryContexts.PG_GET_BACKEND_MEMORY_CONTEXTS;
+    /**
+     * The table <code>pg_catalog.pg_get_catalog_foreign_keys</code>.
+     */
+    public static final PgGetCatalogForeignKeys PG_GET_CATALOG_FOREIGN_KEYS = PgGetCatalogForeignKeys.PG_GET_CATALOG_FOREIGN_KEYS;
+    /**
+     * The table <code>pg_catalog.pg_get_keywords</code>.
+     */
+    public static final PgGetKeywords PG_GET_KEYWORDS = PgGetKeywords.PG_GET_KEYWORDS;
+    /**
+     * The table <code>pg_catalog.pg_get_multixact_members</code>.
+     */
+    public static final PgGetMultixactMembers PG_GET_MULTIXACT_MEMBERS = PgGetMultixactMembers.PG_GET_MULTIXACT_MEMBERS;
+    /**
+     * The table <code>pg_catalog.pg_get_publication_tables</code>.
+     */
+    public static final PgGetPublicationTables PG_GET_PUBLICATION_TABLES = PgGetPublicationTables.PG_GET_PUBLICATION_TABLES;
+    /**
+     * The table <code>pg_catalog.pg_get_replication_slots</code>.
+     */
+    public static final PgGetReplicationSlots PG_GET_REPLICATION_SLOTS = PgGetReplicationSlots.PG_GET_REPLICATION_SLOTS;
+    /**
+     * The table <code>pg_catalog.pg_get_shmem_allocations</code>.
+     */
+    public static final PgGetShmemAllocations PG_GET_SHMEM_ALLOCATIONS = PgGetShmemAllocations.PG_GET_SHMEM_ALLOCATIONS;
+    /**
+     * The table <code>pg_catalog.pg_get_wait_events</code>.
+     */
+    public static final PgGetWaitEvents PG_GET_WAIT_EVENTS = PgGetWaitEvents.PG_GET_WAIT_EVENTS;
+    /**
+     * The table <code>pg_catalog.pg_get_wal_resource_managers</code>.
+     */
+    public static final PgGetWalResourceManagers PG_GET_WAL_RESOURCE_MANAGERS = PgGetWalResourceManagers.PG_GET_WAL_RESOURCE_MANAGERS;
+    /**
+     * The table <code>pg_catalog.pg_group</code>.
+     */
+    public static final PgGroup PG_GROUP = PgGroup.PG_GROUP;
+    /**
+     * The table <code>pg_catalog.pg_hba_file_rules</code>.
+     */
+    public static final PgHbaFileRules PG_HBA_FILE_RULES = PgHbaFileRules.PG_HBA_FILE_RULES;
+    /**
+     * The table <code>pg_catalog.pg_ident_file_mappings</code>.
+     */
+    public static final PgIdentFileMappings PG_IDENT_FILE_MAPPINGS = PgIdentFileMappings.PG_IDENT_FILE_MAPPINGS;
+    /**
+     * The table <code>pg_catalog.pg_index</code>.
+     */
+    public static final PgIndex PG_INDEX = PgIndex.PG_INDEX;
+    /**
+     * The table <code>pg_catalog.pg_indexes</code>.
+     */
+    public static final PgIndexes PG_INDEXES = PgIndexes.PG_INDEXES;
+    /**
+     * The table <code>pg_catalog.pg_inherits</code>.
+     */
+    public static final PgInherits PG_INHERITS = PgInherits.PG_INHERITS;
+    /**
+     * The table <code>pg_catalog.pg_init_privs</code>.
+     */
+    public static final PgInitPrivs PG_INIT_PRIVS = PgInitPrivs.PG_INIT_PRIVS;
+    /**
+     * The table <code>pg_catalog.pg_language</code>.
+     */
+    public static final PgLanguage PG_LANGUAGE = PgLanguage.PG_LANGUAGE;
+    /**
+     * The table <code>pg_catalog.pg_largeobject</code>.
+     */
+    public static final PgLargeobject PG_LARGEOBJECT = PgLargeobject.PG_LARGEOBJECT;
+    /**
+     * The table <code>pg_catalog.pg_largeobject_metadata</code>.
+     */
+    public static final PgLargeobjectMetadata PG_LARGEOBJECT_METADATA = PgLargeobjectMetadata.PG_LARGEOBJECT_METADATA;
+    /**
+     * The table <code>pg_catalog.pg_listening_channels</code>.
+     */
+    public static final PgListeningChannels PG_LISTENING_CHANNELS = PgListeningChannels.PG_LISTENING_CHANNELS;
+    /**
+     * The table <code>pg_catalog.pg_lock_status</code>.
+     */
+    public static final PgLockStatus PG_LOCK_STATUS = PgLockStatus.PG_LOCK_STATUS;
+    /**
+     * The table <code>pg_catalog.pg_locks</code>.
+     */
+    public static final PgLocks PG_LOCKS = PgLocks.PG_LOCKS;
+    /**
+     * The table <code>pg_catalog.pg_logical_slot_get_binary_changes</code>.
+     */
+    public static final PgLogicalSlotGetBinaryChanges PG_LOGICAL_SLOT_GET_BINARY_CHANGES = PgLogicalSlotGetBinaryChanges.PG_LOGICAL_SLOT_GET_BINARY_CHANGES;
+    /**
+     * The table <code>pg_catalog.pg_logical_slot_get_changes</code>.
+     */
+    public static final PgLogicalSlotGetChanges PG_LOGICAL_SLOT_GET_CHANGES = PgLogicalSlotGetChanges.PG_LOGICAL_SLOT_GET_CHANGES;
+    /**
+     * The table <code>pg_catalog.pg_logical_slot_peek_binary_changes</code>.
+     */
+    public static final PgLogicalSlotPeekBinaryChanges PG_LOGICAL_SLOT_PEEK_BINARY_CHANGES = PgLogicalSlotPeekBinaryChanges.PG_LOGICAL_SLOT_PEEK_BINARY_CHANGES;
+    /**
+     * The table <code>pg_catalog.pg_logical_slot_peek_changes</code>.
+     */
+    public static final PgLogicalSlotPeekChanges PG_LOGICAL_SLOT_PEEK_CHANGES = PgLogicalSlotPeekChanges.PG_LOGICAL_SLOT_PEEK_CHANGES;
+    /**
+     * The table <code>pg_catalog.pg_ls_archive_statusdir</code>.
+     */
+    public static final PgLsArchiveStatusdir PG_LS_ARCHIVE_STATUSDIR = PgLsArchiveStatusdir.PG_LS_ARCHIVE_STATUSDIR;
+    /**
+     * The table <code>pg_catalog.pg_ls_dir</code>.
+     */
+    public static final PgLsDir PG_LS_DIR = PgLsDir.PG_LS_DIR;
+    /**
+     * The table <code>pg_catalog.pg_ls_logdir</code>.
+     */
+    public static final PgLsLogdir PG_LS_LOGDIR = PgLsLogdir.PG_LS_LOGDIR;
+    /**
+     * The table <code>pg_catalog.pg_ls_logicalmapdir</code>.
+     */
+    public static final PgLsLogicalmapdir PG_LS_LOGICALMAPDIR = PgLsLogicalmapdir.PG_LS_LOGICALMAPDIR;
+    /**
+     * The table <code>pg_catalog.pg_ls_logicalsnapdir</code>.
+     */
+    public static final PgLsLogicalsnapdir PG_LS_LOGICALSNAPDIR = PgLsLogicalsnapdir.PG_LS_LOGICALSNAPDIR;
+    /**
+     * The table <code>pg_catalog.pg_ls_replslotdir</code>.
+     */
+    public static final PgLsReplslotdir PG_LS_REPLSLOTDIR = PgLsReplslotdir.PG_LS_REPLSLOTDIR;
+    /**
+     * The table <code>pg_catalog.pg_ls_tmpdir</code>.
+     */
+    public static final PgLsTmpdir PG_LS_TMPDIR = PgLsTmpdir.PG_LS_TMPDIR;
+    /**
+     * The table <code>pg_catalog.pg_ls_waldir</code>.
+     */
+    public static final PgLsWaldir PG_LS_WALDIR = PgLsWaldir.PG_LS_WALDIR;
+    /**
+     * The table <code>pg_catalog.pg_matviews</code>.
+     */
+    public static final PgMatviews PG_MATVIEWS = PgMatviews.PG_MATVIEWS;
+    /**
+     * The table <code>pg_catalog.pg_mcv_list_items</code>.
+     */
+    public static final PgMcvListItems PG_MCV_LIST_ITEMS = PgMcvListItems.PG_MCV_LIST_ITEMS;
+    /**
+     * The table <code>pg_catalog.pg_namespace</code>.
+     */
+    public static final PgNamespace PG_NAMESPACE = PgNamespace.PG_NAMESPACE;
+    /**
+     * The table <code>pg_catalog.pg_opclass</code>.
+     */
+    public static final PgOpclass PG_OPCLASS = PgOpclass.PG_OPCLASS;
+    /**
+     * The table <code>pg_catalog.pg_operator</code>.
+     */
+    public static final PgOperator PG_OPERATOR = PgOperator.PG_OPERATOR;
+    /**
+     * The table <code>pg_catalog.pg_opfamily</code>.
+     */
+    public static final PgOpfamily PG_OPFAMILY = PgOpfamily.PG_OPFAMILY;
+    /**
+     * The table <code>pg_catalog.pg_options_to_table</code>.
+     */
+    public static final PgOptionsToTable PG_OPTIONS_TO_TABLE = PgOptionsToTable.PG_OPTIONS_TO_TABLE;
+    /**
+     * The table <code>pg_catalog.pg_parameter_acl</code>.
+     */
+    public static final PgParameterAcl PG_PARAMETER_ACL = PgParameterAcl.PG_PARAMETER_ACL;
+    /**
+     * The table <code>pg_catalog.pg_partition_ancestors</code>.
+     */
+    public static final PgPartitionAncestors PG_PARTITION_ANCESTORS = PgPartitionAncestors.PG_PARTITION_ANCESTORS;
+    /**
+     * The table <code>pg_catalog.pg_partition_tree</code>.
+     */
+    public static final PgPartitionTree PG_PARTITION_TREE = PgPartitionTree.PG_PARTITION_TREE;
+    /**
+     * The table <code>pg_catalog.pg_partitioned_table</code>.
+     */
+    public static final PgPartitionedTable PG_PARTITIONED_TABLE = PgPartitionedTable.PG_PARTITIONED_TABLE;
+    /**
+     * The table <code>pg_catalog.pg_policies</code>.
+     */
+    public static final PgPolicies PG_POLICIES = PgPolicies.PG_POLICIES;
+    /**
+     * The table <code>pg_catalog.pg_policy</code>.
+     */
+    public static final PgPolicy PG_POLICY = PgPolicy.PG_POLICY;
+    /**
+     * The table <code>pg_catalog.pg_prepared_statement</code>.
+     */
+    public static final PgPreparedStatement PG_PREPARED_STATEMENT = PgPreparedStatement.PG_PREPARED_STATEMENT;
+    /**
+     * The table <code>pg_catalog.pg_prepared_statements</code>.
+     */
+    public static final PgPreparedStatements PG_PREPARED_STATEMENTS = PgPreparedStatements.PG_PREPARED_STATEMENTS;
+    /**
+     * The table <code>pg_catalog.pg_prepared_xact</code>.
+     */
+    public static final PgPreparedXact PG_PREPARED_XACT = PgPreparedXact.PG_PREPARED_XACT;
+    /**
+     * The table <code>pg_catalog.pg_prepared_xacts</code>.
+     */
+    public static final PgPreparedXacts PG_PREPARED_XACTS = PgPreparedXacts.PG_PREPARED_XACTS;
+    /**
+     * The table <code>pg_catalog.pg_proc</code>.
+     */
+    public static final PgProc PG_PROC = PgProc.PG_PROC;
+    /**
+     * The table <code>pg_catalog.pg_publication</code>.
+     */
+    public static final PgPublication PG_PUBLICATION = PgPublication.PG_PUBLICATION;
+    /**
+     * The table <code>pg_catalog.pg_publication_namespace</code>.
+     */
+    public static final PgPublicationNamespace PG_PUBLICATION_NAMESPACE = PgPublicationNamespace.PG_PUBLICATION_NAMESPACE;
+    /**
+     * The table <code>pg_catalog.pg_publication_rel</code>.
+     */
+    public static final PgPublicationRel PG_PUBLICATION_REL = PgPublicationRel.PG_PUBLICATION_REL;
+    /**
+     * The table <code>pg_catalog.pg_publication_tables</code>.
+     */
+    public static final PgPublicationTables PG_PUBLICATION_TABLES = PgPublicationTables.PG_PUBLICATION_TABLES;
+    /**
+     * The table <code>pg_catalog.pg_range</code>.
+     */
+    public static final PgRange PG_RANGE = PgRange.PG_RANGE;
+    /**
+     * The table <code>pg_catalog.pg_replication_origin</code>.
+     */
+    public static final PgReplicationOrigin PG_REPLICATION_ORIGIN = PgReplicationOrigin.PG_REPLICATION_ORIGIN;
+    /**
+     * The table <code>pg_catalog.pg_replication_origin_status</code>.
+     */
+    public static final PgReplicationOriginStatus PG_REPLICATION_ORIGIN_STATUS = PgReplicationOriginStatus.PG_REPLICATION_ORIGIN_STATUS;
+    /**
+     * The table <code>pg_catalog.pg_replication_slots</code>.
+     */
+    public static final PgReplicationSlots PG_REPLICATION_SLOTS = PgReplicationSlots.PG_REPLICATION_SLOTS;
+    /**
+     * The table <code>pg_catalog.pg_rewrite</code>.
+     */
+    public static final PgRewrite PG_REWRITE = PgRewrite.PG_REWRITE;
+    /**
+     * The table <code>pg_catalog.pg_roles</code>.
+     */
+    public static final PgRoles PG_ROLES = PgRoles.PG_ROLES;
+    /**
+     * The table <code>pg_catalog.pg_rules</code>.
+     */
+    public static final PgRules PG_RULES = PgRules.PG_RULES;
+    /**
+     * The table <code>pg_catalog.pg_seclabel</code>.
+     */
+    public static final PgSeclabel PG_SECLABEL = PgSeclabel.PG_SECLABEL;
+    /**
+     * The table <code>pg_catalog.pg_seclabels</code>.
+     */
+    public static final PgSeclabels PG_SECLABELS = PgSeclabels.PG_SECLABELS;
+    /**
+     * The table <code>pg_catalog.pg_sequence</code>.
+     */
+    public static final PgSequence PG_SEQUENCE = PgSequence.PG_SEQUENCE;
+    /**
+     * The table <code>pg_catalog.pg_sequences</code>.
+     */
+    public static final PgSequences PG_SEQUENCES = PgSequences.PG_SEQUENCES;
+    /**
+     * The table <code>pg_catalog.pg_settings</code>.
+     */
+    public static final PgSettings PG_SETTINGS = PgSettings.PG_SETTINGS;
+    /**
+     * The table <code>pg_catalog.pg_shadow</code>.
+     */
+    public static final PgShadow PG_SHADOW = PgShadow.PG_SHADOW;
+    /**
+     * The table <code>pg_catalog.pg_shdepend</code>.
+     */
+    public static final PgShdepend PG_SHDEPEND = PgShdepend.PG_SHDEPEND;
+    /**
+     * The table <code>pg_catalog.pg_shdescription</code>.
+     */
+    public static final PgShdescription PG_SHDESCRIPTION = PgShdescription.PG_SHDESCRIPTION;
+    /**
+     * The table <code>pg_catalog.pg_shmem_allocations</code>.
+     */
+    public static final PgShmemAllocations PG_SHMEM_ALLOCATIONS = PgShmemAllocations.PG_SHMEM_ALLOCATIONS;
+    /**
+     * The table <code>pg_catalog.pg_show_all_file_settings</code>.
+     */
+    public static final PgShowAllFileSettings PG_SHOW_ALL_FILE_SETTINGS = PgShowAllFileSettings.PG_SHOW_ALL_FILE_SETTINGS;
+    /**
+     * The table <code>pg_catalog.pg_show_all_settings</code>.
+     */
+    public static final PgShowAllSettings PG_SHOW_ALL_SETTINGS = PgShowAllSettings.PG_SHOW_ALL_SETTINGS;
+    /**
+     * The table <code>pg_catalog.pg_show_replication_origin_status</code>.
+     */
+    public static final PgShowReplicationOriginStatus PG_SHOW_REPLICATION_ORIGIN_STATUS = PgShowReplicationOriginStatus.PG_SHOW_REPLICATION_ORIGIN_STATUS;
+    /**
+     * The table <code>pg_catalog.pg_shseclabel</code>.
+     */
+    public static final PgShseclabel PG_SHSECLABEL = PgShseclabel.PG_SHSECLABEL;
+    /**
+     * The table <code>pg_catalog.pg_snapshot_xip</code>.
+     */
+    public static final PgSnapshotXip PG_SNAPSHOT_XIP = PgSnapshotXip.PG_SNAPSHOT_XIP;
+    /**
+     * The table <code>pg_catalog.pg_stat_activity</code>.
+     */
+    public static final PgStatActivity PG_STAT_ACTIVITY = PgStatActivity.PG_STAT_ACTIVITY;
+    /**
+     * The table <code>pg_catalog.pg_stat_all_indexes</code>.
+     */
+    public static final PgStatAllIndexes PG_STAT_ALL_INDEXES = PgStatAllIndexes.PG_STAT_ALL_INDEXES;
+    /**
+     * The table <code>pg_catalog.pg_stat_all_tables</code>.
+     */
+    public static final PgStatAllTables PG_STAT_ALL_TABLES = PgStatAllTables.PG_STAT_ALL_TABLES;
+    /**
+     * The table <code>pg_catalog.pg_stat_archiver</code>.
+     */
+    public static final PgStatArchiver PG_STAT_ARCHIVER = PgStatArchiver.PG_STAT_ARCHIVER;
+    /**
+     * The table <code>pg_catalog.pg_stat_bgwriter</code>.
+     */
+    public static final PgStatBgwriter PG_STAT_BGWRITER = PgStatBgwriter.PG_STAT_BGWRITER;
+    /**
+     * The table <code>pg_catalog.pg_stat_checkpointer</code>.
+     */
+    public static final PgStatCheckpointer PG_STAT_CHECKPOINTER = PgStatCheckpointer.PG_STAT_CHECKPOINTER;
+    /**
+     * The table <code>pg_catalog.pg_stat_database</code>.
+     */
+    public static final PgStatDatabase PG_STAT_DATABASE = PgStatDatabase.PG_STAT_DATABASE;
+    /**
+     * The table <code>pg_catalog.pg_stat_database_conflicts</code>.
+     */
+    public static final PgStatDatabaseConflicts PG_STAT_DATABASE_CONFLICTS = PgStatDatabaseConflicts.PG_STAT_DATABASE_CONFLICTS;
+    /**
+     * The table <code>pg_catalog.pg_stat_get_activity</code>.
+     */
+    public static final PgStatGetActivity PG_STAT_GET_ACTIVITY = PgStatGetActivity.PG_STAT_GET_ACTIVITY;
+    /**
+     * The table <code>pg_catalog.pg_stat_get_backend_idset</code>.
+     */
+    public static final PgStatGetBackendIdset PG_STAT_GET_BACKEND_IDSET = PgStatGetBackendIdset.PG_STAT_GET_BACKEND_IDSET;
+    /**
+     * The table <code>pg_catalog.pg_stat_get_io</code>.
+     */
+    public static final PgStatGetIo PG_STAT_GET_IO = PgStatGetIo.PG_STAT_GET_IO;
+    /**
+     * The table <code>pg_catalog.pg_stat_get_progress_info</code>.
+     */
+    public static final PgStatGetProgressInfo PG_STAT_GET_PROGRESS_INFO = PgStatGetProgressInfo.PG_STAT_GET_PROGRESS_INFO;
+    /**
+     * The table <code>pg_catalog.pg_stat_get_recovery_prefetch</code>.
+     */
+    public static final PgStatGetRecoveryPrefetch PG_STAT_GET_RECOVERY_PREFETCH = PgStatGetRecoveryPrefetch.PG_STAT_GET_RECOVERY_PREFETCH;
+    /**
+     * The table <code>pg_catalog.pg_stat_get_slru</code>.
+     */
+    public static final PgStatGetSlru PG_STAT_GET_SLRU = PgStatGetSlru.PG_STAT_GET_SLRU;
+    /**
+     * The table <code>pg_catalog.pg_stat_get_subscription</code>.
+     */
+    public static final PgStatGetSubscription PG_STAT_GET_SUBSCRIPTION = PgStatGetSubscription.PG_STAT_GET_SUBSCRIPTION;
+    /**
+     * The table <code>pg_catalog.pg_stat_get_wal_senders</code>.
+     */
+    public static final PgStatGetWalSenders PG_STAT_GET_WAL_SENDERS = PgStatGetWalSenders.PG_STAT_GET_WAL_SENDERS;
+    /**
+     * The table <code>pg_catalog.pg_stat_gssapi</code>.
+     */
+    public static final PgStatGssapi PG_STAT_GSSAPI = PgStatGssapi.PG_STAT_GSSAPI;
+    /**
+     * The table <code>pg_catalog.pg_stat_io</code>.
+     */
+    public static final PgStatIo PG_STAT_IO = PgStatIo.PG_STAT_IO;
+    /**
+     * The table <code>pg_catalog.pg_stat_progress_analyze</code>.
+     */
+    public static final PgStatProgressAnalyze PG_STAT_PROGRESS_ANALYZE = PgStatProgressAnalyze.PG_STAT_PROGRESS_ANALYZE;
+    /**
+     * The table <code>pg_catalog.pg_stat_progress_basebackup</code>.
+     */
+    public static final PgStatProgressBasebackup PG_STAT_PROGRESS_BASEBACKUP = PgStatProgressBasebackup.PG_STAT_PROGRESS_BASEBACKUP;
+    /**
+     * The table <code>pg_catalog.pg_stat_progress_cluster</code>.
+     */
+    public static final PgStatProgressCluster PG_STAT_PROGRESS_CLUSTER = PgStatProgressCluster.PG_STAT_PROGRESS_CLUSTER;
+    /**
+     * The table <code>pg_catalog.pg_stat_progress_copy</code>.
+     */
+    public static final PgStatProgressCopy PG_STAT_PROGRESS_COPY = PgStatProgressCopy.PG_STAT_PROGRESS_COPY;
+    /**
+     * The table <code>pg_catalog.pg_stat_progress_create_index</code>.
+     */
+    public static final PgStatProgressCreateIndex PG_STAT_PROGRESS_CREATE_INDEX = PgStatProgressCreateIndex.PG_STAT_PROGRESS_CREATE_INDEX;
+    /**
+     * The table <code>pg_catalog.pg_stat_progress_vacuum</code>.
+     */
+    public static final PgStatProgressVacuum PG_STAT_PROGRESS_VACUUM = PgStatProgressVacuum.PG_STAT_PROGRESS_VACUUM;
+    /**
+     * The table <code>pg_catalog.pg_stat_recovery_prefetch</code>.
+     */
+    public static final PgStatRecoveryPrefetch PG_STAT_RECOVERY_PREFETCH = PgStatRecoveryPrefetch.PG_STAT_RECOVERY_PREFETCH;
+    /**
+     * The table <code>pg_catalog.pg_stat_replication</code>.
+     */
+    public static final PgStatReplication PG_STAT_REPLICATION = PgStatReplication.PG_STAT_REPLICATION;
+    /**
+     * The table <code>pg_catalog.pg_stat_replication_slots</code>.
+     */
+    public static final PgStatReplicationSlots PG_STAT_REPLICATION_SLOTS = PgStatReplicationSlots.PG_STAT_REPLICATION_SLOTS;
+    /**
+     * The table <code>pg_catalog.pg_stat_slru</code>.
+     */
+    public static final PgStatSlru PG_STAT_SLRU = PgStatSlru.PG_STAT_SLRU;
+    /**
+     * The table <code>pg_catalog.pg_stat_ssl</code>.
+     */
+    public static final PgStatSsl PG_STAT_SSL = PgStatSsl.PG_STAT_SSL;
+    /**
+     * The table <code>pg_catalog.pg_stat_subscription</code>.
+     */
+    public static final PgStatSubscription PG_STAT_SUBSCRIPTION = PgStatSubscription.PG_STAT_SUBSCRIPTION;
+    /**
+     * The table <code>pg_catalog.pg_stat_subscription_stats</code>.
+     */
+    public static final PgStatSubscriptionStats PG_STAT_SUBSCRIPTION_STATS = PgStatSubscriptionStats.PG_STAT_SUBSCRIPTION_STATS;
+    /**
+     * The table <code>pg_catalog.pg_stat_sys_indexes</code>.
+     */
+    public static final PgStatSysIndexes PG_STAT_SYS_INDEXES = PgStatSysIndexes.PG_STAT_SYS_INDEXES;
+    /**
+     * The table <code>pg_catalog.pg_stat_sys_tables</code>.
+     */
+    public static final PgStatSysTables PG_STAT_SYS_TABLES = PgStatSysTables.PG_STAT_SYS_TABLES;
+    /**
+     * The table <code>pg_catalog.pg_stat_user_functions</code>.
+     */
+    public static final PgStatUserFunctions PG_STAT_USER_FUNCTIONS = PgStatUserFunctions.PG_STAT_USER_FUNCTIONS;
+    /**
+     * The table <code>pg_catalog.pg_stat_user_indexes</code>.
+     */
+    public static final PgStatUserIndexes PG_STAT_USER_INDEXES = PgStatUserIndexes.PG_STAT_USER_INDEXES;
+    /**
+     * The table <code>pg_catalog.pg_stat_user_tables</code>.
+     */
+    public static final PgStatUserTables PG_STAT_USER_TABLES = PgStatUserTables.PG_STAT_USER_TABLES;
+    /**
+     * The table <code>pg_catalog.pg_stat_wal</code>.
+     */
+    public static final PgStatWal PG_STAT_WAL = PgStatWal.PG_STAT_WAL;
+    /**
+     * The table <code>pg_catalog.pg_stat_wal_receiver</code>.
+     */
+    public static final PgStatWalReceiver PG_STAT_WAL_RECEIVER = PgStatWalReceiver.PG_STAT_WAL_RECEIVER;
+    /**
+     * The table <code>pg_catalog.pg_stat_xact_all_tables</code>.
+     */
+    public static final PgStatXactAllTables PG_STAT_XACT_ALL_TABLES = PgStatXactAllTables.PG_STAT_XACT_ALL_TABLES;
+    /**
+     * The table <code>pg_catalog.pg_stat_xact_sys_tables</code>.
+     */
+    public static final PgStatXactSysTables PG_STAT_XACT_SYS_TABLES = PgStatXactSysTables.PG_STAT_XACT_SYS_TABLES;
+    /**
+     * The table <code>pg_catalog.pg_stat_xact_user_functions</code>.
+     */
+    public static final PgStatXactUserFunctions PG_STAT_XACT_USER_FUNCTIONS = PgStatXactUserFunctions.PG_STAT_XACT_USER_FUNCTIONS;
+    /**
+     * The table <code>pg_catalog.pg_stat_xact_user_tables</code>.
+     */
+    public static final PgStatXactUserTables PG_STAT_XACT_USER_TABLES = PgStatXactUserTables.PG_STAT_XACT_USER_TABLES;
+    /**
+     * The table <code>pg_catalog.pg_statio_all_indexes</code>.
+     */
+    public static final PgStatioAllIndexes PG_STATIO_ALL_INDEXES = PgStatioAllIndexes.PG_STATIO_ALL_INDEXES;
+    /**
+     * The table <code>pg_catalog.pg_statio_all_sequences</code>.
+     */
+    public static final PgStatioAllSequences PG_STATIO_ALL_SEQUENCES = PgStatioAllSequences.PG_STATIO_ALL_SEQUENCES;
+    /**
+     * The table <code>pg_catalog.pg_statio_all_tables</code>.
+     */
+    public static final PgStatioAllTables PG_STATIO_ALL_TABLES = PgStatioAllTables.PG_STATIO_ALL_TABLES;
+    /**
+     * The table <code>pg_catalog.pg_statio_sys_indexes</code>.
+     */
+    public static final PgStatioSysIndexes PG_STATIO_SYS_INDEXES = PgStatioSysIndexes.PG_STATIO_SYS_INDEXES;
+    /**
+     * The table <code>pg_catalog.pg_statio_sys_sequences</code>.
+     */
+    public static final PgStatioSysSequences PG_STATIO_SYS_SEQUENCES = PgStatioSysSequences.PG_STATIO_SYS_SEQUENCES;
+    /**
+     * The table <code>pg_catalog.pg_statio_sys_tables</code>.
+     */
+    public static final PgStatioSysTables PG_STATIO_SYS_TABLES = PgStatioSysTables.PG_STATIO_SYS_TABLES;
+    /**
+     * The table <code>pg_catalog.pg_statio_user_indexes</code>.
+     */
+    public static final PgStatioUserIndexes PG_STATIO_USER_INDEXES = PgStatioUserIndexes.PG_STATIO_USER_INDEXES;
+    /**
+     * The table <code>pg_catalog.pg_statio_user_sequences</code>.
+     */
+    public static final PgStatioUserSequences PG_STATIO_USER_SEQUENCES = PgStatioUserSequences.PG_STATIO_USER_SEQUENCES;
+    /**
+     * The table <code>pg_catalog.pg_statio_user_tables</code>.
+     */
+    public static final PgStatioUserTables PG_STATIO_USER_TABLES = PgStatioUserTables.PG_STATIO_USER_TABLES;
+    /**
+     * The table <code>pg_catalog.pg_statistic</code>.
+     */
+    public static final PgStatistic PG_STATISTIC = PgStatistic.PG_STATISTIC;
+    /**
+     * The table <code>pg_catalog.pg_statistic_ext</code>.
+     */
+    public static final PgStatisticExt PG_STATISTIC_EXT = PgStatisticExt.PG_STATISTIC_EXT;
+    /**
+     * The table <code>pg_catalog.pg_statistic_ext_data</code>.
+     */
+    public static final PgStatisticExtData PG_STATISTIC_EXT_DATA = PgStatisticExtData.PG_STATISTIC_EXT_DATA;
+    /**
+     * The table <code>pg_catalog.pg_stats</code>.
+     */
+    public static final PgStats PG_STATS = PgStats.PG_STATS;
+    /**
+     * The table <code>pg_catalog.pg_stats_ext</code>.
+     */
+    public static final PgStatsExt PG_STATS_EXT = PgStatsExt.PG_STATS_EXT;
+    /**
+     * The table <code>pg_catalog.pg_stats_ext_exprs</code>.
+     */
+    public static final PgStatsExtExprs PG_STATS_EXT_EXPRS = PgStatsExtExprs.PG_STATS_EXT_EXPRS;
+    /**
+     * The table <code>pg_catalog.pg_subscription</code>.
+     */
+    public static final PgSubscription PG_SUBSCRIPTION = PgSubscription.PG_SUBSCRIPTION;
+    /**
+     * The table <code>pg_catalog.pg_subscription_rel</code>.
+     */
+    public static final PgSubscriptionRel PG_SUBSCRIPTION_REL = PgSubscriptionRel.PG_SUBSCRIPTION_REL;
+    /**
+     * The table <code>pg_catalog.pg_tables</code>.
+     */
+    public static final PgTables PG_TABLES = PgTables.PG_TABLES;
+    /**
+     * The table <code>pg_catalog.pg_tablespace</code>.
+     */
+    public static final PgTablespace PG_TABLESPACE = PgTablespace.PG_TABLESPACE;
+    /**
+     * The table <code>pg_catalog.pg_tablespace_databases</code>.
+     */
+    public static final PgTablespaceDatabases PG_TABLESPACE_DATABASES = PgTablespaceDatabases.PG_TABLESPACE_DATABASES;
+    /**
+     * The table <code>pg_catalog.pg_timezone_abbrevs</code>.
+     */
+    public static final PgTimezoneAbbrevs PG_TIMEZONE_ABBREVS = PgTimezoneAbbrevs.PG_TIMEZONE_ABBREVS;
+    /**
+     * The table <code>pg_catalog.pg_timezone_names</code>.
+     */
+    public static final PgTimezoneNames PG_TIMEZONE_NAMES = PgTimezoneNames.PG_TIMEZONE_NAMES;
+    /**
+     * The table <code>pg_catalog.pg_transform</code>.
+     */
+    public static final PgTransform PG_TRANSFORM = PgTransform.PG_TRANSFORM;
+    /**
+     * The table <code>pg_catalog.pg_trigger</code>.
+     */
+    public static final PgTrigger PG_TRIGGER = PgTrigger.PG_TRIGGER;
+    /**
+     * The table <code>pg_catalog.pg_ts_config</code>.
+     */
+    public static final PgTsConfig PG_TS_CONFIG = PgTsConfig.PG_TS_CONFIG;
+    /**
+     * The table <code>pg_catalog.pg_ts_config_map</code>.
+     */
+    public static final PgTsConfigMap PG_TS_CONFIG_MAP = PgTsConfigMap.PG_TS_CONFIG_MAP;
+    /**
+     * The table <code>pg_catalog.pg_ts_dict</code>.
+     */
+    public static final PgTsDict PG_TS_DICT = PgTsDict.PG_TS_DICT;
+    /**
+     * The table <code>pg_catalog.pg_ts_parser</code>.
+     */
+    public static final PgTsParser PG_TS_PARSER = PgTsParser.PG_TS_PARSER;
+    /**
+     * The table <code>pg_catalog.pg_ts_template</code>.
+     */
+    public static final PgTsTemplate PG_TS_TEMPLATE = PgTsTemplate.PG_TS_TEMPLATE;
+    /**
+     * The table <code>pg_catalog.pg_type</code>.
+     */
+    public static final PgType PG_TYPE = PgType.PG_TYPE;
+    /**
+     * The table <code>pg_catalog.pg_user</code>.
+     */
+    public static final PgUser PG_USER = PgUser.PG_USER;
+    /**
+     * The table <code>pg_catalog.pg_user_mapping</code>.
+     */
+    public static final PgUserMapping PG_USER_MAPPING = PgUserMapping.PG_USER_MAPPING;
+    /**
+     * The table <code>pg_catalog.pg_user_mappings</code>.
+     */
+    public static final PgUserMappings PG_USER_MAPPINGS = PgUserMappings.PG_USER_MAPPINGS;
+    /**
+     * The table <code>pg_catalog.pg_views</code>.
+     */
+    public static final PgViews PG_VIEWS = PgViews.PG_VIEWS;
+    /**
+     * The table <code>pg_catalog.pg_wait_events</code>.
+     */
+    public static final PgWaitEvents PG_WAIT_EVENTS = PgWaitEvents.PG_WAIT_EVENTS;
+    /**
+     * The table <code>pg_catalog.pg_wal_summary_contents</code>.
+     */
+    public static final PgWalSummaryContents PG_WAL_SUMMARY_CONTENTS = PgWalSummaryContents.PG_WAL_SUMMARY_CONTENTS;
+    /**
+     * The table <code>pg_catalog.regexp_matches</code>.
+     */
+    public static final RegexpMatches REGEXP_MATCHES = RegexpMatches.REGEXP_MATCHES;
+    /**
+     * The table <code>pg_catalog.regexp_split_to_table</code>.
+     */
+    public static final RegexpSplitToTable REGEXP_SPLIT_TO_TABLE = RegexpSplitToTable.REGEXP_SPLIT_TO_TABLE;
+    /**
+     * The table <code>pg_catalog.string_to_table</code>.
+     */
+    public static final StringToTable STRING_TO_TABLE = StringToTable.STRING_TO_TABLE;
+    /**
+     * The table <code>pg_catalog.ts_debug</code>.
+     */
+    public static final TsDebug TS_DEBUG = TsDebug.TS_DEBUG;
+    /**
+     * The table <code>pg_catalog.ts_parse</code>.
+     */
+    public static final TsParse TS_PARSE = TsParse.TS_PARSE;
+    /**
+     * The table <code>pg_catalog.ts_stat</code>.
+     */
+    public static final TsStat TS_STAT = TsStat.TS_STAT;
+    /**
+     * The table <code>pg_catalog.ts_token_type</code>.
+     */
+    public static final TsTokenType TS_TOKEN_TYPE = TsTokenType.TS_TOKEN_TYPE;
+    /**
+     * The table <code>pg_catalog.txid_snapshot_xip</code>.
+     */
+    public static final TxidSnapshotXip TXID_SNAPSHOT_XIP = TxidSnapshotXip.TXID_SNAPSHOT_XIP;
+    /**
+     * The table <code>pg_catalog.unnest</code>.
+     */
+    public static final Unnest UNNEST = Unnest.UNNEST;
 
     /**
      * Call <code>pg_catalog.aclexplode</code>.
      */
     public static Result<AclexplodeRecord> ACLEXPLODE(
-          Configuration configuration
-        , String[] acl
+            Configuration configuration
+            , String[] acl
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.Aclexplode.ACLEXPLODE.call(
-              acl
+                acl
         )).fetch();
     }
 
@@ -340,10 +907,10 @@ public class Tables {
      * Get <code>pg_catalog.aclexplode</code> as a table.
      */
     public static Aclexplode ACLEXPLODE(
-          String[] acl
+            String[] acl
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.Aclexplode.ACLEXPLODE.call(
-            acl
+                acl
         );
     }
 
@@ -351,31 +918,26 @@ public class Tables {
      * Get <code>pg_catalog.aclexplode</code> as a table.
      */
     public static Aclexplode ACLEXPLODE(
-          Field<String[]> acl
+            Field<String[]> acl
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.Aclexplode.ACLEXPLODE.call(
-            acl
+                acl
         );
     }
-
-    /**
-     * The table <code>pg_catalog.generate_series</code>.
-     */
-    public static final GenerateSeries GENERATE_SERIES = GenerateSeries.GENERATE_SERIES;
 
     /**
      * Call <code>pg_catalog.generate_series</code>.
      */
     public static Result<GenerateSeriesRecord> GENERATE_SERIES(
-          Configuration configuration
-        , OffsetDateTime __1
-        , OffsetDateTime __2
-        , YearToSecond __3
+            Configuration configuration
+            , OffsetDateTime __1
+            , OffsetDateTime __2
+            , YearToSecond __3
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.GenerateSeries.GENERATE_SERIES.call(
-              __1
-            , __2
-            , __3
+                __1
+                , __2
+                , __3
         )).fetch();
     }
 
@@ -383,14 +945,14 @@ public class Tables {
      * Get <code>pg_catalog.generate_series</code> as a table.
      */
     public static GenerateSeries GENERATE_SERIES(
-          OffsetDateTime __1
-        , OffsetDateTime __2
-        , YearToSecond __3
+            OffsetDateTime __1
+            , OffsetDateTime __2
+            , YearToSecond __3
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.GenerateSeries.GENERATE_SERIES.call(
-            __1,
-            __2,
-            __3
+                __1,
+                __2,
+                __3
         );
     }
 
@@ -398,33 +960,28 @@ public class Tables {
      * Get <code>pg_catalog.generate_series</code> as a table.
      */
     public static GenerateSeries GENERATE_SERIES(
-          Field<OffsetDateTime> __1
-        , Field<OffsetDateTime> __2
-        , Field<YearToSecond> __3
+            Field<OffsetDateTime> __1
+            , Field<OffsetDateTime> __2
+            , Field<YearToSecond> __3
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.GenerateSeries.GENERATE_SERIES.call(
-            __1,
-            __2,
-            __3
+                __1,
+                __2,
+                __3
         );
     }
-
-    /**
-     * The table <code>pg_catalog.generate_subscripts</code>.
-     */
-    public static final GenerateSubscripts GENERATE_SUBSCRIPTS = GenerateSubscripts.GENERATE_SUBSCRIPTS;
 
     /**
      * Call <code>pg_catalog.generate_subscripts</code>.
      */
     public static Result<GenerateSubscriptsRecord> GENERATE_SUBSCRIPTS(
-          Configuration configuration
-        , Object[] __1
-        , Integer __2
+            Configuration configuration
+            , Object[] __1
+            , Integer __2
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.GenerateSubscripts.GENERATE_SUBSCRIPTS.call(
-              __1
-            , __2
+                __1
+                , __2
         )).fetch();
     }
 
@@ -432,12 +989,12 @@ public class Tables {
      * Get <code>pg_catalog.generate_subscripts</code> as a table.
      */
     public static GenerateSubscripts GENERATE_SUBSCRIPTS(
-          Object[] __1
-        , Integer __2
+            Object[] __1
+            , Integer __2
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.GenerateSubscripts.GENERATE_SUBSCRIPTS.call(
-            __1,
-            __2
+                __1,
+                __2
         );
     }
 
@@ -445,29 +1002,24 @@ public class Tables {
      * Get <code>pg_catalog.generate_subscripts</code> as a table.
      */
     public static GenerateSubscripts GENERATE_SUBSCRIPTS(
-          Field<Object[]> __1
-        , Field<Integer> __2
+            Field<Object[]> __1
+            , Field<Integer> __2
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.GenerateSubscripts.GENERATE_SUBSCRIPTS.call(
-            __1,
-            __2
+                __1,
+                __2
         );
     }
-
-    /**
-     * The table <code>pg_catalog.json_array_elements</code>.
-     */
-    public static final JsonArrayElements JSON_ARRAY_ELEMENTS = JsonArrayElements.JSON_ARRAY_ELEMENTS;
 
     /**
      * Call <code>pg_catalog.json_array_elements</code>.
      */
     public static Result<JsonArrayElementsRecord> JSON_ARRAY_ELEMENTS(
-          Configuration configuration
-        , JSON fromJson
+            Configuration configuration
+            , JSON fromJson
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonArrayElements.JSON_ARRAY_ELEMENTS.call(
-              fromJson
+                fromJson
         )).fetch();
     }
 
@@ -475,10 +1027,10 @@ public class Tables {
      * Get <code>pg_catalog.json_array_elements</code> as a table.
      */
     public static JsonArrayElements JSON_ARRAY_ELEMENTS(
-          JSON fromJson
+            JSON fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonArrayElements.JSON_ARRAY_ELEMENTS.call(
-            fromJson
+                fromJson
         );
     }
 
@@ -486,27 +1038,22 @@ public class Tables {
      * Get <code>pg_catalog.json_array_elements</code> as a table.
      */
     public static JsonArrayElements JSON_ARRAY_ELEMENTS(
-          Field<JSON> fromJson
+            Field<JSON> fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonArrayElements.JSON_ARRAY_ELEMENTS.call(
-            fromJson
+                fromJson
         );
     }
-
-    /**
-     * The table <code>pg_catalog.json_array_elements_text</code>.
-     */
-    public static final JsonArrayElementsText JSON_ARRAY_ELEMENTS_TEXT = JsonArrayElementsText.JSON_ARRAY_ELEMENTS_TEXT;
 
     /**
      * Call <code>pg_catalog.json_array_elements_text</code>.
      */
     public static Result<JsonArrayElementsTextRecord> JSON_ARRAY_ELEMENTS_TEXT(
-          Configuration configuration
-        , JSON fromJson
+            Configuration configuration
+            , JSON fromJson
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonArrayElementsText.JSON_ARRAY_ELEMENTS_TEXT.call(
-              fromJson
+                fromJson
         )).fetch();
     }
 
@@ -514,10 +1061,10 @@ public class Tables {
      * Get <code>pg_catalog.json_array_elements_text</code> as a table.
      */
     public static JsonArrayElementsText JSON_ARRAY_ELEMENTS_TEXT(
-          JSON fromJson
+            JSON fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonArrayElementsText.JSON_ARRAY_ELEMENTS_TEXT.call(
-            fromJson
+                fromJson
         );
     }
 
@@ -525,27 +1072,22 @@ public class Tables {
      * Get <code>pg_catalog.json_array_elements_text</code> as a table.
      */
     public static JsonArrayElementsText JSON_ARRAY_ELEMENTS_TEXT(
-          Field<JSON> fromJson
+            Field<JSON> fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonArrayElementsText.JSON_ARRAY_ELEMENTS_TEXT.call(
-            fromJson
+                fromJson
         );
     }
-
-    /**
-     * The table <code>pg_catalog.json_each</code>.
-     */
-    public static final JsonEach JSON_EACH = JsonEach.JSON_EACH;
 
     /**
      * Call <code>pg_catalog.json_each</code>.
      */
     public static Result<JsonEachRecord> JSON_EACH(
-          Configuration configuration
-        , JSON fromJson
+            Configuration configuration
+            , JSON fromJson
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonEach.JSON_EACH.call(
-              fromJson
+                fromJson
         )).fetch();
     }
 
@@ -553,10 +1095,10 @@ public class Tables {
      * Get <code>pg_catalog.json_each</code> as a table.
      */
     public static JsonEach JSON_EACH(
-          JSON fromJson
+            JSON fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonEach.JSON_EACH.call(
-            fromJson
+                fromJson
         );
     }
 
@@ -564,27 +1106,22 @@ public class Tables {
      * Get <code>pg_catalog.json_each</code> as a table.
      */
     public static JsonEach JSON_EACH(
-          Field<JSON> fromJson
+            Field<JSON> fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonEach.JSON_EACH.call(
-            fromJson
+                fromJson
         );
     }
-
-    /**
-     * The table <code>pg_catalog.json_each_text</code>.
-     */
-    public static final JsonEachText JSON_EACH_TEXT = JsonEachText.JSON_EACH_TEXT;
 
     /**
      * Call <code>pg_catalog.json_each_text</code>.
      */
     public static Result<JsonEachTextRecord> JSON_EACH_TEXT(
-          Configuration configuration
-        , JSON fromJson
+            Configuration configuration
+            , JSON fromJson
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonEachText.JSON_EACH_TEXT.call(
-              fromJson
+                fromJson
         )).fetch();
     }
 
@@ -592,10 +1129,10 @@ public class Tables {
      * Get <code>pg_catalog.json_each_text</code> as a table.
      */
     public static JsonEachText JSON_EACH_TEXT(
-          JSON fromJson
+            JSON fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonEachText.JSON_EACH_TEXT.call(
-            fromJson
+                fromJson
         );
     }
 
@@ -603,27 +1140,22 @@ public class Tables {
      * Get <code>pg_catalog.json_each_text</code> as a table.
      */
     public static JsonEachText JSON_EACH_TEXT(
-          Field<JSON> fromJson
+            Field<JSON> fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonEachText.JSON_EACH_TEXT.call(
-            fromJson
+                fromJson
         );
     }
-
-    /**
-     * The table <code>pg_catalog.json_object_keys</code>.
-     */
-    public static final JsonObjectKeys JSON_OBJECT_KEYS = JsonObjectKeys.JSON_OBJECT_KEYS;
 
     /**
      * Call <code>pg_catalog.json_object_keys</code>.
      */
     public static Result<JsonObjectKeysRecord> JSON_OBJECT_KEYS(
-          Configuration configuration
-        , JSON __1
+            Configuration configuration
+            , JSON __1
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonObjectKeys.JSON_OBJECT_KEYS.call(
-              __1
+                __1
         )).fetch();
     }
 
@@ -631,10 +1163,10 @@ public class Tables {
      * Get <code>pg_catalog.json_object_keys</code> as a table.
      */
     public static JsonObjectKeys JSON_OBJECT_KEYS(
-          JSON __1
+            JSON __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonObjectKeys.JSON_OBJECT_KEYS.call(
-            __1
+                __1
         );
     }
 
@@ -642,17 +1174,12 @@ public class Tables {
      * Get <code>pg_catalog.json_object_keys</code> as a table.
      */
     public static JsonObjectKeys JSON_OBJECT_KEYS(
-          Field<JSON> __1
+            Field<JSON> __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonObjectKeys.JSON_OBJECT_KEYS.call(
-            __1
+                __1
         );
     }
-
-    /**
-     * The table <code>pg_catalog.json_populate_recordset</code>.
-     */
-    public static final JsonPopulateRecordset JSON_POPULATE_RECORDSET = JsonPopulateRecordset.JSON_POPULATE_RECORDSET;
 
     /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
@@ -664,15 +1191,15 @@ public class Tables {
      */
     @Deprecated
     public static Result<JsonPopulateRecordsetRecord> JSON_POPULATE_RECORDSET(
-          Configuration configuration
-        , Object base
-        , JSON fromJson
-        , Boolean useJsonAsText
+            Configuration configuration
+            , Object base
+            , JSON fromJson
+            , Boolean useJsonAsText
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonPopulateRecordset.JSON_POPULATE_RECORDSET.call(
-              base
-            , fromJson
-            , useJsonAsText
+                base
+                , fromJson
+                , useJsonAsText
         )).fetch();
     }
 
@@ -686,14 +1213,14 @@ public class Tables {
      */
     @Deprecated
     public static JsonPopulateRecordset JSON_POPULATE_RECORDSET(
-          Object base
-        , JSON fromJson
-        , Boolean useJsonAsText
+            Object base
+            , JSON fromJson
+            , Boolean useJsonAsText
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonPopulateRecordset.JSON_POPULATE_RECORDSET.call(
-            base,
-            fromJson,
-            useJsonAsText
+                base,
+                fromJson,
+                useJsonAsText
         );
     }
 
@@ -707,31 +1234,26 @@ public class Tables {
      */
     @Deprecated
     public static JsonPopulateRecordset JSON_POPULATE_RECORDSET(
-          Field<Object> base
-        , Field<JSON> fromJson
-        , Field<Boolean> useJsonAsText
+            Field<Object> base
+            , Field<JSON> fromJson
+            , Field<Boolean> useJsonAsText
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonPopulateRecordset.JSON_POPULATE_RECORDSET.call(
-            base,
-            fromJson,
-            useJsonAsText
+                base,
+                fromJson,
+                useJsonAsText
         );
     }
-
-    /**
-     * The table <code>pg_catalog.json_to_recordset</code>.
-     */
-    public static final JsonToRecordset JSON_TO_RECORDSET = JsonToRecordset.JSON_TO_RECORDSET;
 
     /**
      * Call <code>pg_catalog.json_to_recordset</code>.
      */
     public static Result<JsonToRecordsetRecord> JSON_TO_RECORDSET(
-          Configuration configuration
-        , JSON __1
+            Configuration configuration
+            , JSON __1
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonToRecordset.JSON_TO_RECORDSET.call(
-              __1
+                __1
         )).fetch();
     }
 
@@ -739,10 +1261,10 @@ public class Tables {
      * Get <code>pg_catalog.json_to_recordset</code> as a table.
      */
     public static JsonToRecordset JSON_TO_RECORDSET(
-          JSON __1
+            JSON __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonToRecordset.JSON_TO_RECORDSET.call(
-            __1
+                __1
         );
     }
 
@@ -750,27 +1272,22 @@ public class Tables {
      * Get <code>pg_catalog.json_to_recordset</code> as a table.
      */
     public static JsonToRecordset JSON_TO_RECORDSET(
-          Field<JSON> __1
+            Field<JSON> __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonToRecordset.JSON_TO_RECORDSET.call(
-            __1
+                __1
         );
     }
-
-    /**
-     * The table <code>pg_catalog.jsonb_array_elements</code>.
-     */
-    public static final JsonbArrayElements JSONB_ARRAY_ELEMENTS = JsonbArrayElements.JSONB_ARRAY_ELEMENTS;
 
     /**
      * Call <code>pg_catalog.jsonb_array_elements</code>.
      */
     public static Result<JsonbArrayElementsRecord> JSONB_ARRAY_ELEMENTS(
-          Configuration configuration
-        , JSONB fromJson
+            Configuration configuration
+            , JSONB fromJson
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonbArrayElements.JSONB_ARRAY_ELEMENTS.call(
-              fromJson
+                fromJson
         )).fetch();
     }
 
@@ -778,10 +1295,10 @@ public class Tables {
      * Get <code>pg_catalog.jsonb_array_elements</code> as a table.
      */
     public static JsonbArrayElements JSONB_ARRAY_ELEMENTS(
-          JSONB fromJson
+            JSONB fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbArrayElements.JSONB_ARRAY_ELEMENTS.call(
-            fromJson
+                fromJson
         );
     }
 
@@ -789,27 +1306,22 @@ public class Tables {
      * Get <code>pg_catalog.jsonb_array_elements</code> as a table.
      */
     public static JsonbArrayElements JSONB_ARRAY_ELEMENTS(
-          Field<JSONB> fromJson
+            Field<JSONB> fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbArrayElements.JSONB_ARRAY_ELEMENTS.call(
-            fromJson
+                fromJson
         );
     }
-
-    /**
-     * The table <code>pg_catalog.jsonb_array_elements_text</code>.
-     */
-    public static final JsonbArrayElementsText JSONB_ARRAY_ELEMENTS_TEXT = JsonbArrayElementsText.JSONB_ARRAY_ELEMENTS_TEXT;
 
     /**
      * Call <code>pg_catalog.jsonb_array_elements_text</code>.
      */
     public static Result<JsonbArrayElementsTextRecord> JSONB_ARRAY_ELEMENTS_TEXT(
-          Configuration configuration
-        , JSONB fromJson
+            Configuration configuration
+            , JSONB fromJson
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonbArrayElementsText.JSONB_ARRAY_ELEMENTS_TEXT.call(
-              fromJson
+                fromJson
         )).fetch();
     }
 
@@ -817,10 +1329,10 @@ public class Tables {
      * Get <code>pg_catalog.jsonb_array_elements_text</code> as a table.
      */
     public static JsonbArrayElementsText JSONB_ARRAY_ELEMENTS_TEXT(
-          JSONB fromJson
+            JSONB fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbArrayElementsText.JSONB_ARRAY_ELEMENTS_TEXT.call(
-            fromJson
+                fromJson
         );
     }
 
@@ -828,27 +1340,22 @@ public class Tables {
      * Get <code>pg_catalog.jsonb_array_elements_text</code> as a table.
      */
     public static JsonbArrayElementsText JSONB_ARRAY_ELEMENTS_TEXT(
-          Field<JSONB> fromJson
+            Field<JSONB> fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbArrayElementsText.JSONB_ARRAY_ELEMENTS_TEXT.call(
-            fromJson
+                fromJson
         );
     }
-
-    /**
-     * The table <code>pg_catalog.jsonb_each</code>.
-     */
-    public static final JsonbEach JSONB_EACH = JsonbEach.JSONB_EACH;
 
     /**
      * Call <code>pg_catalog.jsonb_each</code>.
      */
     public static Result<JsonbEachRecord> JSONB_EACH(
-          Configuration configuration
-        , JSONB fromJson
+            Configuration configuration
+            , JSONB fromJson
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonbEach.JSONB_EACH.call(
-              fromJson
+                fromJson
         )).fetch();
     }
 
@@ -856,10 +1363,10 @@ public class Tables {
      * Get <code>pg_catalog.jsonb_each</code> as a table.
      */
     public static JsonbEach JSONB_EACH(
-          JSONB fromJson
+            JSONB fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbEach.JSONB_EACH.call(
-            fromJson
+                fromJson
         );
     }
 
@@ -867,27 +1374,22 @@ public class Tables {
      * Get <code>pg_catalog.jsonb_each</code> as a table.
      */
     public static JsonbEach JSONB_EACH(
-          Field<JSONB> fromJson
+            Field<JSONB> fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbEach.JSONB_EACH.call(
-            fromJson
+                fromJson
         );
     }
-
-    /**
-     * The table <code>pg_catalog.jsonb_each_text</code>.
-     */
-    public static final JsonbEachText JSONB_EACH_TEXT = JsonbEachText.JSONB_EACH_TEXT;
 
     /**
      * Call <code>pg_catalog.jsonb_each_text</code>.
      */
     public static Result<JsonbEachTextRecord> JSONB_EACH_TEXT(
-          Configuration configuration
-        , JSONB fromJson
+            Configuration configuration
+            , JSONB fromJson
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonbEachText.JSONB_EACH_TEXT.call(
-              fromJson
+                fromJson
         )).fetch();
     }
 
@@ -895,10 +1397,10 @@ public class Tables {
      * Get <code>pg_catalog.jsonb_each_text</code> as a table.
      */
     public static JsonbEachText JSONB_EACH_TEXT(
-          JSONB fromJson
+            JSONB fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbEachText.JSONB_EACH_TEXT.call(
-            fromJson
+                fromJson
         );
     }
 
@@ -906,27 +1408,22 @@ public class Tables {
      * Get <code>pg_catalog.jsonb_each_text</code> as a table.
      */
     public static JsonbEachText JSONB_EACH_TEXT(
-          Field<JSONB> fromJson
+            Field<JSONB> fromJson
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbEachText.JSONB_EACH_TEXT.call(
-            fromJson
+                fromJson
         );
     }
-
-    /**
-     * The table <code>pg_catalog.jsonb_object_keys</code>.
-     */
-    public static final JsonbObjectKeys JSONB_OBJECT_KEYS = JsonbObjectKeys.JSONB_OBJECT_KEYS;
 
     /**
      * Call <code>pg_catalog.jsonb_object_keys</code>.
      */
     public static Result<JsonbObjectKeysRecord> JSONB_OBJECT_KEYS(
-          Configuration configuration
-        , JSONB __1
+            Configuration configuration
+            , JSONB __1
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonbObjectKeys.JSONB_OBJECT_KEYS.call(
-              __1
+                __1
         )).fetch();
     }
 
@@ -934,10 +1431,10 @@ public class Tables {
      * Get <code>pg_catalog.jsonb_object_keys</code> as a table.
      */
     public static JsonbObjectKeys JSONB_OBJECT_KEYS(
-          JSONB __1
+            JSONB __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbObjectKeys.JSONB_OBJECT_KEYS.call(
-            __1
+                __1
         );
     }
 
@@ -945,17 +1442,12 @@ public class Tables {
      * Get <code>pg_catalog.jsonb_object_keys</code> as a table.
      */
     public static JsonbObjectKeys JSONB_OBJECT_KEYS(
-          Field<JSONB> __1
+            Field<JSONB> __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbObjectKeys.JSONB_OBJECT_KEYS.call(
-            __1
+                __1
         );
     }
-
-    /**
-     * The table <code>pg_catalog.jsonb_path_query</code>.
-     */
-    public static final JsonbPathQuery JSONB_PATH_QUERY = JsonbPathQuery.JSONB_PATH_QUERY;
 
     /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
@@ -967,17 +1459,17 @@ public class Tables {
      */
     @Deprecated
     public static Result<JsonbPathQueryRecord> JSONB_PATH_QUERY(
-          Configuration configuration
-        , JSONB target
-        , Object path
-        , JSONB vars
-        , Boolean silent
+            Configuration configuration
+            , JSONB target
+            , Object path
+            , JSONB vars
+            , Boolean silent
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonbPathQuery.JSONB_PATH_QUERY.call(
-              target
-            , path
-            , vars
-            , silent
+                target
+                , path
+                , vars
+                , silent
         )).fetch();
     }
 
@@ -991,16 +1483,16 @@ public class Tables {
      */
     @Deprecated
     public static JsonbPathQuery JSONB_PATH_QUERY(
-          JSONB target
-        , Object path
-        , JSONB vars
-        , Boolean silent
+            JSONB target
+            , Object path
+            , JSONB vars
+            , Boolean silent
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbPathQuery.JSONB_PATH_QUERY.call(
-            target,
-            path,
-            vars,
-            silent
+                target,
+                path,
+                vars,
+                silent
         );
     }
 
@@ -1014,23 +1506,18 @@ public class Tables {
      */
     @Deprecated
     public static JsonbPathQuery JSONB_PATH_QUERY(
-          Field<JSONB> target
-        , Field<Object> path
-        , Field<JSONB> vars
-        , Field<Boolean> silent
+            Field<JSONB> target
+            , Field<Object> path
+            , Field<JSONB> vars
+            , Field<Boolean> silent
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbPathQuery.JSONB_PATH_QUERY.call(
-            target,
-            path,
-            vars,
-            silent
+                target,
+                path,
+                vars,
+                silent
         );
     }
-
-    /**
-     * The table <code>pg_catalog.jsonb_path_query_tz</code>.
-     */
-    public static final JsonbPathQueryTz JSONB_PATH_QUERY_TZ = JsonbPathQueryTz.JSONB_PATH_QUERY_TZ;
 
     /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
@@ -1042,17 +1529,17 @@ public class Tables {
      */
     @Deprecated
     public static Result<JsonbPathQueryTzRecord> JSONB_PATH_QUERY_TZ(
-          Configuration configuration
-        , JSONB target
-        , Object path
-        , JSONB vars
-        , Boolean silent
+            Configuration configuration
+            , JSONB target
+            , Object path
+            , JSONB vars
+            , Boolean silent
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonbPathQueryTz.JSONB_PATH_QUERY_TZ.call(
-              target
-            , path
-            , vars
-            , silent
+                target
+                , path
+                , vars
+                , silent
         )).fetch();
     }
 
@@ -1066,16 +1553,16 @@ public class Tables {
      */
     @Deprecated
     public static JsonbPathQueryTz JSONB_PATH_QUERY_TZ(
-          JSONB target
-        , Object path
-        , JSONB vars
-        , Boolean silent
+            JSONB target
+            , Object path
+            , JSONB vars
+            , Boolean silent
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbPathQueryTz.JSONB_PATH_QUERY_TZ.call(
-            target,
-            path,
-            vars,
-            silent
+                target,
+                path,
+                vars,
+                silent
         );
     }
 
@@ -1089,23 +1576,18 @@ public class Tables {
      */
     @Deprecated
     public static JsonbPathQueryTz JSONB_PATH_QUERY_TZ(
-          Field<JSONB> target
-        , Field<Object> path
-        , Field<JSONB> vars
-        , Field<Boolean> silent
+            Field<JSONB> target
+            , Field<Object> path
+            , Field<JSONB> vars
+            , Field<Boolean> silent
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbPathQueryTz.JSONB_PATH_QUERY_TZ.call(
-            target,
-            path,
-            vars,
-            silent
+                target,
+                path,
+                vars,
+                silent
         );
     }
-
-    /**
-     * The table <code>pg_catalog.jsonb_populate_recordset</code>.
-     */
-    public static final JsonbPopulateRecordset JSONB_POPULATE_RECORDSET = JsonbPopulateRecordset.JSONB_POPULATE_RECORDSET;
 
     /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
@@ -1117,13 +1599,13 @@ public class Tables {
      */
     @Deprecated
     public static Result<JsonbPopulateRecordsetRecord> JSONB_POPULATE_RECORDSET(
-          Configuration configuration
-        , Object __1
-        , JSONB __2
+            Configuration configuration
+            , Object __1
+            , JSONB __2
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonbPopulateRecordset.JSONB_POPULATE_RECORDSET.call(
-              __1
-            , __2
+                __1
+                , __2
         )).fetch();
     }
 
@@ -1137,12 +1619,12 @@ public class Tables {
      */
     @Deprecated
     public static JsonbPopulateRecordset JSONB_POPULATE_RECORDSET(
-          Object __1
-        , JSONB __2
+            Object __1
+            , JSONB __2
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbPopulateRecordset.JSONB_POPULATE_RECORDSET.call(
-            __1,
-            __2
+                __1,
+                __2
         );
     }
 
@@ -1156,29 +1638,24 @@ public class Tables {
      */
     @Deprecated
     public static JsonbPopulateRecordset JSONB_POPULATE_RECORDSET(
-          Field<Object> __1
-        , Field<JSONB> __2
+            Field<Object> __1
+            , Field<JSONB> __2
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbPopulateRecordset.JSONB_POPULATE_RECORDSET.call(
-            __1,
-            __2
+                __1,
+                __2
         );
     }
-
-    /**
-     * The table <code>pg_catalog.jsonb_to_recordset</code>.
-     */
-    public static final JsonbToRecordset JSONB_TO_RECORDSET = JsonbToRecordset.JSONB_TO_RECORDSET;
 
     /**
      * Call <code>pg_catalog.jsonb_to_recordset</code>.
      */
     public static Result<JsonbToRecordsetRecord> JSONB_TO_RECORDSET(
-          Configuration configuration
-        , JSONB __1
+            Configuration configuration
+            , JSONB __1
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.JsonbToRecordset.JSONB_TO_RECORDSET.call(
-              __1
+                __1
         )).fetch();
     }
 
@@ -1186,10 +1663,10 @@ public class Tables {
      * Get <code>pg_catalog.jsonb_to_recordset</code> as a table.
      */
     public static JsonbToRecordset JSONB_TO_RECORDSET(
-          JSONB __1
+            JSONB __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbToRecordset.JSONB_TO_RECORDSET.call(
-            __1
+                __1
         );
     }
 
@@ -1197,73 +1674,18 @@ public class Tables {
      * Get <code>pg_catalog.jsonb_to_recordset</code> as a table.
      */
     public static JsonbToRecordset JSONB_TO_RECORDSET(
-          Field<JSONB> __1
+            Field<JSONB> __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.JsonbToRecordset.JSONB_TO_RECORDSET.call(
-            __1
+                __1
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_aggregate</code>.
-     */
-    public static final PgAggregate PG_AGGREGATE = PgAggregate.PG_AGGREGATE;
-
-    /**
-     * The table <code>pg_catalog.pg_am</code>.
-     */
-    public static final PgAm PG_AM = PgAm.PG_AM;
-
-    /**
-     * The table <code>pg_catalog.pg_amop</code>.
-     */
-    public static final PgAmop PG_AMOP = PgAmop.PG_AMOP;
-
-    /**
-     * The table <code>pg_catalog.pg_amproc</code>.
-     */
-    public static final PgAmproc PG_AMPROC = PgAmproc.PG_AMPROC;
-
-    /**
-     * The table <code>pg_catalog.pg_attrdef</code>.
-     */
-    public static final PgAttrdef PG_ATTRDEF = PgAttrdef.PG_ATTRDEF;
-
-    /**
-     * The table <code>pg_catalog.pg_attribute</code>.
-     */
-    public static final PgAttribute PG_ATTRIBUTE = PgAttribute.PG_ATTRIBUTE;
-
-    /**
-     * The table <code>pg_catalog.pg_auth_members</code>.
-     */
-    public static final PgAuthMembers PG_AUTH_MEMBERS = PgAuthMembers.PG_AUTH_MEMBERS;
-
-    /**
-     * The table <code>pg_catalog.pg_authid</code>.
-     */
-    public static final PgAuthid PG_AUTHID = PgAuthid.PG_AUTHID;
-
-    /**
-     * The table <code>pg_catalog.pg_available_extension_versions</code>.
-     */
-    public static final PgAvailableExtensionVersions PG_AVAILABLE_EXTENSION_VERSIONS = PgAvailableExtensionVersions.PG_AVAILABLE_EXTENSION_VERSIONS;
-
-    /**
-     * The table <code>pg_catalog.pg_available_extensions</code>.
-     */
-    public static final PgAvailableExtensions PG_AVAILABLE_EXTENSIONS = PgAvailableExtensions.PG_AVAILABLE_EXTENSIONS;
-
-    /**
-     * The table <code>pg_catalog.pg_available_wal_summaries</code>.
-     */
-    public static final PgAvailableWalSummaries PG_AVAILABLE_WAL_SUMMARIES = PgAvailableWalSummaries.PG_AVAILABLE_WAL_SUMMARIES;
 
     /**
      * Call <code>pg_catalog.pg_available_wal_summaries</code>.
      */
     public static Result<PgAvailableWalSummariesRecord> PG_AVAILABLE_WAL_SUMMARIES(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgAvailableWalSummaries.PG_AVAILABLE_WAL_SUMMARIES.call(
         )).fetch();
@@ -1278,35 +1700,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_backend_memory_contexts</code>.
-     */
-    public static final PgBackendMemoryContexts PG_BACKEND_MEMORY_CONTEXTS = PgBackendMemoryContexts.PG_BACKEND_MEMORY_CONTEXTS;
-
-    /**
-     * The table <code>pg_catalog.pg_cast</code>.
-     */
-    public static final PgCast PG_CAST = PgCast.PG_CAST;
-
-    /**
-     * The table <code>pg_catalog.pg_class</code>.
-     */
-    public static final PgClass PG_CLASS = PgClass.PG_CLASS;
-
-    /**
-     * The table <code>pg_catalog.pg_collation</code>.
-     */
-    public static final PgCollation PG_COLLATION = PgCollation.PG_COLLATION;
-
-    /**
-     * The table <code>pg_catalog.pg_config</code>.
-     */
-    public static final PgConfig PG_CONFIG = PgConfig.PG_CONFIG;
-
-    /**
      * Call <code>pg_catalog.pg_config</code>.
      */
     public static Result<PgConfigRecord> PG_CONFIG(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgConfig.PG_CONFIG.call(
         )).fetch();
@@ -1321,25 +1718,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_constraint</code>.
-     */
-    public static final PgConstraint PG_CONSTRAINT = PgConstraint.PG_CONSTRAINT;
-
-    /**
-     * The table <code>pg_catalog.pg_conversion</code>.
-     */
-    public static final PgConversion PG_CONVERSION = PgConversion.PG_CONVERSION;
-
-    /**
-     * The table <code>pg_catalog.pg_cursor</code>.
-     */
-    public static final PgCursor PG_CURSOR = PgCursor.PG_CURSOR;
-
-    /**
      * Call <code>pg_catalog.pg_cursor</code>.
      */
     public static Result<PgCursorRecord> PG_CURSOR(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgCursor.PG_CURSOR.call(
         )).fetch();
@@ -1354,55 +1736,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_cursors</code>.
-     */
-    public static final PgCursors PG_CURSORS = PgCursors.PG_CURSORS;
-
-    /**
-     * The table <code>pg_catalog.pg_database</code>.
-     */
-    public static final PgDatabase PG_DATABASE = PgDatabase.PG_DATABASE;
-
-    /**
-     * The table <code>pg_catalog.pg_db_role_setting</code>.
-     */
-    public static final PgDbRoleSetting PG_DB_ROLE_SETTING = PgDbRoleSetting.PG_DB_ROLE_SETTING;
-
-    /**
-     * The table <code>pg_catalog.pg_default_acl</code>.
-     */
-    public static final PgDefaultAcl PG_DEFAULT_ACL = PgDefaultAcl.PG_DEFAULT_ACL;
-
-    /**
-     * The table <code>pg_catalog.pg_depend</code>.
-     */
-    public static final PgDepend PG_DEPEND = PgDepend.PG_DEPEND;
-
-    /**
-     * The table <code>pg_catalog.pg_description</code>.
-     */
-    public static final PgDescription PG_DESCRIPTION = PgDescription.PG_DESCRIPTION;
-
-    /**
-     * The table <code>pg_catalog.pg_enum</code>.
-     */
-    public static final PgEnum PG_ENUM = PgEnum.PG_ENUM;
-
-    /**
-     * The table <code>pg_catalog.pg_event_trigger</code>.
-     */
-    public static final PgEventTrigger PG_EVENT_TRIGGER = PgEventTrigger.PG_EVENT_TRIGGER;
-
-    /**
-     * The table <code>pg_catalog.pg_event_trigger_ddl_commands</code>.
-     */
-    public static final PgEventTriggerDdlCommands PG_EVENT_TRIGGER_DDL_COMMANDS = PgEventTriggerDdlCommands.PG_EVENT_TRIGGER_DDL_COMMANDS;
-
-    /**
      * Call <code>pg_catalog.pg_event_trigger_ddl_commands</code>.
      */
     public static Result<PgEventTriggerDdlCommandsRecord> PG_EVENT_TRIGGER_DDL_COMMANDS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgEventTriggerDdlCommands.PG_EVENT_TRIGGER_DDL_COMMANDS.call(
         )).fetch();
@@ -1417,15 +1754,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_event_trigger_dropped_objects</code>.
-     */
-    public static final PgEventTriggerDroppedObjects PG_EVENT_TRIGGER_DROPPED_OBJECTS = PgEventTriggerDroppedObjects.PG_EVENT_TRIGGER_DROPPED_OBJECTS;
-
-    /**
      * Call <code>pg_catalog.pg_event_trigger_dropped_objects</code>.
      */
     public static Result<PgEventTriggerDroppedObjectsRecord> PG_EVENT_TRIGGER_DROPPED_OBJECTS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgEventTriggerDroppedObjects.PG_EVENT_TRIGGER_DROPPED_OBJECTS.call(
         )).fetch();
@@ -1440,24 +1772,14 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_extension</code>.
-     */
-    public static final PgExtension PG_EXTENSION = PgExtension.PG_EXTENSION;
-
-    /**
-     * The table <code>pg_catalog.pg_extension_update_paths</code>.
-     */
-    public static final PgExtensionUpdatePaths PG_EXTENSION_UPDATE_PATHS = PgExtensionUpdatePaths.PG_EXTENSION_UPDATE_PATHS;
-
-    /**
      * Call <code>pg_catalog.pg_extension_update_paths</code>.
      */
     public static Result<PgExtensionUpdatePathsRecord> PG_EXTENSION_UPDATE_PATHS(
-          Configuration configuration
-        , String name
+            Configuration configuration
+            , String name
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgExtensionUpdatePaths.PG_EXTENSION_UPDATE_PATHS.call(
-              name
+                name
         )).fetch();
     }
 
@@ -1465,10 +1787,10 @@ public class Tables {
      * Get <code>pg_catalog.pg_extension_update_paths</code> as a table.
      */
     public static PgExtensionUpdatePaths PG_EXTENSION_UPDATE_PATHS(
-          String name
+            String name
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgExtensionUpdatePaths.PG_EXTENSION_UPDATE_PATHS.call(
-            name
+                name
         );
     }
 
@@ -1476,43 +1798,18 @@ public class Tables {
      * Get <code>pg_catalog.pg_extension_update_paths</code> as a table.
      */
     public static PgExtensionUpdatePaths PG_EXTENSION_UPDATE_PATHS(
-          Field<String> name
+            Field<String> name
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgExtensionUpdatePaths.PG_EXTENSION_UPDATE_PATHS.call(
-            name
+                name
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_file_settings</code>.
-     */
-    public static final PgFileSettings PG_FILE_SETTINGS = PgFileSettings.PG_FILE_SETTINGS;
-
-    /**
-     * The table <code>pg_catalog.pg_foreign_data_wrapper</code>.
-     */
-    public static final PgForeignDataWrapper PG_FOREIGN_DATA_WRAPPER = PgForeignDataWrapper.PG_FOREIGN_DATA_WRAPPER;
-
-    /**
-     * The table <code>pg_catalog.pg_foreign_server</code>.
-     */
-    public static final PgForeignServer PG_FOREIGN_SERVER = PgForeignServer.PG_FOREIGN_SERVER;
-
-    /**
-     * The table <code>pg_catalog.pg_foreign_table</code>.
-     */
-    public static final PgForeignTable PG_FOREIGN_TABLE = PgForeignTable.PG_FOREIGN_TABLE;
-
-    /**
-     * The table <code>pg_catalog.pg_get_backend_memory_contexts</code>.
-     */
-    public static final PgGetBackendMemoryContexts PG_GET_BACKEND_MEMORY_CONTEXTS = PgGetBackendMemoryContexts.PG_GET_BACKEND_MEMORY_CONTEXTS;
 
     /**
      * Call <code>pg_catalog.pg_get_backend_memory_contexts</code>.
      */
     public static Result<PgGetBackendMemoryContextsRecord> PG_GET_BACKEND_MEMORY_CONTEXTS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgGetBackendMemoryContexts.PG_GET_BACKEND_MEMORY_CONTEXTS.call(
         )).fetch();
@@ -1527,15 +1824,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_get_catalog_foreign_keys</code>.
-     */
-    public static final PgGetCatalogForeignKeys PG_GET_CATALOG_FOREIGN_KEYS = PgGetCatalogForeignKeys.PG_GET_CATALOG_FOREIGN_KEYS;
-
-    /**
      * Call <code>pg_catalog.pg_get_catalog_foreign_keys</code>.
      */
     public static Result<PgGetCatalogForeignKeysRecord> PG_GET_CATALOG_FOREIGN_KEYS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgGetCatalogForeignKeys.PG_GET_CATALOG_FOREIGN_KEYS.call(
         )).fetch();
@@ -1550,15 +1842,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_get_keywords</code>.
-     */
-    public static final PgGetKeywords PG_GET_KEYWORDS = PgGetKeywords.PG_GET_KEYWORDS;
-
-    /**
      * Call <code>pg_catalog.pg_get_keywords</code>.
      */
     public static Result<PgGetKeywordsRecord> PG_GET_KEYWORDS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgGetKeywords.PG_GET_KEYWORDS.call(
         )).fetch();
@@ -1573,19 +1860,14 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_get_multixact_members</code>.
-     */
-    public static final PgGetMultixactMembers PG_GET_MULTIXACT_MEMBERS = PgGetMultixactMembers.PG_GET_MULTIXACT_MEMBERS;
-
-    /**
      * Call <code>pg_catalog.pg_get_multixact_members</code>.
      */
     public static Result<PgGetMultixactMembersRecord> PG_GET_MULTIXACT_MEMBERS(
-          Configuration configuration
-        , Long multixid
+            Configuration configuration
+            , Long multixid
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgGetMultixactMembers.PG_GET_MULTIXACT_MEMBERS.call(
-              multixid
+                multixid
         )).fetch();
     }
 
@@ -1593,10 +1875,10 @@ public class Tables {
      * Get <code>pg_catalog.pg_get_multixact_members</code> as a table.
      */
     public static PgGetMultixactMembers PG_GET_MULTIXACT_MEMBERS(
-          Long multixid
+            Long multixid
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgGetMultixactMembers.PG_GET_MULTIXACT_MEMBERS.call(
-            multixid
+                multixid
         );
     }
 
@@ -1604,27 +1886,22 @@ public class Tables {
      * Get <code>pg_catalog.pg_get_multixact_members</code> as a table.
      */
     public static PgGetMultixactMembers PG_GET_MULTIXACT_MEMBERS(
-          Field<Long> multixid
+            Field<Long> multixid
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgGetMultixactMembers.PG_GET_MULTIXACT_MEMBERS.call(
-            multixid
+                multixid
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_get_publication_tables</code>.
-     */
-    public static final PgGetPublicationTables PG_GET_PUBLICATION_TABLES = PgGetPublicationTables.PG_GET_PUBLICATION_TABLES;
 
     /**
      * Call <code>pg_catalog.pg_get_publication_tables</code>.
      */
     public static Result<PgGetPublicationTablesRecord> PG_GET_PUBLICATION_TABLES(
-          Configuration configuration
-        , String[] pubname
+            Configuration configuration
+            , String[] pubname
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgGetPublicationTables.PG_GET_PUBLICATION_TABLES.call(
-              pubname
+                pubname
         )).fetch();
     }
 
@@ -1632,10 +1909,10 @@ public class Tables {
      * Get <code>pg_catalog.pg_get_publication_tables</code> as a table.
      */
     public static PgGetPublicationTables PG_GET_PUBLICATION_TABLES(
-          String[] pubname
+            String[] pubname
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgGetPublicationTables.PG_GET_PUBLICATION_TABLES.call(
-            pubname
+                pubname
         );
     }
 
@@ -1643,23 +1920,18 @@ public class Tables {
      * Get <code>pg_catalog.pg_get_publication_tables</code> as a table.
      */
     public static PgGetPublicationTables PG_GET_PUBLICATION_TABLES(
-          Field<String[]> pubname
+            Field<String[]> pubname
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgGetPublicationTables.PG_GET_PUBLICATION_TABLES.call(
-            pubname
+                pubname
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_get_replication_slots</code>.
-     */
-    public static final PgGetReplicationSlots PG_GET_REPLICATION_SLOTS = PgGetReplicationSlots.PG_GET_REPLICATION_SLOTS;
 
     /**
      * Call <code>pg_catalog.pg_get_replication_slots</code>.
      */
     public static Result<PgGetReplicationSlotsRecord> PG_GET_REPLICATION_SLOTS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgGetReplicationSlots.PG_GET_REPLICATION_SLOTS.call(
         )).fetch();
@@ -1674,15 +1946,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_get_shmem_allocations</code>.
-     */
-    public static final PgGetShmemAllocations PG_GET_SHMEM_ALLOCATIONS = PgGetShmemAllocations.PG_GET_SHMEM_ALLOCATIONS;
-
-    /**
      * Call <code>pg_catalog.pg_get_shmem_allocations</code>.
      */
     public static Result<PgGetShmemAllocationsRecord> PG_GET_SHMEM_ALLOCATIONS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgGetShmemAllocations.PG_GET_SHMEM_ALLOCATIONS.call(
         )).fetch();
@@ -1697,15 +1964,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_get_wait_events</code>.
-     */
-    public static final PgGetWaitEvents PG_GET_WAIT_EVENTS = PgGetWaitEvents.PG_GET_WAIT_EVENTS;
-
-    /**
      * Call <code>pg_catalog.pg_get_wait_events</code>.
      */
     public static Result<PgGetWaitEventsRecord> PG_GET_WAIT_EVENTS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgGetWaitEvents.PG_GET_WAIT_EVENTS.call(
         )).fetch();
@@ -1720,15 +1982,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_get_wal_resource_managers</code>.
-     */
-    public static final PgGetWalResourceManagers PG_GET_WAL_RESOURCE_MANAGERS = PgGetWalResourceManagers.PG_GET_WAL_RESOURCE_MANAGERS;
-
-    /**
      * Call <code>pg_catalog.pg_get_wal_resource_managers</code>.
      */
     public static Result<PgGetWalResourceManagersRecord> PG_GET_WAL_RESOURCE_MANAGERS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgGetWalResourceManagers.PG_GET_WAL_RESOURCE_MANAGERS.call(
         )).fetch();
@@ -1743,20 +2000,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_group</code>.
-     */
-    public static final PgGroup PG_GROUP = PgGroup.PG_GROUP;
-
-    /**
-     * The table <code>pg_catalog.pg_hba_file_rules</code>.
-     */
-    public static final PgHbaFileRules PG_HBA_FILE_RULES = PgHbaFileRules.PG_HBA_FILE_RULES;
-
-    /**
      * Call <code>pg_catalog.pg_hba_file_rules</code>.
      */
     public static Result<PgHbaFileRulesRecord> PG_HBA_FILE_RULES(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgHbaFileRules.PG_HBA_FILE_RULES.call(
         )).fetch();
@@ -1771,55 +2018,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_ident_file_mappings</code>.
-     */
-    public static final PgIdentFileMappings PG_IDENT_FILE_MAPPINGS = PgIdentFileMappings.PG_IDENT_FILE_MAPPINGS;
-
-    /**
-     * The table <code>pg_catalog.pg_index</code>.
-     */
-    public static final PgIndex PG_INDEX = PgIndex.PG_INDEX;
-
-    /**
-     * The table <code>pg_catalog.pg_indexes</code>.
-     */
-    public static final PgIndexes PG_INDEXES = PgIndexes.PG_INDEXES;
-
-    /**
-     * The table <code>pg_catalog.pg_inherits</code>.
-     */
-    public static final PgInherits PG_INHERITS = PgInherits.PG_INHERITS;
-
-    /**
-     * The table <code>pg_catalog.pg_init_privs</code>.
-     */
-    public static final PgInitPrivs PG_INIT_PRIVS = PgInitPrivs.PG_INIT_PRIVS;
-
-    /**
-     * The table <code>pg_catalog.pg_language</code>.
-     */
-    public static final PgLanguage PG_LANGUAGE = PgLanguage.PG_LANGUAGE;
-
-    /**
-     * The table <code>pg_catalog.pg_largeobject</code>.
-     */
-    public static final PgLargeobject PG_LARGEOBJECT = PgLargeobject.PG_LARGEOBJECT;
-
-    /**
-     * The table <code>pg_catalog.pg_largeobject_metadata</code>.
-     */
-    public static final PgLargeobjectMetadata PG_LARGEOBJECT_METADATA = PgLargeobjectMetadata.PG_LARGEOBJECT_METADATA;
-
-    /**
-     * The table <code>pg_catalog.pg_listening_channels</code>.
-     */
-    public static final PgListeningChannels PG_LISTENING_CHANNELS = PgListeningChannels.PG_LISTENING_CHANNELS;
-
-    /**
      * Call <code>pg_catalog.pg_listening_channels</code>.
      */
     public static Result<PgListeningChannelsRecord> PG_LISTENING_CHANNELS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgListeningChannels.PG_LISTENING_CHANNELS.call(
         )).fetch();
@@ -1834,15 +2036,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_lock_status</code>.
-     */
-    public static final PgLockStatus PG_LOCK_STATUS = PgLockStatus.PG_LOCK_STATUS;
-
-    /**
      * Call <code>pg_catalog.pg_lock_status</code>.
      */
     public static Result<PgLockStatusRecord> PG_LOCK_STATUS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLockStatus.PG_LOCK_STATUS.call(
         )).fetch();
@@ -1857,16 +2054,6 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_locks</code>.
-     */
-    public static final PgLocks PG_LOCKS = PgLocks.PG_LOCKS;
-
-    /**
-     * The table <code>pg_catalog.pg_logical_slot_get_binary_changes</code>.
-     */
-    public static final PgLogicalSlotGetBinaryChanges PG_LOGICAL_SLOT_GET_BINARY_CHANGES = PgLogicalSlotGetBinaryChanges.PG_LOGICAL_SLOT_GET_BINARY_CHANGES;
-
-    /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
      * If this is a qualified, user-defined type, it may have been excluded from
      * code generation. If this is a built-in type, you can define an explicit
@@ -1876,17 +2063,17 @@ public class Tables {
      */
     @Deprecated
     public static Result<PgLogicalSlotGetBinaryChangesRecord> PG_LOGICAL_SLOT_GET_BINARY_CHANGES(
-          Configuration configuration
-        , String slotName
-        , Object uptoLsn
-        , Integer uptoNchanges
-        , String[] options
+            Configuration configuration
+            , String slotName
+            , Object uptoLsn
+            , Integer uptoNchanges
+            , String[] options
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotGetBinaryChanges.PG_LOGICAL_SLOT_GET_BINARY_CHANGES.call(
-              slotName
-            , uptoLsn
-            , uptoNchanges
-            , options
+                slotName
+                , uptoLsn
+                , uptoNchanges
+                , options
         )).fetch();
     }
 
@@ -1900,16 +2087,16 @@ public class Tables {
      */
     @Deprecated
     public static PgLogicalSlotGetBinaryChanges PG_LOGICAL_SLOT_GET_BINARY_CHANGES(
-          String slotName
-        , Object uptoLsn
-        , Integer uptoNchanges
-        , String[] options
+            String slotName
+            , Object uptoLsn
+            , Integer uptoNchanges
+            , String[] options
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotGetBinaryChanges.PG_LOGICAL_SLOT_GET_BINARY_CHANGES.call(
-            slotName,
-            uptoLsn,
-            uptoNchanges,
-            options
+                slotName,
+                uptoLsn,
+                uptoNchanges,
+                options
         );
     }
 
@@ -1923,23 +2110,18 @@ public class Tables {
      */
     @Deprecated
     public static PgLogicalSlotGetBinaryChanges PG_LOGICAL_SLOT_GET_BINARY_CHANGES(
-          Field<String> slotName
-        , Field<Object> uptoLsn
-        , Field<Integer> uptoNchanges
-        , Field<String[]> options
+            Field<String> slotName
+            , Field<Object> uptoLsn
+            , Field<Integer> uptoNchanges
+            , Field<String[]> options
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotGetBinaryChanges.PG_LOGICAL_SLOT_GET_BINARY_CHANGES.call(
-            slotName,
-            uptoLsn,
-            uptoNchanges,
-            options
+                slotName,
+                uptoLsn,
+                uptoNchanges,
+                options
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_logical_slot_get_changes</code>.
-     */
-    public static final PgLogicalSlotGetChanges PG_LOGICAL_SLOT_GET_CHANGES = PgLogicalSlotGetChanges.PG_LOGICAL_SLOT_GET_CHANGES;
 
     /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
@@ -1951,17 +2133,17 @@ public class Tables {
      */
     @Deprecated
     public static Result<PgLogicalSlotGetChangesRecord> PG_LOGICAL_SLOT_GET_CHANGES(
-          Configuration configuration
-        , String slotName
-        , Object uptoLsn
-        , Integer uptoNchanges
-        , String[] options
+            Configuration configuration
+            , String slotName
+            , Object uptoLsn
+            , Integer uptoNchanges
+            , String[] options
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotGetChanges.PG_LOGICAL_SLOT_GET_CHANGES.call(
-              slotName
-            , uptoLsn
-            , uptoNchanges
-            , options
+                slotName
+                , uptoLsn
+                , uptoNchanges
+                , options
         )).fetch();
     }
 
@@ -1975,16 +2157,16 @@ public class Tables {
      */
     @Deprecated
     public static PgLogicalSlotGetChanges PG_LOGICAL_SLOT_GET_CHANGES(
-          String slotName
-        , Object uptoLsn
-        , Integer uptoNchanges
-        , String[] options
+            String slotName
+            , Object uptoLsn
+            , Integer uptoNchanges
+            , String[] options
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotGetChanges.PG_LOGICAL_SLOT_GET_CHANGES.call(
-            slotName,
-            uptoLsn,
-            uptoNchanges,
-            options
+                slotName,
+                uptoLsn,
+                uptoNchanges,
+                options
         );
     }
 
@@ -1998,23 +2180,18 @@ public class Tables {
      */
     @Deprecated
     public static PgLogicalSlotGetChanges PG_LOGICAL_SLOT_GET_CHANGES(
-          Field<String> slotName
-        , Field<Object> uptoLsn
-        , Field<Integer> uptoNchanges
-        , Field<String[]> options
+            Field<String> slotName
+            , Field<Object> uptoLsn
+            , Field<Integer> uptoNchanges
+            , Field<String[]> options
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotGetChanges.PG_LOGICAL_SLOT_GET_CHANGES.call(
-            slotName,
-            uptoLsn,
-            uptoNchanges,
-            options
+                slotName,
+                uptoLsn,
+                uptoNchanges,
+                options
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_logical_slot_peek_binary_changes</code>.
-     */
-    public static final PgLogicalSlotPeekBinaryChanges PG_LOGICAL_SLOT_PEEK_BINARY_CHANGES = PgLogicalSlotPeekBinaryChanges.PG_LOGICAL_SLOT_PEEK_BINARY_CHANGES;
 
     /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
@@ -2026,17 +2203,17 @@ public class Tables {
      */
     @Deprecated
     public static Result<PgLogicalSlotPeekBinaryChangesRecord> PG_LOGICAL_SLOT_PEEK_BINARY_CHANGES(
-          Configuration configuration
-        , String slotName
-        , Object uptoLsn
-        , Integer uptoNchanges
-        , String[] options
+            Configuration configuration
+            , String slotName
+            , Object uptoLsn
+            , Integer uptoNchanges
+            , String[] options
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotPeekBinaryChanges.PG_LOGICAL_SLOT_PEEK_BINARY_CHANGES.call(
-              slotName
-            , uptoLsn
-            , uptoNchanges
-            , options
+                slotName
+                , uptoLsn
+                , uptoNchanges
+                , options
         )).fetch();
     }
 
@@ -2050,16 +2227,16 @@ public class Tables {
      */
     @Deprecated
     public static PgLogicalSlotPeekBinaryChanges PG_LOGICAL_SLOT_PEEK_BINARY_CHANGES(
-          String slotName
-        , Object uptoLsn
-        , Integer uptoNchanges
-        , String[] options
+            String slotName
+            , Object uptoLsn
+            , Integer uptoNchanges
+            , String[] options
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotPeekBinaryChanges.PG_LOGICAL_SLOT_PEEK_BINARY_CHANGES.call(
-            slotName,
-            uptoLsn,
-            uptoNchanges,
-            options
+                slotName,
+                uptoLsn,
+                uptoNchanges,
+                options
         );
     }
 
@@ -2073,23 +2250,18 @@ public class Tables {
      */
     @Deprecated
     public static PgLogicalSlotPeekBinaryChanges PG_LOGICAL_SLOT_PEEK_BINARY_CHANGES(
-          Field<String> slotName
-        , Field<Object> uptoLsn
-        , Field<Integer> uptoNchanges
-        , Field<String[]> options
+            Field<String> slotName
+            , Field<Object> uptoLsn
+            , Field<Integer> uptoNchanges
+            , Field<String[]> options
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotPeekBinaryChanges.PG_LOGICAL_SLOT_PEEK_BINARY_CHANGES.call(
-            slotName,
-            uptoLsn,
-            uptoNchanges,
-            options
+                slotName,
+                uptoLsn,
+                uptoNchanges,
+                options
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_logical_slot_peek_changes</code>.
-     */
-    public static final PgLogicalSlotPeekChanges PG_LOGICAL_SLOT_PEEK_CHANGES = PgLogicalSlotPeekChanges.PG_LOGICAL_SLOT_PEEK_CHANGES;
 
     /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
@@ -2101,17 +2273,17 @@ public class Tables {
      */
     @Deprecated
     public static Result<PgLogicalSlotPeekChangesRecord> PG_LOGICAL_SLOT_PEEK_CHANGES(
-          Configuration configuration
-        , String slotName
-        , Object uptoLsn
-        , Integer uptoNchanges
-        , String[] options
+            Configuration configuration
+            , String slotName
+            , Object uptoLsn
+            , Integer uptoNchanges
+            , String[] options
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotPeekChanges.PG_LOGICAL_SLOT_PEEK_CHANGES.call(
-              slotName
-            , uptoLsn
-            , uptoNchanges
-            , options
+                slotName
+                , uptoLsn
+                , uptoNchanges
+                , options
         )).fetch();
     }
 
@@ -2125,16 +2297,16 @@ public class Tables {
      */
     @Deprecated
     public static PgLogicalSlotPeekChanges PG_LOGICAL_SLOT_PEEK_CHANGES(
-          String slotName
-        , Object uptoLsn
-        , Integer uptoNchanges
-        , String[] options
+            String slotName
+            , Object uptoLsn
+            , Integer uptoNchanges
+            , String[] options
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotPeekChanges.PG_LOGICAL_SLOT_PEEK_CHANGES.call(
-            slotName,
-            uptoLsn,
-            uptoNchanges,
-            options
+                slotName,
+                uptoLsn,
+                uptoNchanges,
+                options
         );
     }
 
@@ -2148,29 +2320,24 @@ public class Tables {
      */
     @Deprecated
     public static PgLogicalSlotPeekChanges PG_LOGICAL_SLOT_PEEK_CHANGES(
-          Field<String> slotName
-        , Field<Object> uptoLsn
-        , Field<Integer> uptoNchanges
-        , Field<String[]> options
+            Field<String> slotName
+            , Field<Object> uptoLsn
+            , Field<Integer> uptoNchanges
+            , Field<String[]> options
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLogicalSlotPeekChanges.PG_LOGICAL_SLOT_PEEK_CHANGES.call(
-            slotName,
-            uptoLsn,
-            uptoNchanges,
-            options
+                slotName,
+                uptoLsn,
+                uptoNchanges,
+                options
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_ls_archive_statusdir</code>.
-     */
-    public static final PgLsArchiveStatusdir PG_LS_ARCHIVE_STATUSDIR = PgLsArchiveStatusdir.PG_LS_ARCHIVE_STATUSDIR;
 
     /**
      * Call <code>pg_catalog.pg_ls_archive_statusdir</code>.
      */
     public static Result<PgLsArchiveStatusdirRecord> PG_LS_ARCHIVE_STATUSDIR(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLsArchiveStatusdir.PG_LS_ARCHIVE_STATUSDIR.call(
         )).fetch();
@@ -2185,23 +2352,18 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_ls_dir</code>.
-     */
-    public static final PgLsDir PG_LS_DIR = PgLsDir.PG_LS_DIR;
-
-    /**
      * Call <code>pg_catalog.pg_ls_dir</code>.
      */
     public static Result<PgLsDirRecord> PG_LS_DIR(
-          Configuration configuration
-        , String __1
-        , Boolean __2
-        , Boolean __3
+            Configuration configuration
+            , String __1
+            , Boolean __2
+            , Boolean __3
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLsDir.PG_LS_DIR.call(
-              __1
-            , __2
-            , __3
+                __1
+                , __2
+                , __3
         )).fetch();
     }
 
@@ -2209,14 +2371,14 @@ public class Tables {
      * Get <code>pg_catalog.pg_ls_dir</code> as a table.
      */
     public static PgLsDir PG_LS_DIR(
-          String __1
-        , Boolean __2
-        , Boolean __3
+            String __1
+            , Boolean __2
+            , Boolean __3
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLsDir.PG_LS_DIR.call(
-            __1,
-            __2,
-            __3
+                __1,
+                __2,
+                __3
         );
     }
 
@@ -2224,27 +2386,22 @@ public class Tables {
      * Get <code>pg_catalog.pg_ls_dir</code> as a table.
      */
     public static PgLsDir PG_LS_DIR(
-          Field<String> __1
-        , Field<Boolean> __2
-        , Field<Boolean> __3
+            Field<String> __1
+            , Field<Boolean> __2
+            , Field<Boolean> __3
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLsDir.PG_LS_DIR.call(
-            __1,
-            __2,
-            __3
+                __1,
+                __2,
+                __3
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_ls_logdir</code>.
-     */
-    public static final PgLsLogdir PG_LS_LOGDIR = PgLsLogdir.PG_LS_LOGDIR;
 
     /**
      * Call <code>pg_catalog.pg_ls_logdir</code>.
      */
     public static Result<PgLsLogdirRecord> PG_LS_LOGDIR(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLsLogdir.PG_LS_LOGDIR.call(
         )).fetch();
@@ -2259,15 +2416,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_ls_logicalmapdir</code>.
-     */
-    public static final PgLsLogicalmapdir PG_LS_LOGICALMAPDIR = PgLsLogicalmapdir.PG_LS_LOGICALMAPDIR;
-
-    /**
      * Call <code>pg_catalog.pg_ls_logicalmapdir</code>.
      */
     public static Result<PgLsLogicalmapdirRecord> PG_LS_LOGICALMAPDIR(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLsLogicalmapdir.PG_LS_LOGICALMAPDIR.call(
         )).fetch();
@@ -2282,15 +2434,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_ls_logicalsnapdir</code>.
-     */
-    public static final PgLsLogicalsnapdir PG_LS_LOGICALSNAPDIR = PgLsLogicalsnapdir.PG_LS_LOGICALSNAPDIR;
-
-    /**
      * Call <code>pg_catalog.pg_ls_logicalsnapdir</code>.
      */
     public static Result<PgLsLogicalsnapdirRecord> PG_LS_LOGICALSNAPDIR(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLsLogicalsnapdir.PG_LS_LOGICALSNAPDIR.call(
         )).fetch();
@@ -2305,19 +2452,14 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_ls_replslotdir</code>.
-     */
-    public static final PgLsReplslotdir PG_LS_REPLSLOTDIR = PgLsReplslotdir.PG_LS_REPLSLOTDIR;
-
-    /**
      * Call <code>pg_catalog.pg_ls_replslotdir</code>.
      */
     public static Result<PgLsReplslotdirRecord> PG_LS_REPLSLOTDIR(
-          Configuration configuration
-        , String slotName
+            Configuration configuration
+            , String slotName
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLsReplslotdir.PG_LS_REPLSLOTDIR.call(
-              slotName
+                slotName
         )).fetch();
     }
 
@@ -2325,10 +2467,10 @@ public class Tables {
      * Get <code>pg_catalog.pg_ls_replslotdir</code> as a table.
      */
     public static PgLsReplslotdir PG_LS_REPLSLOTDIR(
-          String slotName
+            String slotName
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLsReplslotdir.PG_LS_REPLSLOTDIR.call(
-            slotName
+                slotName
         );
     }
 
@@ -2336,27 +2478,22 @@ public class Tables {
      * Get <code>pg_catalog.pg_ls_replslotdir</code> as a table.
      */
     public static PgLsReplslotdir PG_LS_REPLSLOTDIR(
-          Field<String> slotName
+            Field<String> slotName
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLsReplslotdir.PG_LS_REPLSLOTDIR.call(
-            slotName
+                slotName
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_ls_tmpdir</code>.
-     */
-    public static final PgLsTmpdir PG_LS_TMPDIR = PgLsTmpdir.PG_LS_TMPDIR;
 
     /**
      * Call <code>pg_catalog.pg_ls_tmpdir</code>.
      */
     public static Result<PgLsTmpdirRecord> PG_LS_TMPDIR(
-          Configuration configuration
-        , Long tablespace
+            Configuration configuration
+            , Long tablespace
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLsTmpdir.PG_LS_TMPDIR.call(
-              tablespace
+                tablespace
         )).fetch();
     }
 
@@ -2364,10 +2501,10 @@ public class Tables {
      * Get <code>pg_catalog.pg_ls_tmpdir</code> as a table.
      */
     public static PgLsTmpdir PG_LS_TMPDIR(
-          Long tablespace
+            Long tablespace
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLsTmpdir.PG_LS_TMPDIR.call(
-            tablespace
+                tablespace
         );
     }
 
@@ -2375,23 +2512,18 @@ public class Tables {
      * Get <code>pg_catalog.pg_ls_tmpdir</code> as a table.
      */
     public static PgLsTmpdir PG_LS_TMPDIR(
-          Field<Long> tablespace
+            Field<Long> tablespace
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgLsTmpdir.PG_LS_TMPDIR.call(
-            tablespace
+                tablespace
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_ls_waldir</code>.
-     */
-    public static final PgLsWaldir PG_LS_WALDIR = PgLsWaldir.PG_LS_WALDIR;
 
     /**
      * Call <code>pg_catalog.pg_ls_waldir</code>.
      */
     public static Result<PgLsWaldirRecord> PG_LS_WALDIR(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgLsWaldir.PG_LS_WALDIR.call(
         )).fetch();
@@ -2406,16 +2538,6 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_matviews</code>.
-     */
-    public static final PgMatviews PG_MATVIEWS = PgMatviews.PG_MATVIEWS;
-
-    /**
-     * The table <code>pg_catalog.pg_mcv_list_items</code>.
-     */
-    public static final PgMcvListItems PG_MCV_LIST_ITEMS = PgMcvListItems.PG_MCV_LIST_ITEMS;
-
-    /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
      * If this is a qualified, user-defined type, it may have been excluded from
      * code generation. If this is a built-in type, you can define an explicit
@@ -2425,11 +2547,11 @@ public class Tables {
      */
     @Deprecated
     public static Result<PgMcvListItemsRecord> PG_MCV_LIST_ITEMS(
-          Configuration configuration
-        , Object mcvList
+            Configuration configuration
+            , Object mcvList
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgMcvListItems.PG_MCV_LIST_ITEMS.call(
-              mcvList
+                mcvList
         )).fetch();
     }
 
@@ -2443,10 +2565,10 @@ public class Tables {
      */
     @Deprecated
     public static PgMcvListItems PG_MCV_LIST_ITEMS(
-          Object mcvList
+            Object mcvList
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgMcvListItems.PG_MCV_LIST_ITEMS.call(
-            mcvList
+                mcvList
         );
     }
 
@@ -2460,47 +2582,22 @@ public class Tables {
      */
     @Deprecated
     public static PgMcvListItems PG_MCV_LIST_ITEMS(
-          Field<Object> mcvList
+            Field<Object> mcvList
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgMcvListItems.PG_MCV_LIST_ITEMS.call(
-            mcvList
+                mcvList
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_namespace</code>.
-     */
-    public static final PgNamespace PG_NAMESPACE = PgNamespace.PG_NAMESPACE;
-
-    /**
-     * The table <code>pg_catalog.pg_opclass</code>.
-     */
-    public static final PgOpclass PG_OPCLASS = PgOpclass.PG_OPCLASS;
-
-    /**
-     * The table <code>pg_catalog.pg_operator</code>.
-     */
-    public static final PgOperator PG_OPERATOR = PgOperator.PG_OPERATOR;
-
-    /**
-     * The table <code>pg_catalog.pg_opfamily</code>.
-     */
-    public static final PgOpfamily PG_OPFAMILY = PgOpfamily.PG_OPFAMILY;
-
-    /**
-     * The table <code>pg_catalog.pg_options_to_table</code>.
-     */
-    public static final PgOptionsToTable PG_OPTIONS_TO_TABLE = PgOptionsToTable.PG_OPTIONS_TO_TABLE;
 
     /**
      * Call <code>pg_catalog.pg_options_to_table</code>.
      */
     public static Result<PgOptionsToTableRecord> PG_OPTIONS_TO_TABLE(
-          Configuration configuration
-        , String[] optionsArray
+            Configuration configuration
+            , String[] optionsArray
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgOptionsToTable.PG_OPTIONS_TO_TABLE.call(
-              optionsArray
+                optionsArray
         )).fetch();
     }
 
@@ -2508,10 +2605,10 @@ public class Tables {
      * Get <code>pg_catalog.pg_options_to_table</code> as a table.
      */
     public static PgOptionsToTable PG_OPTIONS_TO_TABLE(
-          String[] optionsArray
+            String[] optionsArray
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgOptionsToTable.PG_OPTIONS_TO_TABLE.call(
-            optionsArray
+                optionsArray
         );
     }
 
@@ -2519,22 +2616,12 @@ public class Tables {
      * Get <code>pg_catalog.pg_options_to_table</code> as a table.
      */
     public static PgOptionsToTable PG_OPTIONS_TO_TABLE(
-          Field<String[]> optionsArray
+            Field<String[]> optionsArray
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgOptionsToTable.PG_OPTIONS_TO_TABLE.call(
-            optionsArray
+                optionsArray
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_parameter_acl</code>.
-     */
-    public static final PgParameterAcl PG_PARAMETER_ACL = PgParameterAcl.PG_PARAMETER_ACL;
-
-    /**
-     * The table <code>pg_catalog.pg_partition_ancestors</code>.
-     */
-    public static final PgPartitionAncestors PG_PARTITION_ANCESTORS = PgPartitionAncestors.PG_PARTITION_ANCESTORS;
 
     /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
@@ -2546,11 +2633,11 @@ public class Tables {
      */
     @Deprecated
     public static Result<PgPartitionAncestorsRecord> PG_PARTITION_ANCESTORS(
-          Configuration configuration
-        , Object partitionid
+            Configuration configuration
+            , Object partitionid
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgPartitionAncestors.PG_PARTITION_ANCESTORS.call(
-              partitionid
+                partitionid
         )).fetch();
     }
 
@@ -2564,10 +2651,10 @@ public class Tables {
      */
     @Deprecated
     public static PgPartitionAncestors PG_PARTITION_ANCESTORS(
-          Object partitionid
+            Object partitionid
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgPartitionAncestors.PG_PARTITION_ANCESTORS.call(
-            partitionid
+                partitionid
         );
     }
 
@@ -2581,17 +2668,12 @@ public class Tables {
      */
     @Deprecated
     public static PgPartitionAncestors PG_PARTITION_ANCESTORS(
-          Field<Object> partitionid
+            Field<Object> partitionid
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgPartitionAncestors.PG_PARTITION_ANCESTORS.call(
-            partitionid
+                partitionid
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_partition_tree</code>.
-     */
-    public static final PgPartitionTree PG_PARTITION_TREE = PgPartitionTree.PG_PARTITION_TREE;
 
     /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
@@ -2603,11 +2685,11 @@ public class Tables {
      */
     @Deprecated
     public static Result<PgPartitionTreeRecord> PG_PARTITION_TREE(
-          Configuration configuration
-        , Object rootrelid
+            Configuration configuration
+            , Object rootrelid
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgPartitionTree.PG_PARTITION_TREE.call(
-              rootrelid
+                rootrelid
         )).fetch();
     }
 
@@ -2621,10 +2703,10 @@ public class Tables {
      */
     @Deprecated
     public static PgPartitionTree PG_PARTITION_TREE(
-          Object rootrelid
+            Object rootrelid
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgPartitionTree.PG_PARTITION_TREE.call(
-            rootrelid
+                rootrelid
         );
     }
 
@@ -2638,38 +2720,18 @@ public class Tables {
      */
     @Deprecated
     public static PgPartitionTree PG_PARTITION_TREE(
-          Field<Object> rootrelid
+            Field<Object> rootrelid
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgPartitionTree.PG_PARTITION_TREE.call(
-            rootrelid
+                rootrelid
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_partitioned_table</code>.
-     */
-    public static final PgPartitionedTable PG_PARTITIONED_TABLE = PgPartitionedTable.PG_PARTITIONED_TABLE;
-
-    /**
-     * The table <code>pg_catalog.pg_policies</code>.
-     */
-    public static final PgPolicies PG_POLICIES = PgPolicies.PG_POLICIES;
-
-    /**
-     * The table <code>pg_catalog.pg_policy</code>.
-     */
-    public static final PgPolicy PG_POLICY = PgPolicy.PG_POLICY;
-
-    /**
-     * The table <code>pg_catalog.pg_prepared_statement</code>.
-     */
-    public static final PgPreparedStatement PG_PREPARED_STATEMENT = PgPreparedStatement.PG_PREPARED_STATEMENT;
 
     /**
      * Call <code>pg_catalog.pg_prepared_statement</code>.
      */
     public static Result<PgPreparedStatementRecord> PG_PREPARED_STATEMENT(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgPreparedStatement.PG_PREPARED_STATEMENT.call(
         )).fetch();
@@ -2684,20 +2746,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_prepared_statements</code>.
-     */
-    public static final PgPreparedStatements PG_PREPARED_STATEMENTS = PgPreparedStatements.PG_PREPARED_STATEMENTS;
-
-    /**
-     * The table <code>pg_catalog.pg_prepared_xact</code>.
-     */
-    public static final PgPreparedXact PG_PREPARED_XACT = PgPreparedXact.PG_PREPARED_XACT;
-
-    /**
      * Call <code>pg_catalog.pg_prepared_xact</code>.
      */
     public static Result<PgPreparedXactRecord> PG_PREPARED_XACT(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgPreparedXact.PG_PREPARED_XACT.call(
         )).fetch();
@@ -2712,125 +2764,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_prepared_xacts</code>.
-     */
-    public static final PgPreparedXacts PG_PREPARED_XACTS = PgPreparedXacts.PG_PREPARED_XACTS;
-
-    /**
-     * The table <code>pg_catalog.pg_proc</code>.
-     */
-    public static final PgProc PG_PROC = PgProc.PG_PROC;
-
-    /**
-     * The table <code>pg_catalog.pg_publication</code>.
-     */
-    public static final PgPublication PG_PUBLICATION = PgPublication.PG_PUBLICATION;
-
-    /**
-     * The table <code>pg_catalog.pg_publication_namespace</code>.
-     */
-    public static final PgPublicationNamespace PG_PUBLICATION_NAMESPACE = PgPublicationNamespace.PG_PUBLICATION_NAMESPACE;
-
-    /**
-     * The table <code>pg_catalog.pg_publication_rel</code>.
-     */
-    public static final PgPublicationRel PG_PUBLICATION_REL = PgPublicationRel.PG_PUBLICATION_REL;
-
-    /**
-     * The table <code>pg_catalog.pg_publication_tables</code>.
-     */
-    public static final PgPublicationTables PG_PUBLICATION_TABLES = PgPublicationTables.PG_PUBLICATION_TABLES;
-
-    /**
-     * The table <code>pg_catalog.pg_range</code>.
-     */
-    public static final PgRange PG_RANGE = PgRange.PG_RANGE;
-
-    /**
-     * The table <code>pg_catalog.pg_replication_origin</code>.
-     */
-    public static final PgReplicationOrigin PG_REPLICATION_ORIGIN = PgReplicationOrigin.PG_REPLICATION_ORIGIN;
-
-    /**
-     * The table <code>pg_catalog.pg_replication_origin_status</code>.
-     */
-    public static final PgReplicationOriginStatus PG_REPLICATION_ORIGIN_STATUS = PgReplicationOriginStatus.PG_REPLICATION_ORIGIN_STATUS;
-
-    /**
-     * The table <code>pg_catalog.pg_replication_slots</code>.
-     */
-    public static final PgReplicationSlots PG_REPLICATION_SLOTS = PgReplicationSlots.PG_REPLICATION_SLOTS;
-
-    /**
-     * The table <code>pg_catalog.pg_rewrite</code>.
-     */
-    public static final PgRewrite PG_REWRITE = PgRewrite.PG_REWRITE;
-
-    /**
-     * The table <code>pg_catalog.pg_roles</code>.
-     */
-    public static final PgRoles PG_ROLES = PgRoles.PG_ROLES;
-
-    /**
-     * The table <code>pg_catalog.pg_rules</code>.
-     */
-    public static final PgRules PG_RULES = PgRules.PG_RULES;
-
-    /**
-     * The table <code>pg_catalog.pg_seclabel</code>.
-     */
-    public static final PgSeclabel PG_SECLABEL = PgSeclabel.PG_SECLABEL;
-
-    /**
-     * The table <code>pg_catalog.pg_seclabels</code>.
-     */
-    public static final PgSeclabels PG_SECLABELS = PgSeclabels.PG_SECLABELS;
-
-    /**
-     * The table <code>pg_catalog.pg_sequence</code>.
-     */
-    public static final PgSequence PG_SEQUENCE = PgSequence.PG_SEQUENCE;
-
-    /**
-     * The table <code>pg_catalog.pg_sequences</code>.
-     */
-    public static final PgSequences PG_SEQUENCES = PgSequences.PG_SEQUENCES;
-
-    /**
-     * The table <code>pg_catalog.pg_settings</code>.
-     */
-    public static final PgSettings PG_SETTINGS = PgSettings.PG_SETTINGS;
-
-    /**
-     * The table <code>pg_catalog.pg_shadow</code>.
-     */
-    public static final PgShadow PG_SHADOW = PgShadow.PG_SHADOW;
-
-    /**
-     * The table <code>pg_catalog.pg_shdepend</code>.
-     */
-    public static final PgShdepend PG_SHDEPEND = PgShdepend.PG_SHDEPEND;
-
-    /**
-     * The table <code>pg_catalog.pg_shdescription</code>.
-     */
-    public static final PgShdescription PG_SHDESCRIPTION = PgShdescription.PG_SHDESCRIPTION;
-
-    /**
-     * The table <code>pg_catalog.pg_shmem_allocations</code>.
-     */
-    public static final PgShmemAllocations PG_SHMEM_ALLOCATIONS = PgShmemAllocations.PG_SHMEM_ALLOCATIONS;
-
-    /**
-     * The table <code>pg_catalog.pg_show_all_file_settings</code>.
-     */
-    public static final PgShowAllFileSettings PG_SHOW_ALL_FILE_SETTINGS = PgShowAllFileSettings.PG_SHOW_ALL_FILE_SETTINGS;
-
-    /**
      * Call <code>pg_catalog.pg_show_all_file_settings</code>.
      */
     public static Result<PgShowAllFileSettingsRecord> PG_SHOW_ALL_FILE_SETTINGS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgShowAllFileSettings.PG_SHOW_ALL_FILE_SETTINGS.call(
         )).fetch();
@@ -2845,15 +2782,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_show_all_settings</code>.
-     */
-    public static final PgShowAllSettings PG_SHOW_ALL_SETTINGS = PgShowAllSettings.PG_SHOW_ALL_SETTINGS;
-
-    /**
      * Call <code>pg_catalog.pg_show_all_settings</code>.
      */
     public static Result<PgShowAllSettingsRecord> PG_SHOW_ALL_SETTINGS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgShowAllSettings.PG_SHOW_ALL_SETTINGS.call(
         )).fetch();
@@ -2868,15 +2800,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_show_replication_origin_status</code>.
-     */
-    public static final PgShowReplicationOriginStatus PG_SHOW_REPLICATION_ORIGIN_STATUS = PgShowReplicationOriginStatus.PG_SHOW_REPLICATION_ORIGIN_STATUS;
-
-    /**
      * Call <code>pg_catalog.pg_show_replication_origin_status</code>.
      */
     public static Result<PgShowReplicationOriginStatusRecord> PG_SHOW_REPLICATION_ORIGIN_STATUS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgShowReplicationOriginStatus.PG_SHOW_REPLICATION_ORIGIN_STATUS.call(
         )).fetch();
@@ -2891,16 +2818,6 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_shseclabel</code>.
-     */
-    public static final PgShseclabel PG_SHSECLABEL = PgShseclabel.PG_SHSECLABEL;
-
-    /**
-     * The table <code>pg_catalog.pg_snapshot_xip</code>.
-     */
-    public static final PgSnapshotXip PG_SNAPSHOT_XIP = PgSnapshotXip.PG_SNAPSHOT_XIP;
-
-    /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
      * If this is a qualified, user-defined type, it may have been excluded from
      * code generation. If this is a built-in type, you can define an explicit
@@ -2910,11 +2827,11 @@ public class Tables {
      */
     @Deprecated
     public static Result<PgSnapshotXipRecord> PG_SNAPSHOT_XIP(
-          Configuration configuration
-        , Object __1
+            Configuration configuration
+            , Object __1
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgSnapshotXip.PG_SNAPSHOT_XIP.call(
-              __1
+                __1
         )).fetch();
     }
 
@@ -2928,10 +2845,10 @@ public class Tables {
      */
     @Deprecated
     public static PgSnapshotXip PG_SNAPSHOT_XIP(
-          Object __1
+            Object __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgSnapshotXip.PG_SNAPSHOT_XIP.call(
-            __1
+                __1
         );
     }
 
@@ -2945,67 +2862,22 @@ public class Tables {
      */
     @Deprecated
     public static PgSnapshotXip PG_SNAPSHOT_XIP(
-          Field<Object> __1
+            Field<Object> __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgSnapshotXip.PG_SNAPSHOT_XIP.call(
-            __1
+                __1
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_stat_activity</code>.
-     */
-    public static final PgStatActivity PG_STAT_ACTIVITY = PgStatActivity.PG_STAT_ACTIVITY;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_all_indexes</code>.
-     */
-    public static final PgStatAllIndexes PG_STAT_ALL_INDEXES = PgStatAllIndexes.PG_STAT_ALL_INDEXES;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_all_tables</code>.
-     */
-    public static final PgStatAllTables PG_STAT_ALL_TABLES = PgStatAllTables.PG_STAT_ALL_TABLES;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_archiver</code>.
-     */
-    public static final PgStatArchiver PG_STAT_ARCHIVER = PgStatArchiver.PG_STAT_ARCHIVER;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_bgwriter</code>.
-     */
-    public static final PgStatBgwriter PG_STAT_BGWRITER = PgStatBgwriter.PG_STAT_BGWRITER;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_checkpointer</code>.
-     */
-    public static final PgStatCheckpointer PG_STAT_CHECKPOINTER = PgStatCheckpointer.PG_STAT_CHECKPOINTER;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_database</code>.
-     */
-    public static final PgStatDatabase PG_STAT_DATABASE = PgStatDatabase.PG_STAT_DATABASE;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_database_conflicts</code>.
-     */
-    public static final PgStatDatabaseConflicts PG_STAT_DATABASE_CONFLICTS = PgStatDatabaseConflicts.PG_STAT_DATABASE_CONFLICTS;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_get_activity</code>.
-     */
-    public static final PgStatGetActivity PG_STAT_GET_ACTIVITY = PgStatGetActivity.PG_STAT_GET_ACTIVITY;
 
     /**
      * Call <code>pg_catalog.pg_stat_get_activity</code>.
      */
     public static Result<PgStatGetActivityRecord> PG_STAT_GET_ACTIVITY(
-          Configuration configuration
-        , Integer pid
+            Configuration configuration
+            , Integer pid
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetActivity.PG_STAT_GET_ACTIVITY.call(
-              pid
+                pid
         )).fetch();
     }
 
@@ -3013,10 +2885,10 @@ public class Tables {
      * Get <code>pg_catalog.pg_stat_get_activity</code> as a table.
      */
     public static PgStatGetActivity PG_STAT_GET_ACTIVITY(
-          Integer pid
+            Integer pid
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetActivity.PG_STAT_GET_ACTIVITY.call(
-            pid
+                pid
         );
     }
 
@@ -3024,23 +2896,18 @@ public class Tables {
      * Get <code>pg_catalog.pg_stat_get_activity</code> as a table.
      */
     public static PgStatGetActivity PG_STAT_GET_ACTIVITY(
-          Field<Integer> pid
+            Field<Integer> pid
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetActivity.PG_STAT_GET_ACTIVITY.call(
-            pid
+                pid
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_stat_get_backend_idset</code>.
-     */
-    public static final PgStatGetBackendIdset PG_STAT_GET_BACKEND_IDSET = PgStatGetBackendIdset.PG_STAT_GET_BACKEND_IDSET;
 
     /**
      * Call <code>pg_catalog.pg_stat_get_backend_idset</code>.
      */
     public static Result<PgStatGetBackendIdsetRecord> PG_STAT_GET_BACKEND_IDSET(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetBackendIdset.PG_STAT_GET_BACKEND_IDSET.call(
         )).fetch();
@@ -3055,15 +2922,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_stat_get_io</code>.
-     */
-    public static final PgStatGetIo PG_STAT_GET_IO = PgStatGetIo.PG_STAT_GET_IO;
-
-    /**
      * Call <code>pg_catalog.pg_stat_get_io</code>.
      */
     public static Result<PgStatGetIoRecord> PG_STAT_GET_IO(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetIo.PG_STAT_GET_IO.call(
         )).fetch();
@@ -3078,19 +2940,14 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_stat_get_progress_info</code>.
-     */
-    public static final PgStatGetProgressInfo PG_STAT_GET_PROGRESS_INFO = PgStatGetProgressInfo.PG_STAT_GET_PROGRESS_INFO;
-
-    /**
      * Call <code>pg_catalog.pg_stat_get_progress_info</code>.
      */
     public static Result<PgStatGetProgressInfoRecord> PG_STAT_GET_PROGRESS_INFO(
-          Configuration configuration
-        , String cmdtype
+            Configuration configuration
+            , String cmdtype
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetProgressInfo.PG_STAT_GET_PROGRESS_INFO.call(
-              cmdtype
+                cmdtype
         )).fetch();
     }
 
@@ -3098,10 +2955,10 @@ public class Tables {
      * Get <code>pg_catalog.pg_stat_get_progress_info</code> as a table.
      */
     public static PgStatGetProgressInfo PG_STAT_GET_PROGRESS_INFO(
-          String cmdtype
+            String cmdtype
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetProgressInfo.PG_STAT_GET_PROGRESS_INFO.call(
-            cmdtype
+                cmdtype
         );
     }
 
@@ -3109,23 +2966,18 @@ public class Tables {
      * Get <code>pg_catalog.pg_stat_get_progress_info</code> as a table.
      */
     public static PgStatGetProgressInfo PG_STAT_GET_PROGRESS_INFO(
-          Field<String> cmdtype
+            Field<String> cmdtype
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetProgressInfo.PG_STAT_GET_PROGRESS_INFO.call(
-            cmdtype
+                cmdtype
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_stat_get_recovery_prefetch</code>.
-     */
-    public static final PgStatGetRecoveryPrefetch PG_STAT_GET_RECOVERY_PREFETCH = PgStatGetRecoveryPrefetch.PG_STAT_GET_RECOVERY_PREFETCH;
 
     /**
      * Call <code>pg_catalog.pg_stat_get_recovery_prefetch</code>.
      */
     public static Result<PgStatGetRecoveryPrefetchRecord> PG_STAT_GET_RECOVERY_PREFETCH(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetRecoveryPrefetch.PG_STAT_GET_RECOVERY_PREFETCH.call(
         )).fetch();
@@ -3140,15 +2992,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_stat_get_slru</code>.
-     */
-    public static final PgStatGetSlru PG_STAT_GET_SLRU = PgStatGetSlru.PG_STAT_GET_SLRU;
-
-    /**
      * Call <code>pg_catalog.pg_stat_get_slru</code>.
      */
     public static Result<PgStatGetSlruRecord> PG_STAT_GET_SLRU(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetSlru.PG_STAT_GET_SLRU.call(
         )).fetch();
@@ -3163,19 +3010,14 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_stat_get_subscription</code>.
-     */
-    public static final PgStatGetSubscription PG_STAT_GET_SUBSCRIPTION = PgStatGetSubscription.PG_STAT_GET_SUBSCRIPTION;
-
-    /**
      * Call <code>pg_catalog.pg_stat_get_subscription</code>.
      */
     public static Result<PgStatGetSubscriptionRecord> PG_STAT_GET_SUBSCRIPTION(
-          Configuration configuration
-        , Long subid
+            Configuration configuration
+            , Long subid
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetSubscription.PG_STAT_GET_SUBSCRIPTION.call(
-              subid
+                subid
         )).fetch();
     }
 
@@ -3183,10 +3025,10 @@ public class Tables {
      * Get <code>pg_catalog.pg_stat_get_subscription</code> as a table.
      */
     public static PgStatGetSubscription PG_STAT_GET_SUBSCRIPTION(
-          Long subid
+            Long subid
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetSubscription.PG_STAT_GET_SUBSCRIPTION.call(
-            subid
+                subid
         );
     }
 
@@ -3194,23 +3036,18 @@ public class Tables {
      * Get <code>pg_catalog.pg_stat_get_subscription</code> as a table.
      */
     public static PgStatGetSubscription PG_STAT_GET_SUBSCRIPTION(
-          Field<Long> subid
+            Field<Long> subid
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetSubscription.PG_STAT_GET_SUBSCRIPTION.call(
-            subid
+                subid
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_stat_get_wal_senders</code>.
-     */
-    public static final PgStatGetWalSenders PG_STAT_GET_WAL_SENDERS = PgStatGetWalSenders.PG_STAT_GET_WAL_SENDERS;
 
     /**
      * Call <code>pg_catalog.pg_stat_get_wal_senders</code>.
      */
     public static Result<PgStatGetWalSendersRecord> PG_STAT_GET_WAL_SENDERS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgStatGetWalSenders.PG_STAT_GET_WAL_SENDERS.call(
         )).fetch();
@@ -3225,244 +3062,14 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_stat_gssapi</code>.
-     */
-    public static final PgStatGssapi PG_STAT_GSSAPI = PgStatGssapi.PG_STAT_GSSAPI;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_io</code>.
-     */
-    public static final PgStatIo PG_STAT_IO = PgStatIo.PG_STAT_IO;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_progress_analyze</code>.
-     */
-    public static final PgStatProgressAnalyze PG_STAT_PROGRESS_ANALYZE = PgStatProgressAnalyze.PG_STAT_PROGRESS_ANALYZE;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_progress_basebackup</code>.
-     */
-    public static final PgStatProgressBasebackup PG_STAT_PROGRESS_BASEBACKUP = PgStatProgressBasebackup.PG_STAT_PROGRESS_BASEBACKUP;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_progress_cluster</code>.
-     */
-    public static final PgStatProgressCluster PG_STAT_PROGRESS_CLUSTER = PgStatProgressCluster.PG_STAT_PROGRESS_CLUSTER;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_progress_copy</code>.
-     */
-    public static final PgStatProgressCopy PG_STAT_PROGRESS_COPY = PgStatProgressCopy.PG_STAT_PROGRESS_COPY;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_progress_create_index</code>.
-     */
-    public static final PgStatProgressCreateIndex PG_STAT_PROGRESS_CREATE_INDEX = PgStatProgressCreateIndex.PG_STAT_PROGRESS_CREATE_INDEX;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_progress_vacuum</code>.
-     */
-    public static final PgStatProgressVacuum PG_STAT_PROGRESS_VACUUM = PgStatProgressVacuum.PG_STAT_PROGRESS_VACUUM;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_recovery_prefetch</code>.
-     */
-    public static final PgStatRecoveryPrefetch PG_STAT_RECOVERY_PREFETCH = PgStatRecoveryPrefetch.PG_STAT_RECOVERY_PREFETCH;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_replication</code>.
-     */
-    public static final PgStatReplication PG_STAT_REPLICATION = PgStatReplication.PG_STAT_REPLICATION;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_replication_slots</code>.
-     */
-    public static final PgStatReplicationSlots PG_STAT_REPLICATION_SLOTS = PgStatReplicationSlots.PG_STAT_REPLICATION_SLOTS;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_slru</code>.
-     */
-    public static final PgStatSlru PG_STAT_SLRU = PgStatSlru.PG_STAT_SLRU;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_ssl</code>.
-     */
-    public static final PgStatSsl PG_STAT_SSL = PgStatSsl.PG_STAT_SSL;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_subscription</code>.
-     */
-    public static final PgStatSubscription PG_STAT_SUBSCRIPTION = PgStatSubscription.PG_STAT_SUBSCRIPTION;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_subscription_stats</code>.
-     */
-    public static final PgStatSubscriptionStats PG_STAT_SUBSCRIPTION_STATS = PgStatSubscriptionStats.PG_STAT_SUBSCRIPTION_STATS;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_sys_indexes</code>.
-     */
-    public static final PgStatSysIndexes PG_STAT_SYS_INDEXES = PgStatSysIndexes.PG_STAT_SYS_INDEXES;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_sys_tables</code>.
-     */
-    public static final PgStatSysTables PG_STAT_SYS_TABLES = PgStatSysTables.PG_STAT_SYS_TABLES;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_user_functions</code>.
-     */
-    public static final PgStatUserFunctions PG_STAT_USER_FUNCTIONS = PgStatUserFunctions.PG_STAT_USER_FUNCTIONS;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_user_indexes</code>.
-     */
-    public static final PgStatUserIndexes PG_STAT_USER_INDEXES = PgStatUserIndexes.PG_STAT_USER_INDEXES;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_user_tables</code>.
-     */
-    public static final PgStatUserTables PG_STAT_USER_TABLES = PgStatUserTables.PG_STAT_USER_TABLES;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_wal</code>.
-     */
-    public static final PgStatWal PG_STAT_WAL = PgStatWal.PG_STAT_WAL;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_wal_receiver</code>.
-     */
-    public static final PgStatWalReceiver PG_STAT_WAL_RECEIVER = PgStatWalReceiver.PG_STAT_WAL_RECEIVER;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_xact_all_tables</code>.
-     */
-    public static final PgStatXactAllTables PG_STAT_XACT_ALL_TABLES = PgStatXactAllTables.PG_STAT_XACT_ALL_TABLES;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_xact_sys_tables</code>.
-     */
-    public static final PgStatXactSysTables PG_STAT_XACT_SYS_TABLES = PgStatXactSysTables.PG_STAT_XACT_SYS_TABLES;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_xact_user_functions</code>.
-     */
-    public static final PgStatXactUserFunctions PG_STAT_XACT_USER_FUNCTIONS = PgStatXactUserFunctions.PG_STAT_XACT_USER_FUNCTIONS;
-
-    /**
-     * The table <code>pg_catalog.pg_stat_xact_user_tables</code>.
-     */
-    public static final PgStatXactUserTables PG_STAT_XACT_USER_TABLES = PgStatXactUserTables.PG_STAT_XACT_USER_TABLES;
-
-    /**
-     * The table <code>pg_catalog.pg_statio_all_indexes</code>.
-     */
-    public static final PgStatioAllIndexes PG_STATIO_ALL_INDEXES = PgStatioAllIndexes.PG_STATIO_ALL_INDEXES;
-
-    /**
-     * The table <code>pg_catalog.pg_statio_all_sequences</code>.
-     */
-    public static final PgStatioAllSequences PG_STATIO_ALL_SEQUENCES = PgStatioAllSequences.PG_STATIO_ALL_SEQUENCES;
-
-    /**
-     * The table <code>pg_catalog.pg_statio_all_tables</code>.
-     */
-    public static final PgStatioAllTables PG_STATIO_ALL_TABLES = PgStatioAllTables.PG_STATIO_ALL_TABLES;
-
-    /**
-     * The table <code>pg_catalog.pg_statio_sys_indexes</code>.
-     */
-    public static final PgStatioSysIndexes PG_STATIO_SYS_INDEXES = PgStatioSysIndexes.PG_STATIO_SYS_INDEXES;
-
-    /**
-     * The table <code>pg_catalog.pg_statio_sys_sequences</code>.
-     */
-    public static final PgStatioSysSequences PG_STATIO_SYS_SEQUENCES = PgStatioSysSequences.PG_STATIO_SYS_SEQUENCES;
-
-    /**
-     * The table <code>pg_catalog.pg_statio_sys_tables</code>.
-     */
-    public static final PgStatioSysTables PG_STATIO_SYS_TABLES = PgStatioSysTables.PG_STATIO_SYS_TABLES;
-
-    /**
-     * The table <code>pg_catalog.pg_statio_user_indexes</code>.
-     */
-    public static final PgStatioUserIndexes PG_STATIO_USER_INDEXES = PgStatioUserIndexes.PG_STATIO_USER_INDEXES;
-
-    /**
-     * The table <code>pg_catalog.pg_statio_user_sequences</code>.
-     */
-    public static final PgStatioUserSequences PG_STATIO_USER_SEQUENCES = PgStatioUserSequences.PG_STATIO_USER_SEQUENCES;
-
-    /**
-     * The table <code>pg_catalog.pg_statio_user_tables</code>.
-     */
-    public static final PgStatioUserTables PG_STATIO_USER_TABLES = PgStatioUserTables.PG_STATIO_USER_TABLES;
-
-    /**
-     * The table <code>pg_catalog.pg_statistic</code>.
-     */
-    public static final PgStatistic PG_STATISTIC = PgStatistic.PG_STATISTIC;
-
-    /**
-     * The table <code>pg_catalog.pg_statistic_ext</code>.
-     */
-    public static final PgStatisticExt PG_STATISTIC_EXT = PgStatisticExt.PG_STATISTIC_EXT;
-
-    /**
-     * The table <code>pg_catalog.pg_statistic_ext_data</code>.
-     */
-    public static final PgStatisticExtData PG_STATISTIC_EXT_DATA = PgStatisticExtData.PG_STATISTIC_EXT_DATA;
-
-    /**
-     * The table <code>pg_catalog.pg_stats</code>.
-     */
-    public static final PgStats PG_STATS = PgStats.PG_STATS;
-
-    /**
-     * The table <code>pg_catalog.pg_stats_ext</code>.
-     */
-    public static final PgStatsExt PG_STATS_EXT = PgStatsExt.PG_STATS_EXT;
-
-    /**
-     * The table <code>pg_catalog.pg_stats_ext_exprs</code>.
-     */
-    public static final PgStatsExtExprs PG_STATS_EXT_EXPRS = PgStatsExtExprs.PG_STATS_EXT_EXPRS;
-
-    /**
-     * The table <code>pg_catalog.pg_subscription</code>.
-     */
-    public static final PgSubscription PG_SUBSCRIPTION = PgSubscription.PG_SUBSCRIPTION;
-
-    /**
-     * The table <code>pg_catalog.pg_subscription_rel</code>.
-     */
-    public static final PgSubscriptionRel PG_SUBSCRIPTION_REL = PgSubscriptionRel.PG_SUBSCRIPTION_REL;
-
-    /**
-     * The table <code>pg_catalog.pg_tables</code>.
-     */
-    public static final PgTables PG_TABLES = PgTables.PG_TABLES;
-
-    /**
-     * The table <code>pg_catalog.pg_tablespace</code>.
-     */
-    public static final PgTablespace PG_TABLESPACE = PgTablespace.PG_TABLESPACE;
-
-    /**
-     * The table <code>pg_catalog.pg_tablespace_databases</code>.
-     */
-    public static final PgTablespaceDatabases PG_TABLESPACE_DATABASES = PgTablespaceDatabases.PG_TABLESPACE_DATABASES;
-
-    /**
      * Call <code>pg_catalog.pg_tablespace_databases</code>.
      */
     public static Result<PgTablespaceDatabasesRecord> PG_TABLESPACE_DATABASES(
-          Configuration configuration
-        , Long __1
+            Configuration configuration
+            , Long __1
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgTablespaceDatabases.PG_TABLESPACE_DATABASES.call(
-              __1
+                __1
         )).fetch();
     }
 
@@ -3470,10 +3077,10 @@ public class Tables {
      * Get <code>pg_catalog.pg_tablespace_databases</code> as a table.
      */
     public static PgTablespaceDatabases PG_TABLESPACE_DATABASES(
-          Long __1
+            Long __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgTablespaceDatabases.PG_TABLESPACE_DATABASES.call(
-            __1
+                __1
         );
     }
 
@@ -3481,23 +3088,18 @@ public class Tables {
      * Get <code>pg_catalog.pg_tablespace_databases</code> as a table.
      */
     public static PgTablespaceDatabases PG_TABLESPACE_DATABASES(
-          Field<Long> __1
+            Field<Long> __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgTablespaceDatabases.PG_TABLESPACE_DATABASES.call(
-            __1
+                __1
         );
     }
-
-    /**
-     * The table <code>pg_catalog.pg_timezone_abbrevs</code>.
-     */
-    public static final PgTimezoneAbbrevs PG_TIMEZONE_ABBREVS = PgTimezoneAbbrevs.PG_TIMEZONE_ABBREVS;
 
     /**
      * Call <code>pg_catalog.pg_timezone_abbrevs</code>.
      */
     public static Result<PgTimezoneAbbrevsRecord> PG_TIMEZONE_ABBREVS(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgTimezoneAbbrevs.PG_TIMEZONE_ABBREVS.call(
         )).fetch();
@@ -3512,15 +3114,10 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_timezone_names</code>.
-     */
-    public static final PgTimezoneNames PG_TIMEZONE_NAMES = PgTimezoneNames.PG_TIMEZONE_NAMES;
-
-    /**
      * Call <code>pg_catalog.pg_timezone_names</code>.
      */
     public static Result<PgTimezoneNamesRecord> PG_TIMEZONE_NAMES(
-          Configuration configuration
+            Configuration configuration
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgTimezoneNames.PG_TIMEZONE_NAMES.call(
         )).fetch();
@@ -3535,76 +3132,6 @@ public class Tables {
     }
 
     /**
-     * The table <code>pg_catalog.pg_transform</code>.
-     */
-    public static final PgTransform PG_TRANSFORM = PgTransform.PG_TRANSFORM;
-
-    /**
-     * The table <code>pg_catalog.pg_trigger</code>.
-     */
-    public static final PgTrigger PG_TRIGGER = PgTrigger.PG_TRIGGER;
-
-    /**
-     * The table <code>pg_catalog.pg_ts_config</code>.
-     */
-    public static final PgTsConfig PG_TS_CONFIG = PgTsConfig.PG_TS_CONFIG;
-
-    /**
-     * The table <code>pg_catalog.pg_ts_config_map</code>.
-     */
-    public static final PgTsConfigMap PG_TS_CONFIG_MAP = PgTsConfigMap.PG_TS_CONFIG_MAP;
-
-    /**
-     * The table <code>pg_catalog.pg_ts_dict</code>.
-     */
-    public static final PgTsDict PG_TS_DICT = PgTsDict.PG_TS_DICT;
-
-    /**
-     * The table <code>pg_catalog.pg_ts_parser</code>.
-     */
-    public static final PgTsParser PG_TS_PARSER = PgTsParser.PG_TS_PARSER;
-
-    /**
-     * The table <code>pg_catalog.pg_ts_template</code>.
-     */
-    public static final PgTsTemplate PG_TS_TEMPLATE = PgTsTemplate.PG_TS_TEMPLATE;
-
-    /**
-     * The table <code>pg_catalog.pg_type</code>.
-     */
-    public static final PgType PG_TYPE = PgType.PG_TYPE;
-
-    /**
-     * The table <code>pg_catalog.pg_user</code>.
-     */
-    public static final PgUser PG_USER = PgUser.PG_USER;
-
-    /**
-     * The table <code>pg_catalog.pg_user_mapping</code>.
-     */
-    public static final PgUserMapping PG_USER_MAPPING = PgUserMapping.PG_USER_MAPPING;
-
-    /**
-     * The table <code>pg_catalog.pg_user_mappings</code>.
-     */
-    public static final PgUserMappings PG_USER_MAPPINGS = PgUserMappings.PG_USER_MAPPINGS;
-
-    /**
-     * The table <code>pg_catalog.pg_views</code>.
-     */
-    public static final PgViews PG_VIEWS = PgViews.PG_VIEWS;
-
-    /**
-     * The table <code>pg_catalog.pg_wait_events</code>.
-     */
-    public static final PgWaitEvents PG_WAIT_EVENTS = PgWaitEvents.PG_WAIT_EVENTS;
-
-    /**
-     * The table <code>pg_catalog.pg_wal_summary_contents</code>.
-     */
-    public static final PgWalSummaryContents PG_WAL_SUMMARY_CONTENTS = PgWalSummaryContents.PG_WAL_SUMMARY_CONTENTS;
-
-    /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
      * If this is a qualified, user-defined type, it may have been excluded from
      * code generation. If this is a built-in type, you can define an explicit
@@ -3614,15 +3141,15 @@ public class Tables {
      */
     @Deprecated
     public static Result<PgWalSummaryContentsRecord> PG_WAL_SUMMARY_CONTENTS(
-          Configuration configuration
-        , Long tli
-        , Object startLsn
-        , Object endLsn
+            Configuration configuration
+            , Long tli
+            , Object startLsn
+            , Object endLsn
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.PgWalSummaryContents.PG_WAL_SUMMARY_CONTENTS.call(
-              tli
-            , startLsn
-            , endLsn
+                tli
+                , startLsn
+                , endLsn
         )).fetch();
     }
 
@@ -3636,14 +3163,14 @@ public class Tables {
      */
     @Deprecated
     public static PgWalSummaryContents PG_WAL_SUMMARY_CONTENTS(
-          Long tli
-        , Object startLsn
-        , Object endLsn
+            Long tli
+            , Object startLsn
+            , Object endLsn
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgWalSummaryContents.PG_WAL_SUMMARY_CONTENTS.call(
-            tli,
-            startLsn,
-            endLsn
+                tli,
+                startLsn,
+                endLsn
         );
     }
 
@@ -3657,33 +3184,28 @@ public class Tables {
      */
     @Deprecated
     public static PgWalSummaryContents PG_WAL_SUMMARY_CONTENTS(
-          Field<Long> tli
-        , Field<Object> startLsn
-        , Field<Object> endLsn
+            Field<Long> tli
+            , Field<Object> startLsn
+            , Field<Object> endLsn
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.PgWalSummaryContents.PG_WAL_SUMMARY_CONTENTS.call(
-            tli,
-            startLsn,
-            endLsn
+                tli,
+                startLsn,
+                endLsn
         );
     }
-
-    /**
-     * The table <code>pg_catalog.regexp_matches</code>.
-     */
-    public static final RegexpMatches REGEXP_MATCHES = RegexpMatches.REGEXP_MATCHES;
 
     /**
      * Call <code>pg_catalog.regexp_matches</code>.
      */
     public static Result<RegexpMatchesRecord> REGEXP_MATCHES(
-          Configuration configuration
-        , String __1
-        , String __2
+            Configuration configuration
+            , String __1
+            , String __2
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.RegexpMatches.REGEXP_MATCHES.call(
-              __1
-            , __2
+                __1
+                , __2
         )).fetch();
     }
 
@@ -3691,12 +3213,12 @@ public class Tables {
      * Get <code>pg_catalog.regexp_matches</code> as a table.
      */
     public static RegexpMatches REGEXP_MATCHES(
-          String __1
-        , String __2
+            String __1
+            , String __2
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.RegexpMatches.REGEXP_MATCHES.call(
-            __1,
-            __2
+                __1,
+                __2
         );
     }
 
@@ -3704,31 +3226,26 @@ public class Tables {
      * Get <code>pg_catalog.regexp_matches</code> as a table.
      */
     public static RegexpMatches REGEXP_MATCHES(
-          Field<String> __1
-        , Field<String> __2
+            Field<String> __1
+            , Field<String> __2
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.RegexpMatches.REGEXP_MATCHES.call(
-            __1,
-            __2
+                __1,
+                __2
         );
     }
-
-    /**
-     * The table <code>pg_catalog.regexp_split_to_table</code>.
-     */
-    public static final RegexpSplitToTable REGEXP_SPLIT_TO_TABLE = RegexpSplitToTable.REGEXP_SPLIT_TO_TABLE;
 
     /**
      * Call <code>pg_catalog.regexp_split_to_table</code>.
      */
     public static Result<RegexpSplitToTableRecord> REGEXP_SPLIT_TO_TABLE(
-          Configuration configuration
-        , String __1
-        , String __2
+            Configuration configuration
+            , String __1
+            , String __2
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.RegexpSplitToTable.REGEXP_SPLIT_TO_TABLE.call(
-              __1
-            , __2
+                __1
+                , __2
         )).fetch();
     }
 
@@ -3736,12 +3253,12 @@ public class Tables {
      * Get <code>pg_catalog.regexp_split_to_table</code> as a table.
      */
     public static RegexpSplitToTable REGEXP_SPLIT_TO_TABLE(
-          String __1
-        , String __2
+            String __1
+            , String __2
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.RegexpSplitToTable.REGEXP_SPLIT_TO_TABLE.call(
-            __1,
-            __2
+                __1,
+                __2
         );
     }
 
@@ -3749,33 +3266,28 @@ public class Tables {
      * Get <code>pg_catalog.regexp_split_to_table</code> as a table.
      */
     public static RegexpSplitToTable REGEXP_SPLIT_TO_TABLE(
-          Field<String> __1
-        , Field<String> __2
+            Field<String> __1
+            , Field<String> __2
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.RegexpSplitToTable.REGEXP_SPLIT_TO_TABLE.call(
-            __1,
-            __2
+                __1,
+                __2
         );
     }
-
-    /**
-     * The table <code>pg_catalog.string_to_table</code>.
-     */
-    public static final StringToTable STRING_TO_TABLE = StringToTable.STRING_TO_TABLE;
 
     /**
      * Call <code>pg_catalog.string_to_table</code>.
      */
     public static Result<StringToTableRecord> STRING_TO_TABLE(
-          Configuration configuration
-        , String __1
-        , String __2
-        , String __3
+            Configuration configuration
+            , String __1
+            , String __2
+            , String __3
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.StringToTable.STRING_TO_TABLE.call(
-              __1
-            , __2
-            , __3
+                __1
+                , __2
+                , __3
         )).fetch();
     }
 
@@ -3783,14 +3295,14 @@ public class Tables {
      * Get <code>pg_catalog.string_to_table</code> as a table.
      */
     public static StringToTable STRING_TO_TABLE(
-          String __1
-        , String __2
-        , String __3
+            String __1
+            , String __2
+            , String __3
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.StringToTable.STRING_TO_TABLE.call(
-            __1,
-            __2,
-            __3
+                __1,
+                __2,
+                __3
         );
     }
 
@@ -3798,21 +3310,16 @@ public class Tables {
      * Get <code>pg_catalog.string_to_table</code> as a table.
      */
     public static StringToTable STRING_TO_TABLE(
-          Field<String> __1
-        , Field<String> __2
-        , Field<String> __3
+            Field<String> __1
+            , Field<String> __2
+            , Field<String> __3
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.StringToTable.STRING_TO_TABLE.call(
-            __1,
-            __2,
-            __3
+                __1,
+                __2,
+                __3
         );
     }
-
-    /**
-     * The table <code>pg_catalog.ts_debug</code>.
-     */
-    public static final TsDebug TS_DEBUG = TsDebug.TS_DEBUG;
 
     /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
@@ -3824,13 +3331,13 @@ public class Tables {
      */
     @Deprecated
     public static Result<TsDebugRecord> TS_DEBUG(
-          Configuration configuration
-        , Object config
-        , String document
+            Configuration configuration
+            , Object config
+            , String document
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.TsDebug.TS_DEBUG.call(
-              config
-            , document
+                config
+                , document
         )).fetch();
     }
 
@@ -3844,12 +3351,12 @@ public class Tables {
      */
     @Deprecated
     public static TsDebug TS_DEBUG(
-          Object config
-        , String document
+            Object config
+            , String document
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.TsDebug.TS_DEBUG.call(
-            config,
-            document
+                config,
+                document
         );
     }
 
@@ -3863,31 +3370,26 @@ public class Tables {
      */
     @Deprecated
     public static TsDebug TS_DEBUG(
-          Field<Object> config
-        , Field<String> document
+            Field<Object> config
+            , Field<String> document
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.TsDebug.TS_DEBUG.call(
-            config,
-            document
+                config,
+                document
         );
     }
-
-    /**
-     * The table <code>pg_catalog.ts_parse</code>.
-     */
-    public static final TsParse TS_PARSE = TsParse.TS_PARSE;
 
     /**
      * Call <code>pg_catalog.ts_parse</code>.
      */
     public static Result<TsParseRecord> TS_PARSE(
-          Configuration configuration
-        , String parserName
-        , String txt
+            Configuration configuration
+            , String parserName
+            , String txt
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.TsParse.TS_PARSE.call(
-              parserName
-            , txt
+                parserName
+                , txt
         )).fetch();
     }
 
@@ -3895,12 +3397,12 @@ public class Tables {
      * Get <code>pg_catalog.ts_parse</code> as a table.
      */
     public static TsParse TS_PARSE(
-          String parserName
-        , String txt
+            String parserName
+            , String txt
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.TsParse.TS_PARSE.call(
-            parserName,
-            txt
+                parserName,
+                txt
         );
     }
 
@@ -3908,29 +3410,24 @@ public class Tables {
      * Get <code>pg_catalog.ts_parse</code> as a table.
      */
     public static TsParse TS_PARSE(
-          Field<String> parserName
-        , Field<String> txt
+            Field<String> parserName
+            , Field<String> txt
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.TsParse.TS_PARSE.call(
-            parserName,
-            txt
+                parserName,
+                txt
         );
     }
-
-    /**
-     * The table <code>pg_catalog.ts_stat</code>.
-     */
-    public static final TsStat TS_STAT = TsStat.TS_STAT;
 
     /**
      * Call <code>pg_catalog.ts_stat</code>.
      */
     public static Result<TsStatRecord> TS_STAT(
-          Configuration configuration
-        , String query
+            Configuration configuration
+            , String query
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.TsStat.TS_STAT.call(
-              query
+                query
         )).fetch();
     }
 
@@ -3938,10 +3435,10 @@ public class Tables {
      * Get <code>pg_catalog.ts_stat</code> as a table.
      */
     public static TsStat TS_STAT(
-          String query
+            String query
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.TsStat.TS_STAT.call(
-            query
+                query
         );
     }
 
@@ -3949,27 +3446,22 @@ public class Tables {
      * Get <code>pg_catalog.ts_stat</code> as a table.
      */
     public static TsStat TS_STAT(
-          Field<String> query
+            Field<String> query
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.TsStat.TS_STAT.call(
-            query
+                query
         );
     }
-
-    /**
-     * The table <code>pg_catalog.ts_token_type</code>.
-     */
-    public static final TsTokenType TS_TOKEN_TYPE = TsTokenType.TS_TOKEN_TYPE;
 
     /**
      * Call <code>pg_catalog.ts_token_type</code>.
      */
     public static Result<TsTokenTypeRecord> TS_TOKEN_TYPE(
-          Configuration configuration
-        , Long parserOid
+            Configuration configuration
+            , Long parserOid
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.TsTokenType.TS_TOKEN_TYPE.call(
-              parserOid
+                parserOid
         )).fetch();
     }
 
@@ -3977,10 +3469,10 @@ public class Tables {
      * Get <code>pg_catalog.ts_token_type</code> as a table.
      */
     public static TsTokenType TS_TOKEN_TYPE(
-          Long parserOid
+            Long parserOid
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.TsTokenType.TS_TOKEN_TYPE.call(
-            parserOid
+                parserOid
         );
     }
 
@@ -3988,17 +3480,12 @@ public class Tables {
      * Get <code>pg_catalog.ts_token_type</code> as a table.
      */
     public static TsTokenType TS_TOKEN_TYPE(
-          Field<Long> parserOid
+            Field<Long> parserOid
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.TsTokenType.TS_TOKEN_TYPE.call(
-            parserOid
+                parserOid
         );
     }
-
-    /**
-     * The table <code>pg_catalog.txid_snapshot_xip</code>.
-     */
-    public static final TxidSnapshotXip TXID_SNAPSHOT_XIP = TxidSnapshotXip.TXID_SNAPSHOT_XIP;
 
     /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
@@ -4010,11 +3497,11 @@ public class Tables {
      */
     @Deprecated
     public static Result<TxidSnapshotXipRecord> TXID_SNAPSHOT_XIP(
-          Configuration configuration
-        , Object __1
+            Configuration configuration
+            , Object __1
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.TxidSnapshotXip.TXID_SNAPSHOT_XIP.call(
-              __1
+                __1
         )).fetch();
     }
 
@@ -4028,10 +3515,10 @@ public class Tables {
      */
     @Deprecated
     public static TxidSnapshotXip TXID_SNAPSHOT_XIP(
-          Object __1
+            Object __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.TxidSnapshotXip.TXID_SNAPSHOT_XIP.call(
-            __1
+                __1
         );
     }
 
@@ -4045,17 +3532,12 @@ public class Tables {
      */
     @Deprecated
     public static TxidSnapshotXip TXID_SNAPSHOT_XIP(
-          Field<Object> __1
+            Field<Object> __1
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.TxidSnapshotXip.TXID_SNAPSHOT_XIP.call(
-            __1
+                __1
         );
     }
-
-    /**
-     * The table <code>pg_catalog.unnest</code>.
-     */
-    public static final Unnest UNNEST = Unnest.UNNEST;
 
     /**
      * @deprecated Unknown data type. Parameter type or return type is unknown.
@@ -4067,11 +3549,11 @@ public class Tables {
      */
     @Deprecated
     public static Result<UnnestRecord> UNNEST(
-          Configuration configuration
-        , Object tsvector
+            Configuration configuration
+            , Object tsvector
     ) {
         return configuration.dsl().selectFrom(bookmanagementsystem.jooq.pg_catalog.tables.Unnest.UNNEST.call(
-              tsvector
+                tsvector
         )).fetch();
     }
 
@@ -4085,10 +3567,10 @@ public class Tables {
      */
     @Deprecated
     public static Unnest UNNEST(
-          Object tsvector
+            Object tsvector
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.Unnest.UNNEST.call(
-            tsvector
+                tsvector
         );
     }
 
@@ -4102,10 +3584,10 @@ public class Tables {
      */
     @Deprecated
     public static Unnest UNNEST(
-          Field<Object> tsvector
+            Field<Object> tsvector
     ) {
         return bookmanagementsystem.jooq.pg_catalog.tables.Unnest.UNNEST.call(
-            tsvector
+                tsvector
         );
     }
 }

@@ -6,7 +6,7 @@ import java.time.LocalDateTime
  * author_infoテーブルのDto
  *
  * @param bookId 書籍ID
- * @param authorId 筆者ID
+ * @param authorId 著者ID
  * @param createdBy 作成者
  * @param createdAt 作成日時
  * @param updatedBy 更新者

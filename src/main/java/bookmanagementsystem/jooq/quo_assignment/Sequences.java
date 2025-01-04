@@ -12,7 +12,7 @@ import org.jooq.impl.SQLDataType;
 /**
  * Convenience access to all sequences in quo_assignment.
  */
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class Sequences {
 
     /**

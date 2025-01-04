@@ -5,7 +5,6 @@ package bookmanagementsystem.jooq.pg_catalog.routines;
 
 
 import bookmanagementsystem.jooq.pg_catalog.PgCatalog;
-
 import org.jooq.Field;
 import org.jooq.JSON;
 import org.jooq.JSONB;
@@ -16,7 +15,6 @@ import org.jooq.impl.Internal;
 import org.jooq.impl.SQLDataType;
 
 
-
 /**
  * @deprecated Unknown data type. If this is a qualified, user-defined type, it
  * may have been excluded from code generation. If this is a built-in type, you
@@ -25,10 +23,8 @@ import org.jooq.impl.SQLDataType;
  * <deprecationOnUnknownTypes/>} in your code generator configuration.
  */
 @Deprecated
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class JsonToTsvector1 extends AbstractRoutine<Object> {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
@@ -40,16 +36,15 @@ public class JsonToTsvector1 extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> RETURN_VALUE = Internal.createParameter("RETURN_VALUE", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"tsvector\""), false, false);
-
     /**
      * The parameter <code>pg_catalog.json_to_tsvector._1</code>.
      */
     public static final Parameter<JSON> _1 = Internal.createParameter("_1", SQLDataType.JSON, false, true);
-
     /**
      * The parameter <code>pg_catalog.json_to_tsvector._2</code>.
      */
     public static final Parameter<JSONB> _2 = Internal.createParameter("_2", SQLDataType.JSONB, false, true);
+    private static final long serialVersionUID = 1L;
 
     /**
      * Create a new routine call instance

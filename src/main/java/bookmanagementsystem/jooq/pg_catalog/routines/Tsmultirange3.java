@@ -5,13 +5,11 @@ package bookmanagementsystem.jooq.pg_catalog.routines;
 
 
 import bookmanagementsystem.jooq.pg_catalog.PgCatalog;
-
 import org.jooq.Field;
 import org.jooq.Parameter;
 import org.jooq.impl.AbstractRoutine;
 import org.jooq.impl.DefaultDataType;
 import org.jooq.impl.Internal;
-
 
 
 /**
@@ -22,10 +20,8 @@ import org.jooq.impl.Internal;
  * <deprecationOnUnknownTypes/>} in your code generator configuration.
  */
 @Deprecated
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class Tsmultirange3 extends AbstractRoutine<Object> {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
@@ -37,11 +33,11 @@ public class Tsmultirange3 extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> RETURN_VALUE = Internal.createParameter("RETURN_VALUE", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"tsmultirange\""), false, false);
-
     /**
      * The parameter <code>pg_catalog.tsmultirange._1</code>.
      */
     public static final Parameter<Object[]> _1 = Internal.createParameter("_1", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"tsrange\"").array(), false, true);
+    private static final long serialVersionUID = 1L;
 
     /**
      * Create a new routine call instance

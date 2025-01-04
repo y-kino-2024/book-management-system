@@ -5,15 +5,9 @@ package bookmanagementsystem.jooq.pg_catalog.routines;
 
 
 import bookmanagementsystem.jooq.pg_catalog.PgCatalog;
-
 import org.jooq.Field;
 import org.jooq.Parameter;
-import org.jooq.impl.AbstractRoutine;
-import org.jooq.impl.DSL;
-import org.jooq.impl.DefaultDataType;
-import org.jooq.impl.Internal;
-import org.jooq.impl.SQLDataType;
-
+import org.jooq.impl.*;
 
 
 /**
@@ -24,10 +18,8 @@ import org.jooq.impl.SQLDataType;
  * <deprecationOnUnknownTypes/>} in your code generator configuration.
  */
 @Deprecated
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class PgBackupStart extends AbstractRoutine<Object> {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
@@ -39,16 +31,15 @@ public class PgBackupStart extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> RETURN_VALUE = Internal.createParameter("RETURN_VALUE", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"pg_lsn\""), false, false);
-
     /**
      * The parameter <code>pg_catalog.pg_backup_start.label</code>.
      */
     public static final Parameter<String> LABEL = Internal.createParameter("label", SQLDataType.CLOB, false, false);
-
     /**
      * The parameter <code>pg_catalog.pg_backup_start.fast</code>.
      */
     public static final Parameter<Boolean> FAST = Internal.createParameter("fast", SQLDataType.BOOLEAN.defaultValue(DSL.field(DSL.raw("false"), SQLDataType.BOOLEAN)), true, false);
+    private static final long serialVersionUID = 1L;
 
     /**
      * Create a new routine call instance

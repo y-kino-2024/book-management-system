@@ -5,7 +5,6 @@ package bookmanagementsystem.jooq.pg_catalog.routines;
 
 
 import bookmanagementsystem.jooq.pg_catalog.PgCatalog;
-
 import org.jooq.Field;
 import org.jooq.JSONB;
 import org.jooq.Parameter;
@@ -13,7 +12,6 @@ import org.jooq.impl.AbstractRoutine;
 import org.jooq.impl.DefaultDataType;
 import org.jooq.impl.Internal;
 import org.jooq.impl.SQLDataType;
-
 
 
 /**
@@ -24,10 +22,8 @@ import org.jooq.impl.SQLDataType;
  * <deprecationOnUnknownTypes/>} in your code generator configuration.
  */
 @Deprecated
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class GinExtractJsonbQueryPath extends AbstractRoutine<Object> {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
@@ -39,12 +35,10 @@ public class GinExtractJsonbQueryPath extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> RETURN_VALUE = Internal.createParameter("RETURN_VALUE", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"internal\""), false, false);
-
     /**
      * The parameter <code>pg_catalog.gin_extract_jsonb_query_path._1</code>.
      */
     public static final Parameter<JSONB> _1 = Internal.createParameter("_1", SQLDataType.JSONB, false, true);
-
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
      * it may have been excluded from code generation. If this is a built-in
@@ -55,12 +49,10 @@ public class GinExtractJsonbQueryPath extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> _2 = Internal.createParameter("_2", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"internal\""), false, true);
-
     /**
      * The parameter <code>pg_catalog.gin_extract_jsonb_query_path._3</code>.
      */
     public static final Parameter<Short> _3 = Internal.createParameter("_3", SQLDataType.SMALLINT, false, true);
-
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
      * it may have been excluded from code generation. If this is a built-in
@@ -71,7 +63,6 @@ public class GinExtractJsonbQueryPath extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> _4 = Internal.createParameter("_4", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"internal\""), false, true);
-
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
      * it may have been excluded from code generation. If this is a built-in
@@ -82,7 +73,6 @@ public class GinExtractJsonbQueryPath extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> _5 = Internal.createParameter("_5", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"internal\""), false, true);
-
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
      * it may have been excluded from code generation. If this is a built-in
@@ -93,7 +83,6 @@ public class GinExtractJsonbQueryPath extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> _6 = Internal.createParameter("_6", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"internal\""), false, true);
-
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
      * it may have been excluded from code generation. If this is a built-in
@@ -104,6 +93,7 @@ public class GinExtractJsonbQueryPath extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> _7 = Internal.createParameter("_7", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"internal\""), false, true);
+    private static final long serialVersionUID = 1L;
 
     /**
      * Create a new routine call instance

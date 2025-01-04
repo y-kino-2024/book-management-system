@@ -5,9 +5,6 @@ package bookmanagementsystem.jooq.pg_catalog.routines;
 
 
 import bookmanagementsystem.jooq.pg_catalog.PgCatalog;
-
-import java.time.LocalDateTime;
-
 import org.jooq.Field;
 import org.jooq.Parameter;
 import org.jooq.impl.AbstractRoutine;
@@ -15,6 +12,7 @@ import org.jooq.impl.DefaultDataType;
 import org.jooq.impl.Internal;
 import org.jooq.impl.SQLDataType;
 
+import java.time.LocalDateTime;
 
 
 /**
@@ -25,10 +23,8 @@ import org.jooq.impl.SQLDataType;
  * <deprecationOnUnknownTypes/>} in your code generator configuration.
  */
 @Deprecated
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class Tsrange1 extends AbstractRoutine<Object> {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
@@ -40,16 +36,15 @@ public class Tsrange1 extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> RETURN_VALUE = Internal.createParameter("RETURN_VALUE", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"tsrange\""), false, false);
-
     /**
      * The parameter <code>pg_catalog.tsrange._1</code>.
      */
     public static final Parameter<LocalDateTime> _1 = Internal.createParameter("_1", SQLDataType.LOCALDATETIME(6), false, true);
-
     /**
      * The parameter <code>pg_catalog.tsrange._2</code>.
      */
     public static final Parameter<LocalDateTime> _2 = Internal.createParameter("_2", SQLDataType.LOCALDATETIME(6), false, true);
+    private static final long serialVersionUID = 1L;
 
     /**
      * Create a new routine call instance

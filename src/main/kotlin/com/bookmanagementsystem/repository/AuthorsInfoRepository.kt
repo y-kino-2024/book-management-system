@@ -11,9 +11,7 @@ interface AuthorsInfoRepository {
 
     fun fetchAuthor(authorId: String): AuthorsInfoDto?
 
-    fun createAuthor(authorDto: AuthorsInfoDto): Int
+    fun createAuthor(authorDto: AuthorsInfoDto): Int?
 
     fun updateAuthor(authorDto: AuthorsInfoDto): Int
-
-    fun currentAuthorIdSequence(): Int
 }

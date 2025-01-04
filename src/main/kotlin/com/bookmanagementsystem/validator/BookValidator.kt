@@ -1,7 +1,7 @@
 package com.bookmanagementsystem.validator
 
 
-import com.bookmanagementsystem.enum.PublicationStatus
+import com.bookmanagementsystem.enumkt.PublicationStatus
 import com.bookmanagementsystem.request.book.CreateBookRequest
 import com.bookmanagementsystem.request.book.GetBookRequest
 import com.bookmanagementsystem.request.book.UpdateBookRequest
@@ -61,11 +61,11 @@ class BookValidator {
     private fun checkId(bookId: String?) {
         // 必須チェック
         if (bookId.isNullOrBlank()) {
-            throw NullPointerException("書籍IDを入力してください。")
+            throw NullPointerException("bookIdを入力してください。")
         }
         // 桁数チェック(DB定義：8桁)
         if (bookId.length > BOOK_ID_MAX) {
-            throw IllegalStateException("書籍IDは8桁以内で入力してください。")
+            throw IllegalStateException("bookIdは8桁以内で入力してください。")
         }
     }
 
@@ -77,11 +77,11 @@ class BookValidator {
     private fun checkName(title: String?) {
         // 必須チェック
         if (title.isNullOrBlank()) {
-            throw NullPointerException("タイトルを入力してください。")
+            throw NullPointerException("titleを入力してください。")
         }
         // 桁数チェック(DB定義：256桁)
         if (title.length > TITLE_MAX) {
-            throw IllegalStateException("タイトルは256文字以内で入力してください。")
+            throw IllegalStateException("titleは256文字以内で入力してください。")
         }
     }
 
@@ -90,14 +90,14 @@ class BookValidator {
      *
      * @param price 価格
      */
-    private fun checkPrice(price: Int?) {
+    private fun checkPrice(price: Double?) {
         // 必須チェック
         if (price == null) {
-            throw NullPointerException("価格を入力してください。")
+            throw NullPointerException("priceを入力してください。")
         }
         // 桁数チェック(DB定義：256桁)
         if (price < PRICE_MIN) {
-            throw IllegalStateException("価格は0以上で入力してください。")
+            throw IllegalStateException("priceは0以上で入力してください。")
         }
     }
 
@@ -109,11 +109,11 @@ class BookValidator {
     private fun checkPublicationStatus(publicationStatus: String?) {
         // 必須チェック
         if (publicationStatus.isNullOrBlank()) {
-            throw NullPointerException("出版状況を入力してください。")
+            throw NullPointerException("publicationStatusを入力してください。")
         }
         // 妥当性チェック
-        if (PublicationStatus.valueOf(publicationStatus) == PublicationStatus.NONE) {
-            throw IllegalStateException("出版状況の入力値が不正です。")
+        if (PublicationStatus.getPublicationStatus(publicationStatus) == PublicationStatus.NONE) {
+            throw IllegalStateException("publicationStatusの入力値が不正です。")
         }
     }
 }

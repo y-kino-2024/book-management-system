@@ -5,14 +5,12 @@ package bookmanagementsystem.jooq.pg_catalog.routines;
 
 
 import bookmanagementsystem.jooq.pg_catalog.PgCatalog;
-
 import org.jooq.Field;
 import org.jooq.Parameter;
 import org.jooq.impl.AbstractRoutine;
 import org.jooq.impl.DefaultDataType;
 import org.jooq.impl.Internal;
 import org.jooq.impl.SQLDataType;
-
 
 
 /**
@@ -23,10 +21,8 @@ import org.jooq.impl.SQLDataType;
  * <deprecationOnUnknownTypes/>} in your code generator configuration.
  */
 @Deprecated
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class Int2MulCash extends AbstractRoutine<Object> {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
@@ -38,12 +34,10 @@ public class Int2MulCash extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> RETURN_VALUE = Internal.createParameter("RETURN_VALUE", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"money\""), false, false);
-
     /**
      * The parameter <code>pg_catalog.int2_mul_cash._1</code>.
      */
     public static final Parameter<Short> _1 = Internal.createParameter("_1", SQLDataType.SMALLINT, false, true);
-
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
      * it may have been excluded from code generation. If this is a built-in
@@ -54,6 +48,7 @@ public class Int2MulCash extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> _2 = Internal.createParameter("_2", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"money\""), false, true);
+    private static final long serialVersionUID = 1L;
 
     /**
      * Create a new routine call instance

@@ -13,7 +13,7 @@ import bookmanagementsystem.jooq.quo_assignment.tables.FlywaySchemaHistory;
 /**
  * Convenience access to all tables in quo_assignment.
  */
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class Tables {
 
     /**

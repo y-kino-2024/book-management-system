@@ -6,8 +6,8 @@ import java.time.LocalDateTime
 /**
  * author_infoテーブルのDto
  *
- * @param id 筆者ID
- * @param authorName 筆者名
+ * @param id 著者ID
+ * @param authorName 著者名
  * @param birthday 誕生日
  * @param createdBy 作成者
  * @param createdAt 作成日時

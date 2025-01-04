@@ -5,9 +5,6 @@ package bookmanagementsystem.jooq.pg_catalog.routines;
 
 
 import bookmanagementsystem.jooq.pg_catalog.PgCatalog;
-
-import java.math.BigDecimal;
-
 import org.jooq.Field;
 import org.jooq.Parameter;
 import org.jooq.impl.AbstractRoutine;
@@ -15,6 +12,7 @@ import org.jooq.impl.DefaultDataType;
 import org.jooq.impl.Internal;
 import org.jooq.impl.SQLDataType;
 
+import java.math.BigDecimal;
 
 
 /**
@@ -25,10 +23,8 @@ import org.jooq.impl.SQLDataType;
  * <deprecationOnUnknownTypes/>} in your code generator configuration.
  */
 @Deprecated
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class NumericAccumInv extends AbstractRoutine<Object> {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
@@ -40,7 +36,6 @@ public class NumericAccumInv extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> RETURN_VALUE = Internal.createParameter("RETURN_VALUE", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"internal\""), false, false);
-
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
      * it may have been excluded from code generation. If this is a built-in
@@ -51,11 +46,11 @@ public class NumericAccumInv extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> _1 = Internal.createParameter("_1", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"internal\""), false, true);
-
     /**
      * The parameter <code>pg_catalog.numeric_accum_inv._2</code>.
      */
     public static final Parameter<BigDecimal> _2 = Internal.createParameter("_2", SQLDataType.NUMERIC, false, true);
+    private static final long serialVersionUID = 1L;
 
     /**
      * Create a new routine call instance

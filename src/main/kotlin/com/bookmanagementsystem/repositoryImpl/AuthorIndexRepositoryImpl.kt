@@ -1,7 +1,6 @@
 package com.bookmanagementsystem.repositoryImpl
 
 import bookmanagementsystem.jooq.quo_assignment.tables.AuthorIndex.AUTHOR_INDEX
-import bookmanagementsystem.jooq.quo_assignment.tables.BooksInfo.BOOKS_INFO
 import com.bookmanagementsystem.dto.AuthorIndexDto
 import com.bookmanagementsystem.repository.AuthorIndexRepository
 import org.jooq.DSLContext
@@ -62,25 +61,35 @@ class AuthorIndexRepositoryImpl(
      * @return 書籍情報
      */
     @Override
-    override fun createBookFromAuthor(authorIndexDto: AuthorIndexDto): Int {
+    override fun createBookFromAuthor(authorIndexDtoList: List<AuthorIndexDto>): Int {
         try {
+            // 処理件数
+            var processedNumber = 0
+            // FIXME bulkInsertにしたい。
             // クエリを生成・実行する
-            val processedNumber = dslContext
-                .insertInto(
-                    AUTHOR_INDEX,
-                    AUTHOR_INDEX.BOOK_ID,
-                    AUTHOR_INDEX.AUTHOR_ID,
-                    AUTHOR_INDEX.CREATED_BY,
-                    AUTHOR_INDEX.CREATED_AT,
-                    AUTHOR_INDEX.UPDATED_BY,
-                    AUTHOR_INDEX.UPDATED_AT,
-                    AUTHOR_INDEX.DELETE_FLG,
-                )
-                .values(
-                    authorIndexDto.bookId, authorIndexDto.authorId, authorIndexDto.createdBy, authorIndexDto.createdAt,
-                    authorIndexDto.updatedBy, authorIndexDto.updatedAt, authorIndexDto.deleteFlg
-                )
-                .execute()
+            for (authorIndexDto in authorIndexDtoList) {
+                processedNumber += dslContext
+                    .insertInto(
+                        AUTHOR_INDEX,
+                        AUTHOR_INDEX.BOOK_ID,
+                        AUTHOR_INDEX.AUTHOR_ID,
+                        AUTHOR_INDEX.CREATED_BY,
+                        AUTHOR_INDEX.CREATED_AT,
+                        AUTHOR_INDEX.UPDATED_BY,
+                        AUTHOR_INDEX.UPDATED_AT,
+                        AUTHOR_INDEX.DELETE_FLG,
+                    )
+                    .values(
+                        authorIndexDto.bookId,
+                        authorIndexDto.authorId,
+                        authorIndexDto.createdBy,
+                        authorIndexDto.createdAt,
+                        authorIndexDto.updatedBy,
+                        authorIndexDto.updatedAt,
+                        authorIndexDto.deleteFlg
+                    )
+                    .execute()
+            }
             // 実行結果として返ってくる処理件数を返す
             return processedNumber
         } catch (e: SQLException) {

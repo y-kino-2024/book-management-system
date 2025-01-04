@@ -11,9 +11,7 @@ interface BooksInfoRepository {
 
     fun fetchBook(bookId: String): BooksInfoDto?
 
-    fun createBook(bookDto: BooksInfoDto): Int
+    fun createBook(bookDto: BooksInfoDto): Int?
 
     fun updateBook(bookDto: BooksInfoDto): Int
-
-    fun currentAuthorIdSequence(): Int
 }

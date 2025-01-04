@@ -5,16 +5,10 @@ package bookmanagementsystem.jooq.pg_catalog.routines;
 
 
 import bookmanagementsystem.jooq.pg_catalog.PgCatalog;
-
 import org.jooq.Field;
 import org.jooq.JSON;
 import org.jooq.Parameter;
-import org.jooq.impl.AbstractRoutine;
-import org.jooq.impl.DSL;
-import org.jooq.impl.DefaultDataType;
-import org.jooq.impl.Internal;
-import org.jooq.impl.SQLDataType;
-
+import org.jooq.impl.*;
 
 
 /**
@@ -25,10 +19,8 @@ import org.jooq.impl.SQLDataType;
  * <deprecationOnUnknownTypes/>} in your code generator configuration.
  */
 @Deprecated
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class JsonPopulateRecord extends AbstractRoutine<Object> {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
@@ -40,7 +32,6 @@ public class JsonPopulateRecord extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> RETURN_VALUE = Internal.createParameter("RETURN_VALUE", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"anyelement\""), false, false);
-
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
      * it may have been excluded from code generation. If this is a built-in
@@ -51,17 +42,16 @@ public class JsonPopulateRecord extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> BASE = Internal.createParameter("base", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"anyelement\""), false, false);
-
     /**
      * The parameter <code>pg_catalog.json_populate_record.from_json</code>.
      */
     public static final Parameter<JSON> FROM_JSON = Internal.createParameter("from_json", SQLDataType.JSON, false, false);
-
     /**
      * The parameter
      * <code>pg_catalog.json_populate_record.use_json_as_text</code>.
      */
     public static final Parameter<Boolean> USE_JSON_AS_TEXT = Internal.createParameter("use_json_as_text", SQLDataType.BOOLEAN.defaultValue(DSL.field(DSL.raw("false"), SQLDataType.BOOLEAN)), true, false);
+    private static final long serialVersionUID = 1L;
 
     /**
      * Create a new routine call instance

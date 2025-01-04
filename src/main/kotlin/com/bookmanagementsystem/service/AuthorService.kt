@@ -6,14 +6,15 @@ import com.bookmanagementsystem.entity.Author
 import com.bookmanagementsystem.repositoryImpl.AuthorsInfoRepositoryImpl
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.sql.SQLException
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 /**
  * 著者のService
  */
 @Service
 class AuthorService(
+    private val common: CommonService,
     private val authorsInfoRepositoryImpl: AuthorsInfoRepositoryImpl
 ) {
 
@@ -45,24 +46,24 @@ class AuthorService(
      */
     @Transactional
     fun createAuthor(author: Author): String {
-        // チェック処理
+        try {
+            // チェック処理
 
-        // 処理日時を取得
-        val processingDatetime = getProcessingDateTime()
-        // Dtoに詰め替える
-        val authorDto = convertAuthorsInfoDto(
-            author = author,
-            processingDatetime = processingDatetime
-        )
-        // 登録処理
-        val result = authorsInfoRepositoryImpl.createAuthor(authorDto)
-        // 登録した著者IDを取得
-        val authorId = authorsInfoRepositoryImpl.currentAuthorIdSequence()
-        if (result > 0) {
-            // 処理された場合
-            return authorId.toString()
-        } else {
-            // 処理されなかった場合はエラー
+            // 処理日時を取得
+            val processingDatetime = common.getProcessingDateTime()
+            // Dtoに詰め替える
+            val authorDto = convertAuthorsInfoDto(
+                author = author,
+                processingDatetime = processingDatetime
+            )
+            // 登録処理
+            val result = authorsInfoRepositoryImpl.createAuthor(authorDto)
+            return result.toString()
+        } catch (e: SQLException) {
+            // 登録処理時にエラーが発生した場合はエラーメッセージをそのまま入れて投げる
+            throw SQLException(e.message)
+        } catch (e: Exception) {
+            // その他要因で処理されなかった場合はExceptionを投げる
             throw Exception("著者情報の登録に失敗しました。")
         }
     }
@@ -75,41 +76,36 @@ class AuthorService(
      */
     @Transactional
     fun updateAuthor(author: Author): String {
-        // チェック処理
+        try {
+            // チェック処理
 
-        // 取得処理
-        val targetAuthor = authorsInfoRepositoryImpl.fetchAuthor(author.id.toString())
-            ?: throw IllegalStateException("更新対象が存在しません。")
-        // 処理日時を取得
-        val processingDatetime = getProcessingDateTime()
-        // Dtoに詰め替える
-        val authorDto = convertAuthorsInfoDto(
-            author = author,
-            currentAuthor = targetAuthor,
-            processingDatetime = processingDatetime
-        )
-        // 更新処理
-        val result = authorsInfoRepositoryImpl.updateAuthor(authorDto)
-        if (result > 0) {
-            // 処理された場合
-            return author.id.toString()
-        } else {
-            // 処理されなかった場合はエラー
+            // 取得処理
+            val targetAuthor = authorsInfoRepositoryImpl.fetchAuthor(author.id.toString())
+                ?: throw IllegalStateException("更新対象が存在しません。")
+            // 処理日時を取得
+            val processingDatetime = common.getProcessingDateTime()
+            // Dtoに詰め替える
+            val authorDto = convertAuthorsInfoDto(
+                author = author,
+                currentAuthor = targetAuthor,
+                processingDatetime = processingDatetime
+            )
+            // 更新処理
+            val result = authorsInfoRepositoryImpl.updateAuthor(authorDto)
+            if (result > 0) {
+                // 処理された場合
+                return author.id.toString()
+            } else {
+                // 処理されなかった場合はエラー
+                throw Exception("著者情報の更新に失敗しました。")
+            }
+        } catch (e: SQLException) {
+            // 登録処理時にエラーが発生した場合はエラーメッセージをそのまま入れて投げる
+            throw SQLException(e.message)
+        } catch (e: Exception) {
+            // その他要因で処理されなかった場合はExceptionを投げる
             throw Exception("著者情報の更新に失敗しました。")
         }
-    }
-
-    /**
-     * 処理日時を取得する
-     *
-     * @return 処理日時
-     */
-    private fun getProcessingDateTime(): LocalDateTime {
-        val now = LocalDateTime.now()
-        // ミリ秒まで表示させるように整形
-        val processingDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss.SSS")
-        val processingDateTime = LocalDateTime.parse(now.format(processingDateFormat), processingDateFormat)
-        return processingDateTime
     }
 
     /**

@@ -11,7 +11,7 @@ interface AuthorIndexRepository {
 
     fun getBookFromAuthor(authorId: String): List<AuthorIndexDto>?
 
-    fun createBookFromAuthor(authorIndexDto: AuthorIndexDto): Int
+    fun createBookFromAuthor(authorIndexDto: List<AuthorIndexDto>): Int
 
     fun updateBookFromAuthor(authorIndexDto: AuthorIndexDto): Int
 }

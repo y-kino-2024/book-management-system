@@ -5,7 +5,6 @@ package bookmanagementsystem.jooq.pg_catalog.routines;
 
 
 import bookmanagementsystem.jooq.pg_catalog.PgCatalog;
-
 import org.jooq.Field;
 import org.jooq.Parameter;
 import org.jooq.impl.AbstractRoutine;
@@ -13,7 +12,6 @@ import org.jooq.impl.DefaultDataType;
 import org.jooq.impl.Internal;
 import org.jooq.impl.SQLDataType;
 import org.jooq.types.YearToSecond;
-
 
 
 /**
@@ -24,10 +22,8 @@ import org.jooq.types.YearToSecond;
  * <deprecationOnUnknownTypes/>} in your code generator configuration.
  */
 @Deprecated
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class IntervalOut extends AbstractRoutine<Object> {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * @deprecated Unknown data type. If this is a qualified, user-defined type,
@@ -39,11 +35,11 @@ public class IntervalOut extends AbstractRoutine<Object> {
      */
     @Deprecated
     public static final Parameter<Object> RETURN_VALUE = Internal.createParameter("RETURN_VALUE", DefaultDataType.getDefaultDataType("\"pg_catalog\".\"cstring\""), false, false);
-
     /**
      * The parameter <code>pg_catalog.interval_out._1</code>.
      */
     public static final Parameter<YearToSecond> _1 = Internal.createParameter("_1", SQLDataType.INTERVAL, false, true);
+    private static final long serialVersionUID = 1L;
 
     /**
      * Create a new routine call instance

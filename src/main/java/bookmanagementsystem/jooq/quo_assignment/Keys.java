@@ -12,7 +12,6 @@ import bookmanagementsystem.jooq.quo_assignment.tables.records.AuthorIndexRecord
 import bookmanagementsystem.jooq.quo_assignment.tables.records.AuthorsInfoRecord;
 import bookmanagementsystem.jooq.quo_assignment.tables.records.BooksInfoRecord;
 import bookmanagementsystem.jooq.quo_assignment.tables.records.FlywaySchemaHistoryRecord;
-
 import org.jooq.ForeignKey;
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
@@ -24,21 +23,21 @@ import org.jooq.impl.Internal;
  * A class modelling foreign key relationships and constraints of tables in
  * quo_assignment.
  */
-@SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@SuppressWarnings({"all", "unchecked", "rawtypes", "this-escape"})
 public class Keys {
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<AuthorsInfoRecord> AUTHORS_INFO_PKEY = Internal.createUniqueKey(AuthorsInfo.AUTHORS_INFO, DSL.name("authors_info_pkey"), new TableField[] { AuthorsInfo.AUTHORS_INFO.ID }, true);
-    public static final UniqueKey<BooksInfoRecord> BOOKS_INFO_PKEY = Internal.createUniqueKey(BooksInfo.BOOKS_INFO, DSL.name("books_info_pkey"), new TableField[] { BooksInfo.BOOKS_INFO.ID }, true);
-    public static final UniqueKey<FlywaySchemaHistoryRecord> FLYWAY_SCHEMA_HISTORY_PK = Internal.createUniqueKey(FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY, DSL.name("flyway_schema_history_pk"), new TableField[] { FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY.INSTALLED_RANK }, true);
+    public static final UniqueKey<AuthorsInfoRecord> AUTHORS_INFO_PKEY = Internal.createUniqueKey(AuthorsInfo.AUTHORS_INFO, DSL.name("authors_info_pkey"), new TableField[]{AuthorsInfo.AUTHORS_INFO.ID}, true);
+    public static final UniqueKey<BooksInfoRecord> BOOKS_INFO_PKEY = Internal.createUniqueKey(BooksInfo.BOOKS_INFO, DSL.name("books_info_pkey"), new TableField[]{BooksInfo.BOOKS_INFO.ID}, true);
+    public static final UniqueKey<FlywaySchemaHistoryRecord> FLYWAY_SCHEMA_HISTORY_PK = Internal.createUniqueKey(FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY, DSL.name("flyway_schema_history_pk"), new TableField[]{FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY.INSTALLED_RANK}, true);
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final ForeignKey<AuthorIndexRecord, AuthorsInfoRecord> AUTHOR_INDEX__AUTHOR_INDEX_AUTHOR_ID_FKEY = Internal.createForeignKey(AuthorIndex.AUTHOR_INDEX, DSL.name("author_index_author_id_fkey"), new TableField[] { AuthorIndex.AUTHOR_INDEX.AUTHOR_ID }, Keys.AUTHORS_INFO_PKEY, new TableField[] { AuthorsInfo.AUTHORS_INFO.ID }, true);
-    public static final ForeignKey<AuthorIndexRecord, BooksInfoRecord> AUTHOR_INDEX__AUTHOR_INDEX_BOOK_ID_FKEY = Internal.createForeignKey(AuthorIndex.AUTHOR_INDEX, DSL.name("author_index_book_id_fkey"), new TableField[] { AuthorIndex.AUTHOR_INDEX.BOOK_ID }, Keys.BOOKS_INFO_PKEY, new TableField[] { BooksInfo.BOOKS_INFO.ID }, true);
+    public static final ForeignKey<AuthorIndexRecord, AuthorsInfoRecord> AUTHOR_INDEX__AUTHOR_INDEX_AUTHOR_ID_FKEY = Internal.createForeignKey(AuthorIndex.AUTHOR_INDEX, DSL.name("author_index_author_id_fkey"), new TableField[]{AuthorIndex.AUTHOR_INDEX.AUTHOR_ID}, Keys.AUTHORS_INFO_PKEY, new TableField[]{AuthorsInfo.AUTHORS_INFO.ID}, true);
+    public static final ForeignKey<AuthorIndexRecord, BooksInfoRecord> AUTHOR_INDEX__AUTHOR_INDEX_BOOK_ID_FKEY = Internal.createForeignKey(AuthorIndex.AUTHOR_INDEX, DSL.name("author_index_book_id_fkey"), new TableField[]{AuthorIndex.AUTHOR_INDEX.BOOK_ID}, Keys.BOOKS_INFO_PKEY, new TableField[]{BooksInfo.BOOKS_INFO.ID}, true);
 }
