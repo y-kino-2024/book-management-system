@@ -18,7 +18,6 @@ import java.util.List;
 import org.jooq.Condition;
 import org.jooq.Field;
 import org.jooq.ForeignKey;
-import org.jooq.Identity;
 import org.jooq.InverseForeignKey;
 import org.jooq.Name;
 import org.jooq.Path;
@@ -61,12 +60,12 @@ public class AuthorIndex extends TableImpl<AuthorIndexRecord> {
     /**
      * The column <code>quo_assignment.author_index.book_id</code>.
      */
-    public final TableField<AuthorIndexRecord, Integer> BOOK_ID = createField(DSL.name("book_id"), SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+    public final TableField<AuthorIndexRecord, Integer> BOOK_ID = createField(DSL.name("book_id"), SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
      * The column <code>quo_assignment.author_index.author_id</code>.
      */
-    public final TableField<AuthorIndexRecord, Integer> AUTHOR_ID = createField(DSL.name("author_id"), SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+    public final TableField<AuthorIndexRecord, Integer> AUTHOR_ID = createField(DSL.name("author_id"), SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
      * The column <code>quo_assignment.author_index.created_by</code>.
@@ -160,11 +159,6 @@ public class AuthorIndex extends TableImpl<AuthorIndexRecord> {
     @Override
     public Schema getSchema() {
         return aliased() ? null : QuoAssignment.QUO_ASSIGNMENT;
-    }
-
-    @Override
-    public Identity<AuthorIndexRecord, Integer> getIdentity() {
-        return (Identity<AuthorIndexRecord, Integer>) super.getIdentity();
     }
 
     @Override

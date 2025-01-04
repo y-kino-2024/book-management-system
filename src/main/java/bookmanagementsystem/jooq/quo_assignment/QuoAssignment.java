@@ -69,9 +69,7 @@ public class QuoAssignment extends SchemaImpl {
     public final List<Sequence<?>> getSequences() {
         return Arrays.asList(
             Sequences.AUTHOR_ID_SEQ,
-            Sequences.AUTHORS_INFO_ID_SEQ,
-            Sequences.BOOK_ID_SEQ,
-            Sequences.BOOKS_INFO_ID_SEQ
+            Sequences.BOOK_ID_SEQ
         );
     }
 

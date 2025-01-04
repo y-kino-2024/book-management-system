@@ -21,17 +21,7 @@ public class Sequences {
     public static final Sequence<Long> AUTHOR_ID_SEQ = Internal.createSequence("author_id_seq", QuoAssignment.QUO_ASSIGNMENT, SQLDataType.BIGINT.nullable(false), null, null, null, 99999999, false, null);
 
     /**
-     * The sequence <code>quo_assignment.authors_info_id_seq</code>
-     */
-    public static final Sequence<Integer> AUTHORS_INFO_ID_SEQ = Internal.createSequence("authors_info_id_seq", QuoAssignment.QUO_ASSIGNMENT, SQLDataType.INTEGER.nullable(false), null, null, null, null, false, null);
-
-    /**
      * The sequence <code>quo_assignment.book_id_seq</code>
      */
     public static final Sequence<Long> BOOK_ID_SEQ = Internal.createSequence("book_id_seq", QuoAssignment.QUO_ASSIGNMENT, SQLDataType.BIGINT.nullable(false), null, null, null, 99999999, false, null);
-
-    /**
-     * The sequence <code>quo_assignment.books_info_id_seq</code>
-     */
-    public static final Sequence<Integer> BOOKS_INFO_ID_SEQ = Internal.createSequence("books_info_id_seq", QuoAssignment.QUO_ASSIGNMENT, SQLDataType.INTEGER.nullable(false), null, null, null, null, false, null);
 }
