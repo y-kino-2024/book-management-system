@@ -43,7 +43,7 @@ class AuthorController(
      */
     @GetMapping("/getAuthor")
     fun getAuthorController(
-        @Validated @RequestBody request: GetAuthorRequest,
+        @Validated request: GetAuthorRequest,
         bindingResult: BindingResult
     ): String {
         if (bindingResult.hasErrors()) {
@@ -61,7 +61,9 @@ class AuthorController(
             // バリデーション処理
             validate.validGetAuthor(request)
             // 著者取得処理
-            val author = service.getAuthor(request.authorId.toString())
+            val author = service.getAuthor(request.authorId?.let {
+                request.authorId
+            } ?: throw IllegalStateException("著者IDの値が不正です。"))
             // レスポンスに詰め替える
             if (author != null) {
                 // 検索結果が取得できた場合

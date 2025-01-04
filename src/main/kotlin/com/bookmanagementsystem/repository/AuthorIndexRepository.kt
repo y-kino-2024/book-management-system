@@ -9,7 +9,9 @@ import org.springframework.stereotype.Repository
 @Repository
 interface AuthorIndexRepository {
 
-    fun getBookFromAuthor(authorId: String): List<AuthorIndexDto>?
+    fun getBookFromBookId(bookId:Int): List<AuthorIndexDto>?
+
+    fun getBookFromAuthorId(authorId: Int): List<AuthorIndexDto>?
 
     fun createBookFromAuthor(authorIndexDto: List<AuthorIndexDto>): Int
 

@@ -28,18 +28,22 @@ class BookService(
      * @return 書籍
      */
     @Transactional
-    fun getBook(bookId: String): Book {
-        // TODO 処理未実装。エラーださないための仮置き
-        //val enum = PublicationStatus.NONE.code
-        return Book(
-            id = 99999999,
-            authorIdList = listOf(2, 4, 6, 8, 10),
-            title = "test",
-            price = 8888.0,
-            publicationStatus = PublicationStatus.NONE,
-            operator = "test",
-            deleteFlg = "0"
-        )
+    fun getBook(bookId: Int): Book? {
+        // 書籍情報取得
+        val resultBook = booksInfoRepositoryImpl.fetchBook(bookId)
+        // 著者情報取得
+        val resultAuthor = authorIndexRepositoryImpl.getBookFromBookId(bookId)
+        // 取得結果による分岐
+        return if (resultBook != null && resultAuthor != null) {
+            // 取得結果をBookエンティティに詰め替えて返す
+            convertBook(
+                booksInfoDto = resultBook,
+                authorIndexDtoList = resultAuthor
+            )
+        } else {
+            // 取得結果が0件の場合はnullを返す
+            null
+        }
     }
 
     /**
@@ -67,9 +71,8 @@ class BookService(
         )
         // 書籍と著者を紐づけた情報を登録
         val createAuthorIndexResult = authorIndexRepositoryImpl.createBookFromAuthor(authorIndexDto)
-        println("処理件数$createAuthorIndexResult")
         if (createAuthorIndexResult == book.authorIdList?.size) {
-            // 著者人数分処理された場合
+            // 著者人数分処理された場合は書籍IDを返す
             return bookId.toString()
         } else {
             // 処理されなかった場合はエラー
@@ -117,12 +120,12 @@ class BookService(
      */
     private fun convertBook(
         booksInfoDto: BooksInfoDto,
-        authorIndexDto: List<AuthorIndexDto>
+        authorIndexDtoList: List<AuthorIndexDto>
     ): Book {
         // 書籍Entityに格納する著者IDリストを作成する
         val authorIdList = mutableListOf<Int>()
-        for (authorIndex in authorIndexDto) {
-            authorIdList.add(authorIndex.authorId)
+        for (authorIndexDto in authorIndexDtoList) {
+            authorIdList.add(authorIndexDto.authorId)
         }
         return Book(
             id = booksInfoDto.id,

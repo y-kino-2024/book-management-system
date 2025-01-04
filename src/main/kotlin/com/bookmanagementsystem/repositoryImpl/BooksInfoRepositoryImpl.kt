@@ -22,12 +22,12 @@ class BooksInfoRepositoryImpl(
      * @return 書籍情報
      */
     @Override
-    override fun fetchBook(bookId: String): BooksInfoDto? {
+    override fun fetchBook(bookId: Int): BooksInfoDto? {
         try {
             // クエリを生成・実行する
             val result = this.dslContext.select()
                 .from(BOOKS_INFO)
-                .where(BOOKS_INFO.ID.eq(bookId.toInt()))
+                .where(BOOKS_INFO.ID.eq(bookId))
                 .fetchOne()
 
             val bookDto = if (result != null) {

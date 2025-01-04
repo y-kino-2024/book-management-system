@@ -18,20 +18,21 @@ class AuthorIndexRepositoryImpl(
     /**
      * 著者に紐づく書籍情報をDBから取得する
      *
-     * @args authorId 著者ID
+     * @args bookId 書籍ID
      * @return 書籍情報
      */
     @Override
-    override fun getBookFromAuthor(authorId: String): List<AuthorIndexDto>? {
+    override fun getBookFromBookId(bookId: Int): List<AuthorIndexDto>? {
         try {
             // クエリを生成・実行する
             val result = this.dslContext.select()
                 .from(AUTHOR_INDEX)
-                .where(AUTHOR_INDEX.AUTHOR_ID.eq(authorId.toInt()))
-                .fetchOne()
+                .where(AUTHOR_INDEX.BOOK_ID.eq(bookId))
+                .fetch()
 
             val authorIndexDtoList = mutableListOf<AuthorIndexDto>()
-            result?.map { r ->
+            println("Impl$result\n")
+            result.map { r ->
                 authorIndexDtoList.add(
                     AuthorIndexDto(
                         bookId = r.getValue(AUTHOR_INDEX.BOOK_ID),
@@ -44,6 +45,48 @@ class AuthorIndexRepositoryImpl(
                     )
                 )
             }
+            println("Impl$authorIndexDtoList\n")
+            return authorIndexDtoList
+        } catch (e: SQLException) {
+            // エラー処理(SQLException)
+            throw SQLException("DB処理実施時にエラーが発生しました。")
+        } catch (e: Exception) {
+            // エラー処理(Exception)
+            throw Exception(e.message)
+        }
+    }
+
+    /**
+     * 著者に紐づく書籍情報をDBから取得する
+     *
+     * @args authorId 著者ID
+     * @return 書籍情報
+     */
+    @Override
+    override fun getBookFromAuthorId(authorId: Int): List<AuthorIndexDto>? {
+        try {
+            // クエリを生成・実行する
+            val result = this.dslContext.select()
+                .from(AUTHOR_INDEX)
+                .where(AUTHOR_INDEX.AUTHOR_ID.eq(authorId))
+                .fetch()
+
+            val authorIndexDtoList = mutableListOf<AuthorIndexDto>()
+            println("Impl$result\n")
+            result.map { r ->
+                authorIndexDtoList.add(
+                    AuthorIndexDto(
+                        bookId = r.getValue(AUTHOR_INDEX.BOOK_ID),
+                        authorId = r.getValue(AUTHOR_INDEX.AUTHOR_ID),
+                        createdBy = r.getValue(AUTHOR_INDEX.CREATED_BY),
+                        createdAt = r.getValue(AUTHOR_INDEX.CREATED_AT),
+                        updatedBy = r.getValue(AUTHOR_INDEX.UPDATED_BY),
+                        updatedAt = r.getValue(AUTHOR_INDEX.UPDATED_AT),
+                        deleteFlg = r.getValue(AUTHOR_INDEX.DELETE_FLG),
+                    )
+                )
+            }
+            println("Impl$authorIndexDtoList\n")
             return authorIndexDtoList
         } catch (e: SQLException) {
             // エラー処理(SQLException)

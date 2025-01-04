@@ -3,6 +3,7 @@ package com.bookmanagementsystem.validator
 
 import com.bookmanagementsystem.enumkt.PublicationStatus
 import com.bookmanagementsystem.request.book.CreateBookRequest
+import com.bookmanagementsystem.request.book.GetBookFromAuthorRequest
 import com.bookmanagementsystem.request.book.GetBookRequest
 import com.bookmanagementsystem.request.book.UpdateBookRequest
 import org.springframework.stereotype.Component
@@ -27,7 +28,16 @@ class BookValidator {
      * @param request 書籍取得処理のリクエスト
      */
     fun validGetBook(request: GetBookRequest) {
-        checkId(request.bookId)
+        checkRequiredBookId(request.bookId)
+    }
+
+    /**
+     * 著者IDから書籍を取得する処理のバリデーション
+     *
+     * @param request 書籍取得処理のリクエスト
+     */
+    fun validGetBook(request: GetBookFromAuthorRequest) {
+        checkRequiredAuthorId(request.authorId)
     }
 
     /**
@@ -36,9 +46,10 @@ class BookValidator {
      * @param request 書籍登録処理のリクエスト
      */
     fun validCreateBook(request: CreateBookRequest) {
-        checkName(request.title)
-        checkPrice(request.price)
-        checkPublicationStatus(request.publicationStatus)
+        checkRequiredName(request.title)
+        checkRequiredPrice(request.price)
+        checkRequiredPublicationStatus(request.publicationStatus)
+        checkValidityPublicationStatus(request.publicationStatus)
     }
 
     /**
@@ -47,72 +58,78 @@ class BookValidator {
      * @param request 書籍更新処理のリクエスト
      */
     fun validUpdateBook(request: UpdateBookRequest) {
-        checkId(request.bookId)
-        checkName(request.title)
-        checkPrice(request.price)
-        checkPublicationStatus(request.publicationStatus)
+        checkRequiredBookId(request.bookId)
+        checkValidityPublicationStatus(request.publicationStatus)
     }
 
     /**
-     * 書籍IDのチェック
+     * 書籍IDの必須チェック
      *
      * @param bookId 書籍ID
      */
-    private fun checkId(bookId: String?) {
+    private fun checkRequiredBookId(bookId: Int?) {
         // 必須チェック
-        if (bookId.isNullOrBlank()) {
+        if (bookId == null) {
             throw NullPointerException("bookIdを入力してください。")
-        }
-        // 桁数チェック(DB定義：8桁)
-        if (bookId.length > BOOK_ID_MAX) {
-            throw IllegalStateException("bookIdは8桁以内で入力してください。")
         }
     }
 
     /**
-     * タイトルのチェック
+     * 書籍IDの必須チェック
+     *
+     * @param authorId 書籍ID
+     */
+    private fun checkRequiredAuthorId(authorId: Int?) {
+        // 必須チェック
+        if (authorId == null) {
+            throw NullPointerException("authorIdを入力してください。")
+        }
+    }
+
+    /**
+     * タイトルの必須チェック
      *
      * @param title タイトル
      */
-    private fun checkName(title: String?) {
+    private fun checkRequiredName(title: String?) {
         // 必須チェック
         if (title.isNullOrBlank()) {
             throw NullPointerException("titleを入力してください。")
         }
-        // 桁数チェック(DB定義：256桁)
-        if (title.length > TITLE_MAX) {
-            throw IllegalStateException("titleは256文字以内で入力してください。")
-        }
     }
 
     /**
-     * 価格のチェック
+     * 価格の必須チェック
      *
      * @param price 価格
      */
-    private fun checkPrice(price: Double?) {
+    private fun checkRequiredPrice(price: Double?) {
         // 必須チェック
         if (price == null) {
             throw NullPointerException("priceを入力してください。")
         }
-        // 桁数チェック(DB定義：256桁)
-        if (price < PRICE_MIN) {
-            throw IllegalStateException("priceは0以上で入力してください。")
-        }
     }
 
     /**
-     * 出版状況のチェック
+     * 出版状況の必須チェック
      *
      * @param publicationStatus 出版状況
      */
-    private fun checkPublicationStatus(publicationStatus: String?) {
+    private fun checkRequiredPublicationStatus(publicationStatus: String?) {
         // 必須チェック
         if (publicationStatus.isNullOrBlank()) {
             throw NullPointerException("publicationStatusを入力してください。")
         }
+    }
+
+    /**
+     * 出版状況の妥当性チェック
+     *
+     * @param publicationStatus 出版状況
+     */
+    private fun checkValidityPublicationStatus(publicationStatus: String?) {
         // 妥当性チェック
-        if (PublicationStatus.getPublicationStatus(publicationStatus) == PublicationStatus.NONE) {
+        if (publicationStatus?.let { PublicationStatus.getPublicationStatus(it) } == PublicationStatus.NONE) {
             throw IllegalStateException("publicationStatusの入力値が不正です。")
         }
     }

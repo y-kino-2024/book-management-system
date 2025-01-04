@@ -55,9 +55,9 @@ class AuthorValidator(
      *
      * @args authorId 著者ID
      */
-    private fun checkRequiredId(authorId: String?) {
+    private fun checkRequiredId(authorId: Int?) {
         // 必須チェック
-        if (authorId.isNullOrBlank()) {
+        if (authorId == null) {
             throw NullPointerException("authorIdを入力してください。")
         }
     }

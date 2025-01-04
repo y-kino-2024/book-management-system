@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface BooksInfoRepository {
 
-    fun fetchBook(bookId: String): BooksInfoDto?
+    fun fetchBook(bookId: Int): BooksInfoDto?
 
     fun createBook(bookDto: BooksInfoDto): Int?
 

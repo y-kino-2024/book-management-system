@@ -25,7 +25,7 @@ class AuthorService(
      * @return 著者
      */
     @Transactional
-    fun getAuthor(authorId: String): Author? {
+    fun getAuthor(authorId: Int): Author? {
         // 取得処理
         val result = authorsInfoRepositoryImpl.fetchAuthor(authorId)
         // 取得結果による分岐
@@ -80,7 +80,9 @@ class AuthorService(
             // チェック処理
 
             // 取得処理
-            val targetAuthor = authorsInfoRepositoryImpl.fetchAuthor(author.id.toString())
+            val targetAuthor = authorsInfoRepositoryImpl.fetchAuthor(author.id?.let {
+                author.id
+            } ?: throw IllegalStateException("著者IDの値が不正です。"))
                 ?: throw IllegalStateException("更新対象が存在しません。")
             // 処理日時を取得
             val processingDatetime = common.getProcessingDateTime()

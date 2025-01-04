@@ -3,6 +3,7 @@ package com.bookmanagementsystem.controller
 import com.bookmanagementsystem.entity.Book
 import com.bookmanagementsystem.enumkt.PublicationStatus
 import com.bookmanagementsystem.request.book.CreateBookRequest
+import com.bookmanagementsystem.request.book.GetBookFromAuthorRequest
 import com.bookmanagementsystem.request.book.GetBookRequest
 import com.bookmanagementsystem.request.book.UpdateBookRequest
 import com.bookmanagementsystem.response.book.CreateBookResponse
@@ -10,12 +11,16 @@ import com.bookmanagementsystem.response.book.GetBookResponse
 import com.bookmanagementsystem.service.BookService
 import com.bookmanagementsystem.validator.BookValidator
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer
 import org.springframework.validation.BindingResult
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 /**
  * 書籍のController
@@ -38,22 +43,53 @@ class BookController(
      * @return 書籍情報のJSON
      */
     @GetMapping("/getBook")
-    fun getBookController(request: GetBookRequest): String {
+    fun getBookController(
+        @Validated request: GetBookRequest,
+        bindingResult: BindingResult
+    ): String {
+        if (bindingResult.hasErrors()) {
+            val errorMessageList = mutableListOf<String>()
+            for (bindingError in bindingResult.fieldErrors) {
+                errorMessageList.add(bindingError.defaultMessage?.let {
+                    bindingError.defaultMessage
+                } ?: UNKNOWN_ERROR_MESSAGE)
+            }
+            val mapper = ObjectMapper()
+            val responseJson = mapper.writeValueAsString(errorMessageList)
+            return responseJson
+        }
         try {
             // バリデーション処理
             validate.validGetBook(request)
-            // リクエストを詰め替える
-            // リクエスト詰め替え不要
-            // 書籍取得処理
-            //val author = model.getBook(authorId = request.authorId)
+            // 著者取得処理
+            val book = service.getBook(request.bookId?.let {
+                request.bookId
+            } ?: throw IllegalStateException("書籍IDの値が不正です。"))
             // レスポンスに詰め替える
-            //val response = convertGetBookResponse(author)
-            // TODO JSONで返す
-            //return Json.encodeToString(response)
-            return "Test"
-            // 完了
+            if (book != null) {
+                // 検索結果が取得できた場合
+                val response = convertGetBookResponse(book)
+                println("controller$response")
+                // JSONで返す
+                val mapper = ObjectMapper()
+                // JSONをLocalDateに対応させる
+                val timeModule = JavaTimeModule()
+                timeModule.addDeserializer(
+                    LocalDate::class.java,
+                    LocalDateDeserializer(DateTimeFormatter.ISO_DATE_TIME)
+                )
+                mapper.registerModule(timeModule)
+                // 日付の表示形式を整形
+                mapper.dateFormat = java.text.SimpleDateFormat("yyyy-MM-dd")
+                val responseJson = mapper.writeValueAsString(response)
+                return responseJson
+            } else {
+                // 検索結果が取得できなかった場合
+                val mapper = ObjectMapper()
+                return mapper.writeValueAsString("取得対象が存在しません。")
+            }
         } catch (e: Exception) {
-            return e.message!!
+            return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
         }
     }
 
@@ -64,7 +100,21 @@ class BookController(
      * @return 書籍情報のJSON
      */
     @GetMapping("/getBookFromAuthor")
-    fun getBookFromAuthorController(request: GetBookRequest): String {
+    fun getBookFromAuthorController(
+        @Validated request: GetBookFromAuthorRequest,
+        bindingResult: BindingResult
+    ): String {
+        if (bindingResult.hasErrors()) {
+            val errorMessageList = mutableListOf<String>()
+            for (bindingError in bindingResult.fieldErrors) {
+                errorMessageList.add(bindingError.defaultMessage?.let {
+                    bindingError.defaultMessage
+                } ?: UNKNOWN_ERROR_MESSAGE)
+            }
+            val mapper = ObjectMapper()
+            val responseJson = mapper.writeValueAsString(errorMessageList)
+            return responseJson
+        }
         try {
             // バリデーション処理
             validate.validGetBook(request)

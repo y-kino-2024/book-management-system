@@ -22,12 +22,12 @@ class AuthorsInfoRepositoryImpl(
      * @return 著者情報
      */
     @Override
-    override fun fetchAuthor(authorId: String): AuthorsInfoDto? {
+    override fun fetchAuthor(authorId: Int): AuthorsInfoDto? {
         try {
             // クエリを生成・実行する
             val result = this.dslContext.select()
                 .from(AUTHORS_INFO)
-                .where(AUTHORS_INFO.ID.eq(authorId.toInt()))
+                .where(AUTHORS_INFO.ID.eq(authorId))
                 .fetchOne()
 
             val authorDto = if (result != null) {
