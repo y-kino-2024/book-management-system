@@ -23,7 +23,7 @@ class AuthorsInfoRepositoryImpl(
      * @return 著者情報
      */
     @Override
-    override fun getAuthor(authorId: String): AuthorsInfoDto? {
+    override fun fetchAuthor(authorId: String): AuthorsInfoDto? {
         try {
             // クエリを生成・実行する
             val result = this.dslContext.select()
@@ -112,7 +112,7 @@ class AuthorsInfoRepositoryImpl(
                 .set(AUTHORS_INFO.UPDATED_AT, authorDto.updatedAt)
                 .set(AUTHORS_INFO.DELETE_FLG, authorDto.deleteFlg)
                 .where(AUTHORS_INFO.ID.eq(authorDto.id))
-                .execute();
+                .execute()
             // 実行結果として返ってくる処理件数を返す
             return processedNumber
         } catch (e: SQLException) {

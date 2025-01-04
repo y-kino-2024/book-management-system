@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface AuthorsInfoRepository {
 
-    fun getAuthor(authorId: String): AuthorsInfoDto?
+    fun fetchAuthor(authorId: String): AuthorsInfoDto?
 
     fun createAuthor(authorDto: AuthorsInfoDto): Int
 

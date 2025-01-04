@@ -1,15 +1,20 @@
 package com.bookmanagementsystem.repositoryImpl
 
+import bookmanagementsystem.jooq.quo_assignment.Sequences
+import bookmanagementsystem.jooq.quo_assignment.tables.BooksInfo.BOOKS_INFO
 import com.bookmanagementsystem.dto.BooksInfoDto
 import com.bookmanagementsystem.repository.BooksInfoRepository
+import org.jooq.DSLContext
 import org.springframework.stereotype.Repository
-import java.time.LocalDateTime
+import java.sql.SQLException
 
 /**
  * Books_infoのリポジトリクラス
  */
 @Repository
-class BooksInfoRepositoryImpl : BooksInfoRepository {
+class BooksInfoRepositoryImpl(
+    private val dslContext: DSLContext
+) : BooksInfoRepository {
 
     /**
      * 書籍情報をDBから取得する
@@ -18,24 +23,39 @@ class BooksInfoRepositoryImpl : BooksInfoRepository {
      * @return 書籍情報
      */
     @Override
-    override fun getBook(bookId: String): BooksInfoDto? {
-        // TODO 処理内容
-        // クエリを生成する
-        // 取得した内容をDtoに詰め替える
-        // Dtoを返す
+    override fun fetchBook(bookId: String): BooksInfoDto? {
+        try {
+            // クエリを生成・実行する
+            val result = this.dslContext.select()
+                .from(BOOKS_INFO)
+                .where(BOOKS_INFO.ID.eq(bookId.toInt()))
+                .fetchOne()
 
-        // TODO 動確用返り値
-        return BooksInfoDto(
-            id = "test",
-            title = "test",
-            price = "test",
-            publicationStatus = "0",
-            createdBy = "test",
-            createdAt = LocalDateTime.now(),
-            updatedBy = "test",
-            updatedAt = LocalDateTime.now(),
-            deleteFlg = "0",
-        )
+            val bookDto = if (result != null) {
+                // 取得出来た場合はdtoに詰め替える
+                BooksInfoDto(
+                    id = result.getValue(BOOKS_INFO.ID)!!,
+                    title = result.getValue(BOOKS_INFO.TITLE)!!,
+                    price = result.getValue(BOOKS_INFO.PRICE)!!,
+                    publicationStatus = result.getValue(BOOKS_INFO.PUBLICATION_STATUS)!!,
+                    createdBy = result.getValue(BOOKS_INFO.CREATED_BY)!!,
+                    createdAt = result.getValue(BOOKS_INFO.CREATED_AT)!!,
+                    updatedBy = result.getValue(BOOKS_INFO.UPDATED_BY)!!,
+                    updatedAt = result.getValue(BOOKS_INFO.UPDATED_AT)!!,
+                    deleteFlg = result.getValue(BOOKS_INFO.DELETE_FLG)!!,
+                )
+            } else {
+                // 取得結果が0件の場合はnullを返す
+                null
+            }
+            return bookDto
+        } catch (e: SQLException) {
+            // エラー処理(SQLException)
+            throw SQLException("DB処理実施時にエラーが発生しました。")
+        } catch (e: Exception) {
+            // エラー処理(Exception)
+            throw Exception(e.message)
+        }
     }
 
     /**
@@ -45,14 +65,35 @@ class BooksInfoRepositoryImpl : BooksInfoRepository {
      * @return 書籍ID
      */
     @Override
-    override fun createBook(book: BooksInfoDto): String {
-        // TODO 処理内容
-        // クエリを生成する
-        // クエリを実行する
-        // 書籍IDを返す
-
-        // TODO 動確用返り値
-        return "createTest"
+    override fun createBook(bookDto: BooksInfoDto): Int {
+        try {
+            // クエリを生成・実行する
+            val processedNumber = dslContext
+                .insertInto(
+                    BOOKS_INFO,
+                    BOOKS_INFO.TITLE,
+                    BOOKS_INFO.PRICE,
+                    BOOKS_INFO.PUBLICATION_STATUS,
+                    BOOKS_INFO.CREATED_BY,
+                    BOOKS_INFO.CREATED_AT,
+                    BOOKS_INFO.UPDATED_BY,
+                    BOOKS_INFO.UPDATED_AT,
+                    BOOKS_INFO.DELETE_FLG,
+                )
+                .values(
+                    bookDto.title, bookDto.price, bookDto.publicationStatus, bookDto.createdBy, bookDto.createdAt,
+                    bookDto.updatedBy, bookDto.updatedAt, bookDto.deleteFlg
+                )
+                .execute()
+            // 実行結果として返ってくる処理件数を返す
+            return processedNumber
+        } catch (e: SQLException) {
+            // エラー処理(SQLException)
+            throw SQLException("DB処理実施時にエラーが発生しました。")
+        } catch (e: Exception) {
+            // エラー処理(Exception)　詰め替え時のエラー考慮
+            throw Exception(e.message)
+        }
     }
 
     /**
@@ -62,14 +103,37 @@ class BooksInfoRepositoryImpl : BooksInfoRepository {
      * @return 書籍ID
      */
     @Override
-    override fun updateBook(book: BooksInfoDto): String {
-        // TODO 処理内容
-        // クエリを生成する
-        // クエリを実行する
-        // 書籍IDを返す
-
-        // TODO 動確用返り値
-        return "updateTest"
+    override fun updateBook(bookDto: BooksInfoDto): Int {
+        try {
+            // クエリを生成する
+            val processedNumber = dslContext
+                .update(BOOKS_INFO)
+                .set(BOOKS_INFO.TITLE, bookDto.title)
+                .set(BOOKS_INFO.PRICE, bookDto.price)
+                .set(BOOKS_INFO.PUBLICATION_STATUS, bookDto.publicationStatus)
+                .set(BOOKS_INFO.UPDATED_BY, bookDto.updatedBy)
+                .set(BOOKS_INFO.UPDATED_AT, bookDto.updatedAt)
+                .set(BOOKS_INFO.DELETE_FLG, bookDto.deleteFlg)
+                .where(BOOKS_INFO.ID.eq(bookDto.id))
+                .execute()
+            // 実行結果として返ってくる処理件数を返す
+            return processedNumber
+        } catch (e: SQLException) {
+            // エラー処理(SQLException)
+            throw SQLException("DB処理実施時にエラーが発生しました。")
+        } catch (e: Exception) {
+            // エラー処理(Exception)　詰め替え時のエラー考慮
+            throw Exception(e.message)
+        }
     }
 
+    /**
+     * 現在の著者IDを発番する
+     *
+     * @return 現在の著者ID
+     */
+    @Override
+    override fun currentAuthorIdSequence(): Int {
+        return dslContext.currval(Sequences.BOOK_ID_SEQ).toInt()
+    }
 }

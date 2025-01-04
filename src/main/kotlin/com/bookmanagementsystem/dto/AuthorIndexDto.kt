@@ -1,6 +1,6 @@
 package com.bookmanagementsystem.dto
 
-import java.sql.Timestamp
+import java.time.LocalDateTime
 
 /**
  * author_infoテーブルのDto
@@ -14,11 +14,11 @@ import java.sql.Timestamp
  * @param deleteFlg 削除フラグ
  */
 data class AuthorIndexDto(
-    val bookId: String,
-    val authorId: String,
+    val bookId: Int,
+    val authorId: Int,
     val createdBy: String,
-    val createdAt: Timestamp,
+    val createdAt: LocalDateTime,
     val updatedBy: String,
-    val updatedAt: Timestamp,
+    val updatedAt: LocalDateTime,
     val deleteFlg: String,
 )

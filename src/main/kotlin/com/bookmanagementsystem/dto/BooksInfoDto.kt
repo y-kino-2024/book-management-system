@@ -16,9 +16,9 @@ import java.time.LocalDateTime
  * @param deleteFlg 削除フラグ
  */
 data class BooksInfoDto(
-    val id: String?,
+    val id: Int?,
     val title: String,
-    val price: String,
+    val price: Double,
     val publicationStatus: String,
     val createdBy: String,
     val createdAt: LocalDateTime,
