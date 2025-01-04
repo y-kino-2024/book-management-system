@@ -1,5 +1,6 @@
 package com.bookmanagementsystem.request.author
 
+import jakarta.validation.constraints.Max
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Size
 import java.time.LocalDate
@@ -16,8 +17,8 @@ import java.time.LocalDate
 data class UpdateAuthorRequest(
     // authorId以外はnull許容(nullの項目は未変更扱い)。
     // authorIdは別途validatorクラスでnullチェックを行い、未定義の場合エラーメッセージを出す。
-    @field:NotNull(message = "authorNameが未入力です。")
-    @field:Size(min = 0, max = 256, message = "authorNameは256文字以内で入力してください。")
+    @field:NotNull(message = "authorIdが未入力です。")
+    @field:Max(value = 99999999, message = "authorIdは8文字以内で入力してください。")
     val authorId: Int?,
     @field:Size(min = 0, max = 256, message = "authorNameは256文字以内で入力してください。")
     val authorName: String?,

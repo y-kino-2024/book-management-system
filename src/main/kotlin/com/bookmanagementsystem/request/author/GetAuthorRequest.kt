@@ -1,7 +1,7 @@
 package com.bookmanagementsystem.request.author
 
+import jakarta.validation.constraints.Max
 import jakarta.validation.constraints.NotNull
-import jakarta.validation.constraints.Size
 
 /**
  * 著者取得処理のリクエストオブジェクト
@@ -12,6 +12,6 @@ data class GetAuthorRequest(
     // リクエスト値にauthorIdを定義しなかった場合にエラーメッセージを出すためにnull許容とする
     // リクエスト例)curl http://localhost:8080/getAuthor
     @field:NotNull(message = "authorIdが未入力です。")
-    @field:Size(min = 0, max = 8, message = "authorIdは8桁以内で入力してください。")
+    @field:Max(value = 99999999, message = "authorIdは8桁以内で入力してください。")
     val authorId: Int?
 )

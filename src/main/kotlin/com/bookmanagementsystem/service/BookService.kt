@@ -98,17 +98,43 @@ class BookService(
      * @param authorId 著者ID
      * @return 書籍
      */
-    fun getBookFromAuthor(authorId: String): Book {
-        // TODO 処理未実装。エラーださないための仮置き
-        return Book(
-            id = 99999999,
-            authorIdList = listOf(1, 3, 5),
-            title = "test",
-            price = 8888.0,
-            publicationStatus = PublicationStatus.getPublicationStatus("0"),
-            operator = "test",
-            deleteFlg = "0"
-        )
+    fun getBookFromAuthor(authorId: Int): List<Book>? {
+        // 著者IDから書籍と著者を紐づけた情報を取得
+        val resultAuthorIndexBook = authorIndexRepositoryImpl.getBookFromAuthorId(authorId)
+        // 著者IDに紐づく書籍がない場合は処理終了
+        if (resultAuthorIndexBook.isNullOrEmpty()) {
+            return null
+        }
+        // 著者が関連している書籍IDを抽出
+        val bookIdList = mutableListOf<Int>()
+        for (authorIndexDto in resultAuthorIndexBook) {
+            bookIdList.add(authorIndexDto.bookId)
+        }
+        // 書籍情報取得
+        val resultBook = mutableListOf<BooksInfoDto>()
+        for (bookId in bookIdList) {
+            resultBook.add(
+                booksInfoRepositoryImpl.fetchBook(bookId)
+                    ?: throw IllegalStateException("書籍IDに対応する書籍が存在しません")
+            )
+        }
+        // 書籍の著者情報取得
+        val authorIndexBookMap = mutableMapOf<Int, List<AuthorIndexDto>>()
+        for (bookId in bookIdList) {
+            authorIndexBookMap[bookId] = authorIndexRepositoryImpl.getBookFromBookId(bookId)
+                ?: throw IllegalStateException("書籍IDに対応する書籍が存在しません")
+        }
+        val bookList = mutableListOf<Book>()
+        for (booksInfoDto in resultBook) {
+            bookList.add(
+                convertBook(
+                    booksInfoDto = booksInfoDto,
+                    authorIndexDtoList = authorIndexBookMap[booksInfoDto.id]
+                        ?: throw IllegalStateException("書籍IDに対応する書籍が存在しません")
+                )
+            )
+        }
+        return bookList
     }
 
     /**

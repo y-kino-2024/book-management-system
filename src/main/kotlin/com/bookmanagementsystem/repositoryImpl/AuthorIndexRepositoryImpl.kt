@@ -16,10 +16,10 @@ class AuthorIndexRepositoryImpl(
 ) : AuthorIndexRepository {
 
     /**
-     * 著者に紐づく書籍情報をDBから取得する
+     * 書籍IDを用いて著者に紐づく書籍情報をDBから取得する
      *
      * @args bookId 書籍ID
-     * @return 書籍情報
+     * @return 著者に紐づく書籍情報
      */
     @Override
     override fun getBookFromBookId(bookId: Int): List<AuthorIndexDto>? {
@@ -31,7 +31,6 @@ class AuthorIndexRepositoryImpl(
                 .fetch()
 
             val authorIndexDtoList = mutableListOf<AuthorIndexDto>()
-            println("Impl$result\n")
             result.map { r ->
                 authorIndexDtoList.add(
                     AuthorIndexDto(
@@ -45,7 +44,6 @@ class AuthorIndexRepositoryImpl(
                     )
                 )
             }
-            println("Impl$authorIndexDtoList\n")
             return authorIndexDtoList
         } catch (e: SQLException) {
             // エラー処理(SQLException)
@@ -57,10 +55,10 @@ class AuthorIndexRepositoryImpl(
     }
 
     /**
-     * 著者に紐づく書籍情報をDBから取得する
+     * 著者IDを用いて著者に紐づく書籍情報をDBから取得する
      *
      * @args authorId 著者ID
-     * @return 書籍情報
+     * @return 著者に紐づく書籍情報
      */
     @Override
     override fun getBookFromAuthorId(authorId: Int): List<AuthorIndexDto>? {
@@ -72,7 +70,6 @@ class AuthorIndexRepositoryImpl(
                 .fetch()
 
             val authorIndexDtoList = mutableListOf<AuthorIndexDto>()
-            println("Impl$result\n")
             result.map { r ->
                 authorIndexDtoList.add(
                     AuthorIndexDto(
@@ -86,7 +83,6 @@ class AuthorIndexRepositoryImpl(
                     )
                 )
             }
-            println("Impl$authorIndexDtoList\n")
             return authorIndexDtoList
         } catch (e: SQLException) {
             // エラー処理(SQLException)
@@ -98,10 +94,10 @@ class AuthorIndexRepositoryImpl(
     }
 
     /**
-     * 著者に紐づく書籍情報をDBから取得する
+     * 著者に紐づく書籍情報をDBに登録する
      *
-     * @args authorId 著者ID
-     * @return 書籍情報
+     * @args authorIndexDtoList 著者に紐づく書籍情報
+     * @return 処理件数
      */
     @Override
     override fun createBookFromAuthor(authorIndexDtoList: List<AuthorIndexDto>): Int {
@@ -145,10 +141,10 @@ class AuthorIndexRepositoryImpl(
     }
 
     /**
-     * 著者に紐づく書籍情報をDBから取得する
+     * 著者に紐づく書籍情報をDB更新する
      *
-     * @args authorId 著者ID
-     * @return 書籍情報
+     * @args authorIndexDto 著者に紐づく書籍情報
+     * @return 処理件数
      */
     @Override
     override fun updateBookFromAuthor(authorIndexDto: AuthorIndexDto): Int {

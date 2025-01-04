@@ -1,5 +1,6 @@
 package com.bookmanagementsystem.request.book
 
+import jakarta.validation.constraints.Max
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Size
@@ -15,7 +16,7 @@ import jakarta.validation.constraints.Size
  */
 data class UpdateBookRequest(
     @field:NotNull(message = "bookIdが未入力です。")
-    @field:Size(min = 0, max = 8, message = "bookIdは8桁以内で入力してください。")
+    @field:Max(value = 99999999, message = "bookIdは8桁以内で入力してください。")
     val bookId: Int?,
     @field:Size(min = 0, max = 256, message = "titleは256文字以内で入力してください。")
     val title: String?,

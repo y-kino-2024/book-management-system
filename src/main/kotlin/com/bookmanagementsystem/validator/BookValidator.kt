@@ -11,17 +11,6 @@ import org.springframework.stereotype.Component
 @Component
 class BookValidator {
 
-    companion object {
-        // 書籍IDの最大桁数
-        const val BOOK_ID_MAX = 8
-
-        // 書籍名の最大文字数
-        const val TITLE_MAX = 256
-
-        // 価格の最小値
-        const val PRICE_MIN = 0
-    }
-
     /**
      * 書籍取得処理のバリデーション
      *
@@ -36,7 +25,7 @@ class BookValidator {
      *
      * @param request 書籍取得処理のリクエスト
      */
-    fun validGetBook(request: GetBookFromAuthorRequest) {
+    fun validGetBookFromAuthor(request: GetBookFromAuthorRequest) {
         checkRequiredAuthorId(request.authorId)
     }
 
