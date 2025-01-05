@@ -23,6 +23,7 @@ class BooksInfoRepositoryImpl(
      * @return 書籍情報
      */
     @Override
+    @Transactional
     override fun fetchBook(bookId: Int): BooksInfoDto? {
         try {
             // クエリを生成・実行する
@@ -105,6 +106,7 @@ class BooksInfoRepositoryImpl(
      * @return 書籍ID
      */
     @Override
+    @Transactional
     override fun updateBook(bookDto: BooksInfoDto): Int {
         try {
             // クエリを生成する

@@ -5,6 +5,7 @@ import com.bookmanagementsystem.dto.AuthorsInfoDto
 import com.bookmanagementsystem.repository.AuthorsInfoRepository
 import org.jooq.DSLContext
 import org.springframework.stereotype.Repository
+import org.springframework.transaction.annotation.Transactional
 import java.sql.SQLException
 
 /**
@@ -27,6 +28,7 @@ class AuthorsInfoRepositoryImpl(
      * @return 著者情報
      */
     @Override
+    @Transactional
     override fun fetchAuthor(authorId: Int): AuthorsInfoDto? {
         try {
             // クエリを生成・実行する
@@ -69,6 +71,7 @@ class AuthorsInfoRepositoryImpl(
      * @return 著者ID
      */
     @Override
+    @Transactional
     override fun createAuthor(authorDto: AuthorsInfoDto): Int? {
         try {
             // クエリを生成・実行する
@@ -107,6 +110,7 @@ class AuthorsInfoRepositoryImpl(
      * @return 著者ID
      */
     @Override
+    @Transactional
     override fun updateAuthor(authorDto: AuthorsInfoDto): Int {
         try {
             // クエリを生成する

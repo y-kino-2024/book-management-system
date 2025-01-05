@@ -211,6 +211,16 @@ class BookController(
         try {
             // バリデーション処理
             validate.validUpdateBook(request)
+            // 著者の存在チェック
+            val authorIdList = request.authorIdList.let {
+                // authorIdListはnullチェック済みのためnullになることはない
+                request.authorIdList
+            } ?: throw IllegalStateException("authorIdListの値が不正です。")
+            for (authorId in authorIdList) {
+                // 入力された著者IDに対応する著者がいない場合はエラーとして処理
+                authorService.getAuthor(authorId)
+                    ?: throw IllegalStateException("入力された著者IDに該当する著者は存在しません。")
+            }
             // リクエストを詰め替える
             val book = convertUpdateBook(request)
             // 著者更新処理

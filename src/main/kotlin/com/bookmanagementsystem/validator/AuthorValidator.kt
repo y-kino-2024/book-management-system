@@ -74,7 +74,7 @@ class AuthorValidator(
     private fun checkRequiredName(authorName: String?) {
         // 必須チェック
         if (authorName.isNullOrBlank()) {
-            throw IllegalStateException("authorNameを入力してください。")
+            throw NullPointerException("authorNameを入力してください。")
         }
     }
 
@@ -86,7 +86,7 @@ class AuthorValidator(
     private fun checkRequiredBirthday(birthday: LocalDate?) {
         // 必須チェック
         if (birthday == null) {
-            throw IllegalStateException("birthdayを入力してください")
+            throw NullPointerException("birthdayを入力してください。")
         }
     }
 

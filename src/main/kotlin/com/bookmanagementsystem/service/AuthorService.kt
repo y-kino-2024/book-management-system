@@ -4,6 +4,7 @@ import com.bookmanagementsystem.controller.AuthorController.Companion.DELETE_FLG
 import com.bookmanagementsystem.dto.AuthorsInfoDto
 import com.bookmanagementsystem.entity.Author
 import com.bookmanagementsystem.repositoryImpl.AuthorsInfoRepositoryImpl
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.sql.SQLException
@@ -15,6 +16,7 @@ import java.time.LocalDateTime
 @Service
 class AuthorService(
     private val common: CommonService,
+    @Autowired
     private val authorsInfoRepositoryImpl: AuthorsInfoRepositoryImpl
 ) {
 

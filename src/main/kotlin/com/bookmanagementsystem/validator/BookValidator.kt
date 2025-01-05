@@ -1,5 +1,6 @@
 package com.bookmanagementsystem.validator
 
+import com.bookmanagementsystem.enumkt.PublicationStatus
 import com.bookmanagementsystem.request.book.CreateBookRequest
 import com.bookmanagementsystem.request.book.GetBookFromAuthorRequest
 import com.bookmanagementsystem.request.book.GetBookRequest
@@ -133,17 +134,8 @@ class BookValidator {
     private fun checkValidityPublicationStatus(publicationStatus: String?) {
         // 妥当性チェック
         if (!publicationStatus.isNullOrBlank()) {
-            // 値が存在するか確認
-            /*
-            val publicationStatusEnum = PublicationStatus.getPublicationStatus(publicationStatus)
-            if (!(publicationStatusEnum == PublicationStatus.UNPUBLISHED ||
-                        publicationStatusEnum == PublicationStatus.PUBLISHED)
-            ) {
-                throw IllegalStateException("publicationStatusの入力値が不正です。")
-            }
-             */
             // Enum定義されている値か確認
-            if (!publicationStatus.contains(publicationStatus)) {
+            if (!PublicationStatus.contains(publicationStatus)) {
                 throw IllegalStateException("publicationStatusの入力値が不正です。")
             }
         }

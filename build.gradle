@@ -67,3 +67,7 @@ jooq {
         }
     }
 }
+
+test {
+    useJUnitPlatform()
+}
