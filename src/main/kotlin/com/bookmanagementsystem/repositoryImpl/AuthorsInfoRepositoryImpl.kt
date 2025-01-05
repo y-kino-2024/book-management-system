@@ -15,6 +15,11 @@ class AuthorsInfoRepositoryImpl(
     private val dslContext: DSLContext
 ) : AuthorsInfoRepository {
 
+    companion object {
+        // 論理削除されていないカラムの設定値
+        const val DELETE_FLG_FALSE = "0"
+    }
+
     /**
      * 著者情報をDBから取得する
      *
@@ -28,19 +33,20 @@ class AuthorsInfoRepositoryImpl(
             val result = this.dslContext.select()
                 .from(AUTHORS_INFO)
                 .where(AUTHORS_INFO.ID.eq(authorId))
+                .and(AUTHORS_INFO.DELETE_FLG.eq(DELETE_FLG_FALSE))
                 .fetchOne()
 
             val authorDto = if (result != null) {
                 // 取得出来た場合はdtoに詰め替える
                 AuthorsInfoDto(
-                    id = result.getValue(AUTHORS_INFO.ID)!!,
-                    authorName = result.getValue(AUTHORS_INFO.AUTHOR_NAME)!!,
-                    birthday = result.getValue(AUTHORS_INFO.BIRTHDAY)!!,
-                    createdBy = result.getValue(AUTHORS_INFO.CREATED_BY)!!,
-                    createdAt = result.getValue(AUTHORS_INFO.CREATED_AT)!!,
-                    updatedBy = result.getValue(AUTHORS_INFO.UPDATED_BY)!!,
-                    updatedAt = result.getValue(AUTHORS_INFO.UPDATED_AT)!!,
-                    deleteFlg = result.getValue(AUTHORS_INFO.DELETE_FLG)!!,
+                    id = result.getValue(AUTHORS_INFO.ID),
+                    authorName = result.getValue(AUTHORS_INFO.AUTHOR_NAME),
+                    birthday = result.getValue(AUTHORS_INFO.BIRTHDAY),
+                    createdBy = result.getValue(AUTHORS_INFO.CREATED_BY),
+                    createdAt = result.getValue(AUTHORS_INFO.CREATED_AT),
+                    updatedBy = result.getValue(AUTHORS_INFO.UPDATED_BY),
+                    updatedAt = result.getValue(AUTHORS_INFO.UPDATED_AT),
+                    deleteFlg = result.getValue(AUTHORS_INFO.DELETE_FLG),
                 )
             } else {
                 // 取得結果が0件の場合はnullを返す

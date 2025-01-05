@@ -5,6 +5,7 @@ import com.bookmanagementsystem.dto.BooksInfoDto
 import com.bookmanagementsystem.repository.BooksInfoRepository
 import org.jooq.DSLContext
 import org.springframework.stereotype.Repository
+import org.springframework.transaction.annotation.Transactional
 import java.sql.SQLException
 
 /**
@@ -33,15 +34,15 @@ class BooksInfoRepositoryImpl(
             val bookDto = if (result != null) {
                 // 取得出来た場合はdtoに詰め替える
                 BooksInfoDto(
-                    id = result.getValue(BOOKS_INFO.ID)!!,
-                    title = result.getValue(BOOKS_INFO.TITLE)!!,
-                    price = result.getValue(BOOKS_INFO.PRICE)!!,
-                    publicationStatus = result.getValue(BOOKS_INFO.PUBLICATION_STATUS)!!,
-                    createdBy = result.getValue(BOOKS_INFO.CREATED_BY)!!,
-                    createdAt = result.getValue(BOOKS_INFO.CREATED_AT)!!,
-                    updatedBy = result.getValue(BOOKS_INFO.UPDATED_BY)!!,
-                    updatedAt = result.getValue(BOOKS_INFO.UPDATED_AT)!!,
-                    deleteFlg = result.getValue(BOOKS_INFO.DELETE_FLG)!!,
+                    id = result.getValue(BOOKS_INFO.ID),
+                    title = result.getValue(BOOKS_INFO.TITLE),
+                    price = result.getValue(BOOKS_INFO.PRICE),
+                    publicationStatus = result.getValue(BOOKS_INFO.PUBLICATION_STATUS),
+                    createdBy = result.getValue(BOOKS_INFO.CREATED_BY),
+                    createdAt = result.getValue(BOOKS_INFO.CREATED_AT),
+                    updatedBy = result.getValue(BOOKS_INFO.UPDATED_BY),
+                    updatedAt = result.getValue(BOOKS_INFO.UPDATED_AT),
+                    deleteFlg = result.getValue(BOOKS_INFO.DELETE_FLG),
                 )
             } else {
                 // 取得結果が0件の場合はnullを返す
@@ -64,6 +65,7 @@ class BooksInfoRepositoryImpl(
      * @return 書籍ID
      */
     @Override
+    @Transactional
     override fun createBook(bookDto: BooksInfoDto): Int? {
         try {
             // クエリを生成・実行する
@@ -91,7 +93,7 @@ class BooksInfoRepositoryImpl(
             // エラー処理(SQLException)
             throw SQLException("DB処理実施時にエラーが発生しました。")
         } catch (e: Exception) {
-            // エラー処理(Exception) 詰め替え時のエラー考慮
+            // エラー処理(Exception)　詰め替え時のエラー考慮
             throw Exception(e.message)
         }
     }
@@ -122,7 +124,7 @@ class BooksInfoRepositoryImpl(
             // エラー処理(SQLException)
             throw SQLException("DB処理実施時にエラーが発生しました。")
         } catch (e: Exception) {
-            // エラー処理(Exception) 詰め替え時のエラー考慮
+            // エラー処理(Exception)　詰め替え時のエラー考慮
             throw Exception(e.message)
         }
     }

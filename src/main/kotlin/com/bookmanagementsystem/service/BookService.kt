@@ -124,10 +124,10 @@ class BookService(
                 return null
             }
             // 出版状況が変更可能かチェック
-            if(
+            if (
                 book.publicationStatus == PublicationStatus.UNPUBLISHED &&
                 PublicationStatus.getPublicationStatus(currentBookDto.publicationStatus) == PublicationStatus.PUBLISHED
-                ) {
+            ) {
                 // 出版済み→未出版への変更は不可能なためエラーとして返す
                 throw IllegalStateException("出版状況は出版済みから未出版に変更出来ません。")
             }
@@ -323,14 +323,18 @@ class BookService(
         processingDatetime: LocalDateTime
     ): List<AuthorIndexDto> {
         val authorIndexDtoList = mutableListOf<AuthorIndexDto>()
-        for (authorId in book.authorIdList!!) {
+        val authorIdList = book.authorIdList.let {
+            // authorIdListはnullチェック済みのためnullになることはない
+            book.authorIdList
+        } ?: throw IllegalStateException("authorIdListの値が不正です。")
+        for (authorId in authorIdList) {
             authorIndexDtoList.add(
                 AuthorIndexDto(
                     bookId = bookId,
                     authorId = authorId,
                     createdBy = book.operator?.let {
                         book.operator
-                    } ?: throw IllegalStateException("createdByの値が不正です"),
+                    } ?: throw IllegalStateException("createdByの値が不正です。"),
                     createdAt = processingDatetime,
                     updatedBy = book.operator,
                     updatedAt = processingDatetime,
@@ -353,7 +357,11 @@ class BookService(
         processingDatetime: LocalDateTime
     ): List<AuthorIndexDto> {
         val authorIndexDtoList = mutableListOf<AuthorIndexDto>()
-        for (authorId in book.authorIdList!!) {
+        val authorIdList = book.authorIdList.let {
+            // authorIdListはnullチェック済みのためnullになることはない
+            book.authorIdList
+        } ?: throw IllegalStateException("authorIdListの値が不正です。")
+        for (authorId in authorIdList) {
             authorIndexDtoList.add(
                 AuthorIndexDto(
                     bookId = book.id?.let {
@@ -434,4 +442,6 @@ class BookService(
             deleteFlg = book.deleteFlg ?: currentBookDto.deleteFlg,
         )
     }
+
+
 }

@@ -9,9 +9,11 @@ import com.bookmanagementsystem.request.book.UpdateBookRequest
 import com.bookmanagementsystem.response.book.CreateBookResponse
 import com.bookmanagementsystem.response.book.GetBookResponse
 import com.bookmanagementsystem.response.book.UpdateBookResponse
+import com.bookmanagementsystem.service.AuthorService
 import com.bookmanagementsystem.service.BookService
 import com.bookmanagementsystem.validator.BookValidator
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.validation.BindingResult
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
@@ -24,8 +26,11 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 class BookController(
-    val validate: BookValidator,
-    val service: BookService
+    private val validate: BookValidator,
+    @Autowired
+    private val bookService: BookService,
+    @Autowired
+    private val authorService: AuthorService,
 ) {
     companion object {
         const val DELETE_FLG_ZERO = "0"
@@ -63,7 +68,7 @@ class BookController(
             // バリデーション処理
             validate.validGetBook(request)
             // 書籍取得処理
-            val book = service.getBook(request.bookId?.let {
+            val book = bookService.getBook(request.bookId?.let {
                 // nullチェック済みのためここではnullにならない
                 request.bookId
             } ?: throw IllegalStateException("bookIdの値が不正です。"))
@@ -109,7 +114,7 @@ class BookController(
             // バリデーション処理
             validate.validGetBookFromAuthor(request)
             // 書籍取得処理
-            val bookList = service.getBookFromAuthor(request.authorId?.let {
+            val bookList = bookService.getBookFromAuthor(request.authorId?.let {
                 // nullチェック済みのためここではnullにならない
                 request.authorId
             } ?: throw IllegalStateException("著者IDの値が不正です。"))
@@ -157,10 +162,20 @@ class BookController(
         try {
             // バリデーション処理
             validate.validCreateBook(request)
+            // 著者の存在チェック
+            val authorIdList = request.authorIdList.let {
+                // authorIdListはnullチェック済みのためnullになることはない
+                request.authorIdList
+            } ?: throw IllegalStateException("authorIdListの値が不正です。")
+            for (authorId in authorIdList) {
+                // 入力された著者IDに対応する著者がいない場合はエラーとして処理
+                authorService.getAuthor(authorId)
+                    ?: throw IllegalStateException("入力された著者IDに該当する著者は存在しません。")
+            }
             // リクエストを詰め替える
             val book = convertCreateBook(request)
             // 書籍登録処理
-            val bookId = service.createBook(book)
+            val bookId = bookService.createBook(book)
             // レスポンスに詰め替える
             val response = convertCreateBookResponse(bookId)
             // JSONで返す
@@ -199,7 +214,7 @@ class BookController(
             // リクエストを詰め替える
             val book = convertUpdateBook(request)
             // 著者更新処理
-            val bookId = service.updateBook(book)
+            val bookId = bookService.updateBook(book)
             val mapper = ObjectMapper()
             if (bookId.isNullOrBlank()) {
                 // 更新対象が存在しない場合はメッセージを返す
