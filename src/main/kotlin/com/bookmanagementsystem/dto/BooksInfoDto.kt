@@ -3,7 +3,7 @@ package com.bookmanagementsystem.dto
 import java.time.LocalDateTime
 
 /**
- * book_infoテーブルのDto
+ * books_infoテーブルのDto
  *
  * @param id 書籍ID
  * @param title タイトル

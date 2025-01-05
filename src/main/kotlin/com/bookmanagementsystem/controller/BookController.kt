@@ -31,6 +31,10 @@ class BookController(
         const val DELETE_FLG_ZERO = "0"
 
         const val UNKNOWN_ERROR_MESSAGE = "未定義のエラー"
+
+        const val GET_TARGET_NOT_EXIST_MESSAGE = "取得対象が存在しません。"
+
+        const val UPDATE_TARGET_NOT_EXIST_MESSAGE = "更新対象が存在しません。"
     }
 
     /**
@@ -44,6 +48,7 @@ class BookController(
         @Validated request: GetBookRequest,
         bindingResult: BindingResult
     ): String {
+        // GetBookRequest内のアノテーションによるバリデーションチェックでエラーが発生した場合の処理
         if (bindingResult.hasErrors()) {
             val errorMessageList = mutableListOf<String>()
             for (bindingError in bindingResult.fieldErrors) {
@@ -52,29 +57,26 @@ class BookController(
                 } ?: UNKNOWN_ERROR_MESSAGE)
             }
             val mapper = ObjectMapper()
-            val responseJson = mapper.writeValueAsString(errorMessageList)
-            return responseJson
+            return mapper.writeValueAsString(errorMessageList)
         }
         try {
             // バリデーション処理
             validate.validGetBook(request)
             // 書籍取得処理
             val book = service.getBook(request.bookId?.let {
+                // nullチェック済みのためここではnullにならない
                 request.bookId
-            } ?: throw IllegalStateException("書籍IDの値が不正です。"))
+            } ?: throw IllegalStateException("bookIdの値が不正です。"))
+            val mapper = ObjectMapper()
             // レスポンスに詰め替える
             if (book != null) {
                 // 検索結果が取得できた場合
                 val response = convertGetBookResponse(book)
-                println("controller$response")
                 // JSONで返す
-                val mapper = ObjectMapper()
-                val responseJson = mapper.writeValueAsString(response)
-                return responseJson
+                return mapper.writeValueAsString(response)
             } else {
                 // 検索結果が取得できなかった場合
-                val mapper = ObjectMapper()
-                return mapper.writeValueAsString("取得対象が存在しません。")
+                return mapper.writeValueAsString(GET_TARGET_NOT_EXIST_MESSAGE)
             }
         } catch (e: Exception) {
             return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
@@ -92,6 +94,7 @@ class BookController(
         @Validated request: GetBookFromAuthorRequest,
         bindingResult: BindingResult
     ): String {
+        // GetBookFromAuthorRequest内のアノテーションによるバリデーションチェックでエラーが発生した場合の処理
         if (bindingResult.hasErrors()) {
             val errorMessageList = mutableListOf<String>()
             for (bindingError in bindingResult.fieldErrors) {
@@ -100,32 +103,29 @@ class BookController(
                 } ?: UNKNOWN_ERROR_MESSAGE)
             }
             val mapper = ObjectMapper()
-            val responseJson = mapper.writeValueAsString(errorMessageList)
-            return responseJson
+            return mapper.writeValueAsString(errorMessageList)
         }
         try {
             // バリデーション処理
             validate.validGetBookFromAuthor(request)
             // 書籍取得処理
             val bookList = service.getBookFromAuthor(request.authorId?.let {
+                // nullチェック済みのためここではnullにならない
                 request.authorId
             } ?: throw IllegalStateException("著者IDの値が不正です。"))
+            val mapper = ObjectMapper()
             // レスポンスに詰め替える
             if (bookList != null) {
-                // 検索結果が取得できた場合
+                // 検索結果が取得できた場合レスポンスに詰めなおす
                 val response = mutableListOf<GetBookResponse>()
                 for (book in bookList) {
                     response.add(convertGetBookResponse(book))
                 }
                 // JSONで返す
-                val mapper = ObjectMapper()
-                // 日付の表示形式を整形
-                val responseJson = mapper.writeValueAsString(response)
-                return responseJson
+                return mapper.writeValueAsString(response)
             } else {
                 // 検索結果が取得できなかった場合
-                val mapper = ObjectMapper()
-                return mapper.writeValueAsString("取得対象が存在しません。")
+                return mapper.writeValueAsString(GET_TARGET_NOT_EXIST_MESSAGE)
             }
         } catch (e: Exception) {
             return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
@@ -143,6 +143,7 @@ class BookController(
         @Validated @RequestBody request: CreateBookRequest,
         bindingResult: BindingResult
     ): String {
+        // CreateBookRequest内のアノテーションによるバリデーションチェックでエラーが発生した場合の処理
         if (bindingResult.hasErrors()) {
             val errorMessageList = mutableListOf<String>()
             for (bindingError in bindingResult.fieldErrors) {
@@ -151,22 +152,20 @@ class BookController(
                 } ?: UNKNOWN_ERROR_MESSAGE)
             }
             val mapper = ObjectMapper()
-            val responseJson = mapper.writeValueAsString(errorMessageList)
-            return responseJson
+            return mapper.writeValueAsString(errorMessageList)
         }
         try {
             // バリデーション処理
             validate.validCreateBook(request)
             // リクエストを詰め替える
-            val book = convertBook(request)
+            val book = convertCreateBook(request)
             // 書籍登録処理
             val bookId = service.createBook(book)
             // レスポンスに詰め替える
             val response = convertCreateBookResponse(bookId)
             // JSONで返す
             val mapper = ObjectMapper()
-            val responseJson = mapper.writeValueAsString(response)
-            return responseJson
+            return mapper.writeValueAsString(response)
         } catch (e: Exception) {
             return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
         }
@@ -183,6 +182,7 @@ class BookController(
         @Validated @RequestBody request: UpdateBookRequest,
         bindingResult: BindingResult
     ): String {
+        // UpdateBookRequest内のアノテーションによるバリデーションチェックでエラーが発生した場合の処理
         if (bindingResult.hasErrors()) {
             val errorMessageList = mutableListOf<String>()
             for (bindingError in bindingResult.fieldErrors) {
@@ -191,22 +191,24 @@ class BookController(
                 } ?: UNKNOWN_ERROR_MESSAGE)
             }
             val mapper = ObjectMapper()
-            val responseJson = mapper.writeValueAsString(errorMessageList)
-            return responseJson
+            return mapper.writeValueAsString(errorMessageList)
         }
         try {
             // バリデーション処理
             validate.validUpdateBook(request)
             // リクエストを詰め替える
-            val book = convertBook(request)
+            val book = convertUpdateBook(request)
             // 著者更新処理
             val bookId = service.updateBook(book)
+            val mapper = ObjectMapper()
+            if (bookId.isNullOrBlank()) {
+                // 更新対象が存在しない場合はメッセージを返す
+                return mapper.writeValueAsString(UPDATE_TARGET_NOT_EXIST_MESSAGE)
+            }
             // レスポンスに詰め替える
             val response = convertUpdateBookResponse(bookId)
             // JSONで返す
-            val mapper = ObjectMapper()
-            val responseJson = mapper.writeValueAsString(response)
-            return responseJson
+            return mapper.writeValueAsString(response)
         } catch (e: Exception) {
             return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
         }
@@ -215,39 +217,42 @@ class BookController(
     /**
      * 書籍取得処理の結果をレスポンスオブジェクトに詰め替える
      *
-     * @args book 書籍情報
-     * @return 書籍情報のレスポンスオブジェクト
+     * @args book 書籍Entity
+     * @return 書籍取得処理のレスポンスオブジェクト
      */
     private fun convertGetBookResponse(book: Book): GetBookResponse {
         return GetBookResponse(
             bookId = book.id?.let {
-                book.id.toString()
-            } ?: throw IllegalStateException("書籍IDの値が不正です。"),
+                // bookIdは主キーのためここでnullが入ることはない
+                book.id
+            } ?: throw IllegalStateException("bookIdの値が不正です。"),
             authorIdList = book.authorIdList?.let {
                 book.authorIdList.map { authorId ->
                     authorId.toString()
                 }
-            } ?: throw IllegalStateException("著者IDの値が不正です。"),
+            } ?: throw IllegalStateException("authorIdListの値が不正です。"),
             title = book.title?.let {
+                // titleはDBの必須項目となっているためここでnullが入ることはない
                 book.title
-            } ?: throw IllegalStateException("タイトルの値が不正です。"),
+            } ?: throw IllegalStateException("titleの値が不正です。"),
             price = book.price?.let {
+                // priceはDBの必須項目となっているためここでnullが入ることはない
                 book.price.toInt()
-            } ?: throw IllegalStateException("価格の値が不正です。"),
+            } ?: throw IllegalStateException("priceの値が不正です。"),
             publicationStatus = book.publicationStatus?.let {
+                // publicationStatusはDBの必須項目となっているためここでnullが入ることはない
                 book.publicationStatus.code
-            } ?: throw IllegalStateException("出版状況の値が不正です。"),
+            } ?: throw IllegalStateException("publicationStatusの値が不正です。"),
         )
     }
 
-    // TODO convertBookを登録と更新で一つにしたい
     /**
      * 書籍登録処理のリクエストを書籍Entityに詰め替える
      *
      * @args request 書籍登録処理のリクエスト
      * @return 書籍Entity
      */
-    private fun convertBook(request: CreateBookRequest): Book {
+    private fun convertCreateBook(request: CreateBookRequest): Book {
         return Book(
             id = null,
             authorIdList = request.authorIdList,
@@ -255,19 +260,20 @@ class BookController(
             price = request.price,
             publicationStatus = request.publicationStatus?.let {
                 PublicationStatus.getPublicationStatus(request.publicationStatus)
-            } ?: throw IllegalStateException("出版状況の値が不正です"),
+            } ?: throw IllegalStateException("publicationStatusの値が不正です"),
             operator = request.operator,
+            // 登録処理時には削除フラグは「0：未削除」をいれる
             deleteFlg = DELETE_FLG_ZERO
         )
     }
 
     /**
-     * 書籍登録処理のリクエストを書籍Entityに詰め替える
+     * 書籍更新処理のリクエストを書籍Entityに詰め替える
      *
-     * @args request 書籍登録処理のリクエスト
+     * @args request 書籍更新処理のリクエスト
      * @return 書籍Entity
      */
-    private fun convertBook(request: UpdateBookRequest): Book {
+    private fun convertUpdateBook(request: UpdateBookRequest): Book {
         return Book(
             id = request.bookId,
             authorIdList = request.authorIdList,
@@ -285,7 +291,7 @@ class BookController(
      * 書籍登録処理の結果をレスポンスオブジェクトに詰め替える
      *
      * @args bookId 書籍ID
-     * @return 書籍登録結果のレスポンスオブジェクト
+     * @return 書籍登録処理のレスポンスオブジェクト
      */
     private fun convertCreateBookResponse(bookId: String): CreateBookResponse {
         return CreateBookResponse(
@@ -297,7 +303,7 @@ class BookController(
      * 書籍更新処理の結果をレスポンスオブジェクトに詰め替える
      *
      * @args bookId 書籍ID
-     * @return 書籍更新結果のレスポンスオブジェクト
+     * @return 書籍更新処理のレスポンスオブジェクト
      */
     private fun convertUpdateBookResponse(bookId: String): UpdateBookResponse {
         return UpdateBookResponse(

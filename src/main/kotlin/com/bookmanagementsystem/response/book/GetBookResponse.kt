@@ -10,7 +10,7 @@ package com.bookmanagementsystem.response.book
  * @param publicationStatus 出版状況
  */
 data class GetBookResponse(
-    val bookId: String,
+    val bookId: Int,
     val authorIdList: List<String>,
     val title: String,
     val price: Int,

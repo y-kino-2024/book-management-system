@@ -12,9 +12,12 @@ import java.time.LocalDate
  * @param deleteFlg 削除フラグ
  */
 data class Author(
+    // 登録・更新処理を考慮し、各項目をnull許容とした(nullの場合は更新対象外)
     val id: Int?,
     val authorName: String?,
     val birthday: LocalDate?,
+    // CreateBy、UpdateByの登録・更新用の値
     val operator: String?,
+    // deleteFlgの登録・更新用の値
     val deleteFlg: String?,
 )

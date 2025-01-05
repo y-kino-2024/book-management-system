@@ -17,11 +17,13 @@ import jakarta.validation.constraints.Size
  * @param deleteFlg 削除フラグ
  */
 data class UpdateBookRequest(
-    @field:NotNull(message = "authorIdListが未入力です。")
-    val authorIdList: List<Int>?,
+    // bookId以外はnull許容(nullの項目は未変更扱い)。
+    // リクエスト値にbookIdを定義しなかった場合にエラーメッセージを出すためにnull許容とする
     @field:NotNull(message = "bookIdが未入力です。")
     @field:Max(value = 99999999, message = "bookIdは8桁以内で入力してください。")
     val bookId: Int?,
+    @field:NotNull(message = "authorIdListが未入力です。")
+    val authorIdList: List<Int>?,
     @field:Size(min = 0, max = 256, message = "titleは256文字以内で入力してください。")
     val title: String?,
     val price: Double?,

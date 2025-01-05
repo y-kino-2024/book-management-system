@@ -4,7 +4,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 /**
- * author_infoテーブルのDto
+ * authors_infoテーブルのDto
  *
  * @param id 著者ID
  * @param authorName 著者名

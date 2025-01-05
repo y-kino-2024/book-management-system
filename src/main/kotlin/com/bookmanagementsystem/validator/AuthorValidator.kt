@@ -6,6 +6,9 @@ import com.bookmanagementsystem.request.author.UpdateAuthorRequest
 import org.springframework.stereotype.Component
 import java.time.LocalDate
 
+/**
+ * 著者バリデーションクラス
+ */
 @Component
 class AuthorValidator(
     val commonValidator: CommonValidator
@@ -17,7 +20,7 @@ class AuthorValidator(
      * @args request 著者取得処理のリクエスト
      */
     fun validGetAuthor(request: GetAuthorRequest) {
-        // リクエスト値にauthorIdを定義しなかった場合にアノテーションでチェックできないためここで必須チェックを実施
+        // リクエスト値にauthorIdを定義しなかった場合にアノテーションで必須チェックできないためここで必須チェックを実施
         checkRequiredId(request.authorId)
     }
 
@@ -27,10 +30,11 @@ class AuthorValidator(
      * @args request 著者登録処理のリクエスト
      */
     fun validCreateAuthor(request: CreateAuthorRequest) {
-        // リクエスト値に各項目を定義しなかった場合にアノテーションでチェックできないためここで必須チェックを実施
+        // リクエスト値に項目を定義しなかった場合、アノテーションで必須チェックができないためここで必須チェックを実施
         checkRequiredName(request.authorName)
+        // 誕生日の必須チェック
         checkRequiredBirthday(request.birthday)
-        // 過去日チェック
+        // 誕生日の過去日チェック
         checkPastDateBirthday(request.birthday)
         // 操作者チェック
         commonValidator.checkOperator(request.operator)
@@ -42,9 +46,9 @@ class AuthorValidator(
      * @args request 著者更新処理のリクエスト
      */
     fun validUpdateAuthor(request: UpdateAuthorRequest) {
-        // リクエスト値にauthorIdを定義しなかった場合にアノテーションでチェックできないためここで必須チェックを実施
+        // リクエスト値にauthorIdを定義しなかった場合にアノテーションで必須チェックができないためここで必須チェックを実施
         checkRequiredId(request.authorId)
-        // 過去日チェック
+        // 誕生日の過去日チェック
         checkPastDateBirthday(request.birthday)
         // 操作者チェック
         commonValidator.checkOperator(request.operator)
@@ -68,7 +72,7 @@ class AuthorValidator(
      * @args authorName 著者名
      */
     private fun checkRequiredName(authorName: String?) {
-        // 桁数チェック(DB定義：256桁)
+        // 必須チェック
         if (authorName.isNullOrBlank()) {
             throw IllegalStateException("authorNameを入力してください。")
         }
@@ -80,7 +84,7 @@ class AuthorValidator(
      * @args birthday 誕生日
      */
     private fun checkRequiredBirthday(birthday: LocalDate?) {
-        // 未来日チェック
+        // 必須チェック
         if (birthday == null) {
             throw IllegalStateException("birthdayを入力してください")
         }
@@ -92,7 +96,7 @@ class AuthorValidator(
      * @args birthday 誕生日
      */
     private fun checkPastDateBirthday(birthday: LocalDate?) {
-        // 未来日チェック
+        // 過去日チェック
         if (birthday != null) {
             if (birthday.isAfter(LocalDate.now())) {
                 throw IllegalStateException("birthdayは過去日を設定してください。")

@@ -136,7 +136,7 @@ class AuthorIndexRepositoryImpl(
             // エラー処理(SQLException)
             throw SQLException("DB処理実施時にエラーが発生しました。")
         } catch (e: Exception) {
-            // エラー処理(Exception)　詰め替え時のエラー考慮
+            // エラー処理(Exception) 詰め替え時のエラー考慮
             throw Exception(e.message)
         }
     }
@@ -194,7 +194,7 @@ class AuthorIndexRepositoryImpl(
             // エラー処理(SQLException)
             throw SQLException("DB処理実施時にエラーが発生しました。")
         } catch (e: Exception) {
-            // エラー処理(Exception)　詰め替え時のエラー考慮
+            // エラー処理(Exception) 詰め替え時のエラー考慮
             throw Exception(e.message)
         }
     }

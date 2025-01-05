@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 /**
- * 共通処理のサービス
+ * 共通処理のService
  */
 @Service
 class CommonService {

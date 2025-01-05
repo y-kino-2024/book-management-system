@@ -10,7 +10,7 @@ import java.time.LocalDate
  * @param birthday 誕生日
  */
 data class GetAuthorResponse(
-    val authorId: String,
+    val authorId: Int,
     val authorName: String,
     val birthday: LocalDate,
 )

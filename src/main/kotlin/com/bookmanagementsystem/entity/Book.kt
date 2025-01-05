@@ -14,6 +14,7 @@ import com.bookmanagementsystem.enumkt.PublicationStatus
  * @param deleteFlg 削除フラグ
  */
 data class Book(
+    // 登録・更新処理を考慮し、各項目をnull許容とした(nullの場合は更新対象外)
     val id: Int?,
     val authorIdList: List<Int>?,
     val title: String?,
