@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component
  * 書籍バリデーションクラス
  */
 @Component
-class BookValidator {
+class BookValidator(
+    val commonValidator: CommonValidator
+) {
 
     /**
      * 書籍取得処理のバリデーション
@@ -19,6 +21,7 @@ class BookValidator {
      * @args request 書籍取得処理のリクエスト
      */
     fun validGetBook(request: GetBookRequest) {
+        // リクエスト値にbookIdを定義しなかった場合にアノテーションで必須チェックできないためここで必須チェックを実施
         checkRequiredBookId(request.bookId)
     }
 
@@ -28,6 +31,7 @@ class BookValidator {
      * @args request 著者IDから書籍取得処理のリクエスト
      */
     fun validGetBookFromAuthor(request: GetBookFromAuthorRequest) {
+        // リクエスト値にauthorIdを定義しなかった場合にアノテーションで必須チェックできないためここで必須チェックを実施
         checkRequiredAuthorId(request.authorId)
     }
 
@@ -37,11 +41,19 @@ class BookValidator {
      * @args request 書籍登録処理のリクエスト
      */
     fun validCreateBook(request: CreateBookRequest) {
+        // リクエスト値に項目を定義しなかった場合、アノテーションで必須チェックができないためここで必須チェックを実施
+        // 著者IDリストの必須チェック
         checkRequiredAuthorIdList(request.authorIdList)
+        // タイトルの必須チェック
         checkRequiredTitle(request.title)
+        // 価格の必須チェック
         checkRequiredPrice(request.price)
+        // 出版状況の必須チェック
         checkRequiredPublicationStatus(request.publicationStatus)
+        // 出版状況の妥当性チェック
         checkValidityPublicationStatus(request.publicationStatus)
+        // 操作者チェック
+        commonValidator.checkOperator(request.operator)
     }
 
     /**
@@ -50,8 +62,12 @@ class BookValidator {
      * @args request 書籍更新処理のリクエスト
      */
     fun validUpdateBook(request: UpdateBookRequest) {
+        // リクエスト値にbookIdを定義しなかった場合、アノテーションで必須チェックができないためここで必須チェックを実施
         checkRequiredBookId(request.bookId)
+        // 出版状況の妥当性チェック
         checkValidityPublicationStatus(request.publicationStatus)
+        // 操作者チェック
+        commonValidator.checkOperator(request.operator)
     }
 
     /**

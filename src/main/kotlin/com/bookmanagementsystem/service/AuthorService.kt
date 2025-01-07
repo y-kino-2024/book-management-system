@@ -55,7 +55,7 @@ class AuthorService(
      * @return 登録した著者ID
      */
     @Transactional
-    fun createAuthor(author: Author): String {
+    fun createAuthor(author: Author): Int {
         try {
             // 処理日時を取得
             val processingDatetime = common.getProcessingDateTime()
@@ -66,7 +66,7 @@ class AuthorService(
             )
             // 登録処理
             val result = authorsInfoRepositoryImpl.createAuthor(authorDto) ?: throw Exception()
-            return result.toString()
+            return result
         } catch (se: SQLException) {
             // 登録処理時にエラーが発生した場合はエラーメッセージをそのまま入れて投げる
             throw se
@@ -86,7 +86,7 @@ class AuthorService(
      * @return 更新対象の著者ID
      */
     @Transactional
-    fun updateAuthor(author: Author): String? {
+    fun updateAuthor(author: Author): Int? {
         try {
             // 更新対象の現在の著者情報を取得する
             val targetAuthor = authorsInfoRepositoryImpl.fetchAuthor(
@@ -111,7 +111,7 @@ class AuthorService(
             val result = authorsInfoRepositoryImpl.updateAuthor(authorDto)
             if (result > 0) {
                 // 処理された場合更新対象の著者IDを返す
-                return author.id.toString()
+                return author.id
             } else {
                 // 処理されなかった場合はエラー
                 throw Exception()

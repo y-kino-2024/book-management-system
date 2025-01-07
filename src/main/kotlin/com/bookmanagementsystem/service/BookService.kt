@@ -65,7 +65,7 @@ class BookService(
      * @return 書籍ID
      */
     @Transactional
-    fun createBook(book: Book): String {
+    fun createBook(book: Book): Int {
         try {
             // 処理日時を取得
             val processingDatetime = common.getProcessingDateTime()
@@ -86,7 +86,7 @@ class BookService(
             val createAuthorIndexResult = authorIndexRepositoryImpl.createAuthorIndex(authorIndexDto)
             if (createAuthorIndexResult == book.authorIdList?.size) {
                 // 著者人数分処理された場合は書籍IDを返す
-                return bookId.toString()
+                return bookId
             } else {
                 // 処理されなかった場合はエラー
                 throw Exception()
@@ -110,7 +110,7 @@ class BookService(
      * @return 書籍ID
      */
     @Transactional
-    fun updateBook(book: Book): String? {
+    fun updateBook(book: Book): Int? {
         try {
             // 更新対象の現在の書籍情報を取得する
             val currentBookDto = booksInfoRepositoryImpl.fetchBook(
@@ -148,7 +148,7 @@ class BookService(
             )
             if (resultProcessedNumber > 0 || resultAuthorIndexUpdate) {
                 // 処理された場合更新対象の書籍IDを返す
-                return book.id.toString()
+                return book.id
             } else {
                 // 処理されなかった場合はエラー
                 throw Exception()

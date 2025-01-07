@@ -226,7 +226,7 @@ class BookController(
             // 著者更新処理
             val bookId = bookService.updateBook(book)
             val mapper = ObjectMapper()
-            if (bookId.isNullOrBlank()) {
+            if (bookId == null) {
                 // 更新対象が存在しない場合はメッセージを返す
                 return mapper.writeValueAsString(UPDATE_TARGET_NOT_EXIST_MESSAGE)
             }
@@ -253,7 +253,7 @@ class BookController(
             } ?: throw IllegalStateException("bookIdの値が不正です。"),
             authorIdList = book.authorIdList?.let {
                 book.authorIdList.map { authorId ->
-                    authorId.toString()
+                    authorId
                 }
             } ?: throw IllegalStateException("authorIdListの値が不正です。"),
             title = book.title?.let {
@@ -318,7 +318,7 @@ class BookController(
      * @args bookId 書籍ID
      * @return 書籍登録処理のレスポンスオブジェクト
      */
-    private fun convertCreateBookResponse(bookId: String): CreateBookResponse {
+    private fun convertCreateBookResponse(bookId: Int): CreateBookResponse {
         return CreateBookResponse(
             bookId = bookId
         )
@@ -330,7 +330,7 @@ class BookController(
      * @args bookId 書籍ID
      * @return 書籍更新処理のレスポンスオブジェクト
      */
-    private fun convertUpdateBookResponse(bookId: String): UpdateBookResponse {
+    private fun convertUpdateBookResponse(bookId: Int): UpdateBookResponse {
         return UpdateBookResponse(
             bookId = bookId
         )

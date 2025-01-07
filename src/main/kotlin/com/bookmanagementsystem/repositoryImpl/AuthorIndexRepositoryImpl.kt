@@ -4,7 +4,9 @@ import bookmanagementsystem.jooq.quo_assignment.tables.AuthorIndex.AUTHOR_INDEX
 import com.bookmanagementsystem.dto.AuthorIndexDto
 import com.bookmanagementsystem.repository.AuthorIndexRepository
 import org.jooq.DSLContext
+import org.jooq.impl.DSL
 import org.springframework.stereotype.Repository
+import org.springframework.transaction.annotation.Transactional
 import java.sql.SQLException
 
 /**
@@ -22,29 +24,34 @@ class AuthorIndexRepositoryImpl(
      * @return 著者に紐づく書籍情報
      */
     @Override
+    @Transactional
     override fun getBookFromBookId(bookId: Int): List<AuthorIndexDto>? {
         try {
-            // クエリを生成・実行する
-            val result = this.dslContext.select()
-                .from(AUTHOR_INDEX)
-                .where(AUTHOR_INDEX.BOOK_ID.eq(bookId))
-                .fetch()
-
-            val authorIndexDtoList = mutableListOf<AuthorIndexDto>()
-            result.map { r ->
-                authorIndexDtoList.add(
-                    AuthorIndexDto(
-                        bookId = r.getValue(AUTHOR_INDEX.BOOK_ID),
-                        authorId = r.getValue(AUTHOR_INDEX.AUTHOR_ID),
-                        createdBy = r.getValue(AUTHOR_INDEX.CREATED_BY),
-                        createdAt = r.getValue(AUTHOR_INDEX.CREATED_AT),
-                        updatedBy = r.getValue(AUTHOR_INDEX.UPDATED_BY),
-                        updatedAt = r.getValue(AUTHOR_INDEX.UPDATED_AT),
-                        deleteFlg = r.getValue(AUTHOR_INDEX.DELETE_FLG),
+            return dslContext.transactionResult { configuration ->
+                val context = DSL.using(configuration)
+                // データの取得
+                val result = context.select()
+                    .from(AUTHOR_INDEX)
+                    .where(AUTHOR_INDEX.BOOK_ID.eq(bookId))
+                    .fetch()
+                // 取得結果をAuthorIndexDtoに詰め替える
+                val authorIndexDtoList = mutableListOf<AuthorIndexDto>()
+                result.map { r ->
+                    authorIndexDtoList.add(
+                        AuthorIndexDto(
+                            bookId = r.getValue(AUTHOR_INDEX.BOOK_ID),
+                            authorId = r.getValue(AUTHOR_INDEX.AUTHOR_ID),
+                            createdBy = r.getValue(AUTHOR_INDEX.CREATED_BY),
+                            createdAt = r.getValue(AUTHOR_INDEX.CREATED_AT),
+                            updatedBy = r.getValue(AUTHOR_INDEX.UPDATED_BY),
+                            updatedAt = r.getValue(AUTHOR_INDEX.UPDATED_AT),
+                            deleteFlg = r.getValue(AUTHOR_INDEX.DELETE_FLG),
+                        )
                     )
-                )
+                }
+                // 取得結果を返す
+                return@transactionResult authorIndexDtoList
             }
-            return authorIndexDtoList
         } catch (e: SQLException) {
             // エラー処理(SQLException)
             throw SQLException("DB処理実施時にエラーが発生しました。")
@@ -61,17 +68,20 @@ class AuthorIndexRepositoryImpl(
      * @return 著者に紐づく書籍情報
      */
     @Override
+    @Transactional
     override fun getBookFromAuthorId(authorId: Int): List<AuthorIndexDto>? {
         try {
-            // クエリを生成・実行する
-            val result = this.dslContext.select()
-                .from(AUTHOR_INDEX)
-                .where(AUTHOR_INDEX.AUTHOR_ID.eq(authorId))
-                .fetch()
-
-            val authorIndexDtoList = mutableListOf<AuthorIndexDto>()
-            result.map { r ->
-                authorIndexDtoList.add(
+            return dslContext.transactionResult { configuration ->
+                val context = DSL.using(configuration)
+                // データの取得
+                val result = context.select()
+                    .from(AUTHOR_INDEX)
+                    .where(AUTHOR_INDEX.AUTHOR_ID.eq(authorId))
+                    .fetch()
+                // 取得結果をAuthorIndexDtoに詰め替える
+                //val authorIndexDtoList = mutableListOf<AuthorIndexDto>()
+                val authorIndexDtoList = result.map { r ->
+                    //authorIndexDtoList.add(
                     AuthorIndexDto(
                         bookId = r.getValue(AUTHOR_INDEX.BOOK_ID),
                         authorId = r.getValue(AUTHOR_INDEX.AUTHOR_ID),
@@ -81,9 +91,11 @@ class AuthorIndexRepositoryImpl(
                         updatedAt = r.getValue(AUTHOR_INDEX.UPDATED_AT),
                         deleteFlg = r.getValue(AUTHOR_INDEX.DELETE_FLG),
                     )
-                )
+                    //)
+                }
+                // 取得結果を返す
+                return@transactionResult authorIndexDtoList
             }
-            return authorIndexDtoList
         } catch (e: SQLException) {
             // エラー処理(SQLException)
             throw SQLException("DB処理実施時にエラーが発生しました。")
@@ -100,38 +112,26 @@ class AuthorIndexRepositoryImpl(
      * @return 処理件数
      */
     @Override
+    @Transactional
     override fun createAuthorIndex(authorIndexDtoList: List<AuthorIndexDto>): Int {
         try {
-            // FIXME var processedNumberは廃止したい。一発でクエリが作れれば解決
-            // 処理件数
-            var processedNumber = 0
-            // FIXME bulkInsertにしたい。
-            // クエリを生成・実行する
-            for (authorIndexDto in authorIndexDtoList) {
-                processedNumber += dslContext
-                    .insertInto(
-                        AUTHOR_INDEX,
-                        AUTHOR_INDEX.BOOK_ID,
-                        AUTHOR_INDEX.AUTHOR_ID,
-                        AUTHOR_INDEX.CREATED_BY,
-                        AUTHOR_INDEX.CREATED_AT,
-                        AUTHOR_INDEX.UPDATED_BY,
-                        AUTHOR_INDEX.UPDATED_AT,
-                        AUTHOR_INDEX.DELETE_FLG,
-                    )
-                    .values(
-                        authorIndexDto.bookId,
-                        authorIndexDto.authorId,
-                        authorIndexDto.createdBy,
-                        authorIndexDto.createdAt,
-                        authorIndexDto.updatedBy,
-                        authorIndexDto.updatedAt,
-                        authorIndexDto.deleteFlg
-                    )
-                    .execute()
+            return dslContext.transactionResult { configuration ->
+                val context = DSL.using(configuration)
+                // データの登録処理
+                context.batch(
+                    authorIndexDtoList.map { authorIndexDto ->
+                        context.insertInto(AUTHOR_INDEX)
+                            .set(AUTHOR_INDEX.BOOK_ID, authorIndexDto.bookId)
+                            .set(AUTHOR_INDEX.AUTHOR_ID, authorIndexDto.authorId)
+                            .set(AUTHOR_INDEX.CREATED_BY, authorIndexDto.createdBy)
+                            .set(AUTHOR_INDEX.CREATED_AT, authorIndexDto.createdAt)
+                            .set(AUTHOR_INDEX.UPDATED_BY, authorIndexDto.updatedBy)
+                            .set(AUTHOR_INDEX.UPDATED_AT, authorIndexDto.createdAt)
+                            .set(AUTHOR_INDEX.DELETE_FLG, authorIndexDto.deleteFlg)
+                    }
+                    // 登録処理件数を算出
+                ).execute().sum()
             }
-            // 実行結果として返ってくる処理件数を返す
-            return processedNumber
         } catch (e: SQLException) {
             // エラー処理(SQLException)
             throw SQLException("DB処理実施時にエラーが発生しました。")
@@ -148,48 +148,39 @@ class AuthorIndexRepositoryImpl(
      * @return 処理件数
      */
     @Override
+    @Transactional
     override fun updateAuthorIndex(authorIndexDtoList: List<AuthorIndexDto>, bookId: Int): Int {
         try {
-            // DELETE-INSERTを行う
-            // 更新前の書籍と著者の紐づけを削除する
-            val deleteProcessedNumber = dslContext
-                .delete(AUTHOR_INDEX)
-                .where(AUTHOR_INDEX.BOOK_ID.eq(bookId))
-                .execute()
-            // 処理結果が0件の場合は処理が出来ていないためエラー扱いとする
-            if (deleteProcessedNumber == 0) {
-                throw SQLException()
-            }
-            // 書籍と著者の紐づけを作成する
-            // 処理件数
-            var createProcessedNumber = 0
-            // FIXME bulkInsertにしたい。
-            // クエリを生成・実行する
-            for (authorIndexDto in authorIndexDtoList) {
-                createProcessedNumber += dslContext
-                    .insertInto(
-                        AUTHOR_INDEX,
-                        AUTHOR_INDEX.BOOK_ID,
-                        AUTHOR_INDEX.AUTHOR_ID,
-                        AUTHOR_INDEX.CREATED_BY,
-                        AUTHOR_INDEX.CREATED_AT,
-                        AUTHOR_INDEX.UPDATED_BY,
-                        AUTHOR_INDEX.UPDATED_AT,
-                        AUTHOR_INDEX.DELETE_FLG,
-                    )
-                    .values(
-                        authorIndexDto.bookId,
-                        authorIndexDto.authorId,
-                        authorIndexDto.createdBy,
-                        authorIndexDto.createdAt,
-                        authorIndexDto.updatedBy,
-                        authorIndexDto.updatedAt,
-                        authorIndexDto.deleteFlg
-                    )
+            return dslContext.transactionResult { configuration ->
+                val context = DSL.using(configuration)
+                // DELETE-INSERTを行う
+                // 更新前の書籍と著者の紐づけを削除する
+                val deleteProcessedNumber = context
+                    .delete(AUTHOR_INDEX)
+                    .where(AUTHOR_INDEX.BOOK_ID.eq(bookId))
                     .execute()
+                // 処理結果が0件の場合は処理が出来ていないためエラー扱いとする
+                if (deleteProcessedNumber == 0) {
+                    throw SQLException()
+                }
+                // 書籍と著者の紐づけを作成する
+                // データの登録処理
+                val createProcessedNumber = context.batch(
+                    authorIndexDtoList.map { authorIndexDto ->
+                        context.insertInto(AUTHOR_INDEX)
+                            .set(AUTHOR_INDEX.BOOK_ID, authorIndexDto.bookId)
+                            .set(AUTHOR_INDEX.AUTHOR_ID, authorIndexDto.authorId)
+                            .set(AUTHOR_INDEX.CREATED_BY, authorIndexDto.createdBy)
+                            .set(AUTHOR_INDEX.CREATED_AT, authorIndexDto.createdAt)
+                            .set(AUTHOR_INDEX.UPDATED_BY, authorIndexDto.updatedBy)
+                            .set(AUTHOR_INDEX.UPDATED_AT, authorIndexDto.createdAt)
+                            .set(AUTHOR_INDEX.DELETE_FLG, authorIndexDto.deleteFlg)
+                    }
+                    // 登録処理件数を算出
+                ).execute().sum()
+                // 実行結果として返ってくる処理件数を返す
+                return@transactionResult createProcessedNumber
             }
-            // 実行結果として返ってくる処理件数を返す
-            return createProcessedNumber
         } catch (e: SQLException) {
             // エラー処理(SQLException)
             throw SQLException("DB処理実施時にエラーが発生しました。")

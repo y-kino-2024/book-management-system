@@ -6,5 +6,5 @@ package com.bookmanagementsystem.response.book
  * @param bookId 書籍ID
  */
 data class CreateBookResponse(
-    val bookId: String
+    val bookId: Int
 )

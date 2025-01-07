@@ -31,6 +31,7 @@ class AuthorValidator(
      */
     fun validCreateAuthor(request: CreateAuthorRequest) {
         // リクエスト値に項目を定義しなかった場合、アノテーションで必須チェックができないためここで必須チェックを実施
+        // 著者名の必須チェック
         checkRequiredName(request.authorName)
         // 誕生日の必須チェック
         checkRequiredBirthday(request.birthday)

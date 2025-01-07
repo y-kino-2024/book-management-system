@@ -164,7 +164,7 @@ class AuthorController(
             val authorId = service.updateAuthor(author)
             // JSONで返す
             val mapper = ObjectMapper()
-            if (authorId.isNullOrBlank()) {
+            if (authorId == null) {
                 // 更新対象が存在しない場合はメッセージを返す
                 return mapper.writeValueAsString(UPDATE_TARGET_NOT_EXIST_MESSAGE)
             }
@@ -205,7 +205,7 @@ class AuthorController(
      * @args authorId 著者ID
      * @return 著者登録処理のレスポンスオブジェクト
      */
-    private fun convertCreateAuthorResponse(authorId: String): CreateAuthorResponse {
+    private fun convertCreateAuthorResponse(authorId: Int): CreateAuthorResponse {
         return CreateAuthorResponse(
             authorId = authorId
         )
@@ -217,7 +217,7 @@ class AuthorController(
      * @args authorId 著者ID
      * @return 著者更新結果のレスポンスオブジェクト
      */
-    private fun convertUpdateAuthorResponse(authorId: String): UpdateAuthorResponse {
+    private fun convertUpdateAuthorResponse(authorId: Int): UpdateAuthorResponse {
         return UpdateAuthorResponse(
             authorId = authorId
         )

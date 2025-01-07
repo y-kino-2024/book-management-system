@@ -16,7 +16,7 @@ class CommonValidator {
     fun checkOperator(operator: String?) {
         // 必須チェック
         if (operator.isNullOrBlank()) {
-            throw NullPointerException("operatorが未入力です。")
+            throw NullPointerException("operatorを入力してください。")
         }
     }
 }

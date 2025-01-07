@@ -11,7 +11,7 @@ package com.bookmanagementsystem.response.book
  */
 data class GetBookResponse(
     val bookId: Int,
-    val authorIdList: List<String>,
+    val authorIdList: List<Int>,
     val title: String,
     val price: Int,
     val publicationStatus: String,

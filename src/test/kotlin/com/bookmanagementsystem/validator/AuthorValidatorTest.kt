@@ -9,10 +9,16 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.mockito.InjectMocks
+import org.mockito.Mock
 import org.mockito.MockitoAnnotations
+import org.springframework.boot.test.context.SpringBootTest
 import java.time.LocalDate
 
+@SpringBootTest
 internal class AuthorValidatorTest {
+
+    @Mock
+    var commonValidator: CommonValidator? = null
 
     @InjectMocks
     var authorValidator: AuthorValidator? = null
@@ -176,5 +182,15 @@ internal class AuthorValidatorTest {
         } catch (e: Exception) {
             fail("想定した例外がthrowされませんでした")
         }
+    }
+
+    @Test
+    @DisplayName("authorValidatorで呼び出しているcommonValidatorがCommonValidatorクラスであること")
+    fun testCommonValidator() {
+        val result = authorValidator!!.commonValidator
+        assertEquals(
+            commonValidator?.javaClass,
+            result.javaClass
+        )
     }
 }

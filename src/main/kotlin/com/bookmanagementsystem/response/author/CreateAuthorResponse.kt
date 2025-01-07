@@ -6,5 +6,5 @@ package com.bookmanagementsystem.response.author
  * @param authorId 著者ID
  */
 data class CreateAuthorResponse(
-    val authorId: String
+    val authorId: Int
 )
