@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - AuthorValidatorTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>AuthorValidatorTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.bookmanagementsystem.validator.html">com.bookmanagementsystem.validator</a> &gt; AuthorValidatorTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">10</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.041s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">authorValidatorで呼び出しているcommonValidatorがCommonValidatorクラスであること</td>
+<td class="success">testCommonValidator()</td>
+<td class="success">0.010s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">著者登録処理のリクエストが設定されており、birthdayの過去日チェックでエラーとなった場合はIllegalStateExceptionが投げられること</td>
+<td class="success">testValidCreateAuthor_IllegalStateException_Birthday()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">著者登録処理のバリデーションチェックにて、authorNameがnullの場合はNullPointerExceptionが投げられること</td>
+<td class="success">testValidCreateAuthor_NullPointerException_AuthorName()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">著者登録処理のリクエストが設定されており、birthdayの必須チェックでエラーとなった場合はNullPointerExceptionが投げられること</td>
+<td class="success">testValidCreateAuthor_NullPointerException_Birthday()</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">著者登録処理のバリデーションチェックにて、全ての値が正常値の場合はエラーとならないこと</td>
+<td class="success">testValidCreateAuthor_Success()</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">著者取得処理のバリデーションチェックにて、authorIdがnullの場合はNullPointerExceptionが投げられること</td>
+<td class="success">testValidGetAuthor_NullPointerException()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">著者取得処理のバリデーションチェックにて、全ての値が正常値の場合はエラーとならないこと</td>
+<td class="success">testValidGetAuthor_Success()</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">著者更新処理のリクエストが設定されており、birthdayの過去日チェックでエラーとなった場合はIllegalStateExceptionが投げられること</td>
+<td class="success">testValidUpdateAuthor_IllegalStateException_Birthday()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">著者更新処理のリクエストが設定されており、authorIdの必須チェックでエラーとなった場合はNullPointerExceptionが投げられること</td>
+<td class="success">testValidUpdateAuthor_NullPointerException_AuthorId()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">著者更新処理のバリデーションチェックにて、全ての値が正常値の場合はエラーとならないこと</td>
+<td class="success">testValidUpdateAuthor_Success()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2025-01-08T02:05:33.064+09:00  INFO 15412 --- [quo_assignment_db] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bookmanagementsystem.validator.AuthorValidatorTest]: AuthorValidatorTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-01-08T02:05:33.079+09:00  INFO 15412 --- [quo_assignment_db] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bookmanagementsystem.BootApplication for test class com.bookmanagementsystem.validator.AuthorValidatorTest
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.11.1</a> at 2025/01/08 2:05:33</p>
+</div>
+</div>
+</body>
+</html>

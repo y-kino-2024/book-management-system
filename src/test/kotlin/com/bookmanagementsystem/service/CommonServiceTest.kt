@@ -7,8 +7,10 @@ import org.junit.jupiter.api.Test
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
+import org.springframework.boot.test.context.SpringBootTest
 import java.time.LocalDateTime
 
+@SpringBootTest
 class CommonServiceTest {
 
     @Mock

@@ -16,12 +16,10 @@ import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDate
 import java.time.LocalDateTime
 
 @SpringBootTest
-@Transactional
 class AuthorsInfoRepositoryImplTest {
 
     @Mock
@@ -53,10 +51,8 @@ class AuthorsInfoRepositoryImplTest {
                 deleteFlg = "0"
             )
             `when`(authorsInfoRepository.fetchAuthor(1)).thenReturn(mockDate)
-
             // テスト対象メソッドの呼び出し
             val result = authorsInfoRepository.fetchAuthor(1)
-
             // 検証
             assertNotNull(result)
             assertEquals(1, result?.id)
@@ -67,7 +63,6 @@ class AuthorsInfoRepositoryImplTest {
             assertEquals("updatedBy", result?.updatedBy)
             assertEquals(LocalDateTime.of(2025, 1, 1, 8, 8, 8), result?.updatedAt)
             assertEquals("0", result?.deleteFlg)
-
             // モックメソッドの呼び出しを検証
             verify(authorsInfoRepository).fetchAuthor(1)
         } catch (e: Exception) {
@@ -81,13 +76,10 @@ class AuthorsInfoRepositoryImplTest {
         try {
             val mockDate = null
             `when`(authorsInfoRepository.fetchAuthor(1)).thenReturn(mockDate)
-
             // テスト対象メソッドの呼び出し
             val result = authorsInfoRepository.fetchAuthor(1)
-
             // 検証
             assertNull(result)
-
             // モックメソッドの呼び出しを検証
             verify(authorsInfoRepository).fetchAuthor(1)
         } catch (e: Exception) {
@@ -110,10 +102,8 @@ class AuthorsInfoRepositoryImplTest {
                 deleteFlg = "0"
             )
             `when`(authorsInfoRepository.createAuthor(mockDate)).thenReturn(1)
-
             // テスト対象メソッドの呼び出し
             val result = authorsInfoRepository.createAuthor(mockDate)
-
             // 検証
             assertNotNull(result)
             assertEquals(1, result)
@@ -139,10 +129,8 @@ class AuthorsInfoRepositoryImplTest {
                 deleteFlg = "0"
             )
             `when`(authorsInfoRepository.updateAuthor(mockDate)).thenReturn(1)
-
             // テスト対象メソッドの呼び出し
             val result = authorsInfoRepository.updateAuthor(mockDate)
-
             // 検証
             assertNotNull(result)
             assertEquals(1, result)

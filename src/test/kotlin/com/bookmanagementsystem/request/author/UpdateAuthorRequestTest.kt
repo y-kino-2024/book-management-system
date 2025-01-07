@@ -3,8 +3,10 @@ package com.bookmanagementsystem.request.author
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.springframework.boot.test.context.SpringBootTest
 import java.time.LocalDate
 
+@SpringBootTest
 class UpdateAuthorRequestTest {
 
     // 正常系のUpdateAuthorRequest

@@ -442,6 +442,4 @@ class BookService(
             deleteFlg = book.deleteFlg ?: currentBookDto.deleteFlg,
         )
     }
-
-
 }
