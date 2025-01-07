@@ -19,7 +19,6 @@ class AuthorIndexDtoTest {
         deleteFlg = "0"
     )
 
-
     @Test
     @DisplayName("AuthorIndexDtoのbookIdに設定した値が入っていること")
     fun testGetBookId() {

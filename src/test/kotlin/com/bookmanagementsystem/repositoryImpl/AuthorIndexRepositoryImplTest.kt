@@ -4,8 +4,8 @@ import com.bookmanagementsystem.dto.AuthorIndexDto
 import com.bookmanagementsystem.repository.AuthorIndexRepository
 import org.jooq.DSLContext
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertIterableEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

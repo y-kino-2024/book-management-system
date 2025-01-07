@@ -4,13 +4,11 @@ import com.bookmanagementsystem.request.book.CreateBookRequest
 import com.bookmanagementsystem.request.book.GetBookRequest
 import com.bookmanagementsystem.request.book.UpdateBookRequest
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
@@ -21,11 +19,6 @@ internal class BookValidatorTest {
 
     @InjectMocks
     var bookValidator: BookValidator? = null
-
-    @BeforeEach
-    fun setUp() {
-        MockitoAnnotations.openMocks(this)
-    }
 
     @Test
     @DisplayName("書籍取得処理のバリデーションチェックにて、全ての値が正常値の場合はエラーとならないこと")

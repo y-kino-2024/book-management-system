@@ -21,7 +21,6 @@ class AuthorsInfoDtoTest {
         deleteFlg = "0"
     )
 
-
     @Test
     @DisplayName("AuthorsInfoDtoのidに設定した値が入っていること")
     fun testGetId() {

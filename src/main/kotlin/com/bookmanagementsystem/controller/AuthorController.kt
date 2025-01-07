@@ -12,6 +12,7 @@ import com.bookmanagementsystem.validator.AuthorValidator
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.validation.BindingResult
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
@@ -27,7 +28,9 @@ import java.time.format.DateTimeFormatter
  */
 @RestController
 class AuthorController(
+    @Autowired
     val validate: AuthorValidator,
+    @Autowired
     val service: AuthorService
 ) {
     companion object {

@@ -4,13 +4,11 @@ import com.bookmanagementsystem.request.author.CreateAuthorRequest
 import com.bookmanagementsystem.request.author.GetAuthorRequest
 import com.bookmanagementsystem.request.author.UpdateAuthorRequest
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 import org.springframework.boot.test.context.SpringBootTest
 import java.time.LocalDate
 
@@ -22,11 +20,6 @@ internal class AuthorValidatorTest {
 
     @InjectMocks
     var authorValidator: AuthorValidator? = null
-
-    @BeforeEach
-    fun setUp() {
-        MockitoAnnotations.openMocks(this)
-    }
 
     @Test
     @DisplayName("著者取得処理のバリデーションチェックにて、全ての値が正常値の場合はエラーとならないこと")
