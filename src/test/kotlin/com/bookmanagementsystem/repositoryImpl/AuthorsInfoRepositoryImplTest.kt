@@ -93,25 +93,9 @@ class AuthorsInfoRepositoryImplTest {
         }
     }
 
-    /*
-        @Test
-        @DisplayName("著者取得処理の異常系")
-        fun testFetchAuthor_SQLException() {
-            try {
-                val mockDate = null
-                `when`(authorsInfoRepositoryImpl.fetchAuthor(1)).thenThrow(SQLException())
-                authorsInfoRepositoryImpl.fetchAuthor(1)
-                fail("例外がthrowされませんでした")
-            } catch (se: SQLException) {
-                assertEquals("DB処理実施時にエラーが発生しました。", se.message)
-            } catch (e: Exception) {
-                fail("想定した例外がthrowされませんでした"+ e)
-            }
-        }
-    */
     @Test
-    @DisplayName("著者登録処理の正常系_返り値あり")
-    fun testCreateAuthor_Success_Return() {
+    @DisplayName("著者登録処理の正常系")
+    fun testCreateAuthor_Success() {
         try {
             val mockDate = AuthorsInfoDto(
                 id = 1,
@@ -139,7 +123,8 @@ class AuthorsInfoRepositoryImplTest {
     }
 
     @Test
-    fun testUpdateAuthor() {
+    @DisplayName("著者更新処理の正常系")
+    fun testUpdateAuthor_Success() {
         try {
             val mockDate = AuthorsInfoDto(
                 id = 1,

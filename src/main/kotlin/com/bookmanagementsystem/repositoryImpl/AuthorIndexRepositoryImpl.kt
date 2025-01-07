@@ -1,8 +1,10 @@
 package com.bookmanagementsystem.repositoryImpl
 
 import bookmanagementsystem.jooq.quo_assignment.tables.AuthorIndex.AUTHOR_INDEX
+import bookmanagementsystem.jooq.quo_assignment.tables.BooksInfo.BOOKS_INFO
 import com.bookmanagementsystem.dto.AuthorIndexDto
 import com.bookmanagementsystem.repository.AuthorIndexRepository
+import com.bookmanagementsystem.repositoryImpl.BooksInfoRepositoryImpl.Companion.DELETE_FLG_FALSE
 import org.jooq.DSLContext
 import org.jooq.impl.DSL
 import org.springframework.stereotype.Repository
@@ -16,6 +18,11 @@ import java.sql.SQLException
 class AuthorIndexRepositoryImpl(
     private val dslContext: DSLContext
 ) : AuthorIndexRepository {
+
+    companion object {
+        // 論理削除されていないカラムの設定値
+        const val DELETE_FLG_FALSE = "0"
+    }
 
     /**
      * 書籍IDを用いて著者に紐づく書籍情報をDBから取得する
@@ -33,6 +40,7 @@ class AuthorIndexRepositoryImpl(
                 val result = context.select()
                     .from(AUTHOR_INDEX)
                     .where(AUTHOR_INDEX.BOOK_ID.eq(bookId))
+                    .and(AUTHOR_INDEX.DELETE_FLG.eq(DELETE_FLG_FALSE))
                     .fetch()
                 // 取得結果をAuthorIndexDtoに詰め替える
                 val authorIndexDtoList = mutableListOf<AuthorIndexDto>()
@@ -77,11 +85,10 @@ class AuthorIndexRepositoryImpl(
                 val result = context.select()
                     .from(AUTHOR_INDEX)
                     .where(AUTHOR_INDEX.AUTHOR_ID.eq(authorId))
+                    .and(AUTHOR_INDEX.DELETE_FLG.eq(DELETE_FLG_FALSE))
                     .fetch()
                 // 取得結果をAuthorIndexDtoに詰め替える
-                //val authorIndexDtoList = mutableListOf<AuthorIndexDto>()
                 val authorIndexDtoList = result.map { r ->
-                    //authorIndexDtoList.add(
                     AuthorIndexDto(
                         bookId = r.getValue(AUTHOR_INDEX.BOOK_ID),
                         authorId = r.getValue(AUTHOR_INDEX.AUTHOR_ID),
@@ -91,7 +98,6 @@ class AuthorIndexRepositoryImpl(
                         updatedAt = r.getValue(AUTHOR_INDEX.UPDATED_AT),
                         deleteFlg = r.getValue(AUTHOR_INDEX.DELETE_FLG),
                     )
-                    //)
                 }
                 // 取得結果を返す
                 return@transactionResult authorIndexDtoList
