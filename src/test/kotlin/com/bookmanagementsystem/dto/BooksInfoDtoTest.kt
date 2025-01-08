@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 @SpringBootTest
 class BooksInfoDtoTest {
 
-    val mockBooksInfoDto: BooksInfoDto = BooksInfoDto(
+    val mockBooksInfoDto = BooksInfoDto(
         id = 1,
         title = "title",
         price = 9999.0,

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bookmanagementsystem.dto.BooksInfoDtoTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-01-07T17:05:30" hostname="DESKTOP-03LDBVA" time="0.042">
+<testsuite name="com.bookmanagementsystem.dto.BooksInfoDtoTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-01-08T14:53:13" hostname="DESKTOP-03LDBVA" time="0.075">
   <properties/>
-  <testcase name="BooksInfoDtoのpriceに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.004"/>
+  <testcase name="BooksInfoDtoのpriceに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.003"/>
   <testcase name="BooksInfoDtoのtitleに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.003"/>
   <testcase name="BooksInfoDtoのidに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.003"/>
-  <testcase name="BooksInfoDtoのupdatedAtに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.004"/>
-  <testcase name="BooksInfoDtoのupdatedByに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.004"/>
-  <testcase name="BooksInfoDtoのpublicationStatusに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.004"/>
+  <testcase name="BooksInfoDtoのupdatedAtに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.003"/>
+  <testcase name="BooksInfoDtoのupdatedByに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.003"/>
+  <testcase name="BooksInfoDtoのpublicationStatusに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.002"/>
   <testcase name="BooksInfoDtoのdeleteFlgに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.004"/>
-  <testcase name="BooksInfoDtoのcreatedAtに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.004"/>
-  <testcase name="BooksInfoDtoのcreatedByに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.004"/>
-  <system-out><![CDATA[2025-01-08T02:05:30.626+09:00  INFO 15412 --- [quo_assignment_db] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bookmanagementsystem.dto.BooksInfoDtoTest]: BooksInfoDtoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-01-08T02:05:30.628+09:00  INFO 15412 --- [quo_assignment_db] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bookmanagementsystem.BootApplication for test class com.bookmanagementsystem.dto.BooksInfoDtoTest
+  <testcase name="BooksInfoDtoのcreatedAtに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.008"/>
+  <testcase name="BooksInfoDtoのcreatedByに設定した値が入っていること" classname="com.bookmanagementsystem.dto.BooksInfoDtoTest" time="0.005"/>
+  <system-out><![CDATA[2025-01-08T23:53:13.441+09:00  INFO 53520 --- [quo_assignment_db] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bookmanagementsystem.dto.BooksInfoDtoTest]: BooksInfoDtoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-01-08T23:53:13.443+09:00  INFO 53520 --- [quo_assignment_db] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bookmanagementsystem.BootApplication for test class com.bookmanagementsystem.dto.BooksInfoDtoTest
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

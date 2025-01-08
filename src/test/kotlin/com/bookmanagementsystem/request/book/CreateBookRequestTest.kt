@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest
 class CreateBookRequestTest {
 
     // 正常系のCreateBookRequest
-    val createBookRequest: CreateBookRequest = CreateBookRequest(
+    val createBookRequest = CreateBookRequest(
         authorIdList = listOf(1, 5, 9, 13, 19),
         title = "title",
         price = 777.0,

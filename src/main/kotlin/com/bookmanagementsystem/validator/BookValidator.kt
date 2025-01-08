@@ -5,6 +5,7 @@ import com.bookmanagementsystem.request.book.CreateBookRequest
 import com.bookmanagementsystem.request.book.GetBookFromAuthorRequest
 import com.bookmanagementsystem.request.book.GetBookRequest
 import com.bookmanagementsystem.request.book.UpdateBookRequest
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component
  */
 @Component
 class BookValidator(
+    @Autowired
     val commonValidator: CommonValidator
 ) {
 

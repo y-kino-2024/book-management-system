@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 @SpringBootTest
 class AuthorsInfoDtoTest {
 
-    val mockAuthorsInfoDto: AuthorsInfoDto = AuthorsInfoDto(
+    val mockAuthorsInfoDto = AuthorsInfoDto(
         id = 1,
         authorName = "authorName",
         birthday = LocalDate.of(1988, 4, 20),

@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 class BookController(
+    @Autowired
     private val validate: BookValidator,
     @Autowired
     private val bookService: BookService,

@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest
 class UpdateBookRequestTest {
 
     // 正常系のUpdateBookRequest
-    val updateBookRequest: UpdateBookRequest = UpdateBookRequest(
+    val updateBookRequest = UpdateBookRequest(
         bookId = 0,
         authorIdList = listOf(1, 5, 9, 13, 19),
         title = "title",

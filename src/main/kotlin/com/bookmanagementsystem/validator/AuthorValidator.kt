@@ -3,8 +3,8 @@ package com.bookmanagementsystem.validator
 import com.bookmanagementsystem.request.author.CreateAuthorRequest
 import com.bookmanagementsystem.request.author.GetAuthorRequest
 import com.bookmanagementsystem.request.author.UpdateAuthorRequest
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
-
 import java.time.LocalDate
 
 /**
@@ -12,6 +12,7 @@ import java.time.LocalDate
  */
 @Component
 class AuthorValidator(
+    @Autowired
     val commonValidator: CommonValidator
 ) {
 

@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest
 class CreateAuthorResponseTest {
 
     // 正常系のCreateAuthorResponse
-    private val createAuthorResponse: CreateAuthorResponse = CreateAuthorResponse(
+    private val createAuthorResponse = CreateAuthorResponse(
         authorId = 0,
     )
 

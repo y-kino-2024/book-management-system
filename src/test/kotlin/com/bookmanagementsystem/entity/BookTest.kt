@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest
 @SpringBootTest
 class BookTest {
 
-    val mockBook: Book = Book(
+    val mockBook = Book(
         id = 0,
         authorIdList = listOf(1, 3, 5, 7, 9),
         title = "title",
@@ -35,7 +35,7 @@ class BookTest {
 
     @Test
     @DisplayName("Bookのtitleに設定した値が入っていること")
-    fun testGetBirthday() {
+    fun testGetTitle() {
         val title = mockBook.title
         Assertions.assertEquals("title", title)
     }

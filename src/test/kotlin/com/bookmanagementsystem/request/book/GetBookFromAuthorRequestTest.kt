@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest
 class GetBookFromAuthorRequestTest {
 
     // 正常系のGetBookRequest
-    val getBookFromAuthorRequest: GetBookFromAuthorRequest = GetBookFromAuthorRequest(
+    val getBookFromAuthorRequest = GetBookFromAuthorRequest(
         authorId = 0,
     )
 

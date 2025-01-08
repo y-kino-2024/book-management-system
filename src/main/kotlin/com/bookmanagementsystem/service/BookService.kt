@@ -115,7 +115,7 @@ class BookService(
             // 更新対象の現在の書籍情報を取得する
             val currentBookDto = booksInfoRepositoryImpl.fetchBook(
                 book.id?.let {
-                    // チェックしているためここで書籍IDがnullになることはない
+                    // チェック済みのためここで書籍IDがnullになることはない
                     book.id
                 } ?: throw IllegalStateException("書籍IDの値が不正です。")
             )
@@ -310,7 +310,7 @@ class BookService(
     }
 
     /**
-     * 書籍と著者を紐づけたEntityをDtoに変換する
+     * 書籍Entityを書籍と著者を紐づけたDtoのリストに変換する
      *
      * @args book 書籍Entity
      * @args bookId 書籍ID
@@ -346,7 +346,7 @@ class BookService(
     }
 
     /**
-     * 書籍と著者を紐づけたEntityをDtoに変換する
+     * 書籍Entityを更新用の書籍と著者を紐づけたDtoに変換する
      *
      * @args book 書籍Entity
      * @args processingDatetime 処理日時
@@ -382,7 +382,7 @@ class BookService(
     }
 
     /**
-     * 書籍のEntityをDtoに変換する
+     * 書籍のEntityを登録処理用の書籍Dtoに変換する
      *
      * @args book 書籍Entity
      * @args processingDatetime 処理日時
@@ -414,7 +414,7 @@ class BookService(
     }
 
     /**
-     * 書籍のEntityをDtoに変換する
+     * 書籍のEntityと更新前の書籍情報をもとに更新用の書籍Dtoに変換する
      *
      * @args book 書籍Entity
      * @args currentBookDto 更新前の書籍Dto

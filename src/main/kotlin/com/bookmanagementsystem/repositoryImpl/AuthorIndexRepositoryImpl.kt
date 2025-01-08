@@ -1,10 +1,8 @@
 package com.bookmanagementsystem.repositoryImpl
 
 import bookmanagementsystem.jooq.quo_assignment.tables.AuthorIndex.AUTHOR_INDEX
-import bookmanagementsystem.jooq.quo_assignment.tables.BooksInfo.BOOKS_INFO
 import com.bookmanagementsystem.dto.AuthorIndexDto
 import com.bookmanagementsystem.repository.AuthorIndexRepository
-import com.bookmanagementsystem.repositoryImpl.BooksInfoRepositoryImpl.Companion.DELETE_FLG_FALSE
 import org.jooq.DSLContext
 import org.jooq.impl.DSL
 import org.springframework.stereotype.Repository

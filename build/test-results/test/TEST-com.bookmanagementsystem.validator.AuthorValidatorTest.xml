@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bookmanagementsystem.validator.AuthorValidatorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-01-07T17:05:33" hostname="DESKTOP-03LDBVA" time="0.081">
+<testsuite name="com.bookmanagementsystem.validator.AuthorValidatorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-01-08T14:53:15" hostname="DESKTOP-03LDBVA" time="0.053">
   <properties/>
   <testcase name="著者取得処理のバリデーションチェックにて、全ての値が正常値の場合はエラーとならないこと" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.004"/>
-  <testcase name="著者登録処理のリクエストが設定されており、birthdayの必須チェックでエラーとなった場合はNullPointerExceptionが投げられること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.006"/>
-  <testcase name="著者取得処理のバリデーションチェックにて、authorIdがnullの場合はNullPointerExceptionが投げられること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.003"/>
-  <testcase name="著者更新処理のリクエストが設定されており、authorIdの必須チェックでエラーとなった場合はNullPointerExceptionが投げられること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.003"/>
-  <testcase name="著者更新処理のリクエストが設定されており、birthdayの過去日チェックでエラーとなった場合はIllegalStateExceptionが投げられること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.003"/>
-  <testcase name="著者登録処理のバリデーションチェックにて、authorNameがnullの場合はNullPointerExceptionが投げられること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.003"/>
-  <testcase name="authorValidatorで呼び出しているcommonValidatorがCommonValidatorクラスであること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.01"/>
-  <testcase name="著者更新処理のバリデーションチェックにて、全ての値が正常値の場合はエラーとならないこと" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.003"/>
-  <testcase name="著者登録処理のバリデーションチェックにて、全ての値が正常値の場合はエラーとならないこと" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.004"/>
-  <testcase name="著者登録処理のリクエストが設定されており、birthdayの過去日チェックでエラーとなった場合はIllegalStateExceptionが投げられること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.002"/>
-  <system-out><![CDATA[2025-01-08T02:05:33.064+09:00  INFO 15412 --- [quo_assignment_db] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bookmanagementsystem.validator.AuthorValidatorTest]: AuthorValidatorTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-01-08T02:05:33.079+09:00  INFO 15412 --- [quo_assignment_db] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bookmanagementsystem.BootApplication for test class com.bookmanagementsystem.validator.AuthorValidatorTest
+  <testcase name="著者登録処理のリクエストが設定されており、birthdayの必須チェックでエラーとなった場合はNullPointerExceptionが投げられること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.007"/>
+  <testcase name="著者取得処理のバリデーションチェックにて、authorIdがnullの場合はNullPointerExceptionが投げられること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.004"/>
+  <testcase name="著者更新処理のリクエストが設定されており、authorIdの必須チェックでエラーとなった場合はNullPointerExceptionが投げられること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.005"/>
+  <testcase name="著者更新処理のリクエストが設定されており、birthdayの過去日チェックでエラーとなった場合はIllegalStateExceptionが投げられること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.004"/>
+  <testcase name="著者登録処理のバリデーションチェックにて、authorNameがnullの場合はNullPointerExceptionが投げられること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.004"/>
+  <testcase name="著者更新処理のバリデーションチェックにて、全ての値が正常値の場合はエラーとならないこと" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.005"/>
+  <testcase name="著者登録処理のバリデーションチェックにて、全ての値が正常値の場合はエラーとならないこと" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.003"/>
+  <testcase name="著者登録処理のリクエストが設定されており、birthdayの過去日チェックでエラーとなった場合はIllegalStateExceptionが投げられること" classname="com.bookmanagementsystem.validator.AuthorValidatorTest" time="0.004"/>
+  <system-out><![CDATA[2025-01-08T23:53:15.908+09:00  INFO 53520 --- [quo_assignment_db] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bookmanagementsystem.validator.AuthorValidatorTest]: AuthorValidatorTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-01-08T23:53:15.921+09:00  INFO 53520 --- [quo_assignment_db] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bookmanagementsystem.BootApplication for test class com.bookmanagementsystem.validator.AuthorValidatorTest
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

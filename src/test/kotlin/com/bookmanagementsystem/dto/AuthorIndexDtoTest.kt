@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 @SpringBootTest
 class AuthorIndexDtoTest {
 
-    val mockAuthorIndexDto: AuthorIndexDto = AuthorIndexDto(
+    val mockAuthorIndexDto = AuthorIndexDto(
         bookId = 1,
         authorId = 2,
         createdBy = "createdBy",

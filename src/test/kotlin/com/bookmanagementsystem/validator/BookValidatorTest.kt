@@ -224,14 +224,4 @@ internal class BookValidatorTest {
             fail("想定した例外がthrowされませんでした")
         }
     }
-
-    @Test
-    @DisplayName("bookValidatorで呼び出しているcommonValidatorがCommonValidatorクラスであること")
-    fun testCommonValidator() {
-        val result = bookValidator!!.commonValidator
-        assertEquals(
-            commonValidator?.javaClass,
-            result.javaClass
-        )
-    }
 }

@@ -10,10 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest
 class PublicationStatusTest {
 
     // 未出版のEnum定義
-    val publicationStatusUnPublished: PublicationStatus = PublicationStatus.UNPUBLISHED
+    val publicationStatusUnPublished = PublicationStatus.UNPUBLISHED
 
     // 出版済みのEnum定義
-    val publicationStatusPublished: PublicationStatus = PublicationStatus.PUBLISHED
+    val publicationStatusPublished = PublicationStatus.PUBLISHED
 
     @Test
     @DisplayName("PublicationStatusが未出版の場合のEnum値とCodeとordinalの確認")

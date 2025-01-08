@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest
 class GetBookRequestTest {
 
     // 正常系のGetBookRequest
-    val getBookRequest: GetBookRequest = GetBookRequest(
+    val getBookRequest = GetBookRequest(
         bookId = 0,
     )
 

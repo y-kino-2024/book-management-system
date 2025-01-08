@@ -10,7 +10,7 @@ import java.time.LocalDate
 class CreateAuthorRequestTest {
 
     // 正常系のCreateAuthorRequest
-    private val createAuthorRequest: CreateAuthorRequest = CreateAuthorRequest(
+    private val createAuthorRequest = CreateAuthorRequest(
         authorName = "authorName",
         birthday = LocalDate.of(1988, 4, 20),
         operator = "operator"
