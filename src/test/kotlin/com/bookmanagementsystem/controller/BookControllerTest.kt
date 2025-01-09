@@ -52,7 +52,7 @@ internal class BookControllerTest {
     fun testGetBookController_Success() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = GetBookRequest(
-            bookId = 1
+            bookId = "1"
         )
         `when`(bookController.getBookController(mockRequest, bindingResult))
             .thenReturn(
@@ -81,7 +81,7 @@ internal class BookControllerTest {
     fun testGetBookController_InternalServerError() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = GetBookRequest(
-            bookId = 1
+            bookId = "1"
         )
         `when`(bookController.getBookController(mockRequest, bindingResult))
             .thenReturn(ResponseEntity("書籍情報の取得に失敗しました。", HttpStatus.INTERNAL_SERVER_ERROR))
@@ -100,7 +100,7 @@ internal class BookControllerTest {
     fun testGetBookController_BadRequest() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = GetBookRequest(
-            bookId = 1
+            bookId = "1"
         )
         `when`(bookController.getBookController(mockRequest, bindingResult))
             .thenReturn(ResponseEntity("bookIdは8桁以内で入力してください。", HttpStatus.BAD_REQUEST))
@@ -119,7 +119,7 @@ internal class BookControllerTest {
     fun testGetBookFromAuthorController_Success() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = GetBookFromAuthorRequest(
-            authorId = 1
+            authorId = "1"
         )
         `when`(bookController.getBookFromAuthorController(mockRequest, bindingResult))
             .thenReturn(
@@ -148,7 +148,7 @@ internal class BookControllerTest {
     fun testGetBookFromAuthorController_InternalServerError() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = GetBookFromAuthorRequest(
-            authorId = 1
+            authorId = "1"
         )
         `when`(bookController.getBookFromAuthorController(mockRequest, bindingResult))
             .thenReturn(ResponseEntity("書籍情報の取得に失敗しました。", HttpStatus.INTERNAL_SERVER_ERROR))
@@ -167,7 +167,7 @@ internal class BookControllerTest {
     fun testGetBookFromAuthorController_BadRequest() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = GetBookFromAuthorRequest(
-            authorId = 1
+            authorId = "1"
         )
         `when`(bookController.getBookFromAuthorController(mockRequest, bindingResult))
             .thenReturn(ResponseEntity("bookIdは8桁以内で入力してください。", HttpStatus.BAD_REQUEST))
@@ -186,9 +186,9 @@ internal class BookControllerTest {
     fun testCreateBookController_Success() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = CreateBookRequest(
-            authorIdList = listOf(1, 3, 5),
+            authorIdList = listOf("1", "3", "5"),
             title = "title",
-            price = 9999.0,
+            price = "9999",
             publicationStatus = "1",
             operator = "operator"
         )
@@ -214,9 +214,9 @@ internal class BookControllerTest {
     fun testCreateBookController_InternalServerError() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = CreateBookRequest(
-            authorIdList = listOf(1, 3, 5),
+            authorIdList = listOf("1", "3", "5"),
             title = "title",
-            price = 9999.0,
+            price = "9999",
             publicationStatus = "1",
             operator = "operator"
         )
@@ -237,9 +237,9 @@ internal class BookControllerTest {
     fun testCreateBookController_BadRequest() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = CreateBookRequest(
-            authorIdList = listOf(1, 3, 5),
+            authorIdList = listOf("1", "3", "5"),
             title = "title",
-            price = 9999.0,
+            price = "9999",
             publicationStatus = "1",
             operator = "operator"
         )
@@ -260,10 +260,10 @@ internal class BookControllerTest {
     fun testUpdateBookController_Success() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = UpdateBookRequest(
-            bookId = 1,
-            authorIdList = listOf(1, 3, 5),
+            bookId = "1",
+            authorIdList = listOf("1", "3", "5"),
             title = "title",
-            price = 9999.0,
+            price = "9999",
             publicationStatus = "1",
             operator = "operator",
             deleteFlg = "0"
@@ -289,45 +289,49 @@ internal class BookControllerTest {
     @DisplayName("updateBookControllerの異常系_INTERNAL_SERVER_ERROR")
     fun testUpdateBookController_InternalServerError() {
         val bindingResult = mock(BindingResult::class.java)
-        val mockRequest = CreateBookRequest(
-            authorIdList = listOf(1, 3, 5),
+        val mockRequest = UpdateBookRequest(
+            bookId = "1",
+            authorIdList = listOf("1", "3", "5"),
             title = "title",
-            price = 9999.0,
+            price = "9999",
             publicationStatus = "1",
-            operator = "operator"
+            operator = "operator",
+            deleteFlg = "0"
         )
-        `when`(bookController.createBookController(mockRequest, bindingResult))
-            .thenReturn(ResponseEntity("書籍情報の登録に失敗しました。", HttpStatus.INTERNAL_SERVER_ERROR))
+        `when`(bookController.updateBookController(mockRequest, bindingResult))
+            .thenReturn(ResponseEntity("書籍情報の更新に失敗しました。", HttpStatus.INTERNAL_SERVER_ERROR))
         // テスト対象メソッドの呼び出し
-        val result: ResponseEntity<String> = bookController.createBookController(mockRequest, bindingResult)
+        val result: ResponseEntity<String> = bookController.updateBookController(mockRequest, bindingResult)
         // 実行結果のHTTPステータスを確認
         assert(result.statusCode == HttpStatus.INTERNAL_SERVER_ERROR)
         // 実行結果にメッセージが記載されていることを確認
-        assert(result.body?.contains("書籍情報の登録に失敗しました。")!!)
+        assert(result.body?.contains("書籍情報の更新に失敗しました。")!!)
         // モックメソッドの呼び出しを検証
-        verify(bookController).createBookController(mockRequest, bindingResult)
+        verify(bookController).updateBookController(mockRequest, bindingResult)
     }
 
     @Test
     @DisplayName("updateBookControllerの異常系_BAD_REQUEST")
     fun testUpdateBookController_BadRequest() {
         val bindingResult = mock(BindingResult::class.java)
-        val mockRequest = CreateBookRequest(
-            authorIdList = listOf(1, 3, 5),
+        val mockRequest = UpdateBookRequest(
+            bookId = "1",
+            authorIdList = listOf("1", "3", "5"),
             title = "title",
-            price = 9999.0,
+            price = "9999",
             publicationStatus = "1",
-            operator = "operator"
+            operator = "operator",
+            deleteFlg = "0"
         )
-        `when`(bookController.createBookController(mockRequest, bindingResult))
+        `when`(bookController.updateBookController(mockRequest, bindingResult))
             .thenReturn(ResponseEntity("publicationStatusの入力値が不正です。", HttpStatus.BAD_REQUEST))
         // テスト対象メソッドの呼び出し
-        val result: ResponseEntity<String> = bookController.createBookController(mockRequest, bindingResult)
+        val result: ResponseEntity<String> = bookController.updateBookController(mockRequest, bindingResult)
         // 実行結果のHTTPステータスを確認
         assert(result.statusCode == HttpStatus.BAD_REQUEST)
         // 実行結果にメッセージが記載されていることを確認
         assert(result.body?.contains("publicationStatusの入力値が不正です。")!!)
         // モックメソッドの呼び出しを検証
-        verify(bookController).createBookController(mockRequest, bindingResult)
+        verify(bookController).updateBookController(mockRequest, bindingResult)
     }
 }

@@ -10,13 +10,13 @@ class GetBookFromAuthorRequestTest {
 
     // 正常系のGetBookRequest
     val getBookFromAuthorRequest = GetBookFromAuthorRequest(
-        authorId = 0,
+        authorId = "1",
     )
 
     @Test
     @DisplayName("GetBookFromAuthorRequestのauthorIdに設定した値が入っていること")
     fun testGetAuthorId() {
         val authorId = getBookFromAuthorRequest.authorId
-        Assertions.assertEquals(0, authorId)
+        Assertions.assertEquals("1", authorId)
     }
 }

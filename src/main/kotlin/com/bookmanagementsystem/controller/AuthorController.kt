@@ -72,7 +72,7 @@ class AuthorController(
             // 著者取得処理
             val author = service.getAuthor(request.authorId?.let {
                 // nullチェック済みのためここではnullにならない
-                request.authorId
+                request.authorId.toInt()
             } ?: throw IllegalStateException("authorIdの値が不正です。"))
             // レスポンスに詰め替える
             if (author != null) {
@@ -246,7 +246,7 @@ class AuthorController(
             } ?: throw IllegalStateException("authorNameの値が不正です。"),
             birthday = request.birthday?.let {
                 // birthdayは必須チェック済みのためここでnullが入ることはない
-                request.birthday
+                LocalDate.parse(request.birthday)
             } ?: throw IllegalStateException("birthdayの値が不正です。"),
             operator = request.operator?.let {
                 // operatorは必須チェック済みのためここでnullが入ることはない
@@ -267,10 +267,12 @@ class AuthorController(
         return Author(
             id = request.authorId?.let {
                 // authorIdは必須チェック済みのためここでnullが入ることはない
-                request.authorId
+                request.authorId.toInt()
             } ?: throw IllegalStateException("authorIdの値が不正です。"),
             authorName = request.authorName,
-            birthday = request.birthday,
+            birthday = request.birthday?.let {
+                LocalDate.parse(it)
+            },
             operator = request.operator,
             deleteFlg = request.deleteFlg
         )

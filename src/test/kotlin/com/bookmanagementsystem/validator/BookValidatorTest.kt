@@ -24,7 +24,7 @@ internal class BookValidatorTest {
     @DisplayName("書籍取得処理のバリデーションチェックにて、全ての値が正常値の場合はエラーとならないこと")
     fun testValidGetBook_Success() {
         try {
-            bookValidator!!.validGetBook(GetBookRequest(0))
+            bookValidator!!.validGetBook(GetBookRequest("1"))
         } catch (e: Exception) {
             fail("例外がthrowされました")
         }
@@ -49,9 +49,9 @@ internal class BookValidatorTest {
         try {
             bookValidator!!.validCreateBook(
                 CreateBookRequest(
-                    authorIdList = listOf(0, 1, 2, 3, 4),
+                    authorIdList = listOf("0", "1", "2", "3", "4"),
                     title = "title",
-                    price = 500.0,
+                    price = "500",
                     publicationStatus = "0",
                     operator = "operator"
                 )
@@ -69,7 +69,7 @@ internal class BookValidatorTest {
                 CreateBookRequest(
                     authorIdList = null,
                     title = "title",
-                    price = 500.0,
+                    price = "500",
                     publicationStatus = "0",
                     operator = "operator"
                 )
@@ -87,9 +87,9 @@ internal class BookValidatorTest {
         try {
             bookValidator!!.validCreateBook(
                 CreateBookRequest(
-                    authorIdList = listOf(0, 1, 2, 3, 4),
+                    authorIdList = listOf("0", "1", "2", "3", "4"),
                     title = null,
-                    price = 500.0,
+                    price = "500",
                     publicationStatus = "0",
                     operator = "operator"
                 )
@@ -107,7 +107,7 @@ internal class BookValidatorTest {
         try {
             bookValidator!!.validCreateBook(
                 CreateBookRequest(
-                    authorIdList = listOf(0, 1, 2, 3, 4),
+                    authorIdList = listOf("0", "1", "2", "3", "4"),
                     title = "title",
                     price = null,
                     publicationStatus = "0",
@@ -127,9 +127,9 @@ internal class BookValidatorTest {
         try {
             bookValidator!!.validCreateBook(
                 CreateBookRequest(
-                    authorIdList = listOf(0, 1, 2, 3, 4),
+                    authorIdList = listOf("0", "1", "2", "3", "4"),
                     title = "title",
-                    price = 500.0,
+                    price = "500",
                     publicationStatus = null,
                     operator = "operator"
                 )
@@ -147,9 +147,9 @@ internal class BookValidatorTest {
         try {
             bookValidator!!.validCreateBook(
                 CreateBookRequest(
-                    authorIdList = listOf(0, 1, 2, 3, 4),
+                    authorIdList = listOf("0", "1", "2", "3", "4"),
                     title = "title",
-                    price = 500.0,
+                    price = "500",
                     publicationStatus = "2",
                     operator = "operator"
                 )
@@ -167,10 +167,10 @@ internal class BookValidatorTest {
         try {
             bookValidator!!.validUpdateBook(
                 UpdateBookRequest(
-                    bookId = 1,
-                    authorIdList = listOf(0, 1, 2, 3, 4),
+                    bookId = "1",
+                    authorIdList = listOf("0", "1", "2", "3", "4"),
                     title = "title",
-                    price = 500.0,
+                    price = "500",
                     publicationStatus = "0",
                     operator = "operator",
                     deleteFlg = "0"
@@ -188,9 +188,9 @@ internal class BookValidatorTest {
             bookValidator!!.validUpdateBook(
                 UpdateBookRequest(
                     bookId = null,
-                    authorIdList = listOf(0, 1, 2, 3, 4),
+                    authorIdList = listOf("0", "1", "2", "3", "4"),
                     title = "title",
-                    price = 500.0,
+                    price = "500",
                     publicationStatus = "2",
                     operator = "operator",
                     deleteFlg = "0"
@@ -209,10 +209,10 @@ internal class BookValidatorTest {
         try {
             bookValidator!!.validUpdateBook(
                 UpdateBookRequest(
-                    bookId = 1,
-                    authorIdList = listOf(0, 1, 2, 3, 4),
+                    bookId = "1",
+                    authorIdList = listOf("0", "1", "2", "3", "4"),
                     title = "title",
-                    price = 500.0,
+                    price = "500",
                     publicationStatus = "2",
                     operator = "operator",
                     deleteFlg = "0"

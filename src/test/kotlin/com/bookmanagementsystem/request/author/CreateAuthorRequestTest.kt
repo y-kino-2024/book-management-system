@@ -12,7 +12,7 @@ class CreateAuthorRequestTest {
     // 正常系のCreateAuthorRequest
     private val createAuthorRequest = CreateAuthorRequest(
         authorName = "authorName",
-        birthday = LocalDate.of(1988, 4, 20),
+        birthday = "1988-04-20",
         operator = "operator"
     )
 
@@ -27,7 +27,7 @@ class CreateAuthorRequestTest {
     @DisplayName("CreateAuthorRequestのbirthdayに設定した値が入っていること")
     fun testGetBirthday() {
         val birthday = createAuthorRequest.birthday
-        Assertions.assertEquals(LocalDate.of(1988, 4, 20), birthday)
+        Assertions.assertEquals("1988-04-20", birthday)
     }
 
     @Test

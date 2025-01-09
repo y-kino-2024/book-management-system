@@ -46,6 +46,8 @@ class BookValidator(
         // リクエスト値に項目を定義しなかった場合、アノテーションで必須チェックができないためここで必須チェックを実施
         // 著者IDリストの必須チェック
         checkRequiredAuthorIdList(request.authorIdList)
+        // 著者IDリストの数値チェック
+        checkNumberAuthorIdList(request.authorIdList)
         // タイトルの必須チェック
         checkRequiredTitle(request.title)
         // 価格の必須チェック
@@ -66,6 +68,8 @@ class BookValidator(
     fun validUpdateBook(request: UpdateBookRequest) {
         // リクエスト値にbookIdを定義しなかった場合、アノテーションで必須チェックができないためここで必須チェックを実施
         checkRequiredBookId(request.bookId)
+        // 著者IDリストの数値チェック
+        checkNumberAuthorIdList(request.authorIdList)
         // 出版状況の妥当性チェック
         checkValidityPublicationStatus(request.publicationStatus)
         // 操作者チェック
@@ -77,9 +81,9 @@ class BookValidator(
      *
      * @args bookId 書籍ID
      */
-    private fun checkRequiredBookId(bookId: Int?) {
+    private fun checkRequiredBookId(bookId: String?) {
         // 必須チェック
-        if (bookId == null) {
+        if (bookId.isNullOrBlank()) {
             throw NullPointerException("bookIdを入力してください。")
         }
     }
@@ -89,9 +93,9 @@ class BookValidator(
      *
      * @args authorId 著者ID
      */
-    private fun checkRequiredAuthorId(authorId: Int?) {
+    private fun checkRequiredAuthorId(authorId: String?) {
         // 必須チェック
-        if (authorId == null) {
+        if (authorId.isNullOrBlank()) {
             throw NullPointerException("authorIdを入力してください。")
         }
     }
@@ -101,10 +105,27 @@ class BookValidator(
      *
      * @args authorIdList 著者IDリスト
      */
-    private fun checkRequiredAuthorIdList(authorIdList: List<Int>?) {
+    private fun checkRequiredAuthorIdList(authorIdList: List<String>?) {
         // 必須チェック
         if (authorIdList.isNullOrEmpty()) {
             throw NullPointerException("authorIdListを入力してください。")
+        }
+    }
+
+    /**
+     * 著者IDリストの中身が数値かチェック
+     *
+     * @args authorIdList 著者IDリスト
+     */
+    private fun checkNumberAuthorIdList(authorIdList: List<String>?) {
+        // 数値チェック
+        if (!authorIdList.isNullOrEmpty()) {
+            val numericRegexp = Regex("^\\d{1,8}\$")
+            for (authorId in authorIdList) {
+                if (!authorId.matches(numericRegexp)) {
+                    throw NullPointerException("authorIdは8桁以下の数値で入力してください。")
+                }
+            }
         }
     }
 
@@ -125,9 +146,9 @@ class BookValidator(
      *
      * @args price 価格
      */
-    private fun checkRequiredPrice(price: Double?) {
+    private fun checkRequiredPrice(price: String?) {
         // 必須チェック
-        if (price == null) {
+        if (price.isNullOrBlank()) {
             throw NullPointerException("priceを入力してください。")
         }
     }

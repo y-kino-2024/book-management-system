@@ -11,9 +11,9 @@ class UpdateAuthorRequestTest {
 
     // 正常系のUpdateAuthorRequest
     private val updateAuthorRequest = UpdateAuthorRequest(
-        authorId = 0,
+        authorId = "1",
         authorName = "authorName",
-        birthday = LocalDate.of(1988, 4, 20),
+        birthday = "1988-04-20",
         operator = "operator",
         deleteFlg = "0"
     )
@@ -22,7 +22,7 @@ class UpdateAuthorRequestTest {
     @DisplayName("UpdateAuthorRequestのauthorIdに設定した値が入っていること")
     fun testGetAuthorId() {
         val authorId = updateAuthorRequest.authorId
-        Assertions.assertEquals(0, authorId)
+        Assertions.assertEquals("1", authorId)
     }
 
     @Test
@@ -36,7 +36,7 @@ class UpdateAuthorRequestTest {
     @DisplayName("UpdateAuthorRequestのbirthdayに設定した値が入っていること")
     fun testGetBirthday() {
         val birthday = updateAuthorRequest.birthday
-        Assertions.assertEquals(LocalDate.of(1988, 4, 20), birthday)
+        Assertions.assertEquals("1988-04-20", birthday)
     }
 
     @Test

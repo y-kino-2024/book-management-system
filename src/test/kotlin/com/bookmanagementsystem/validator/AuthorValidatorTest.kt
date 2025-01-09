@@ -25,7 +25,7 @@ internal class AuthorValidatorTest {
     @DisplayName("著者取得処理のバリデーションチェックにて、全ての値が正常値の場合はエラーとならないこと")
     fun testValidGetAuthor_Success() {
         try {
-            authorValidator!!.validGetAuthor(GetAuthorRequest(0))
+            authorValidator!!.validGetAuthor(GetAuthorRequest("1"))
         } catch (e: Exception) {
             fail("例外がthrowされました")
         }
@@ -51,7 +51,7 @@ internal class AuthorValidatorTest {
             authorValidator!!.validCreateAuthor(
                 CreateAuthorRequest(
                     authorName = "authorName",
-                    birthday = LocalDate.now(),
+                    birthday = "1988-04-20",
                     operator = "operator"
                 )
             )
@@ -67,7 +67,7 @@ internal class AuthorValidatorTest {
             authorValidator!!.validCreateAuthor(
                 CreateAuthorRequest(
                     authorName = null,
-                    birthday = LocalDate.now(),
+                    birthday = "1988-04-20",
                     operator = "operator"
                 )
             )
@@ -105,7 +105,7 @@ internal class AuthorValidatorTest {
             authorValidator!!.validCreateAuthor(
                 CreateAuthorRequest(
                     authorName = "authorName",
-                    birthday = LocalDate.now().plusDays(1),
+                    birthday = "2030-04-20",
                     operator = "operator"
                 )
             )
@@ -123,9 +123,9 @@ internal class AuthorValidatorTest {
         try {
             authorValidator!!.validUpdateAuthor(
                 UpdateAuthorRequest(
-                    authorId = 0,
+                    authorId = "1",
                     authorName = "authorName",
-                    birthday = LocalDate.now(),
+                    birthday = "1988-04-20",
                     operator = "operator",
                     deleteFlg = "0"
                 )
@@ -143,7 +143,7 @@ internal class AuthorValidatorTest {
                 UpdateAuthorRequest(
                     authorId = null,
                     authorName = "authorName",
-                    birthday = LocalDate.now(),
+                    birthday = "1988-04-20",
                     operator = "operator",
                     deleteFlg = "0"
                 )
@@ -162,9 +162,9 @@ internal class AuthorValidatorTest {
         try {
             authorValidator!!.validUpdateAuthor(
                 UpdateAuthorRequest(
-                    authorId = 0,
+                    authorId = "1",
                     authorName = "authorName",
-                    birthday = LocalDate.now().plusDays(1),
+                    birthday = "2030-04-20",
                     operator = "operator",
                     deleteFlg = "0"
                 )

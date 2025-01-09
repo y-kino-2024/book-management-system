@@ -1,7 +1,7 @@
 package com.bookmanagementsystem.request.book
 
-import jakarta.validation.constraints.Max
-import jakarta.validation.constraints.NotNull
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.Pattern
 
 /**
  * 著者から書籍を取得する処理のリクエストオブジェクト
@@ -11,7 +11,10 @@ import jakarta.validation.constraints.NotNull
 data class GetBookFromAuthorRequest(
     // リクエスト値にauthorIdを定義しなかった場合にエラーメッセージを出すためにnull許容とする
     // リクエスト例)curl http://localhost:8080/getBookFromAuthor
-    @field:NotNull(message = "authorIdが未入力です。")
-    @field:Max(value = 99999999, message = "authorIdは8桁以内で入力してください。")
-    val authorId: Int?
+    @field:NotBlank(message = "authorIdが未入力です。")
+    @field:Pattern(
+        regexp = "^\\d{0,8}\$",
+        message = "authorIdは8桁以下の数値で入力してください。"
+    )
+    val authorId: String?
 )

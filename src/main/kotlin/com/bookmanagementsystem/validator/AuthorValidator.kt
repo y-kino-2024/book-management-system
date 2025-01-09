@@ -62,9 +62,9 @@ class AuthorValidator(
      *
      * @args authorId 著者ID
      */
-    private fun checkRequiredId(authorId: Int?) {
+    private fun checkRequiredId(authorId: String?) {
         // 必須チェック
-        if (authorId == null) {
+        if (authorId.isNullOrBlank()) {
             throw NullPointerException("authorIdを入力してください。")
         }
     }
@@ -86,9 +86,9 @@ class AuthorValidator(
      *
      * @args birthday 誕生日
      */
-    private fun checkRequiredBirthday(birthday: LocalDate?) {
+    private fun checkRequiredBirthday(birthday: String?) {
         // 必須チェック
-        if (birthday == null) {
+        if (birthday.isNullOrBlank()) {
             throw NullPointerException("birthdayを入力してください。")
         }
     }
@@ -98,10 +98,10 @@ class AuthorValidator(
      *
      * @args birthday 誕生日
      */
-    private fun checkPastDateBirthday(birthday: LocalDate?) {
+    private fun checkPastDateBirthday(birthday: String?) {
         // 過去日チェック
-        if (birthday != null) {
-            if (birthday.isAfter(LocalDate.now())) {
+        if (!birthday.isNullOrBlank()) {
+            if (LocalDate.parse(birthday).isAfter(LocalDate.now())) {
                 throw IllegalStateException("birthdayは過去日を設定してください。")
             }
         }

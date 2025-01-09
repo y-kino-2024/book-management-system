@@ -172,6 +172,7 @@ class BookService(
      * @args processingDatetime 処理日時
      * @return 処理結果
      */
+    @Transactional
     private fun updateAuthorIndex(
         book: Book,
         processingDatetime: LocalDateTime

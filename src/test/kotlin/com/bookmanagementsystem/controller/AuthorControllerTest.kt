@@ -52,7 +52,7 @@ internal class AuthorControllerTest {
     fun testGetAuthorController_Success() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = GetAuthorRequest(
-            authorId = 1
+            authorId = "1"
         )
         `when`(authorController.getAuthorController(mockRequest, bindingResult))
             .thenReturn(
@@ -78,7 +78,7 @@ internal class AuthorControllerTest {
     fun testGetAuthorController_InternalServerError() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = GetAuthorRequest(
-            authorId = 1
+            authorId = "1"
         )
         `when`(authorController.getAuthorController(mockRequest, bindingResult))
             .thenReturn(ResponseEntity("著者情報の取得に失敗しました。", HttpStatus.INTERNAL_SERVER_ERROR))
@@ -97,7 +97,7 @@ internal class AuthorControllerTest {
     fun testGetAuthorController_BadRequest() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = GetAuthorRequest(
-            authorId = 1
+            authorId = "1"
         )
         `when`(authorController.getAuthorController(mockRequest, bindingResult))
             .thenReturn(ResponseEntity("authorIdは8桁以内で入力してください。", HttpStatus.BAD_REQUEST))
@@ -117,7 +117,7 @@ internal class AuthorControllerTest {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = CreateAuthorRequest(
             authorName = "authorName",
-            birthday = LocalDate.of(1988, 4, 20),
+            birthday = "1988-04-20",
             operator = "operator",
         )
         `when`(authorController.createAuthorController(mockRequest, bindingResult))
@@ -138,7 +138,7 @@ internal class AuthorControllerTest {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = CreateAuthorRequest(
             authorName = "authorName",
-            birthday = LocalDate.of(1988, 4, 20),
+            birthday = "1988-04-20",
             operator = "operator",
         )
         `when`(authorController.createAuthorController(mockRequest, bindingResult))
@@ -159,7 +159,7 @@ internal class AuthorControllerTest {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = CreateAuthorRequest(
             authorName = "authorName",
-            birthday = LocalDate.of(1988, 4, 20),
+            birthday = "1988-04-20",
             operator = "operator",
         )
         `when`(authorController.createAuthorController(mockRequest, bindingResult))
@@ -179,9 +179,9 @@ internal class AuthorControllerTest {
     fun testUpdateAuthorController_Success() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = UpdateAuthorRequest(
-            authorId = 1,
+            authorId = "1",
             authorName = "authorName",
-            birthday = LocalDate.of(1988, 4, 20),
+            birthday = "1988-04-20",
             operator = "operator",
             deleteFlg = "0"
         )
@@ -202,9 +202,9 @@ internal class AuthorControllerTest {
     fun testUpdateAuthorController_InternalServerError() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = UpdateAuthorRequest(
-            authorId = 1,
+            authorId = "1",
             authorName = "authorName",
-            birthday = LocalDate.of(1988, 4, 20),
+            birthday = "1988-04-20",
             operator = "operator",
             deleteFlg = "0"
         )
@@ -225,9 +225,9 @@ internal class AuthorControllerTest {
     fun testUpdateAuthorController_BadRequest() {
         val bindingResult = mock(BindingResult::class.java)
         val mockRequest = UpdateAuthorRequest(
-            authorId = 1,
+            authorId = "1",
             authorName = "authorName",
-            birthday = LocalDate.of(1988, 4, 20),
+            birthday = "1988-04-20",
             operator = "operator",
             deleteFlg = "0"
         )

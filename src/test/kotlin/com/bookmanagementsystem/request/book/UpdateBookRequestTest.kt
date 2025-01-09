@@ -10,10 +10,10 @@ class UpdateBookRequestTest {
 
     // 正常系のUpdateBookRequest
     val updateBookRequest = UpdateBookRequest(
-        bookId = 0,
-        authorIdList = listOf(1, 5, 9, 13, 19),
+        bookId = "1",
+        authorIdList = listOf("1", "5", "9", "13", "19"),
         title = "title",
-        price = 777.0,
+        price = "777",
         publicationStatus = "1",
         operator = "operator",
         deleteFlg = "0"
@@ -23,14 +23,14 @@ class UpdateBookRequestTest {
     @DisplayName("UpdateBookRequestのbookIdに設定した値が入っていること")
     fun testGetBookId() {
         val bookId = updateBookRequest.bookId
-        Assertions.assertEquals(0, bookId)
+        Assertions.assertEquals("1", bookId)
     }
 
     @Test
     @DisplayName("UpdateBookRequestのauthorIdListに設定した値が入っていること")
     fun testGetAuthorIdList() {
         val authorIdList = updateBookRequest.authorIdList
-        Assertions.assertEquals(listOf(1, 5, 9, 13, 19), authorIdList)
+        Assertions.assertEquals(listOf("1", "5", "9", "13", "19"), authorIdList)
     }
 
     @Test
@@ -44,7 +44,7 @@ class UpdateBookRequestTest {
     @DisplayName("UpdateBookRequestのpriceに設定した値が入っていること")
     fun testGetPrice() {
         val price = updateBookRequest.price
-        Assertions.assertEquals(777.0, price)
+        Assertions.assertEquals("777", price)
     }
 
     @Test

@@ -10,9 +10,9 @@ class CreateBookRequestTest {
 
     // 正常系のCreateBookRequest
     val createBookRequest = CreateBookRequest(
-        authorIdList = listOf(1, 5, 9, 13, 19),
+        authorIdList = listOf("1", "5", "9", "13", "19"),
         title = "title",
-        price = 777.0,
+        price = "777",
         publicationStatus = "1",
         operator = "operator",
     )
@@ -21,7 +21,7 @@ class CreateBookRequestTest {
     @DisplayName("CreateBookRequestのauthorIdListに設定した値が入っていること")
     fun testGetAuthorIdList() {
         val authorIdList = createBookRequest.authorIdList
-        Assertions.assertEquals(listOf(1, 5, 9, 13, 19), authorIdList)
+        Assertions.assertEquals(listOf("1", "5", "9", "13", "19"), authorIdList)
     }
 
     @Test
@@ -35,7 +35,7 @@ class CreateBookRequestTest {
     @DisplayName("CreateBookRequestのpriceに設定した値が入っていること")
     fun testGetPrice() {
         val price = createBookRequest.price
-        Assertions.assertEquals(777.0, price)
+        Assertions.assertEquals("777", price)
     }
 
     @Test

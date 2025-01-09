@@ -73,7 +73,7 @@ class BookController(
             // 書籍取得処理
             val book = bookService.getBook(request.bookId?.let {
                 // nullチェック済みのためここではnullにならない
-                request.bookId
+                request.bookId.toInt()
             } ?: throw IllegalStateException("bookIdの値が不正です。"))
             val mapper = ObjectMapper()
             // レスポンスに詰め替える
@@ -120,7 +120,7 @@ class BookController(
             // 書籍取得処理
             val bookList = bookService.getBookFromAuthor(request.authorId?.let {
                 // nullチェック済みのためここではnullにならない
-                request.authorId
+                request.authorId.toInt()
             } ?: throw IllegalStateException("著者IDの値が不正です。"))
             val mapper = ObjectMapper()
             // レスポンスに詰め替える
@@ -174,7 +174,7 @@ class BookController(
             } ?: throw IllegalStateException("authorIdListの値が不正です。")
             for (authorId in authorIdList) {
                 // 入力された著者IDに対応する著者がいない場合はエラーとして処理
-                authorService.getAuthor(authorId)
+                authorService.getAuthor(authorId.toInt())
                     ?: throw IllegalStateException("入力された著者IDに該当する著者は存在しません。")
             }
             // リクエストを詰め替える
@@ -223,7 +223,7 @@ class BookController(
             } ?: throw IllegalStateException("authorIdListの値が不正です。")
             for (authorId in authorIdList) {
                 // 入力された著者IDに対応する著者がいない場合はエラーとして処理
-                authorService.getAuthor(authorId)
+                authorService.getAuthor(authorId.toInt())
                     ?: throw IllegalStateException("入力された著者IDに該当する著者は存在しません。")
             }
             // リクエストを詰め替える
@@ -286,9 +286,16 @@ class BookController(
     private fun convertCreateBook(request: CreateBookRequest): Book {
         return Book(
             id = null,
-            authorIdList = request.authorIdList,
+            authorIdList = request.authorIdList?.let {
+                // authorIdListはnullチェック済みのためnullになることはない
+                request.authorIdList.map { authroID ->
+                    authroID.toInt()
+                }
+            } ?: throw IllegalStateException("authorIdListの値が不正です"),
             title = request.title,
-            price = request.price,
+            price = request.price?.let {
+                request.price.toDouble()
+            },
             publicationStatus = request.publicationStatus?.let {
                 PublicationStatus.getPublicationStatus(request.publicationStatus)
             } ?: throw IllegalStateException("publicationStatusの値が不正です"),
@@ -306,10 +313,18 @@ class BookController(
      */
     private fun convertUpdateBook(request: UpdateBookRequest): Book {
         return Book(
-            id = request.bookId,
-            authorIdList = request.authorIdList,
+            id = request.bookId?.let {
+                request.bookId.toInt()
+            },
+            authorIdList = request.authorIdList?.let {
+                request.authorIdList.map { authroID ->
+                    authroID.toInt()
+                }
+            },
             title = request.title,
-            price = request.price,
+            price = request.price?.let {
+                request.price.toDouble()
+            },
             publicationStatus = request.publicationStatus?.let {
                 PublicationStatus.getPublicationStatus(request.publicationStatus)
             },
