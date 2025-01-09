@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bookmanagementsystem.request.book.CreateBookRequestTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-01-09T15:05:50" hostname="DESKTOP-03LDBVA" time="0.014">
+<testsuite name="com.bookmanagementsystem.request.book.CreateBookRequestTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-01-09T16:09:24" hostname="DESKTOP-03LDBVA" time="0.02">
   <properties/>
-  <testcase name="CreateBookRequestのpriceに設定した値が入っていること" classname="com.bookmanagementsystem.request.book.CreateBookRequestTest" time="0.001"/>
+  <testcase name="CreateBookRequestのpriceに設定した値が入っていること" classname="com.bookmanagementsystem.request.book.CreateBookRequestTest" time="0.004"/>
   <testcase name="CreateBookRequestのtitleに設定した値が入っていること" classname="com.bookmanagementsystem.request.book.CreateBookRequestTest" time="0.003"/>
   <testcase name="CreateBookRequestのpublicationStatusに設定した値が入っていること" classname="com.bookmanagementsystem.request.book.CreateBookRequestTest" time="0.002"/>
-  <testcase name="CreateBookRequestのoperatorに設定した値が入っていること" classname="com.bookmanagementsystem.request.book.CreateBookRequestTest" time="0.002"/>
-  <testcase name="CreateBookRequestのauthorIdListに設定した値が入っていること" classname="com.bookmanagementsystem.request.book.CreateBookRequestTest" time="0.003"/>
-  <system-out><![CDATA[2025-01-10T00:05:50.233+09:00  INFO 16716 --- [quo_assignment_db] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bookmanagementsystem.request.book.CreateBookRequestTest]: CreateBookRequestTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-01-10T00:05:50.245+09:00  INFO 16716 --- [quo_assignment_db] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bookmanagementsystem.BootApplication for test class com.bookmanagementsystem.request.book.CreateBookRequestTest
+  <testcase name="CreateBookRequestのoperatorに設定した値が入っていること" classname="com.bookmanagementsystem.request.book.CreateBookRequestTest" time="0.004"/>
+  <testcase name="CreateBookRequestのauthorIdListに設定した値が入っていること" classname="com.bookmanagementsystem.request.book.CreateBookRequestTest" time="0.004"/>
+  <system-out><![CDATA[2025-01-10T01:09:24.557+09:00  INFO 18940 --- [quo_assignment_db] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bookmanagementsystem.request.book.CreateBookRequestTest]: CreateBookRequestTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-01-10T01:09:24.574+09:00  INFO 18940 --- [quo_assignment_db] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bookmanagementsystem.BootApplication for test class com.bookmanagementsystem.request.book.CreateBookRequestTest
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

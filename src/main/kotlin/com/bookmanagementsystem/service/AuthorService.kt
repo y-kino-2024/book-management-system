@@ -195,7 +195,13 @@ class AuthorService(
     ): AuthorsInfoDto {
         return AuthorsInfoDto(
             id = author.id,
-            authorName = author.authorName ?: currentAuthor.authorName,
+            authorName = if (author.authorName.isNullOrBlank()) {
+                // authorNameがnullまたは未入力の場合は更新前の値のままとする
+                currentAuthor.authorName
+            } else {
+                // authorNameが入力されている場合は更新後の値を用いる
+                author.authorName
+            },
             birthday = author.birthday ?: currentAuthor.birthday,
             createdBy = currentAuthor.createdBy,
             createdAt = currentAuthor.createdAt,

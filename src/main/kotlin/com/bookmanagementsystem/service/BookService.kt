@@ -435,7 +435,13 @@ class BookService(
     ): BooksInfoDto {
         return BooksInfoDto(
             id = book.id,
-            title = book.title ?: currentBookDto.title,
+            title = if (book.title.isNullOrBlank()) {
+                // titleがnullまたは未入力の場合は更新前の値のままとする
+                currentBookDto.title
+            } else {
+                // titleが入力されている場合は更新後の値を用いる
+                book.title
+            },
             price = book.price ?: currentBookDto.price,
             publicationStatus = book.publicationStatus?.let {
                 book.publicationStatus.code
@@ -447,7 +453,13 @@ class BookService(
                 book.operator
             } ?: throw IllegalStateException("updatedByの値が不正です"),
             updatedAt = processingDatetime,
-            deleteFlg = book.deleteFlg ?: currentBookDto.deleteFlg,
+            deleteFlg = if (book.deleteFlg.isNullOrBlank()) {
+                // deleteFlgがnullまたは未入力の場合は更新前の値のままとする
+                currentBookDto.deleteFlg
+            } else {
+                // deleteFlgが入力されている場合は更新後の値を用いる
+                book.deleteFlg
+            }
         )
     }
 }

@@ -325,7 +325,11 @@ class BookController(
                 }
             },
             title = request.title,
-            price = request.price?.let {
+            price = if (request.price.isNullOrBlank()) {
+                // priceがnullまたは未入力の場合は更新対象外のためnullとする
+                null
+            } else {
+                // priceが入力されている場合は更新対象のためDouble型に変換して渡す
                 request.price.toDouble()
             },
             publicationStatus = request.publicationStatus?.let {
