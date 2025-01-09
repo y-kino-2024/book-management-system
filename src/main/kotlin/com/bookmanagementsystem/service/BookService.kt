@@ -99,7 +99,7 @@ class BookService(
             throw ise
         } catch (e: Exception) {
             // その他要因で処理されなかった場合はExceptionを投げる
-            throw Exception("書籍情報の取得に失敗しました。")
+            throw Exception("書籍情報の登録に失敗しました。")
         }
     }
 
@@ -278,7 +278,7 @@ class BookService(
             throw SQLException(e.message)
         } catch (e: Exception) {
             // その他要因で処理されなかった場合はExceptionを投げる
-            throw Exception("書籍情報の更新に失敗しました。")
+            throw Exception("書籍情報の取得に失敗しました。")
         }
     }
 

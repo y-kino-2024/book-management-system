@@ -13,6 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.validation.BindingResult
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
@@ -37,6 +39,8 @@ class AuthorController(
 
         const val UNKNOWN_ERROR_MESSAGE = "未定義のエラー"
 
+        const val GET_TARGET_NOT_EXIST_MESSAGE = "取得対象が存在しません。"
+
         const val UPDATE_TARGET_NOT_EXIST_MESSAGE = "更新対象が存在しません。"
     }
 
@@ -50,7 +54,7 @@ class AuthorController(
     fun getAuthorController(
         @Validated request: GetAuthorRequest,
         bindingResult: BindingResult
-    ): String {
+    ): ResponseEntity<String> {
         // GetAuthorRequest内のアノテーションによるバリデーションチェックでエラーが発生した場合の処理
         if (bindingResult.hasErrors()) {
             val errorMessageList = mutableListOf<String>()
@@ -60,7 +64,7 @@ class AuthorController(
                 } ?: UNKNOWN_ERROR_MESSAGE)
             }
             val mapper = ObjectMapper()
-            return mapper.writeValueAsString(errorMessageList)
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mapper.writeValueAsString(errorMessageList))
         }
         try {
             // バリデーション処理
@@ -85,14 +89,15 @@ class AuthorController(
                 mapper.registerModule(timeModule)
                 // 日付の表示形式を整形
                 mapper.dateFormat = java.text.SimpleDateFormat("yyyy-MM-dd")
-                return mapper.writeValueAsString(response)
+                return ResponseEntity.status(HttpStatus.OK).body(mapper.writeValueAsString(response))
             } else {
                 // 検索結果が取得できなかった場合
                 val mapper = ObjectMapper()
-                return mapper.writeValueAsString("取得対象が存在しません。")
+                return ResponseEntity.status(HttpStatus.OK)
+                    .body(mapper.writeValueAsString(GET_TARGET_NOT_EXIST_MESSAGE))
             }
         } catch (e: Exception) {
-            return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message ?: UNKNOWN_ERROR_MESSAGE)
         }
     }
 
@@ -106,7 +111,7 @@ class AuthorController(
     fun createAuthorController(
         @Validated @RequestBody request: CreateAuthorRequest,
         bindingResult: BindingResult
-    ): String {
+    ): ResponseEntity<String> {
         // CreateAuthorRequest内のアノテーションによるバリデーションチェックでエラーが発生した場合の処理
         if (bindingResult.hasErrors()) {
             val errorMessageList = mutableListOf<String>()
@@ -116,7 +121,7 @@ class AuthorController(
                 } ?: UNKNOWN_ERROR_MESSAGE)
             }
             val mapper = ObjectMapper()
-            return mapper.writeValueAsString(errorMessageList)
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mapper.writeValueAsString(errorMessageList))
         }
         try {
             // バリデーション処理
@@ -129,9 +134,9 @@ class AuthorController(
             val response = convertCreateAuthorResponse(authorId)
             // JSONで返す
             val mapper = ObjectMapper()
-            return mapper.writeValueAsString(response)
+            return ResponseEntity.status(HttpStatus.OK).body(mapper.writeValueAsString(response))
         } catch (e: Exception) {
-            return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message ?: UNKNOWN_ERROR_MESSAGE)
         }
     }
 
@@ -145,7 +150,7 @@ class AuthorController(
     fun updateAuthorController(
         @Validated @RequestBody request: UpdateAuthorRequest,
         bindingResult: BindingResult
-    ): String {
+    ): ResponseEntity<String> {
         // UpdateAuthorRequest内のアノテーションによるバリデーションチェックでエラーが発生した場合の処理
         if (bindingResult.hasErrors()) {
             val errorMessageList = mutableListOf<String>()
@@ -155,7 +160,7 @@ class AuthorController(
                 } ?: UNKNOWN_ERROR_MESSAGE)
             }
             val mapper = ObjectMapper()
-            return mapper.writeValueAsString(errorMessageList)
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mapper.writeValueAsString(errorMessageList))
         }
         try {
             // バリデーション処理
@@ -168,13 +173,14 @@ class AuthorController(
             val mapper = ObjectMapper()
             if (authorId == null) {
                 // 更新対象が存在しない場合はメッセージを返す
-                return mapper.writeValueAsString(UPDATE_TARGET_NOT_EXIST_MESSAGE)
+                return ResponseEntity.status(HttpStatus.OK)
+                    .body(mapper.writeValueAsString(UPDATE_TARGET_NOT_EXIST_MESSAGE))
             }
             // レスポンスに詰め替える
             val response = convertUpdateAuthorResponse(authorId)
-            return mapper.writeValueAsString(response)
+            return ResponseEntity.status(HttpStatus.OK).body(mapper.writeValueAsString(response))
         } catch (e: Exception) {
-            return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message ?: UNKNOWN_ERROR_MESSAGE)
         }
     }
 

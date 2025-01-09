@@ -44,7 +44,7 @@ class AuthorService(
             throw se
         } catch (e: Exception) {
             // その他要因で処理されなかった場合はExceptionを投げる
-            throw Exception("著者情報の更新に失敗しました。")
+            throw Exception("著者情報の取得に失敗しました。")
         }
     }
 
@@ -75,7 +75,7 @@ class AuthorService(
             throw ise
         } catch (e: Exception) {
             // その他要因で処理されなかった場合はExceptionを投げる
-            throw Exception("著者情報の更新に失敗しました。")
+            throw Exception("著者情報の登録に失敗しました。")
         }
     }
 

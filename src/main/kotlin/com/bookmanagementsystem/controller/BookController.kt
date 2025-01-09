@@ -14,6 +14,8 @@ import com.bookmanagementsystem.service.BookService
 import com.bookmanagementsystem.validator.BookValidator
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.validation.BindingResult
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
@@ -53,7 +55,7 @@ class BookController(
     fun getBookController(
         @Validated request: GetBookRequest,
         bindingResult: BindingResult
-    ): String {
+    ): ResponseEntity<String> {
         // GetBookRequest内のアノテーションによるバリデーションチェックでエラーが発生した場合の処理
         if (bindingResult.hasErrors()) {
             val errorMessageList = mutableListOf<String>()
@@ -63,7 +65,7 @@ class BookController(
                 } ?: UNKNOWN_ERROR_MESSAGE)
             }
             val mapper = ObjectMapper()
-            return mapper.writeValueAsString(errorMessageList)
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mapper.writeValueAsString(errorMessageList))
         }
         try {
             // バリデーション処理
@@ -79,13 +81,14 @@ class BookController(
                 // 検索結果が取得できた場合
                 val response = convertGetBookResponse(book)
                 // JSONで返す
-                return mapper.writeValueAsString(response)
+                return ResponseEntity.status(HttpStatus.OK).body(mapper.writeValueAsString(response))
             } else {
                 // 検索結果が取得できなかった場合
-                return mapper.writeValueAsString(GET_TARGET_NOT_EXIST_MESSAGE)
+                return ResponseEntity.status(HttpStatus.OK)
+                    .body(mapper.writeValueAsString(GET_TARGET_NOT_EXIST_MESSAGE))
             }
         } catch (e: Exception) {
-            return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message ?: UNKNOWN_ERROR_MESSAGE)
         }
     }
 
@@ -99,7 +102,7 @@ class BookController(
     fun getBookFromAuthorController(
         @Validated request: GetBookFromAuthorRequest,
         bindingResult: BindingResult
-    ): String {
+    ): ResponseEntity<String> {
         // GetBookFromAuthorRequest内のアノテーションによるバリデーションチェックでエラーが発生した場合の処理
         if (bindingResult.hasErrors()) {
             val errorMessageList = mutableListOf<String>()
@@ -109,7 +112,7 @@ class BookController(
                 } ?: UNKNOWN_ERROR_MESSAGE)
             }
             val mapper = ObjectMapper()
-            return mapper.writeValueAsString(errorMessageList)
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mapper.writeValueAsString(errorMessageList))
         }
         try {
             // バリデーション処理
@@ -128,13 +131,14 @@ class BookController(
                     response.add(convertGetBookResponse(book))
                 }
                 // JSONで返す
-                return mapper.writeValueAsString(response)
+                return ResponseEntity.status(HttpStatus.OK).body(mapper.writeValueAsString(response))
             } else {
                 // 検索結果が取得できなかった場合
-                return mapper.writeValueAsString(GET_TARGET_NOT_EXIST_MESSAGE)
+                return ResponseEntity.status(HttpStatus.OK)
+                    .body(mapper.writeValueAsString(GET_TARGET_NOT_EXIST_MESSAGE))
             }
         } catch (e: Exception) {
-            return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message ?: UNKNOWN_ERROR_MESSAGE)
         }
     }
 
@@ -148,7 +152,7 @@ class BookController(
     fun createBookController(
         @Validated @RequestBody request: CreateBookRequest,
         bindingResult: BindingResult
-    ): String {
+    ): ResponseEntity<String> {
         // CreateBookRequest内のアノテーションによるバリデーションチェックでエラーが発生した場合の処理
         if (bindingResult.hasErrors()) {
             val errorMessageList = mutableListOf<String>()
@@ -158,7 +162,7 @@ class BookController(
                 } ?: UNKNOWN_ERROR_MESSAGE)
             }
             val mapper = ObjectMapper()
-            return mapper.writeValueAsString(errorMessageList)
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mapper.writeValueAsString(errorMessageList))
         }
         try {
             // バリデーション処理
@@ -181,9 +185,9 @@ class BookController(
             val response = convertCreateBookResponse(bookId)
             // JSONで返す
             val mapper = ObjectMapper()
-            return mapper.writeValueAsString(response)
+            return ResponseEntity.status(HttpStatus.OK).body(mapper.writeValueAsString(response))
         } catch (e: Exception) {
-            return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message ?: UNKNOWN_ERROR_MESSAGE)
         }
     }
 
@@ -197,7 +201,7 @@ class BookController(
     fun updateBookController(
         @Validated @RequestBody request: UpdateBookRequest,
         bindingResult: BindingResult
-    ): String {
+    ): ResponseEntity<String> {
         // UpdateBookRequest内のアノテーションによるバリデーションチェックでエラーが発生した場合の処理
         if (bindingResult.hasErrors()) {
             val errorMessageList = mutableListOf<String>()
@@ -207,7 +211,7 @@ class BookController(
                 } ?: UNKNOWN_ERROR_MESSAGE)
             }
             val mapper = ObjectMapper()
-            return mapper.writeValueAsString(errorMessageList)
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mapper.writeValueAsString(errorMessageList))
         }
         try {
             // バリデーション処理
@@ -229,14 +233,15 @@ class BookController(
             val mapper = ObjectMapper()
             if (bookId == null) {
                 // 更新対象が存在しない場合はメッセージを返す
-                return mapper.writeValueAsString(UPDATE_TARGET_NOT_EXIST_MESSAGE)
+                return ResponseEntity.status(HttpStatus.OK)
+                    .body(mapper.writeValueAsString(UPDATE_TARGET_NOT_EXIST_MESSAGE))
             }
             // レスポンスに詰め替える
             val response = convertUpdateBookResponse(bookId)
             // JSONで返す
-            return mapper.writeValueAsString(response)
+            return ResponseEntity.status(HttpStatus.OK).body(mapper.writeValueAsString(response))
         } catch (e: Exception) {
-            return e.message ?: throw Exception(UNKNOWN_ERROR_MESSAGE)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message ?: UNKNOWN_ERROR_MESSAGE)
         }
     }
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bookmanagementsystem.controller.AuthorControllerTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-01-09T08:10:42" hostname="DESKTOP-03LDBVA" time="0.293">
+  <properties/>
+  <testcase name="getAuthorの異常系_BAD_REQUEST" classname="com.bookmanagementsystem.controller.AuthorControllerTest" time="0.191"/>
+  <testcase name="createAuthorControllerの異常系_INTERNAL_SERVER_ERROR" classname="com.bookmanagementsystem.controller.AuthorControllerTest" time="0.013"/>
+  <testcase name="getAuthorの異常系_INTERNAL_SERVER_ERROR" classname="com.bookmanagementsystem.controller.AuthorControllerTest" time="0.011"/>
+  <testcase name="updateAuthorControllerの異常系_INTERNAL_SERVER_ERROR" classname="com.bookmanagementsystem.controller.AuthorControllerTest" time="0.011"/>
+  <testcase name="getAuthorの正常系" classname="com.bookmanagementsystem.controller.AuthorControllerTest" time="0.011"/>
+  <testcase name="updateAuthorControllerの正常系" classname="com.bookmanagementsystem.controller.AuthorControllerTest" time="0.01"/>
+  <testcase name="updateAuthorControllerの異常系_BAD_REQUEST" classname="com.bookmanagementsystem.controller.AuthorControllerTest" time="0.011"/>
+  <testcase name="createAuthorControllerの正常系" classname="com.bookmanagementsystem.controller.AuthorControllerTest" time="0.011"/>
+  <testcase name="createAuthorControllerの異常系_BAD_REQUEST" classname="com.bookmanagementsystem.controller.AuthorControllerTest" time="0.01"/>
+  <system-out><![CDATA[17:10:39.856 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.bookmanagementsystem.controller.AuthorControllerTest]: AuthorControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:10:39.991 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.bookmanagementsystem.BootApplication for test class com.bookmanagementsystem.controller.AuthorControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.1)
+
+2025-01-09T17:10:40.392+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] c.b.controller.AuthorControllerTest      : Starting AuthorControllerTest using Java 21.0.5 with PID 54956 (started by YUUTA in F:\development\BookManagementSystem)
+2025-01-09T17:10:40.394+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] c.b.controller.AuthorControllerTest      : No active profile set, falling back to 1 default profile: "default"
+2025-01-09T17:10:42.051+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-01-09T17:10:42.052+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-01-09T17:10:42.054+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-01-09T17:10:42.087+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] c.b.controller.AuthorControllerTest      : Started AuthorControllerTest in 2.03 seconds (process running for 3.237)
+2025-01-09T17:10:42.133+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-01-09T17:10:42.133+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-01-09T17:10:42.134+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-01-09T17:10:42.304+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-01-09T17:10:42.304+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-01-09T17:10:42.304+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-01-09T17:10:42.317+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-01-09T17:10:42.317+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-01-09T17:10:42.317+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-01-09T17:10:42.330+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-01-09T17:10:42.330+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-01-09T17:10:42.330+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-01-09T17:10:42.341+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-01-09T17:10:42.341+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-01-09T17:10:42.342+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-01-09T17:10:42.354+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-01-09T17:10:42.354+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-01-09T17:10:42.354+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-01-09T17:10:42.366+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-01-09T17:10:42.366+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-01-09T17:10:42.366+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-01-09T17:10:42.377+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-01-09T17:10:42.378+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-01-09T17:10:42.378+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-01-09T17:10:42.390+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-01-09T17:10:42.390+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-01-09T17:10:42.390+09:00  INFO 54956 --- [quo_assignment_db] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\YUUTA\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.15.11\a38b16385e867f59a641330f0362ebe742788ed8\byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
