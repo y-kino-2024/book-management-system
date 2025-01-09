@@ -36,8 +36,8 @@ class BookService(
         try {
             // 書籍情報取得
             val resultBook = booksInfoRepositoryImpl.fetchBook(bookId)
-            // 著者情報取得
-            val resultAuthor = authorIndexRepositoryImpl.getBookFromBookId(bookId)
+            // 取得対象書籍の著者情報取得
+            val resultAuthor = authorIndexRepositoryImpl.getAuthorIndexFromBookId(bookId)
             // 取得結果による分岐
             return if (resultBook != null && resultAuthor != null) {
                 // 取得結果を書籍Entityに詰め替えて返す
@@ -179,13 +179,12 @@ class BookService(
     ): Boolean {
         val authorIdList = book.authorIdList
         val bookId = book.id
-        // 早期リターンチェック
+        // リクエストの著者リストが未入力の場合は更新対象ではないため処理不要としてfalseを返す
         if (authorIdList.isNullOrEmpty()) {
-            // リクエストの著者リストが未入力の場合は更新対象ではないため処理不要のため未処理としてfalseを返す
             return false
         }
         // 更新前の著者と書籍の紐づきの情報を取得
-        val currentAuthorIndexDtoList = authorIndexRepositoryImpl.getBookFromBookId(
+        val currentAuthorIndexDtoList = authorIndexRepositoryImpl.getAuthorIndexFromBookId(
             bookId ?: throw IllegalStateException("bookIdの値が不正です。")
         )
         // 更新対象が取得できなかった場合はエラーとして処理する
@@ -207,7 +206,7 @@ class BookService(
                     break
                 }
                 if (currentAuthorId == lastAuthorId) {
-                    // 最終周まで著者IDがすべて一致した場合は更新対象ではないため処理不要。未処理としてfalseを返す
+                    // 最終周まで著者IDがすべて一致した場合は更新対象ではないため処理不要としてfalseを返す
                     return false
                 }
             }
@@ -239,7 +238,7 @@ class BookService(
     fun getBookFromAuthor(authorId: Int): List<Book>? {
         try {
             // 著者IDから書籍と著者を紐づけた情報を取得
-            val resultAuthorIndexBook = authorIndexRepositoryImpl.getBookFromAuthorId(authorId)
+            val resultAuthorIndexBook = authorIndexRepositoryImpl.getAuthorIndexFromAuthorId(authorId)
             // 著者IDに紐づく書籍がない場合は処理終了
             if (resultAuthorIndexBook.isNullOrEmpty()) {
                 return null
@@ -260,8 +259,8 @@ class BookService(
             // 書籍の著者情報取得
             val authorIndexBookMap = mutableMapOf<Int, List<AuthorIndexDto>>()
             for (bookId in bookIdList) {
-                authorIndexBookMap[bookId] = authorIndexRepositoryImpl.getBookFromBookId(bookId)
-                    ?: throw IllegalStateException("書籍IDに対応する書籍が存在しません。")
+                authorIndexBookMap[bookId] = authorIndexRepositoryImpl.getAuthorIndexFromBookId(bookId)
+                    ?: throw IllegalStateException("書籍IDに紐づく著者が存在しません。")
             }
             val bookList = mutableListOf<Book>()
             for (booksInfoDto in resultBook) {
@@ -269,7 +268,7 @@ class BookService(
                     convertBook(
                         booksInfoDto = booksInfoDto,
                         authorIndexDtoList = authorIndexBookMap[booksInfoDto.id]
-                            ?: throw IllegalStateException("書籍IDに対応する書籍が存在しません。")
+                            ?: throw IllegalStateException("書籍IDに紐づく著者が存在しません。")
                     )
                 )
             }
@@ -334,6 +333,7 @@ class BookService(
                     bookId = bookId,
                     authorId = authorId,
                     createdBy = book.operator?.let {
+                        // operatorは必須チェック済みのためここでnullが入ることはない
                         book.operator
                     } ?: throw IllegalStateException("createdByの値が不正です。"),
                     createdAt = processingDatetime,
@@ -366,10 +366,12 @@ class BookService(
             authorIndexDtoList.add(
                 AuthorIndexDto(
                     bookId = book.id?.let {
+                        // bookIdは必須チェック済みのためここでnullが入ることはない
                         book.id
                     } ?: throw IllegalStateException("bookIdの値が不正です"),
                     authorId = authorId,
                     createdBy = book.operator?.let {
+                        // operatorは必須チェック済みのためここでnullが入ることはない
                         book.operator
                     } ?: throw IllegalStateException("createdByの値が不正です"),
                     createdAt = processingDatetime,
@@ -396,15 +398,19 @@ class BookService(
         return BooksInfoDto(
             id = null,
             title = book.title?.let {
+                // titleは必須チェック済みのためここでnullが入ることはない
                 book.title
             } ?: throw IllegalStateException("titleの値が不正です"),
             price = book.price?.let {
+                // priceは必須チェック済みのためここでnullが入ることはない
                 book.price.toDouble()
             } ?: throw IllegalStateException("priceの値が不正です"),
             publicationStatus = book.publicationStatus?.let {
+                // publicationStatusは必須チェック済みのためここでnullが入ることはない
                 book.publicationStatus.code
             } ?: throw IllegalStateException("publicationStatusの値が不正です"),
             createdBy = book.operator?.let {
+                // operatorは必須チェック済みのためここでnullが入ることはない
                 book.operator
             } ?: throw IllegalStateException("createdByの値が不正です"),
             createdAt = processingDatetime,
@@ -437,6 +443,7 @@ class BookService(
             createdBy = currentBookDto.createdBy,
             createdAt = currentBookDto.createdAt,
             updatedBy = book.operator?.let {
+                // operatorは必須チェック済みのためここでnullが入ることはない
                 book.operator
             } ?: throw IllegalStateException("updatedByの値が不正です"),
             updatedAt = processingDatetime,

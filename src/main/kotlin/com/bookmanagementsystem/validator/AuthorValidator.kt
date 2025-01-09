@@ -23,7 +23,7 @@ class AuthorValidator(
      */
     fun validGetAuthor(request: GetAuthorRequest) {
         // リクエスト値にauthorIdを定義しなかった場合にアノテーションで必須チェックできないためここで必須チェックを実施
-        checkRequiredId(request.authorId)
+        checkRequiredAuthorId(request.authorId)
     }
 
     /**
@@ -32,9 +32,9 @@ class AuthorValidator(
      * @args request 著者登録処理のリクエスト
      */
     fun validCreateAuthor(request: CreateAuthorRequest) {
-        // リクエスト値に項目を定義しなかった場合、アノテーションで必須チェックができないためここで必須チェックを実施
+        // リクエスト値に項目ごと定義しなかった場合、アノテーションで必須チェックができないため各必須項目の必須チェックを実施
         // 著者名の必須チェック
-        checkRequiredName(request.authorName)
+        checkRequiredAuthorName(request.authorName)
         // 誕生日の必須チェック
         checkRequiredBirthday(request.birthday)
         // 誕生日の過去日チェック
@@ -50,7 +50,7 @@ class AuthorValidator(
      */
     fun validUpdateAuthor(request: UpdateAuthorRequest) {
         // リクエスト値にauthorIdを定義しなかった場合にアノテーションで必須チェックができないためここで必須チェックを実施
-        checkRequiredId(request.authorId)
+        checkRequiredAuthorId(request.authorId)
         // 誕生日の過去日チェック
         checkPastDateBirthday(request.birthday)
         // 操作者チェック
@@ -62,7 +62,7 @@ class AuthorValidator(
      *
      * @args authorId 著者ID
      */
-    private fun checkRequiredId(authorId: String?) {
+    private fun checkRequiredAuthorId(authorId: String?) {
         // 必須チェック
         if (authorId.isNullOrBlank()) {
             throw NullPointerException("authorIdを入力してください。")
@@ -74,7 +74,7 @@ class AuthorValidator(
      *
      * @args authorName 著者名
      */
-    private fun checkRequiredName(authorName: String?) {
+    private fun checkRequiredAuthorName(authorName: String?) {
         // 必須チェック
         if (authorName.isNullOrBlank()) {
             throw NullPointerException("authorNameを入力してください。")

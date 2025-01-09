@@ -30,7 +30,7 @@ class AuthorIndexRepositoryImpl(
      */
     @Override
     @Transactional
-    override fun getBookFromBookId(bookId: Int): List<AuthorIndexDto>? {
+    override fun getAuthorIndexFromBookId(bookId: Int): List<AuthorIndexDto>? {
         try {
             return dslContext.transactionResult { configuration ->
                 val context = DSL.using(configuration)
@@ -75,7 +75,7 @@ class AuthorIndexRepositoryImpl(
      */
     @Override
     @Transactional
-    override fun getBookFromAuthorId(authorId: Int): List<AuthorIndexDto>? {
+    override fun getAuthorIndexFromAuthorId(authorId: Int): List<AuthorIndexDto>? {
         try {
             return dslContext.transactionResult { configuration ->
                 val context = DSL.using(configuration)

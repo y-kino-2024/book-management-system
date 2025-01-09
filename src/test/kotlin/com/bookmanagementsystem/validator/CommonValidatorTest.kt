@@ -21,7 +21,7 @@ class CommonValidatorTest {
 
     @Test
     @DisplayName("操作者の必須チェックにて、値が入っていない場合はNullPointerExceptionが投げられること")
-    fun testCheckOperator_NullPointerException_Operator() {
+    fun testCheckOperator_NullPointerException() {
         try {
             commonValidator.checkOperator(null)
             fail("例外がthrowされませんでした")

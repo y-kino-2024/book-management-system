@@ -141,9 +141,9 @@ class AuthorService(
             id = authorsInfoDto.id,
             authorName = authorsInfoDto.authorName,
             birthday = authorsInfoDto.birthday,
-            // operatorは各レスポンスに設定しない値のためnullとしておく
+            // operatorはレスポンスに設定しない値のためnullとしておく
             operator = null,
-            // deleteFlgは各レスポンスに設定しない値のためnullとしておく
+            // deleteFlgはレスポンスに設定しない値のためnullとしておく
             deleteFlg = null
         )
     }
@@ -162,12 +162,15 @@ class AuthorService(
         return AuthorsInfoDto(
             id = null,
             authorName = author.authorName?.let {
+                // authorNameは必須チェック済みのためここでnullが入ることはない
                 author.authorName
             } ?: throw IllegalStateException("authorNameの値が不正です"),
             birthday = author.birthday?.let {
+                // birthdayは必須チェック済みのためここでnullが入ることはない
                 author.birthday
             } ?: throw IllegalStateException("birthdayの値が不正です"),
             createdBy = author.operator?.let {
+                // operatorは必須チェック済みのためここでnullが入ることはない
                 author.operator
             } ?: throw IllegalStateException("createdByの値が不正です"),
             createdAt = processingDatetime,
@@ -197,6 +200,7 @@ class AuthorService(
             createdBy = currentAuthor.createdBy,
             createdAt = currentAuthor.createdAt,
             updatedBy = author.operator?.let {
+                // operatorは必須チェック済みのためここでnullが入ることはない
                 author.operator
             } ?: throw IllegalStateException("updatedByの値が不正です"),
             updatedAt = processingDatetime,

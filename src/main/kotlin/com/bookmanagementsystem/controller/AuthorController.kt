@@ -242,7 +242,7 @@ class AuthorController(
             id = null,
             authorName = request.authorName?.let {
                 // authorNameは必須チェック済みのためここでnullが入ることはない
-                request.authorName.toString()
+                request.authorName
             } ?: throw IllegalStateException("authorNameの値が不正です。"),
             birthday = request.birthday?.let {
                 // birthdayは必須チェック済みのためここでnullが入ることはない
@@ -250,7 +250,7 @@ class AuthorController(
             } ?: throw IllegalStateException("birthdayの値が不正です。"),
             operator = request.operator?.let {
                 // operatorは必須チェック済みのためここでnullが入ることはない
-                request.operator.toString()
+                request.operator
             } ?: throw IllegalStateException("operatorの値が不正です。"),
             // 登録処理時には削除フラグは「0：未削除」をいれる
             deleteFlg = DELETE_FLG_ZERO

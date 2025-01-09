@@ -138,7 +138,7 @@ class AuthorServiceTest {
             operator = "operator",
             deleteFlg = "0",
         )
-        `when`(authorService?.createAuthor(mockRequest)).thenThrow(IllegalStateException())
-        assertThrows<IllegalStateException> { authorService!!.createAuthor(mockRequest) }
+        `when`(authorService?.updateAuthor(mockRequest)).thenThrow(IllegalStateException())
+        assertThrows<IllegalStateException> { authorService!!.updateAuthor(mockRequest) }
     }
 }

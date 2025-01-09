@@ -32,7 +32,7 @@ internal class BookValidatorTest {
 
     @Test
     @DisplayName("書籍取得処理のバリデーションチェックにて、bookIdがnullの場合はNullPointerExceptionが投げられること")
-    fun testValidGetBook_Success_NullPointerException() {
+    fun testValidGetBook_NullPointerException() {
         try {
             bookValidator!!.validGetBook(GetBookRequest(null))
             fail("例外がthrowされませんでした")
@@ -76,6 +76,26 @@ internal class BookValidatorTest {
             )
         } catch (e: NullPointerException) {
             assertEquals("authorIdListを入力してください。", e.message)
+        } catch (e: Exception) {
+            fail("想定した例外がthrowされませんでした")
+        }
+    }
+
+    @Test
+    @DisplayName("書籍登録処理のバリデーションチェックにて、authorIdListの要素が数値以外の場合はIllegalStateExceptionが投げられること")
+    fun testValidCreateBook_IllegalStateException_AuthorIdList() {
+        try {
+            bookValidator!!.validCreateBook(
+                CreateBookRequest(
+                    authorIdList = listOf("a", "b"),
+                    title = "title",
+                    price = "500",
+                    publicationStatus = "0",
+                    operator = "operator"
+                )
+            )
+        } catch (e: IllegalStateException) {
+            assertEquals("authorIdは8桁以下の数値で入力してください。", e.message)
         } catch (e: Exception) {
             fail("想定した例外がthrowされませんでした")
         }

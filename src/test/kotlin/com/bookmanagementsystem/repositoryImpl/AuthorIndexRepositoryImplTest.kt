@@ -37,7 +37,7 @@ class AuthorIndexRepositoryImplTest {
 
     @Test
     @DisplayName("著者に紐づく書籍情報取得処理の正常系_返り値あり(1件)")
-    fun testGetBookFromBookId_Success_ReturnOne() {
+    fun testGetAuthorIndexFromBookId_Success_ReturnOne() {
         try {
             val mockDate = listOf(
                 AuthorIndexDto(
@@ -50,14 +50,14 @@ class AuthorIndexRepositoryImplTest {
                     deleteFlg = "0"
                 )
             )
-            `when`(authorIndexRepository.getBookFromBookId(1)).thenReturn(mockDate)
+            `when`(authorIndexRepository.getAuthorIndexFromBookId(1)).thenReturn(mockDate)
             // テスト対象メソッドの呼び出し
-            val resultList = authorIndexRepository.getBookFromBookId(1)
+            val resultList = authorIndexRepository.getAuthorIndexFromBookId(1)
             // 検証
             assertNotNull(resultList)
             assertIterableEquals(mockDate, resultList)
             // モックメソッドの呼び出しを検証
-            verify(authorIndexRepository).getBookFromBookId(1)
+            verify(authorIndexRepository).getAuthorIndexFromBookId(1)
         } catch (e: Exception) {
             fail("例外がthrowされました")
         }
@@ -65,7 +65,7 @@ class AuthorIndexRepositoryImplTest {
 
     @Test
     @DisplayName("著者に紐づく書籍情報取得処理の正常系_返り値あり(2件)")
-    fun testGetBookFromBookId_Success_ReturnTwo() {
+    fun testGetAuthorIndexFromBookId_Success_ReturnTwo() {
         try {
             val mockDate = listOf(
                 AuthorIndexDto(
@@ -87,14 +87,14 @@ class AuthorIndexRepositoryImplTest {
                     deleteFlg = "0"
                 )
             )
-            `when`(authorIndexRepository.getBookFromBookId(1)).thenReturn(mockDate)
+            `when`(authorIndexRepository.getAuthorIndexFromBookId(1)).thenReturn(mockDate)
             // テスト対象メソッドの呼び出し
-            val resultList = authorIndexRepository.getBookFromBookId(1)
+            val resultList = authorIndexRepository.getAuthorIndexFromBookId(1)
             // 検証
             assertNotNull(resultList)
             assertIterableEquals(mockDate, resultList)
             // モックメソッドの呼び出しを検証
-            verify(authorIndexRepository).getBookFromBookId(1)
+            verify(authorIndexRepository).getAuthorIndexFromBookId(1)
         } catch (e: Exception) {
             fail("例外がthrowされました")
         }
@@ -102,17 +102,17 @@ class AuthorIndexRepositoryImplTest {
 
     @Test
     @DisplayName("著者に紐づく書籍情報取得処理の正常系_返り値なし")
-    fun testGetBookFromBookId_Success_NotExist() {
+    fun testGetAuthorIndexFromBookId_Success_NotExist() {
         try {
             val mockDate = mutableListOf<AuthorIndexDto>()
-            `when`(authorIndexRepository.getBookFromBookId(1)).thenReturn(mockDate)
+            `when`(authorIndexRepository.getAuthorIndexFromBookId(1)).thenReturn(mockDate)
             // テスト対象メソッドの呼び出し
-            val resultList = authorIndexRepository.getBookFromBookId(1)
+            val resultList = authorIndexRepository.getAuthorIndexFromBookId(1)
             // 検証
             assertNotNull(resultList)
             assertIterableEquals(mockDate, resultList)
             // モックメソッドの呼び出しを検証
-            verify(authorIndexRepository).getBookFromBookId(1)
+            verify(authorIndexRepository).getAuthorIndexFromBookId(1)
         } catch (e: Exception) {
             fail("例外がthrowされました")
         }
@@ -120,7 +120,7 @@ class AuthorIndexRepositoryImplTest {
 
     @Test
     @DisplayName("著者IDを用いて著者に紐づく書籍情報取得処理の正常系_返り値あり(1件)")
-    fun testGetBookFromAuthorId_Success_ReturnOne() {
+    fun testGetAuthorIndexFromAuthorId_Success_ReturnOne() {
         try {
             val mockDate = listOf(
                 AuthorIndexDto(
@@ -133,14 +133,14 @@ class AuthorIndexRepositoryImplTest {
                     deleteFlg = "0"
                 )
             )
-            `when`(authorIndexRepository.getBookFromAuthorId(2)).thenReturn(mockDate)
+            `when`(authorIndexRepository.getAuthorIndexFromAuthorId(2)).thenReturn(mockDate)
             // テスト対象メソッドの呼び出し
-            val resultList = authorIndexRepository.getBookFromAuthorId(2)
+            val resultList = authorIndexRepository.getAuthorIndexFromAuthorId(2)
             // 検証
             assertNotNull(resultList)
             assertIterableEquals(mockDate, resultList)
             // モックメソッドの呼び出しを検証
-            verify(authorIndexRepository).getBookFromAuthorId(2)
+            verify(authorIndexRepository).getAuthorIndexFromAuthorId(2)
         } catch (e: Exception) {
             fail("例外がthrowされました")
         }
@@ -148,7 +148,7 @@ class AuthorIndexRepositoryImplTest {
 
     @Test
     @DisplayName("著者IDを用いて著者に紐づく書籍情報取得処理の正常系_返り値あり(2件)")
-    fun testGetBookFromAuthorId_Success_ReturnTwo() {
+    fun testGetAuthorIndexFromAuthorId_Success_ReturnTwo() {
         try {
             val mockDate = listOf(
                 AuthorIndexDto(
@@ -170,14 +170,14 @@ class AuthorIndexRepositoryImplTest {
                     deleteFlg = "0"
                 )
             )
-            `when`(authorIndexRepository.getBookFromAuthorId(2)).thenReturn(mockDate)
+            `when`(authorIndexRepository.getAuthorIndexFromAuthorId(2)).thenReturn(mockDate)
             // テスト対象メソッドの呼び出し
-            val resultList = authorIndexRepository.getBookFromAuthorId(2)
+            val resultList = authorIndexRepository.getAuthorIndexFromAuthorId(2)
             // 検証
             assertNotNull(resultList)
             assertIterableEquals(mockDate, resultList)
             // モックメソッドの呼び出しを検証
-            verify(authorIndexRepository).getBookFromAuthorId(2)
+            verify(authorIndexRepository).getAuthorIndexFromAuthorId(2)
         } catch (e: Exception) {
             fail("例外がthrowされました")
         }
@@ -185,17 +185,17 @@ class AuthorIndexRepositoryImplTest {
 
     @Test
     @DisplayName("著者IDを用いて著者に紐づく書籍情報取得処理の正常系_返り値なし")
-    fun testGetBookFromAuthorId_Success_NotExist() {
+    fun testGetAuthorIndexFromAuthorId_Success_NotExist() {
         try {
             val mockDate = mutableListOf<AuthorIndexDto>()
-            `when`(authorIndexRepository.getBookFromAuthorId(2)).thenReturn(mockDate)
+            `when`(authorIndexRepository.getAuthorIndexFromAuthorId(2)).thenReturn(mockDate)
             // テスト対象メソッドの呼び出し
-            val resultList = authorIndexRepository.getBookFromAuthorId(2)
+            val resultList = authorIndexRepository.getAuthorIndexFromAuthorId(2)
             // 検証
             assertNotNull(resultList)
             assertIterableEquals(mockDate, resultList)
             // モックメソッドの呼び出しを検証
-            verify(authorIndexRepository).getBookFromAuthorId(2)
+            verify(authorIndexRepository).getAuthorIndexFromAuthorId(2)
         } catch (e: Exception) {
             fail("例外がthrowされました")
         }

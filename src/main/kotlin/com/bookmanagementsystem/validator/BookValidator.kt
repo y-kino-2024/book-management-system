@@ -43,7 +43,7 @@ class BookValidator(
      * @args request 書籍登録処理のリクエスト
      */
     fun validCreateBook(request: CreateBookRequest) {
-        // リクエスト値に項目を定義しなかった場合、アノテーションで必須チェックができないためここで必須チェックを実施
+        // リクエスト値に項目ごと定義しなかった場合、アノテーションで必須チェックができないため各必須項目の必須チェックを実施
         // 著者IDリストの必須チェック
         checkRequiredAuthorIdList(request.authorIdList)
         // 著者IDリストの数値チェック
@@ -123,7 +123,7 @@ class BookValidator(
             val numericRegexp = Regex("^\\d{1,8}\$")
             for (authorId in authorIdList) {
                 if (!authorId.matches(numericRegexp)) {
-                    throw NullPointerException("authorIdは8桁以下の数値で入力してください。")
+                    throw IllegalStateException("authorIdは8桁以下の数値で入力してください。")
                 }
             }
         }

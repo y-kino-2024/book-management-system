@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bookmanagementsystem.entity.AuthorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-01-09T13:41:38" hostname="DESKTOP-03LDBVA" time="0.017">
+<testsuite name="com.bookmanagementsystem.entity.AuthorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-01-09T15:05:49" hostname="DESKTOP-03LDBVA" time="0.019">
   <properties/>
   <testcase name="Authorのbirthdayに設定した値が入っていること" classname="com.bookmanagementsystem.entity.AuthorTest" time="0.002"/>
-  <testcase name="Authorのidに設定した値が入っていること" classname="com.bookmanagementsystem.entity.AuthorTest" time="0.003"/>
-  <testcase name="AuthorのauthorNameに設定した値が入っていること" classname="com.bookmanagementsystem.entity.AuthorTest" time="0.003"/>
+  <testcase name="Authorのidに設定した値が入っていること" classname="com.bookmanagementsystem.entity.AuthorTest" time="0.004"/>
+  <testcase name="AuthorのauthorNameに設定した値が入っていること" classname="com.bookmanagementsystem.entity.AuthorTest" time="0.004"/>
   <testcase name="AuthorのdeleteFlgに設定した値が入っていること" classname="com.bookmanagementsystem.entity.AuthorTest" time="0.003"/>
-  <testcase name="Authorのoperatorに設定した値が入っていること" classname="com.bookmanagementsystem.entity.AuthorTest" time="0.003"/>
-  <system-out><![CDATA[2025-01-09T22:41:38.385+09:00  INFO 53336 --- [quo_assignment_db] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bookmanagementsystem.entity.AuthorTest]: AuthorTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-01-09T22:41:38.396+09:00  INFO 53336 --- [quo_assignment_db] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bookmanagementsystem.BootApplication for test class com.bookmanagementsystem.entity.AuthorTest
+  <testcase name="Authorのoperatorに設定した値が入っていること" classname="com.bookmanagementsystem.entity.AuthorTest" time="0.002"/>
+  <system-out><![CDATA[2025-01-10T00:05:49.060+09:00  INFO 16716 --- [quo_assignment_db] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.bookmanagementsystem.entity.AuthorTest]: AuthorTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-01-10T00:05:49.074+09:00  INFO 16716 --- [quo_assignment_db] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.bookmanagementsystem.BootApplication for test class com.bookmanagementsystem.entity.AuthorTest
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

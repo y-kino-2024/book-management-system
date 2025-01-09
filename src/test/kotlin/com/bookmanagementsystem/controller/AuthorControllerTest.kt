@@ -20,7 +20,6 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.validation.BindingResult
-import java.time.LocalDate
 
 @WebMvcTest(controllers = [AuthorController::class])
 internal class AuthorControllerTest {
